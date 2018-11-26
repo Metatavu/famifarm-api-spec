@@ -1,0 +1,171 @@
+swagger: "2.0"
+info:
+  description: "Famifarm API specification"
+  version: "1.0.0"
+  title: "Famifarm-API"
+
+basePath: "/v1"
+schemes:
+- "https"
+paths:
+  /sowings:
+    get:
+      operationId: listSowings
+      summary: Lists sowings
+      description: Lists sowings
+      tags:
+        - Sowings
+      responses:
+        '200':
+          description: List of sowings
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Sowing'
+        '500':
+          description: Internal server error
+          schema: 
+            $ref: '#/definitions/InternalServerError'
+    post:
+      operationId: createSowing
+      summary: Create sowing
+      description: Create new sowing
+      tags:
+        - Sowings
+      responses:
+        '200':
+          description: Created sowing
+          schema:
+            $ref: '#/definitions/Sowing'
+        '500':
+          description: Internal server error
+          schema: 
+            $ref: '#/definitions/InternalServerError'
+  '/sowings/{sowingId}':
+    get:
+      operationId: findSowing
+      summary: Find a sowing
+      description: Finds single sowing
+      tags:
+        - Sowings
+      parameters:
+        - name: sowingId
+          in: path
+          required: true
+          type: string
+          format: uuid        
+      responses:
+        '200':
+          description: Found sowing
+          schema:
+            $ref: '#/definitions/Sowing'
+        '500':
+          description: Internal server error
+          schema: 
+            $ref: '#/definitions/InternalServerError'
+    put:
+      operationId: updateSowing
+      summary: Updated sowing
+      description: Updates a sowing
+      tags:
+        - Sowings
+      parameters:
+        - name: sowingId
+          in: path
+          required: true
+          type: string
+          format: uuid   
+      responses:
+        '200':
+          description: Updated sowing
+          schema:
+            $ref: '#/definitions/Sowing'
+        '500':
+          description: Internal server error
+          schema: 
+            $ref: '#/definitions/InternalServerError'
+    delete:
+      operationId: deleteSowing
+      summary: Deletes sowing
+      description: Deletes a sowing
+      tags:
+        - Sowings
+      parameters:
+        - name: sowingId
+          in: path
+          required: true
+          type: string
+          format: uuid   
+      responses:
+        '204':
+          description: Empty result indicating a successful removal
+        '500':
+          description: Internal server error
+          schema: 
+            $ref: '#/definitions/InternalServerError'
+            
+definitions:
+  CellType:
+    type: "string"
+    enum:
+      - SMALL
+      - LARGE
+  Sowing:
+    type: "object"
+    required: 
+      - productId
+      - productionLineId
+      - troughId
+      - cellType
+      - amount
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      productId:
+        type: "string"
+        format: "uuid"
+      productionLineId:
+        type: "string"
+        format: "uuid"
+      troughId:
+        type: "string"
+        format: "uuid"
+      cellType:
+        $ref: "#/definitions/CellType"
+      amount:
+        type: "number"
+        format: "double"
+      notes:
+        type: "string"
+      createdAt:
+        type: "string"
+        format: "datetime"
+  Unauthorized:
+    type: object
+    required: [message]
+    properties:
+      message:
+        description: The error message
+        type: string
+  InternalServerError:
+    type: object
+    required: [message]
+    properties:
+      message:
+        description: The error message
+        type: string
+  BadRequest:
+    type: object
+    required: [message]
+    properties:
+      message:
+        description: The error message
+        type: string
+  NotFound:
+    type: object
+    required: [message]
+    properties:
+      message:
+        description: The error message
+        type: string
