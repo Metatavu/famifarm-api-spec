@@ -6,7 +6,7 @@ info:
 
 basePath: "/v1"
 schemes:
-- "https"
+  - "https"
 paths:
   /sowings:
     get:
@@ -105,15 +105,24 @@ paths:
             $ref: '#/definitions/InternalServerError'
             
 definitions:
-  CellType:
-    type: "string"
-    enum:
-      - SMALL
-      - LARGE
+      
+  Batch:
+    description: Identifies a single batch for it's entire life-cycle 
+    type: "object"
+    required:
+      - productId
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      productId:
+        type: "string"
+        format: "uuid"
+
   Sowing:
+    description: "Entry when a batch has been sowed"
     type: "object"
     required: 
-      - productId
       - productionLineId
       - troughId
       - cellType
@@ -122,13 +131,24 @@ definitions:
       id:
         type: "string"
         format: "uuid"
-      productId:
+      batchId:
         type: "string"
         format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"
       productionLineId:
         type: "string"
         format: "uuid"
-      troughId:
+      troughNumber:
+        type: "integer"
+        format: "int32"
+      seedBatchId:
         type: "string"
         format: "uuid"
       cellType:
@@ -137,10 +157,310 @@ definitions:
         type: "number"
         format: "double"
       notes:
+        description: "Free-text notes of the entry"
         type: "string"
-      createdAt:
+        
+  Spread:
+    description: "Entry when a batch has been spread on the tables"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"   
+      tableCount:
+        description: "Count of tables used"
+        type: "integer"
+        format: "int32"
+      location:
+        description: "Where the batch has been placed"
+        type: "string"
+      notes:
+        description: "Free-text notes of the entry"
+        type: "string"
+
+  Planting:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      productionLineId:
+        description: "Production line id"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"        
+      troughNumber:
+        type: "integer"
+        format: "int32"
+      troughCount:
+        description: "How many trough were used during the planting"
+        type: "integer"
+        format: "int32"
+      cellCount:
+        description: "How many cells were planted"
+        type: "integer"
+        format: "int32"
+      workerCount:
+        description: "How many workers were doing the planting"
+        type: "integer"
+        format: "int32"
+      workDuration:
+        description: Duration of work in minutes
+        type: "integer"
+        format: "int32"
+      notes:
+        description: "Free-text notes of the entry"
+        type: "string"
+
+  CultivationObservation:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
         type: "string"
         format: "datetime"
+      weight:
+        description: "Weight in grams"
+        type: "number"
+        format: "double"
+      pests:
+        description: "Possible pest observations"
+        type: "string"        
+      luminance:
+        description: "Luminance in lumens on the time of observation"
+        type: "number"
+        format: "double"
+      performedActionIds:
+        description: "List of ids of cultivation actions done based on observations"
+        type: "array"
+        items:
+          type: "string"
+          format: "uuid"
+      notes:
+        description: "Free-text notes of the entry"
+        type: "string"
+
+  Harvest:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      teamId:
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"
+      type:
+        type: "string"
+        enum:
+          - BAGGING
+          - CUTTING
+          - BOXING
+      productionLineId:
+        description: "Production line id"
+        type: "string"
+        format: "uuid"
+      notes:
+        description: "Free-text notes of the entry"
+        type: "string"
+
+  Packaging:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"
+      packedAmount:
+        description: "Amount of packed items"
+        type: "integer"
+        format: "int32"
+      packageSize:
+        type: "string"
+        format: "uuid"
+      notes:
+        description: "Free-text notes of the entry"
+        type: "string"
+
+  PackageSize:
+    description: "Packaging size"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      name:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'
+
+  Wastage:
+    description: "Entry of products has been thrown away"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      batchId:
+        type: "string"
+        format: "uuid"
+      userId:
+        description: "Id of user who added this entry"
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the entry was added"
+        type: "string"
+        format: "datetime"
+      reasonId:
+        description: "Id of reason a product has been thrown away"
+        type: "string"
+        format: "uuid"
+      amount:
+        type: "integer"
+        format: "int32"
+  
+  WastageReason:
+    description: "Reason why a product has been thrown away"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      reason:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'
+
+  ProductionLine:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      lineNumber:
+        type: "integer"
+        format: "int32"
+
+  PerformedCultivationAction:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      name:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'
+
+  Team:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      name:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'
+    
+  Seed:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      name:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'      
+        
+  SeedBatch:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      code:
+        description: "Manufacturer's code for the batch"        
+        type: "string"
+      seedId:
+        type: "string"
+        format: "uuid"
+      time:
+        description: "Time when the seed has arrived"
+        type: "string"
+        format: "datetime"      
+
+  Product:
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+      name:
+        type: "object"
+        $ref: '#/definitions/LocalizedEntry'
+
+  CellType:
+    type: "string"
+    enum:
+      - SMALL
+      - LARGE
+        
+  LocalizedEntry: 
+     type: array
+     items:
+       $ref: '#/definitions/LocalizedValue'
+
+  LocalizedValue: 
+    type: object
+    required:
+      - language
+      - value
+    properties:
+      language:
+        type: string
+        minLength: 2
+        maxLength: 2        
+      value:
+        type: string
+
   Unauthorized:
     type: object
     required: [message]
@@ -148,6 +468,7 @@ definitions:
       message:
         description: The error message
         type: string
+        
   InternalServerError:
     type: object
     required: [message]
@@ -155,6 +476,7 @@ definitions:
       message:
         description: The error message
         type: string
+        
   BadRequest:
     type: object
     required: [message]
@@ -162,6 +484,7 @@ definitions:
       message:
         description: The error message
         type: string
+        
   NotFound:
     type: object
     required: [message]
