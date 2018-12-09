@@ -1,8 +1,8 @@
 // package io.swagger.api;
 package fi.metatavu.famifarm.rest;
 
+import io.swagger.model.Batch;
 import io.swagger.model.Error;
-import io.swagger.model.Event;
 import java.util.UUID;
 
 import javax.ws.rs.*;
@@ -13,33 +13,33 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-@Path("/events")
+@Path("/batches")
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2018-12-09T20:02:49.924+02:00[Europe/Helsinki]")
-public interface EventsApi {
+public interface BatchesApi {
 
     @POST
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    Event createEvent(@Valid Event body);
+    Batch createBatch(@Valid Batch body);
 
     @DELETE
-    @Path("/{eventId}")
+    @Path("/{batchId}")
     @Produces({ "application/json" })
-    void deleteEvent(@PathParam("eventId") UUID eventId);
+    void deleteBatch(@PathParam("batchId") UUID batchId);
 
     @GET
-    @Path("/{eventId}")
+    @Path("/{batchId}")
     @Produces({ "application/json" })
-    Event findEvent(@PathParam("eventId") UUID eventId);
+    Batch findBatch(@PathParam("batchId") UUID batchId);
 
     @GET
     @Produces({ "application/json" })
-    List<Event> listEvents(@QueryParam("firstResult")  Integer firstResult,@QueryParam("maxResults")  Integer maxResults);
+    List<Batch> listBatches(@QueryParam("maxResult")  Integer maxResult);
 
     @PUT
-    @Path("/{eventId}")
+    @Path("/{batchId}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    Event updateEvent(@Valid Event body@PathParam("eventId") UUID eventId);
+    Batch updateBatch(@Valid Batch body@PathParam("batchId") UUID batchId);
 }
