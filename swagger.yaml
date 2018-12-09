@@ -437,6 +437,150 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+                
+  '/seedBatches':
+    get:
+      summary: List all seed batches
+      operationId: listSeedBatches
+      tags:
+        - seedBatches
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of seed batches
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/SeedBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new package size
+      operationId: createSeedBatch
+      requestBody:
+        description: Wastage reason to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/SeedBatch"
+      tags:
+        - seedBatches
+      responses:
+        '200':
+          description: A created seedBatch
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/SeedBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  '/seedBatches/{seedBatchId}':
+    get:
+      summary: Find a package size
+      operationId: findSeedBatch
+      tags:
+        - seedBatches
+      parameters:
+        - name: seedBatchId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found package size
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/SeedBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Updates a package size
+      operationId: updateSeedBatch
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/SeedBatch"
+      tags:
+        - seedBatches
+      parameters:
+        - name: seedBatchId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated package size
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/SeedBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes a package size
+      operationId: deleteSeedBatch
+      tags:
+        - seedBatches
+      parameters:
+        - name: seedBatchId
+          in: path
+          description: SeedBatchId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
