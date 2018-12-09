@@ -581,6 +581,150 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+                
+  '/teams':
+    get:
+      summary: List all teams
+      operationId: listTeams
+      tags:
+        - teams
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of teams
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Team"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new team
+      operationId: createTeam
+      requestBody:
+        description: Team to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Team"
+      tags:
+        - teams
+      responses:
+        '200':
+          description: A created team
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Team"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  '/teams/{teamId}':
+    get:
+      summary: Find a team
+      operationId: findTeam
+      tags:
+        - teams
+      parameters:
+        - name: teamId
+          in: path
+          description: Team id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found team
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Team"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Updates a team
+      operationId: updateTeam
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Team"
+      tags:
+        - teams
+      parameters:
+        - name: teamId
+          in: path
+          description: Team id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated team
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Team"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes a team
+      operationId: deleteTeam
+      tags:
+        - teams
+      parameters:
+        - name: teamId
+          in: path
+          description: Team id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
