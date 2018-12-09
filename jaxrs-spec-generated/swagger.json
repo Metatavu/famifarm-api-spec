@@ -1,0 +1,398 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Famifarm-API",
+    "description" : "Famifarm API specification",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "paths" : {
+    "/events" : {
+      "get" : {
+        "tags" : [ "events" ],
+        "summary" : "List all events",
+        "operationId" : "listEvents",
+        "parameters" : [ {
+          "name" : "maxResult",
+          "in" : "query",
+          "description" : "How many items to return at one time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A paged array of events",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "LocalizedEntry" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/LocalizedValue"
+        }
+      },
+      "LocalizedValue" : {
+        "required" : [ "language", "value" ],
+        "type" : "object",
+        "properties" : {
+          "language" : {
+            "maxLength" : 2,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Team" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          }
+        }
+      },
+      "WastageReason" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "reason" : {
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          }
+        },
+        "description" : "Reason why a product has been thrown away"
+      },
+      "PerformedCultivationAction" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          }
+        }
+      },
+      "PackageSize" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Product" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          },
+          "defaultPackageSize" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }
+      },
+      "Seed" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          }
+        }
+      },
+      "SeedBatch" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "code" : {
+            "type" : "string",
+            "description" : "Manufacturer's code for the batch"
+          },
+          "seedId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "time" : {
+            "type" : "string",
+            "description" : "Time when the seed has arrived",
+            "format" : "datetime"
+          }
+        }
+      },
+      "ProductionLine" : {
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "lineNumber" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "CellType" : {
+        "type" : "string",
+        "enum" : [ "SMALL", "LARGE" ]
+      },
+      "Batch" : {
+        "required" : [ "productId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        },
+        "description" : "Identifies a single batch for it's entire life-cycle"
+      },
+      "Event" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "batchId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "userId" : {
+            "type" : "string",
+            "description" : "Id of user who added this entry",
+            "format" : "uuid"
+          },
+          "time" : {
+            "type" : "string",
+            "description" : "Time when the entry was added",
+            "format" : "datetime"
+          },
+          "data" : {
+            "oneOf" : [ {
+              "$ref" : "#/components/schemas/PlantingEventData"
+            }, {
+              "$ref" : "#/components/schemas/SowingEventData"
+            }, {
+              "$ref" : "#/components/schemas/PackingEventData"
+            }, {
+              "$ref" : "#/components/schemas/TableSpreadEventData"
+            }, {
+              "$ref" : "#/components/schemas/CultivationObservationEventData"
+            }, {
+              "$ref" : "#/components/schemas/HarvestEventData"
+            }, {
+              "$ref" : "#/components/schemas/WastageEventData"
+            } ]
+          }
+        }
+      },
+      "PlantingEventData" : {
+        "properties" : {
+          "productionLineId" : {
+            "type" : "string",
+            "description" : "Production line id",
+            "format" : "uuid"
+          },
+          "gutterNumber" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "gutterCount" : {
+            "type" : "integer",
+            "description" : "How many gutter were used during the planting",
+            "format" : "int32"
+          },
+          "trayCount" : {
+            "type" : "integer",
+            "description" : "How many trays were planted",
+            "format" : "int32"
+          },
+          "workerCount" : {
+            "type" : "integer",
+            "description" : "How many workers were doing the planting",
+            "format" : "int32"
+          },
+          "workDuration" : {
+            "type" : "integer",
+            "description" : "Duration of work in minutes",
+            "format" : "int32"
+          }
+        }
+      },
+      "SowingEventData" : {
+        "required" : [ "amount", "cellType", "productionLineId" ],
+        "type" : "object",
+        "properties" : {
+          "productionLineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "gutterNumber" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "seedBatchId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "cellType" : {
+            "$ref" : "#/components/schemas/CellType"
+          },
+          "amount" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        },
+        "description" : "Entry when a batch has been sowed"
+      },
+      "TableSpreadEventData" : {
+        "properties" : {
+          "tableCount" : {
+            "type" : "integer",
+            "description" : "Count of tables used",
+            "format" : "int32"
+          },
+          "location" : {
+            "type" : "string",
+            "description" : "Where the batch has been placed"
+          }
+        },
+        "description" : "Event of spreading the young plant trays to nursery tables"
+      },
+      "PackingEventData" : {
+        "properties" : {
+          "packedAmount" : {
+            "type" : "integer",
+            "description" : "Amount of packed items",
+            "format" : "int32"
+          },
+          "packageSize" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }
+      },
+      "CultivationObservationEventData" : {
+        "properties" : {
+          "weight" : {
+            "type" : "number",
+            "description" : "Weight in grams",
+            "format" : "double"
+          },
+          "pests" : {
+            "type" : "string",
+            "description" : "Possible pest observations"
+          },
+          "luminance" : {
+            "type" : "number",
+            "description" : "Luminance in lumens on the time of observation",
+            "format" : "double"
+          },
+          "performedActionIds" : {
+            "type" : "array",
+            "description" : "List of ids of cultivation actions done based on observations",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
+          }
+        }
+      },
+      "HarvestEventData" : {
+        "properties" : {
+          "teamId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "BAGGING", "CUTTING", "BOXING" ]
+          },
+          "productionLineId" : {
+            "type" : "string",
+            "description" : "Production line id",
+            "format" : "uuid"
+          }
+        }
+      },
+      "WastageEventData" : {
+        "properties" : {
+          "reasonId" : {
+            "type" : "string",
+            "description" : "Id of reason a product has been thrown away",
+            "format" : "uuid"
+          },
+          "amount" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "description" : "Entry of products has been thrown away"
+      },
+      "Error" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string",
+            "description" : "The error message"
+          }
+        }
+      }
+    }
+  }
+}

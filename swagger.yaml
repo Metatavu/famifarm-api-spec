@@ -1,494 +1,307 @@
-swagger: "2.0"
+openapi: 3.0.3
 info:
   description: "Famifarm API specification"
   version: "1.0.0"
   title: "Famifarm-API"
-
-basePath: "/v1"
-schemes:
-  - "https"
+  
 paths:
-  /sowings:
+  /events:
     get:
-      operationId: listSowings
-      summary: Lists sowings
-      description: Lists sowings
+      summary: List all events
+      operationId: listEvents
       tags:
-        - Sowings
-      responses:
-        '200':
-          description: List of sowings
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Sowing'
-        '500':
-          description: Internal server error
-          schema: 
-            $ref: '#/definitions/InternalServerError'
-    post:
-      operationId: createSowing
-      summary: Create sowing
-      description: Create new sowing
-      tags:
-        - Sowings
-      responses:
-        '200':
-          description: Created sowing
-          schema:
-            $ref: '#/definitions/Sowing'
-        '500':
-          description: Internal server error
-          schema: 
-            $ref: '#/definitions/InternalServerError'
-  '/sowings/{sowingId}':
-    get:
-      operationId: findSowing
-      summary: Find a sowing
-      description: Finds single sowing
-      tags:
-        - Sowings
+        - events
       parameters:
-        - name: sowingId
-          in: path
-          required: true
-          type: string
-          format: uuid        
+        - name: maxResult
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
-          description: Found sowing
-          schema:
-            $ref: '#/definitions/Sowing'
+          description: A paged array of events
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Event"
         '500':
-          description: Internal server error
-          schema: 
-            $ref: '#/definitions/InternalServerError'
-    put:
-      operationId: updateSowing
-      summary: Updated sowing
-      description: Updates a sowing
-      tags:
-        - Sowings
-      parameters:
-        - name: sowingId
-          in: path
-          required: true
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    LocalizedEntry: 
+       type: array
+       items:
+         $ref: '#/components/schemas/LocalizedValue'
+  
+    LocalizedValue: 
+      type: object
+      required:
+        - language
+        - value
+      properties:
+        language:
           type: string
-          format: uuid   
-      responses:
-        '200':
-          description: Updated sowing
-          schema:
-            $ref: '#/definitions/Sowing'
-        '500':
-          description: Internal server error
-          schema: 
-            $ref: '#/definitions/InternalServerError'
-    delete:
-      operationId: deleteSowing
-      summary: Deletes sowing
-      description: Deletes a sowing
-      tags:
-        - Sowings
-      parameters:
-        - name: sowingId
-          in: path
-          required: true
+          minLength: 2
+          maxLength: 2        
+        value:
           type: string
-          format: uuid   
-      responses:
-        '204':
-          description: Empty result indicating a successful removal
-        '500':
-          description: Internal server error
-          schema: 
-            $ref: '#/definitions/InternalServerError'
-            
-definitions:
-      
-  Batch:
-    description: Identifies a single batch for it's entire life-cycle 
-    type: "object"
-    required:
-      - productId
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      productId:
-        type: "string"
-        format: "uuid"
-
-  Sowing:
-    description: "Entry when a batch has been sowed"
-    type: "object"
-    required: 
-      - productionLineId
-      - troughId
-      - cellType
-      - amount
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"
-      productionLineId:
-        type: "string"
-        format: "uuid"
-      troughNumber:
-        type: "integer"
-        format: "int32"
-      seedBatchId:
-        type: "string"
-        format: "uuid"
-      cellType:
-        $ref: "#/definitions/CellType"
-      amount:
-        type: "number"
-        format: "double"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
-        
-  Spread:
-    description: "Entry when a batch has been spread on the tables"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"   
-      tableCount:
-        description: "Count of tables used"
-        type: "integer"
-        format: "int32"
-      location:
-        description: "Where the batch has been placed"
-        type: "string"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
-
-  Planting:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      productionLineId:
-        description: "Production line id"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"        
-      troughNumber:
-        type: "integer"
-        format: "int32"
-      troughCount:
-        description: "How many trough were used during the planting"
-        type: "integer"
-        format: "int32"
-      cellCount:
-        description: "How many cells were planted"
-        type: "integer"
-        format: "int32"
-      workerCount:
-        description: "How many workers were doing the planting"
-        type: "integer"
-        format: "int32"
-      workDuration:
-        description: Duration of work in minutes
-        type: "integer"
-        format: "int32"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
-
-  CultivationObservation:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"
-      weight:
-        description: "Weight in grams"
-        type: "number"
-        format: "double"
-      pests:
-        description: "Possible pest observations"
-        type: "string"        
-      luminance:
-        description: "Luminance in lumens on the time of observation"
-        type: "number"
-        format: "double"
-      performedActionIds:
-        description: "List of ids of cultivation actions done based on observations"
-        type: "array"
-        items:
+          
+    Team:
+      type: "object"
+      properties:
+        id:
           type: "string"
           format: "uuid"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
+        name:
+          $ref: '#/components/schemas/LocalizedEntry'
 
-  Harvest:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      teamId:
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"
-      type:
-        type: "string"
-        enum:
-          - BAGGING
-          - CUTTING
-          - BOXING
-      productionLineId:
-        description: "Production line id"
-        type: "string"
-        format: "uuid"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
-
-  Packaging:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"
-      packedAmount:
-        description: "Amount of packed items"
-        type: "integer"
-        format: "int32"
-      packageSize:
-        type: "string"
-        format: "uuid"
-      notes:
-        description: "Free-text notes of the entry"
-        type: "string"
-
-  PackageSize:
-    description: "Packaging size"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      name:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'
-
-  Wastage:
-    description: "Entry of products has been thrown away"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      batchId:
-        type: "string"
-        format: "uuid"
-      userId:
-        description: "Id of user who added this entry"
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the entry was added"
-        type: "string"
-        format: "datetime"
-      reasonId:
-        description: "Id of reason a product has been thrown away"
-        type: "string"
-        format: "uuid"
-      amount:
-        type: "integer"
-        format: "int32"
   
-  WastageReason:
-    description: "Reason why a product has been thrown away"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      reason:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'
-
-  ProductionLine:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      lineNumber:
-        type: "integer"
-        format: "int32"
-
-  PerformedCultivationAction:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      name:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'
-
-  Team:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      name:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'
+    WastageReason:
+      description: "Reason why a product has been thrown away"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        reason:
+          $ref: '#/components/schemas/LocalizedEntry'
+  
+    PerformedCultivationAction:
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          $ref: '#/components/schemas/LocalizedEntry'
+          
+    PackageSize:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          type: "string"
+  
+    Product:
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          $ref: '#/components/schemas/LocalizedEntry'
+        defaultPackageSize:
+          type: "string"
+          format: "uuid"
     
-  Seed:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      name:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'      
+    Seed:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          $ref: '#/components/schemas/LocalizedEntry'      
+          
+    SeedBatch:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        code:
+          description: "Manufacturer's code for the batch"        
+          type: "string"
+        seedId:
+          type: "string"
+          format: "uuid"
+        time:
+          description: "Time when the seed has arrived"
+          type: "string"
+          format: "datetime"
+          
+    ProductionLine:
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        lineNumber:
+          type: "integer"
+          format: "int32"    
+          
+    CellType:
+      type: "string"
+      enum:
+        - SMALL
+        - LARGE   
         
-  SeedBatch:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      code:
-        description: "Manufacturer's code for the batch"        
-        type: "string"
-      seedId:
-        type: "string"
-        format: "uuid"
-      time:
-        description: "Time when the seed has arrived"
-        type: "string"
-        format: "datetime"      
+    Batch:
+      description: Identifies a single batch for it's entire life-cycle 
+      type: "object"
+      required:
+        - productId
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        productId:
+          type: "string"
+          format: "uuid"
+        
+    Event:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        batchId:
+          type: "string"
+          format: "uuid"
+        userId:
+          description: "Id of user who added this entry"
+          type: "string"
+          format: "uuid"
+        time:
+          description: "Time when the entry was added"
+          type: "string"
+          format: "datetime"
+        data:
+          oneOf:
+            - $ref: '#/components/schemas/PlantingEventData'
+            - $ref: '#/components/schemas/SowingEventData'
+            - $ref: '#/components/schemas/PackingEventData'
+            - $ref: '#/components/schemas/TableSpreadEventData'
+            - $ref: '#/components/schemas/CultivationObservationEventData'
+            - $ref: '#/components/schemas/HarvestEventData'
+            - $ref: '#/components/schemas/WastageEventData'
+            
+    PlantingEventData:
+      properties:
+        productionLineId:
+          description: "Production line id"
+          type: "string"
+          format: "uuid"
+        gutterNumber:
+          type: "integer"
+          format: "int32"
+        gutterCount:
+          description: "How many gutter were used during the planting"
+          type: "integer"
+          format: "int32"
+        trayCount:
+          description: "How many trays were planted"
+          type: "integer"
+          format: "int32"
+        workerCount:
+          description: "How many workers were doing the planting"
+          type: "integer"
+          format: "int32"
+        workDuration:
+          description: Duration of work in minutes
+          type: "integer"
+          format: "int32"
+          
+    SowingEventData:
+      description: "Entry when a batch has been sowed"
+      type: "object"
+      required: 
+        - productionLineId
+        - cellType
+        - amount
+      properties:
+        productionLineId:
+          type: "string"
+          format: "uuid"
+        gutterNumber:
+          type: "integer"
+          format: "int32"
+        seedBatchId:
+          type: "string"
+          format: "uuid"
+        cellType:
+          $ref: "#/components/schemas/CellType"
+        amount:
+          type: "number"
+          format: "double"
+          
+    TableSpreadEventData:
+      description: Event of spreading the young plant trays to nursery tables
+      properties:
+        tableCount:
+          description: "Count of tables used"
+          type: "integer"
+          format: "int32"
+        location:
+          description: "Where the batch has been placed"
+          type: "string"
 
-  Product:
-    properties:
-      id:
-        type: "string"
-        format: "uuid"
-      name:
-        type: "object"
-        $ref: '#/definitions/LocalizedEntry'
-
-  CellType:
-    type: "string"
-    enum:
-      - SMALL
-      - LARGE
-        
-  LocalizedEntry: 
-     type: array
-     items:
-       $ref: '#/definitions/LocalizedValue'
-
-  LocalizedValue: 
-    type: object
-    required:
-      - language
-      - value
-    properties:
-      language:
-        type: string
-        minLength: 2
-        maxLength: 2        
-      value:
-        type: string
-
-  Unauthorized:
-    type: object
-    required: [message]
-    properties:
-      message:
-        description: The error message
-        type: string
-        
-  InternalServerError:
-    type: object
-    required: [message]
-    properties:
-      message:
-        description: The error message
-        type: string
-        
-  BadRequest:
-    type: object
-    required: [message]
-    properties:
-      message:
-        description: The error message
-        type: string
-        
-  NotFound:
-    type: object
-    required: [message]
-    properties:
-      message:
-        description: The error message
-        type: string
+    PackingEventData:
+      properties:
+        packedAmount:
+          description: "Amount of packed items"
+          type: "integer"
+          format: "int32"
+        packageSize:
+          type: "string"
+          format: "uuid"
+          
+    CultivationObservationEventData:
+      properties:
+        weight:
+          description: "Weight in grams"
+          type: "number"
+          format: "double"
+        pests:
+          description: "Possible pest observations"
+          type: "string"        
+        luminance:
+          description: "Luminance in lumens on the time of observation"
+          type: "number"
+          format: "double"
+        performedActionIds:
+          description: "List of ids of cultivation actions done based on observations"
+          type: "array"
+          items:
+            type: "string"
+            format: "uuid"
+            
+    HarvestEventData:
+      properties:
+        teamId:
+          type: "string"
+          format: "uuid"
+        type:
+          type: "string"
+          enum:
+            - BAGGING
+            - CUTTING
+            - BOXING
+        productionLineId:
+          description: "Production line id"
+          type: "string"
+          format: "uuid"
+            
+    WastageEventData:
+      description: "Entry of products has been thrown away"
+      properties:
+        reasonId:
+          description: "Id of reason a product has been thrown away"
+          type: "string"
+          format: "uuid"
+        amount:
+          type: "integer"
+          format: "int32"
+          
+    Error:
+      type: object
+      required: [message]
+      properties:
+        message:
+          description: The error message
+          type: string
