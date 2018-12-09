@@ -5,7 +5,7 @@ info:
   title: "Famifarm-API"
   
 paths:
-  /events:
+  '/events':
     get:
       summary: List all events
       operationId: listEvents
@@ -25,8 +25,117 @@ paths:
           content:
             application/json:    
               schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Event"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new event
+      operationId: createEvent
+      requestBody:
+        description: Event to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Event"
+      tags:
+        - events
+      responses:
+        '200':
+          description: A created event
+          content:
+            application/json:    
+              schema:
                 $ref: "#/components/schemas/Event"
-        '500':
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  '/events/{eventId}':
+    get:
+      summary: Find an event
+      operationId: findEvent
+      tags:
+        - events
+      parameters:
+        - name: eventId
+          in: path
+          description: Event id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found event
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Event"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Updates an event
+      operationId: updateEvent
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Event"
+      tags:
+        - events
+      parameters:
+        - name: eventId
+          in: path
+          description: Event id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated event
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Event"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes an event
+      operationId: deleteEvent
+      tags:
+        - events
+      parameters:
+        - name: eventId
+          in: path
+          description: Event id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
           description: unexpected error
           content:
             application/json:
@@ -156,6 +265,12 @@ components:
         
     Event:
       type: "object"
+      required:
+        - type
+        - data
+        - userId
+        - batchId
+        - time
       properties:
         id:
           type: "string"
@@ -171,6 +286,16 @@ components:
           description: "Time when the entry was added"
           type: "string"
           format: "datetime"
+        type:
+          type: "string"
+          enum:
+            - PLANTING
+            - SOWING
+            - PACKING
+            - TABLE_SPREAD
+            - CULTIVATION_OBSERVATION
+            - HARVEST
+            - WASTEAGE
         data:
           oneOf:
             - $ref: '#/components/schemas/PlantingEventData'
