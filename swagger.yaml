@@ -12,7 +12,14 @@ paths:
       tags:
         - events
       parameters:
-        - name: maxResult
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
           in: query
           description: How many items to return at one time
           required: false
@@ -128,6 +135,295 @@ paths:
         - name: eventId
           in: path
           description: Event id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+                
+  '/wastageReasons':
+    get:
+      summary: List all wastage reasons
+      operationId: listWastageReasons
+      tags:
+        - wastageReasons
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of wastage reasons
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/WastageReason"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new wastage reason
+      operationId: createWastageReason
+      requestBody:
+        description: Wastage reason to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/WastageReason"
+      tags:
+        - wastageReasons
+      responses:
+        '200':
+          description: A created wastageReason
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/WastageReason"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  '/wastageReasons/{wastageReasonId}':
+    get:
+      summary: Find an wastage reason
+      operationId: findWastageReason
+      tags:
+        - wastageReasons
+      parameters:
+        - name: wastageReasonId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found wastage reason
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/WastageReason"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Updates an wastage reason
+      operationId: updateWastageReason
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/WastageReason"
+      tags:
+        - wastageReasons
+      parameters:
+        - name: wastageReasonId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated wastage reason
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/WastageReason"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes an wastage reason
+      operationId: deleteWastageReason
+      tags:
+        - wastageReasons
+      parameters:
+        - name: wastageReasonId
+          in: path
+          description: WastageReasonId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+                
+  
+  '/packageSizes':
+    get:
+      summary: List all package sizes
+      operationId: listPackageSizes
+      tags:
+        - packageSizes
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of package sizes
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/PackageSize"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new package size
+      operationId: createPackageSize
+      requestBody:
+        description: Wastage reason to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/PackageSize"
+      tags:
+        - packageSizes
+      responses:
+        '200':
+          description: A created packageSize
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/PackageSize"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  '/packageSizes/{packageSizeId}':
+    get:
+      summary: Find a package size
+      operationId: findPackageSize
+      tags:
+        - packageSizes
+      parameters:
+        - name: packageSizeId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found package size
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/PackageSize"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Updates a package size
+      operationId: updatePackageSize
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/PackageSize"
+      tags:
+        - packageSizes
+      parameters:
+        - name: packageSizeId
+          in: path
+          description: Wastage reason id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated package size
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/PackageSize"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Deletes a package size
+      operationId: deletePackageSize
+      tags:
+        - packageSizes
+      parameters:
+        - name: packageSizeId
+          in: path
+          description: PackageSizeId
           required: true
           schema:
             type: string
