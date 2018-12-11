@@ -4,7 +4,7 @@ import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.Batch;
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Batch to be added (required)
    * @return Batch
    */
-  @RequestLine("POST /batches")
+  @RequestLine("POST /v1/batches")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Batch createBatch(Batch body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param batchId BatchId (required)
    */
-  @RequestLine("DELETE /batches/{batchId}")
+  @RequestLine("DELETE /v1/batches/{batchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteBatch(@Param("batchId") UUID batchId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param batchId Batch id (required)
    * @return Batch
    */
-  @RequestLine("GET /batches/{batchId}")
+  @RequestLine("GET /v1/batches/{batchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Batch findBatch(@Param("batchId") UUID batchId);
   /**
@@ -53,9 +56,10 @@ import feign.*;
    * @param maxResult How many items to return at one time (optional)
    * @return List&lt;Batch&gt;
    */
-  @RequestLine("GET /batches?maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?maxResult={maxResult}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<Batch> listBatches(@Param("maxResult") Integer maxResult);
 
@@ -75,9 +79,9 @@ import feign.*;
    * @return List&lt;Batch&gt;
 
    */
-  @RequestLine("GET /batches?maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?maxResult={maxResult}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<Batch> listBatches(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -98,9 +102,10 @@ import feign.*;
    * @param batchId Batch id (required)
    * @return Batch
    */
-  @RequestLine("PUT /batches/{batchId}")
+  @RequestLine("PUT /v1/batches/{batchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Batch updateBatch(Batch body, @Param("batchId") UUID batchId);
 }

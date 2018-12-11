@@ -20,7 +20,7 @@ import feign.slf4j.Slf4jLogger;
 import fi.metatavu.famifarm.auth.*;
 import fi.metatavu.famifarm.auth.OAuth.AccessTokenListener;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public class ApiClient {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public class ApiClient {
   public interface Api {}
 
   protected ObjectMapper objectMapper;
@@ -40,7 +40,13 @@ import fi.metatavu.famifarm.auth.OAuth.AccessTokenListener;
   public ApiClient(String[] authNames) {
     this();
     for(String authName : authNames) {
-      throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
+      RequestInterceptor auth;
+      if ("BearerAuth".equals(authName)) {
+        auth = new ApiKeyAuth("header", "Authorization");
+      } else {
+        throw new RuntimeException("auth name \"" + authName + "\" not found in available auth names");
+      }
+      addAuthorization(authName, auth);
     }
   }
 

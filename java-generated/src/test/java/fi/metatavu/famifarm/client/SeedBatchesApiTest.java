@@ -1,7 +1,7 @@
 package fi.metatavu.famifarm.client;
 
 import fi.metatavu.famifarm.ApiClient;
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.SeedBatch;
 import java.util.UUID;
 import org.junit.Before;

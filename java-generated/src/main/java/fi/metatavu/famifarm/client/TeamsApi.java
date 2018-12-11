@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.Team;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface TeamsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface TeamsApi extends ApiClient.Api {
 
   /**
    * Create new team
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Team to be added (required)
    * @return Team
    */
-  @RequestLine("POST /teams")
+  @RequestLine("POST /v1/teams")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Team createTeam(Team body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param teamId Team id (required)
    */
-  @RequestLine("DELETE /teams/{teamId}")
+  @RequestLine("DELETE /v1/teams/{teamId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteTeam(@Param("teamId") UUID teamId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param teamId Team id (required)
    * @return Team
    */
-  @RequestLine("GET /teams/{teamId}")
+  @RequestLine("GET /v1/teams/{teamId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Team findTeam(@Param("teamId") UUID teamId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;Team&gt;
    */
-  @RequestLine("GET /teams?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/teams?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<Team> listTeams(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;Team&gt;
 
    */
-  @RequestLine("GET /teams?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/teams?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<Team> listTeams(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param teamId Team id (required)
    * @return Team
    */
-  @RequestLine("PUT /teams/{teamId}")
+  @RequestLine("PUT /v1/teams/{teamId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Team updateTeam(Team body, @Param("teamId") UUID teamId);
 }

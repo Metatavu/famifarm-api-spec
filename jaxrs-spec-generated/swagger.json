@@ -8,8 +8,11 @@
   "servers" : [ {
     "url" : "/"
   } ],
+  "security" : [ {
+    "BearerAuth" : [ ]
+  } ],
   "paths" : {
-    "/events" : {
+    "/v1/events" : {
       "get" : {
         "tags" : [ "events" ],
         "summary" : "List all events",
@@ -56,7 +59,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -94,7 +97,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -102,7 +105,7 @@
         }
       }
     },
-    "/events/{eventId}" : {
+    "/v1/events/{eventId}" : {
       "get" : {
         "tags" : [ "events" ],
         "summary" : "Find an event",
@@ -135,7 +138,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -185,7 +188,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -217,7 +220,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -225,7 +228,7 @@
         }
       }
     },
-    "/wastageReasons" : {
+    "/v1/wastageReasons" : {
       "get" : {
         "tags" : [ "wastageReasons" ],
         "summary" : "List all wastage reasons",
@@ -272,7 +275,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -310,7 +313,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -318,7 +321,7 @@
         }
       }
     },
-    "/wastageReasons/{wastageReasonId}" : {
+    "/v1/wastageReasons/{wastageReasonId}" : {
       "get" : {
         "tags" : [ "wastageReasons" ],
         "summary" : "Find an wastage reason",
@@ -351,7 +354,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -401,7 +404,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -433,7 +436,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -441,7 +444,7 @@
         }
       }
     },
-    "/packageSizes" : {
+    "/v1/packageSizes" : {
       "get" : {
         "tags" : [ "packageSizes" ],
         "summary" : "List all package sizes",
@@ -488,7 +491,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -526,7 +529,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -534,7 +537,7 @@
         }
       }
     },
-    "/packageSizes/{packageSizeId}" : {
+    "/v1/packageSizes/{packageSizeId}" : {
       "get" : {
         "tags" : [ "packageSizes" ],
         "summary" : "Find a package size",
@@ -567,7 +570,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -617,7 +620,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -649,7 +652,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -657,7 +660,7 @@
         }
       }
     },
-    "/seedBatches" : {
+    "/v1/seedBatches" : {
       "get" : {
         "tags" : [ "seedBatches" ],
         "summary" : "List all seed batches",
@@ -704,7 +707,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -742,7 +745,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -750,7 +753,7 @@
         }
       }
     },
-    "/seedBatches/{seedBatchId}" : {
+    "/v1/seedBatches/{seedBatchId}" : {
       "get" : {
         "tags" : [ "seedBatches" ],
         "summary" : "Find a seed batch",
@@ -783,7 +786,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -833,7 +836,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -865,7 +868,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -873,7 +876,7 @@
         }
       }
     },
-    "/teams" : {
+    "/v1/teams" : {
       "get" : {
         "tags" : [ "teams" ],
         "summary" : "List all teams",
@@ -920,7 +923,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -958,7 +961,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -966,7 +969,7 @@
         }
       }
     },
-    "/teams/{teamId}" : {
+    "/v1/teams/{teamId}" : {
       "get" : {
         "tags" : [ "teams" ],
         "summary" : "Find a team",
@@ -999,7 +1002,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1049,7 +1052,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1081,7 +1084,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1089,7 +1092,7 @@
         }
       }
     },
-    "/products" : {
+    "/v1/products" : {
       "get" : {
         "tags" : [ "products" ],
         "summary" : "List all products",
@@ -1136,7 +1139,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1174,7 +1177,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1182,7 +1185,7 @@
         }
       }
     },
-    "/products/{productId}" : {
+    "/v1/products/{productId}" : {
       "get" : {
         "tags" : [ "products" ],
         "summary" : "Find a product",
@@ -1215,7 +1218,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1265,7 +1268,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1297,7 +1300,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1305,7 +1308,7 @@
         }
       }
     },
-    "/batches" : {
+    "/v1/batches" : {
       "get" : {
         "tags" : [ "batches" ],
         "summary" : "List all batches",
@@ -1341,7 +1344,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1379,7 +1382,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1387,7 +1390,7 @@
         }
       }
     },
-    "/batches/{batchId}" : {
+    "/v1/batches/{batchId}" : {
       "get" : {
         "tags" : [ "batches" ],
         "summary" : "Find a batch",
@@ -1420,7 +1423,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1470,7 +1473,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1502,7 +1505,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1510,7 +1513,7 @@
         }
       }
     },
-    "/seeds" : {
+    "/v1/seeds" : {
       "get" : {
         "tags" : [ "seeds" ],
         "summary" : "List all seeds",
@@ -1557,7 +1560,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1595,7 +1598,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1603,7 +1606,7 @@
         }
       }
     },
-    "/seeds/{seedId}" : {
+    "/v1/seeds/{seedId}" : {
       "get" : {
         "tags" : [ "seeds" ],
         "summary" : "Find a seed",
@@ -1636,7 +1639,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1686,7 +1689,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1718,7 +1721,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1726,7 +1729,7 @@
         }
       }
     },
-    "/productionLines" : {
+    "/v1/productionLines" : {
       "get" : {
         "tags" : [ "productionLines" ],
         "summary" : "List all production lines",
@@ -1773,7 +1776,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1811,7 +1814,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1819,7 +1822,7 @@
         }
       }
     },
-    "/productionLines/{productionLineId}" : {
+    "/v1/productionLines/{productionLineId}" : {
       "get" : {
         "tags" : [ "productionLines" ],
         "summary" : "Find a production line",
@@ -1852,7 +1855,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1902,7 +1905,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1934,7 +1937,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -1942,7 +1945,7 @@
         }
       }
     },
-    "/performedCultivationActions" : {
+    "/v1/performedCultivationActions" : {
       "get" : {
         "tags" : [ "performedCultivationActions" ],
         "summary" : "List all performed cultivation actions",
@@ -1989,7 +1992,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2027,7 +2030,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2035,7 +2038,7 @@
         }
       }
     },
-    "/performedCultivationActions/{performedCultivationActionId}" : {
+    "/v1/performedCultivationActions/{performedCultivationActionId}" : {
       "get" : {
         "tags" : [ "performedCultivationActions" ],
         "summary" : "Find a performed cultivation action",
@@ -2068,7 +2071,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2118,7 +2121,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2150,7 +2153,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Error"
+                  "$ref" : "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -2496,7 +2499,7 @@
         },
         "description" : "Entry of products has been thrown away"
       },
-      "Error" : {
+      "ErrorResponse" : {
         "required" : [ "message" ],
         "type" : "object",
         "properties" : {
@@ -2505,6 +2508,12 @@
             "description" : "The error message"
           }
         }
+      }
+    },
+    "securitySchemes" : {
+      "BearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer"
       }
     }
   }

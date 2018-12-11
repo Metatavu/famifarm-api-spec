@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.Product;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface ProductsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface ProductsApi extends ApiClient.Api {
 
   /**
    * Create new product
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Product to be added (required)
    * @return Product
    */
-  @RequestLine("POST /products")
+  @RequestLine("POST /v1/products")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Product createProduct(Product body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param productId Product id (required)
    */
-  @RequestLine("DELETE /products/{productId}")
+  @RequestLine("DELETE /v1/products/{productId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteProduct(@Param("productId") UUID productId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param productId Product id (required)
    * @return Product
    */
-  @RequestLine("GET /products/{productId}")
+  @RequestLine("GET /v1/products/{productId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Product findProduct(@Param("productId") UUID productId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;Product&gt;
    */
-  @RequestLine("GET /products?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<Product> listProducts(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;Product&gt;
 
    */
-  @RequestLine("GET /products?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<Product> listProducts(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param productId Product id (required)
    * @return Product
    */
-  @RequestLine("PUT /products/{productId}")
+  @RequestLine("PUT /v1/products/{productId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Product updateProduct(Product body, @Param("productId") UUID productId);
 }

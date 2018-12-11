@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.ProductionLine;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface ProductionLinesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface ProductionLinesApi extends ApiClient.Api {
 
   /**
    * Create new production line
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Wastage reason to be added (required)
    * @return ProductionLine
    */
-  @RequestLine("POST /productionLines")
+  @RequestLine("POST /v1/productionLines")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   ProductionLine createProductionLine(ProductionLine body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param productionLineId ProductionLineId (required)
    */
-  @RequestLine("DELETE /productionLines/{productionLineId}")
+  @RequestLine("DELETE /v1/productionLines/{productionLineId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteProductionLine(@Param("productionLineId") UUID productionLineId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param productionLineId Wastage reason id (required)
    * @return ProductionLine
    */
-  @RequestLine("GET /productionLines/{productionLineId}")
+  @RequestLine("GET /v1/productionLines/{productionLineId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   ProductionLine findProductionLine(@Param("productionLineId") UUID productionLineId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;ProductionLine&gt;
    */
-  @RequestLine("GET /productionLines?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/productionLines?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<ProductionLine> listProductionLines(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;ProductionLine&gt;
 
    */
-  @RequestLine("GET /productionLines?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/productionLines?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<ProductionLine> listProductionLines(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param productionLineId Wastage reason id (required)
    * @return ProductionLine
    */
-  @RequestLine("PUT /productionLines/{productionLineId}")
+  @RequestLine("PUT /v1/productionLines/{productionLineId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   ProductionLine updateProductionLine(ProductionLine body, @Param("productionLineId") UUID productionLineId);
 }

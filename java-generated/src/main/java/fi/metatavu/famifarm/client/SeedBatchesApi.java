@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.SeedBatch;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface SeedBatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface SeedBatchesApi extends ApiClient.Api {
 
   /**
    * Create new seed batch
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Wastage reason to be added (required)
    * @return SeedBatch
    */
-  @RequestLine("POST /seedBatches")
+  @RequestLine("POST /v1/seedBatches")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   SeedBatch createSeedBatch(SeedBatch body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param seedBatchId SeedBatchId (required)
    */
-  @RequestLine("DELETE /seedBatches/{seedBatchId}")
+  @RequestLine("DELETE /v1/seedBatches/{seedBatchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteSeedBatch(@Param("seedBatchId") UUID seedBatchId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param seedBatchId Wastage reason id (required)
    * @return SeedBatch
    */
-  @RequestLine("GET /seedBatches/{seedBatchId}")
+  @RequestLine("GET /v1/seedBatches/{seedBatchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   SeedBatch findSeedBatch(@Param("seedBatchId") UUID seedBatchId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;SeedBatch&gt;
    */
-  @RequestLine("GET /seedBatches?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<SeedBatch> listSeedBatches(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;SeedBatch&gt;
 
    */
-  @RequestLine("GET /seedBatches?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<SeedBatch> listSeedBatches(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param seedBatchId Wastage reason id (required)
    * @return SeedBatch
    */
-  @RequestLine("PUT /seedBatches/{seedBatchId}")
+  @RequestLine("PUT /v1/seedBatches/{seedBatchId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   SeedBatch updateSeedBatch(SeedBatch body, @Param("seedBatchId") UUID seedBatchId);
 }

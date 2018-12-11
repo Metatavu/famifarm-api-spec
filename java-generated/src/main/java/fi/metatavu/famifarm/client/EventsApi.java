@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.Event;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
 
   /**
    * Create new event
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Event to be added (required)
    * @return Event
    */
-  @RequestLine("POST /events")
+  @RequestLine("POST /v1/events")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Event createEvent(Event body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param eventId Event id (required)
    */
-  @RequestLine("DELETE /events/{eventId}")
+  @RequestLine("DELETE /v1/events/{eventId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteEvent(@Param("eventId") UUID eventId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param eventId Event id (required)
    * @return Event
    */
-  @RequestLine("GET /events/{eventId}")
+  @RequestLine("GET /v1/events/{eventId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Event findEvent(@Param("eventId") UUID eventId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;Event&gt;
    */
-  @RequestLine("GET /events?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<Event> listEvents(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;Event&gt;
 
    */
-  @RequestLine("GET /events?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<Event> listEvents(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param eventId Event id (required)
    * @return Event
    */
-  @RequestLine("PUT /events/{eventId}")
+  @RequestLine("PUT /v1/events/{eventId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   Event updateEvent(Event body, @Param("eventId") UUID eventId);
 }

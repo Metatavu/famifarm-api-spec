@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import java.util.UUID;
 import fi.metatavu.famifarm.client.model.WastageReason;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface WastageReasonsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface WastageReasonsApi extends ApiClient.Api {
 
   /**
    * Create new wastage reason
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Wastage reason to be added (required)
    * @return WastageReason
    */
-  @RequestLine("POST /wastageReasons")
+  @RequestLine("POST /v1/wastageReasons")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   WastageReason createWastageReason(WastageReason body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param wastageReasonId WastageReasonId (required)
    */
-  @RequestLine("DELETE /wastageReasons/{wastageReasonId}")
+  @RequestLine("DELETE /v1/wastageReasons/{wastageReasonId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deleteWastageReason(@Param("wastageReasonId") UUID wastageReasonId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param wastageReasonId Wastage reason id (required)
    * @return WastageReason
    */
-  @RequestLine("GET /wastageReasons/{wastageReasonId}")
+  @RequestLine("GET /v1/wastageReasons/{wastageReasonId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   WastageReason findWastageReason(@Param("wastageReasonId") UUID wastageReasonId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;WastageReason&gt;
    */
-  @RequestLine("GET /wastageReasons?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/wastageReasons?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<WastageReason> listWastageReasons(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;WastageReason&gt;
 
    */
-  @RequestLine("GET /wastageReasons?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/wastageReasons?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<WastageReason> listWastageReasons(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param wastageReasonId Wastage reason id (required)
    * @return WastageReason
    */
-  @RequestLine("PUT /wastageReasons/{wastageReasonId}")
+  @RequestLine("PUT /v1/wastageReasons/{wastageReasonId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   WastageReason updateWastageReason(WastageReason body, @Param("wastageReasonId") UUID wastageReasonId);
 }

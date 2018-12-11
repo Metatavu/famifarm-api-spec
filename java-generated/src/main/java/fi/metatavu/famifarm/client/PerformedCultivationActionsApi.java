@@ -3,7 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.EncodingUtils;
 
-import fi.metatavu.famifarm.client.model.Error;
+import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.PerformedCultivationAction;
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-10T07:26:39.900+02:00[Europe/Helsinki]")public interface PerformedCultivationActionsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T12:44:18.841+02:00[Europe/Helsinki]")public interface PerformedCultivationActionsApi extends ApiClient.Api {
 
   /**
    * Create new performed cultivation action
@@ -21,9 +21,10 @@ import feign.*;
    * @param body Wastage reason to be added (required)
    * @return PerformedCultivationAction
    */
-  @RequestLine("POST /performedCultivationActions")
+  @RequestLine("POST /v1/performedCultivationActions")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   PerformedCultivationAction createPerformedCultivationAction(PerformedCultivationAction body);
   /**
@@ -31,9 +32,10 @@ import feign.*;
    * 
    * @param performedCultivationActionId PerformedCultivationActionId (required)
    */
-  @RequestLine("DELETE /performedCultivationActions/{performedCultivationActionId}")
+  @RequestLine("DELETE /v1/performedCultivationActions/{performedCultivationActionId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   void deletePerformedCultivationAction(@Param("performedCultivationActionId") UUID performedCultivationActionId);
   /**
@@ -42,9 +44,10 @@ import feign.*;
    * @param performedCultivationActionId Wastage reason id (required)
    * @return PerformedCultivationAction
    */
-  @RequestLine("GET /performedCultivationActions/{performedCultivationActionId}")
+  @RequestLine("GET /v1/performedCultivationActions/{performedCultivationActionId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   PerformedCultivationAction findPerformedCultivationAction(@Param("performedCultivationActionId") UUID performedCultivationActionId);
   /**
@@ -54,9 +57,10 @@ import feign.*;
    * @param maxResults How many items to return at one time (optional)
    * @return List&lt;PerformedCultivationAction&gt;
    */
-  @RequestLine("GET /performedCultivationActions?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/performedCultivationActions?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   List<PerformedCultivationAction> listPerformedCultivationActions(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
 
@@ -77,9 +81,9 @@ import feign.*;
    * @return List&lt;PerformedCultivationAction&gt;
 
    */
-  @RequestLine("GET /performedCultivationActions?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/performedCultivationActions?firstResult={firstResult}&maxResults={maxResults}")
   @Headers({
-      "Content-Type: */*",
+      "Content-Type: application/json",
   })
   List<PerformedCultivationAction> listPerformedCultivationActions(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
@@ -104,9 +108,10 @@ import feign.*;
    * @param performedCultivationActionId Wastage reason id (required)
    * @return PerformedCultivationAction
    */
-  @RequestLine("PUT /performedCultivationActions/{performedCultivationActionId}")
+  @RequestLine("PUT /v1/performedCultivationActions/{performedCultivationActionId}")
   @Headers({
-      "Accept: */*",
+      "Content-Type: application/json",
+      "Accept: application/json",
   })
   PerformedCultivationAction updatePerformedCultivationAction(PerformedCultivationAction body, @Param("performedCultivationActionId") UUID performedCultivationActionId);
 }
