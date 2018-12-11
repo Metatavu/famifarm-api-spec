@@ -42,11 +42,14 @@ public interface {{classname}} extends ApiClient.Api {
   {{#vendorExtensions.x-contentType}}
       "Content-Type: {{vendorExtensions.x-contentType}}",
   {{/vendorExtensions.x-contentType}}
+  {{^vendorExtensions.x-contentType}}
+      "Content-Type: application/json",
+  {{/vendorExtensions.x-contentType}}
   {{#vendorExtensions.x-accepts}}
       "Accept: {{vendorExtensions.x-accepts}}",
   {{/vendorExtensions.x-accepts}}
   {{^vendorExtensions.x-accepts}}
-      "Accept: */*",
+      "Accept: application/json",
   {{/vendorExtensions.x-accepts}}
   {{#headerParams}}
     "{{baseName}}: {{braces "left"}}{{paramName}}{{braces "right"}}"{{#has this 'more'}},{{/has}}
@@ -88,7 +91,7 @@ public interface {{classname}} extends ApiClient.Api {
       "Content-Type: {{vendorExtensions.x-contentType}}",
   {{/vendorExtensions.x-contentType}}
   {{^vendorExtensions.x-contentType}}
-      "Content-Type: */*",
+      "Content-Type: application/json",
   {{/vendorExtensions.x-contentType}}
   {{#vendorExtensions.x-accepts}}
       "Accept: {{vendorExtensions.x-accepts}}",

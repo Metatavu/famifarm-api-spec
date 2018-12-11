@@ -58,6 +58,9 @@ public class ApiClient {
       {{#is this 'basic'}}
         auth = new HttpBasicAuth();
       {{/is}}
+      {{#is this 'bearer'}}
+        auth = new ApiKeyAuth("header", "Authorization");
+      {{/is}}
       {{#is this 'api-key'}}
         auth = new ApiKeyAuth({{#is this 'key-in-header'}}"header"{{/is}}{{#isNot this 'key-in-header'}}"query"{{/isNot}}, "{{keyParamName}}");
       {{/is}}

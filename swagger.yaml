@@ -3,9 +3,11 @@ info:
   description: "Famifarm API specification"
   version: "1.0.0"
   title: "Famifarm-API"
+security:
+- BearerAuth: []
   
 paths:
-  '/events':
+  '/v1/events':
     get:
       summary: List all events
       operationId: listEvents
@@ -40,7 +42,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new event
       operationId: createEvent
@@ -65,8 +67,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/events/{eventId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/events/{eventId}':
     get:
       summary: Find an event
       operationId: findEvent
@@ -92,7 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates an event
       operationId: updateEvent
@@ -125,7 +127,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes an event
       operationId: deleteEvent
@@ -147,9 +149,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/wastageReasons':
+  '/v1/wastageReasons':
     get:
       summary: List all wastage reasons
       operationId: listWastageReasons
@@ -184,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new wastage reason
       operationId: createWastageReason
@@ -209,8 +211,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/wastageReasons/{wastageReasonId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/wastageReasons/{wastageReasonId}':
     get:
       summary: Find an wastage reason
       operationId: findWastageReason
@@ -236,7 +238,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates an wastage reason
       operationId: updateWastageReason
@@ -269,7 +271,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes an wastage reason
       operationId: deleteWastageReason
@@ -291,9 +293,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
 
-  '/packageSizes':
+  '/v1/packageSizes':
     get:
       summary: List all package sizes
       operationId: listPackageSizes
@@ -328,7 +330,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new package size
       operationId: createPackageSize
@@ -353,8 +355,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/packageSizes/{packageSizeId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/packageSizes/{packageSizeId}':
     get:
       summary: Find a package size
       operationId: findPackageSize
@@ -380,7 +382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a package size
       operationId: updatePackageSize
@@ -413,7 +415,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a package size
       operationId: deletePackageSize
@@ -435,9 +437,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/seedBatches':
+  '/v1/seedBatches':
     get:
       summary: List all seed batches
       operationId: listSeedBatches
@@ -472,7 +474,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new seed batch
       operationId: createSeedBatch
@@ -497,9 +499,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/seedBatches/{seedBatchId}':
+  '/v1/seedBatches/{seedBatchId}':
     get:
       summary: Find a seed batch
       operationId: findSeedBatch
@@ -525,7 +527,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a seed batch
       operationId: updateSeedBatch
@@ -558,7 +560,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a seed batch
       operationId: deleteSeedBatch
@@ -580,9 +582,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/teams':
+  '/v1/teams':
     get:
       summary: List all teams
       operationId: listTeams
@@ -617,7 +619,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new team
       operationId: createTeam
@@ -642,8 +644,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/teams/{teamId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/teams/{teamId}':
     get:
       summary: Find a team
       operationId: findTeam
@@ -669,7 +671,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a team
       operationId: updateTeam
@@ -702,7 +704,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a team
       operationId: deleteTeam
@@ -724,9 +726,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/products':
+  '/v1/products':
     get:
       summary: List all products
       operationId: listProducts
@@ -761,7 +763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new product
       operationId: createProduct
@@ -786,8 +788,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/products/{productId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/products/{productId}':
     get:
       summary: Find a product
       operationId: findProduct
@@ -813,7 +815,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a product
       operationId: updateProduct
@@ -846,7 +848,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a product
       operationId: deleteProduct
@@ -868,9 +870,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
 
-  '/batches':
+  '/v1/batches':
     get:
       summary: List all batches
       operationId: listBatches
@@ -898,7 +900,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new batch
       operationId: createBatch
@@ -923,8 +925,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/batches/{batchId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/batches/{batchId}':
     get:
       summary: Find a batch
       operationId: findBatch
@@ -950,7 +952,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a batch
       operationId: updateBatch
@@ -983,7 +985,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a batch
       operationId: deleteBatch
@@ -1005,9 +1007,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/seeds':
+  '/v1/seeds':
     get:
       summary: List all seeds
       operationId: listSeeds
@@ -1042,7 +1044,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new seed
       operationId: createSeed
@@ -1067,8 +1069,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/seeds/{seedId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/seeds/{seedId}':
     get:
       summary: Find a seed
       operationId: findSeed
@@ -1094,7 +1096,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a seed
       operationId: updateSeed
@@ -1127,7 +1129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a seed
       operationId: deleteSeed
@@ -1149,9 +1151,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
 
-  '/productionLines':
+  '/v1/productionLines':
     get:
       summary: List all production lines
       operationId: listProductionLines
@@ -1186,7 +1188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new production line
       operationId: createProductionLine
@@ -1211,8 +1213,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/productionLines/{productionLineId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/productionLines/{productionLineId}':
     get:
       summary: Find a production line
       operationId: findProductionLine
@@ -1238,7 +1240,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a production line
       operationId: updateProductionLine
@@ -1271,7 +1273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a production line
       operationId: deleteProductionLine
@@ -1293,9 +1295,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
 
-  '/performedCultivationActions':
+  '/v1/performedCultivationActions':
     get:
       summary: List all performed cultivation actions
       operationId: listPerformedCultivationActions
@@ -1330,7 +1332,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new performed cultivation action
       operationId: createPerformedCultivationAction
@@ -1355,8 +1357,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  '/performedCultivationActions/{performedCultivationActionId}':
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/performedCultivationActions/{performedCultivationActionId}':
     get:
       summary: Find a performed cultivation action
       operationId: findPerformedCultivationAction
@@ -1382,7 +1384,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Updates a performed cultivation action
       operationId: updatePerformedCultivationAction
@@ -1415,7 +1417,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Deletes a performed cultivation action
       operationId: deletePerformedCultivationAction
@@ -1437,9 +1439,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: "#/components/schemas/ErrorResponse"
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
   schemas:
     LocalizedEntry: 
        type: array
@@ -1720,7 +1727,7 @@ components:
           type: "integer"
           format: "int32"
           
-    Error:
+    ErrorResponse:
       type: object
       required: [message]
       properties:

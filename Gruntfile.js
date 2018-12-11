@@ -42,14 +42,15 @@ module.exports = function(grunt) {
           `--model-package ${JAXRS_PACKAGE}.model ` +
           `--group-id ${JAXRS_GROUP} ` +
           `--artifact-id ${JAXRS_ARTIFACT} ` +
-          "--template-engine mustache " +
+          `--invoker-package ${JAXRS_PACKAGE} ` +
+          "--template-engine handlebars " +
           "--artifact-version `cat jaxrs-spec-generated/pom.xml.before|grep version -m 1|sed -e \"s/.*<version>//\"|sed -e \"s/<.*//\"` " +
           "--template-dir jaxrs-spec-templates " +
-          `--additional-properties dateLibrary=java8,useBeanValidation=true,sourceFolder=src/main/java,interfaceOnly=true ` +
+          `--additional-properties dateLibrary=java8,useBeanValidation=true,sourceFolder=src/main/java,interfaceOnly=true,returnResponse=true,package=${JAXRS_PACKAGE} ` +
           "-o jaxrs-spec-generated/"
       },
       "jaxrs-fix-folders": {
-        command : "mkdir -p jaxrs-spec-generated/src/main/fi/metatavu/famifarm/rest && mv jaxrs-spec-generated/src/main/java/io/swagger/* jaxrs-spec-generated/src/main/fi/metatavu/famifarm/rest"
+        command : "mkdir -p jaxrs-spec-generated/src/main/java/fi/metatavu/famifarm/rest && mv jaxrs-spec-generated/src/main/java/io/swagger/* jaxrs-spec-generated/src/main/java/fi/metatavu/famifarm/rest"
       },
       "jaxrs-spec-install": {
         command : "mvn install",

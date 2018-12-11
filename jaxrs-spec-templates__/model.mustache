@@ -1,9 +1,8 @@
-package {{package}}.model;
+// package {{package}};
+package fi.metatavu.famifarm.rest.model;
 
-import java.util.UUID;
-import java.util.List;
-import java.util.ArrayList;
-import fi.metatavu.famifarm.rest.model.*;
+{{#imports}}import {{import}};
+{{/imports}}
 {{#serializableModel}}
 import java.io.Serializable;
 {{/serializableModel}}
@@ -17,9 +16,9 @@ import javax.validation.Valid;
 /**
  * {{description}}
  **/{{/description}}
-{{#is this 'enum'}}
+{{#isEnum}}
 {{>enumOuterClass}}
-{{/is}}
-{{#isNot this 'enum'}}{{>pojo}}{{/isNot}}
+{{/isEnum}}
+{{^isEnum}}{{>pojo}}{{/isEnum}}
 {{/model}}
 {{/models}}
