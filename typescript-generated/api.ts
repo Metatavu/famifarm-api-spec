@@ -629,6 +629,7 @@ export const BatchesApiFetchParamCreator = function (configuration?: Configurati
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -667,6 +668,7 @@ export const BatchesApiFetchParamCreator = function (configuration?: Configurati
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -702,6 +704,7 @@ export const BatchesApiFetchParamCreator = function (configuration?: Configurati
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -732,6 +735,7 @@ export const BatchesApiFetchParamCreator = function (configuration?: Configurati
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (maxResult !== undefined) {
                 queryParameter['maxResult'] = maxResult;
@@ -776,6 +780,7 @@ export const BatchesApiFetchParamCreator = function (configuration?: Configurati
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1057,6 +1062,7 @@ export const EventsApiFetchParamCreator = function (configuration?: Configuratio
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1095,6 +1101,7 @@ export const EventsApiFetchParamCreator = function (configuration?: Configuratio
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -1130,6 +1137,7 @@ export const EventsApiFetchParamCreator = function (configuration?: Configuratio
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -1161,6 +1169,7 @@ export const EventsApiFetchParamCreator = function (configuration?: Configuratio
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -1209,6 +1218,7 @@ export const EventsApiFetchParamCreator = function (configuration?: Configuratio
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1493,6 +1503,7 @@ export const PackageSizesApiFetchParamCreator = function (configuration?: Config
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1531,6 +1542,7 @@ export const PackageSizesApiFetchParamCreator = function (configuration?: Config
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -1566,6 +1578,7 @@ export const PackageSizesApiFetchParamCreator = function (configuration?: Config
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -1597,6 +1610,7 @@ export const PackageSizesApiFetchParamCreator = function (configuration?: Config
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -1645,6 +1659,7 @@ export const PackageSizesApiFetchParamCreator = function (configuration?: Config
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1929,6 +1944,7 @@ export const PerformedCultivationActionsApiFetchParamCreator = function (configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -1967,6 +1983,7 @@ export const PerformedCultivationActionsApiFetchParamCreator = function (configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2002,6 +2019,7 @@ export const PerformedCultivationActionsApiFetchParamCreator = function (configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2033,6 +2051,7 @@ export const PerformedCultivationActionsApiFetchParamCreator = function (configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -2081,6 +2100,7 @@ export const PerformedCultivationActionsApiFetchParamCreator = function (configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -2365,6 +2385,7 @@ export const ProductionLinesApiFetchParamCreator = function (configuration?: Con
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -2403,6 +2424,7 @@ export const ProductionLinesApiFetchParamCreator = function (configuration?: Con
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2438,6 +2460,7 @@ export const ProductionLinesApiFetchParamCreator = function (configuration?: Con
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2469,6 +2492,7 @@ export const ProductionLinesApiFetchParamCreator = function (configuration?: Con
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -2517,6 +2541,7 @@ export const ProductionLinesApiFetchParamCreator = function (configuration?: Con
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -2801,6 +2826,7 @@ export const ProductsApiFetchParamCreator = function (configuration?: Configurat
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -2839,6 +2865,7 @@ export const ProductsApiFetchParamCreator = function (configuration?: Configurat
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2874,6 +2901,7 @@ export const ProductsApiFetchParamCreator = function (configuration?: Configurat
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2905,6 +2933,7 @@ export const ProductsApiFetchParamCreator = function (configuration?: Configurat
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -2953,6 +2982,7 @@ export const ProductsApiFetchParamCreator = function (configuration?: Configurat
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -3237,6 +3267,7 @@ export const SeedBatchesApiFetchParamCreator = function (configuration?: Configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -3275,6 +3306,7 @@ export const SeedBatchesApiFetchParamCreator = function (configuration?: Configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3310,6 +3342,7 @@ export const SeedBatchesApiFetchParamCreator = function (configuration?: Configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3341,6 +3374,7 @@ export const SeedBatchesApiFetchParamCreator = function (configuration?: Configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -3389,6 +3423,7 @@ export const SeedBatchesApiFetchParamCreator = function (configuration?: Configu
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -3673,6 +3708,7 @@ export const SeedsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -3711,6 +3747,7 @@ export const SeedsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3746,6 +3783,7 @@ export const SeedsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3777,6 +3815,7 @@ export const SeedsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -3825,6 +3864,7 @@ export const SeedsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -4109,6 +4149,7 @@ export const TeamsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -4147,6 +4188,7 @@ export const TeamsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -4182,6 +4224,7 @@ export const TeamsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -4213,6 +4256,7 @@ export const TeamsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -4261,6 +4305,7 @@ export const TeamsApiFetchParamCreator = function (configuration?: Configuration
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -4545,6 +4590,7 @@ export const WastageReasonsApiFetchParamCreator = function (configuration?: Conf
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 
@@ -4583,6 +4629,7 @@ export const WastageReasonsApiFetchParamCreator = function (configuration?: Conf
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -4618,6 +4665,7 @@ export const WastageReasonsApiFetchParamCreator = function (configuration?: Conf
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             urlObj.query = Object.assign({}, urlObj.query, queryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -4649,6 +4697,7 @@ export const WastageReasonsApiFetchParamCreator = function (configuration?: Conf
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             if (firstResult !== undefined) {
                 queryParameter['firstResult'] = firstResult;
@@ -4697,6 +4746,7 @@ export const WastageReasonsApiFetchParamCreator = function (configuration?: Conf
             if (configuration && (configuration.username || configuration.password)) {
                 headerParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
             }
+            headerParameter["Authorization"] = configuration.apiKey;
 
             headerParameter['Content-Type'] = 'application/json';
 

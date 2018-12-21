@@ -1,4 +1,4 @@
-## famifarm-client@0.0.2
+## famifarm-client@0.0.3
 
 This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of next commando's.
 _published:_
 
 ```
-npm install famifarm-client@0.0.2 --save
+npm install famifarm-client@0.0.3 --save
 ```
 
 _unPublished (not recommended):_
