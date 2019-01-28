@@ -17,13 +17,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
  * SeedBatch
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T13:43:28.226+02:00[Europe/Helsinki]")public class SeedBatch {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-28T07:53:33.473+02:00[Europe/Helsinki]")public class SeedBatch {
 
   @JsonProperty("id")
 
@@ -39,7 +40,7 @@ import java.util.UUID;
 
   @JsonProperty("time")
 
-  private String time = null;
+  private OffsetDateTime time = null;
   public SeedBatch id(UUID id) {
     this.id = id;
     return this;
@@ -94,7 +95,7 @@ import java.util.UUID;
   public void setSeedId(UUID seedId) {
     this.seedId = seedId;
   }
-  public SeedBatch time(String time) {
+  public SeedBatch time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -106,10 +107,10 @@ import java.util.UUID;
   * @return time
   **/
   @Schema(description = "Time when the seed has arrived")
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
   @Override

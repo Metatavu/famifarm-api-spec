@@ -17,13 +17,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2018-12-11T13:43:28.226+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-28T07:53:33.473+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
@@ -39,7 +40,7 @@ import java.util.UUID;
 
   @JsonProperty("time")
 
-  private String time = null;
+  private OffsetDateTime time = null;
   /**
    * Gets or Sets type
    */
@@ -138,7 +139,7 @@ import java.util.UUID;
   public void setUserId(UUID userId) {
     this.userId = userId;
   }
-  public Event time(String time) {
+  public Event time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -150,10 +151,10 @@ import java.util.UUID;
   * @return time
   **/
   @Schema(required = true, description = "Time when the entry was added")
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
   public Event type(TypeEnum type) {
