@@ -2276,7 +2276,7 @@
           "time" : {
             "type" : "string",
             "description" : "Time when the seed has arrived",
-            "format" : "datetime"
+            "format" : "date-time"
           }
         }
       },
@@ -2331,7 +2331,7 @@
           "time" : {
             "type" : "string",
             "description" : "Time when the entry was added",
-            "format" : "datetime"
+            "format" : "date-time"
           },
           "type" : {
             "type" : "string",

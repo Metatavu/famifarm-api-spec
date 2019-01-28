@@ -2,6 +2,7 @@ package fi.metatavu.famifarm.rest.model;
 
 import java.util.UUID;
 import java.util.List;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import fi.metatavu.famifarm.rest.model.*;
 import javax.validation.constraints.*;
@@ -20,7 +21,7 @@ public class Event   {
   private @Valid UUID id = null;
   private @Valid UUID batchId = null;
   private @Valid UUID userId = null;
-  private @Valid String time = null;
+  private @Valid OffsetDateTime time = null;
 public enum TypeEnum {
 
     PLANTING(String.valueOf("PLANTING")), SOWING(String.valueOf("SOWING")), PACKING(String.valueOf("PACKING")), TABLE_SPREAD(String.valueOf("TABLE_SPREAD")), CULTIVATION_OBSERVATION(String.valueOf("CULTIVATION_OBSERVATION")), HARVEST(String.valueOf("HARVEST")), WASTEAGE(String.valueOf("WASTEAGE"));
@@ -115,7 +116,7 @@ public enum TypeEnum {
   /**
    * Time when the entry was added
    **/
-  public Event time(String time) {
+  public Event time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -125,10 +126,10 @@ public enum TypeEnum {
   @JsonProperty("time")
   @NotNull
 
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 

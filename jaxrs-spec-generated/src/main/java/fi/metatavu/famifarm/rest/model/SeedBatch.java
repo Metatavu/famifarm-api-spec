@@ -2,6 +2,7 @@ package fi.metatavu.famifarm.rest.model;
 
 import java.util.UUID;
 import java.util.List;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import fi.metatavu.famifarm.rest.model.*;
 import javax.validation.constraints.*;
@@ -20,7 +21,7 @@ public class SeedBatch   {
   private @Valid UUID id = null;
   private @Valid String code = null;
   private @Valid UUID seedId = null;
-  private @Valid String time = null;
+  private @Valid OffsetDateTime time = null;
 
   /**
    **/
@@ -80,7 +81,7 @@ public class SeedBatch   {
   /**
    * Time when the seed has arrived
    **/
-  public SeedBatch time(String time) {
+  public SeedBatch time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -89,10 +90,10 @@ public class SeedBatch   {
   //@ApiModelProperty(value = "Time when the seed has arrived")
   @JsonProperty("time")
 
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 

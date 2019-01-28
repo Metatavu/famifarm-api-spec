@@ -2,6 +2,7 @@ package fi.metatavu.famifarm.rest.model;
 
 import java.util.UUID;
 import java.util.List;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import fi.metatavu.famifarm.rest.model.*;
 import javax.validation.constraints.*;
