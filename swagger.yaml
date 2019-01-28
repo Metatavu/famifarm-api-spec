@@ -1586,7 +1586,11 @@ components:
           description: "Id of user who added this entry"
           type: "string"
           format: "uuid"
-        time:
+        startTime:
+          description: "Time when the entry was added"
+          type: "string"
+          format: "datetime"
+        endTime:
           description: "Time when the entry was added"
           type: "string"
           format: "datetime"
@@ -1629,10 +1633,6 @@ components:
           format: "int32"
         workerCount:
           description: "How many workers were doing the planting"
-          type: "integer"
-          format: "int32"
-        workDuration:
-          description: Duration of work in minutes
           type: "integer"
           format: "int32"
           
