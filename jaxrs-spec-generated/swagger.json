@@ -1316,7 +1316,7 @@
         "parameters" : [ {
           "name" : "firstResult",
           "in" : "query",
-          "description" : "Index of where to start listing",
+          "description" : "Where to start listing",
           "required" : false,
           "style" : "form",
           "explode" : true,

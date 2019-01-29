@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-01-29T15:05:52.715+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-01-29T15:07:25.083+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -374,7 +374,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response listBatches(  @QueryParam("firstResult") 
 
- @Parameter(description = "Index of where to start listing")  Integer firstResult
+ @Parameter(description = "Where to start listing")  Integer firstResult
 ,  @QueryParam("maxResult") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResult
