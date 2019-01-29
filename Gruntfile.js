@@ -17,6 +17,35 @@ module.exports = function(grunt) {
   const JAVA_ARTIFACT = "famifarm-api-client";
   const JAVA_PACKAGE = "fi.metatavu.famifarm.client";
   const JAVA_GROUP = "fi.metatavu.famifarm.client";
+  const TYPESCRIPT_MODEL_PACKAGE = "famifarm-typescript-client";
+  const TYPESCRIPT_MODEL_VERSION = "0.0.1";//require("./typescript-generated/package.json").version;
+
+  grunt.registerMultiTask('typescript-post-process', 'Post process', function () {
+    const modelFiles = {};
+
+    const eventDataFiles = fs.readdirSync(`${this.data.folder}/model`).filter((eventDataFile) => {
+      return eventDataFile.endsWith("EventData.ts");
+    });
+
+    eventDataFiles.forEach((eventDataFile) => {
+      const modelName = eventDataFile.substring(0, 1).toUpperCase() + eventDataFile.substring(1, eventDataFile.length - 3);
+      modelFiles[modelName] = eventDataFile.substring(0, eventDataFile.length - 3);
+    });
+
+    const eventDataModelType = Object.keys(modelFiles).join(" | ");
+
+    const eventDataModelImports = Object.keys(modelFiles).map((modelName) => {
+      const modelFile = modelFiles[modelName];
+      return `import { ${modelName} } from './${modelFile}';`;
+    }).join("\n");
+
+    const eventFile = `${this.data.folder}/model/event.ts`;
+    let contents = fs.readFileSync(eventFile, "utf8");
+    contents = contents.replace("import { ModelObject } from './modelObject';", eventDataModelImports);
+    contents = contents.replace("data: ModelObject;", `data: ${eventDataModelType};`);
+
+    fs.writeFileSync(eventFile, contents);
+  });
 
   grunt.initConfig({
     "curl": {
@@ -30,7 +59,21 @@ module.exports = function(grunt) {
         "jaxrs-spec-generated/src/main/java/fi/metatavu/famifarm/server/RestApplication.java"
       ],
       "jaxrs-spec-sources": ["jaxrs-spec-generated/src"],
-      'java-sources': ['java-generated/src']
+      'java-sources': ['java-generated/src'],
+      "typescript-model-api": [
+        "typescript-model-generated/api", 
+        "typescript-model-generated/api.module.ts", 
+        "typescript-model-generated/typings.json",
+        "typescript-model-generated/variables.ts",
+        "typescript-model-generated/encoder.ts",
+        "typescript-model-generated/configuration.ts",
+        "typescript-model-generated/git_push.sh"
+      ]
+    },
+    "typescript-post-process": {
+      "event-data": {
+        "folder": "typescript-model-generated"
+      }       
     },
     "shell": {
       "jaxrs-spec-generate": {
@@ -98,6 +141,32 @@ module.exports = function(grunt) {
             cwd: 'java-generated'
           }
         }
+      },
+      "typescript-model-generate": {
+        command : `java -jar ${SWAGGER_JAR} generate ` +
+          "-i ./swagger.yaml " +
+          "-l typescript-angular " +
+          "-t typescript-model-template/ " +
+          "-o typescript-model-generated/ " +
+          "--template-engine mustache " +
+          "--type-mappings Date=string " +
+          `--additional-properties projectName=${TYPESCRIPT_MODEL_PACKAGE},npmName=${TYPESCRIPT_MODEL_PACKAGE},npmVersion=${TYPESCRIPT_MODEL_VERSION}`
+      },
+      'typescript-model-bump-version': {
+        command: 'npm version patch',
+        options: {
+          execOptions: {
+            cwd: 'typescript-model-generated'
+          }
+        }
+      },
+      'typescript-model-push': {
+        command : 'git add . && git commit -m "Generated javascript source" && git push',
+        options: {
+          execOptions: {
+            cwd: 'typescript-model-generated'
+          }
+        }
       }
     }
   });
@@ -107,6 +176,8 @@ module.exports = function(grunt) {
   grunt.registerTask("jaxrs-spec", [ "jaxrs-gen", "shell:jaxrs-spec-release" ]);
   grunt.registerTask('java-gen', [ 'download-dependencies', 'clean:java-sources', 'shell:java-generate', 'shell:java-install' ]);
   grunt.registerTask('java', [ 'java-gen', 'shell:java-release' ]);
+  grunt.registerTask('typescript-model-gen', [ 'shell:typescript-model-generate', 'clean:typescript-model-api', 'typescript-post-process:event-data' ]);
+  grunt.registerTask('typescript-model', [ 'typescript-model-gen', "shell:typescript-model-bump-version", "shell:typescript-model-push", "shell:typescript-model-publish" ]);
 
   grunt.registerTask("default", [ "jaxrs-spec", "java"]);
   
