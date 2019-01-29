@@ -21,7 +21,8 @@ public class Event   {
   private @Valid UUID id = null;
   private @Valid UUID batchId = null;
   private @Valid UUID userId = null;
-  private @Valid OffsetDateTime time = null;
+  private @Valid String startTime = null;
+  private @Valid OffsetDateTime endTime = null;
 public enum TypeEnum {
 
     PLANTING(String.valueOf("PLANTING")), SOWING(String.valueOf("SOWING")), PACKING(String.valueOf("PACKING")), TABLE_SPREAD(String.valueOf("TABLE_SPREAD")), CULTIVATION_OBSERVATION(String.valueOf("CULTIVATION_OBSERVATION")), HARVEST(String.valueOf("HARVEST")), WASTEAGE(String.valueOf("WASTEAGE"));
@@ -116,21 +117,39 @@ public enum TypeEnum {
   /**
    * Time when the entry was added
    **/
-  public Event time(OffsetDateTime time) {
-    this.time = time;
+  public Event startTime(String startTime) {
+    this.startTime = startTime;
     return this;
   }
 
   
-  //@ApiModelProperty(required = true, value = "Time when the entry was added")
-  @JsonProperty("time")
-  @NotNull
+  //@ApiModelProperty(value = "Time when the entry was added")
+  @JsonProperty("startTime")
 
-  public OffsetDateTime getTime() {
-    return time;
+  public String getStartTime() {
+    return startTime;
   }
-  public void setTime(OffsetDateTime time) {
-    this.time = time;
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
+  /**
+   * Time when the entry was added
+   **/
+  public Event endTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "Time when the entry was added")
+  @JsonProperty("endTime")
+
+  public OffsetDateTime getEndTime() {
+    return endTime;
+  }
+  public void setEndTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
   }
 
   /**
@@ -184,14 +203,15 @@ public enum TypeEnum {
     return Objects.equals(id, event.id) &&
         Objects.equals(batchId, event.batchId) &&
         Objects.equals(userId, event.userId) &&
-        Objects.equals(time, event.time) &&
+        Objects.equals(startTime, event.startTime) &&
+        Objects.equals(endTime, event.endTime) &&
         Objects.equals(type, event.type) &&
         Objects.equals(data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, batchId, userId, time, type, data);
+    return Objects.hash(id, batchId, userId, startTime, endTime, type, data);
   }
 
   @Override
@@ -202,7 +222,8 @@ public enum TypeEnum {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

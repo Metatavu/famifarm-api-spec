@@ -1314,6 +1314,17 @@
         "summary" : "List all batches",
         "operationId" : "listBatches",
         "parameters" : [ {
+          "name" : "firstResult",
+          "in" : "query",
+          "description" : "Where to start listing",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
           "name" : "maxResult",
           "in" : "query",
           "description" : "How many items to return at one time",
@@ -2328,7 +2339,12 @@
             "description" : "Id of user who added this entry",
             "format" : "uuid"
           },
-          "time" : {
+          "startTime" : {
+            "type" : "string",
+            "description" : "Time when the entry was added",
+            "format" : "datetime"
+          },
+          "endTime" : {
             "type" : "string",
             "description" : "Time when the entry was added",
             "format" : "date-time"
@@ -2380,11 +2396,6 @@
           "workerCount" : {
             "type" : "integer",
             "description" : "How many workers were doing the planting",
-            "format" : "int32"
-          },
-          "workDuration" : {
-            "type" : "integer",
-            "description" : "Duration of work in minutes",
             "format" : "int32"
           }
         }

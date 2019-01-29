@@ -23,7 +23,6 @@ public class PlantingEventData   {
   private @Valid Integer gutterCount = null;
   private @Valid Integer trayCount = null;
   private @Valid Integer workerCount = null;
-  private @Valid Integer workDuration = null;
 
   /**
    * Production line id
@@ -119,25 +118,6 @@ public class PlantingEventData   {
     this.workerCount = workerCount;
   }
 
-  /**
-   * Duration of work in minutes
-   **/
-  public PlantingEventData workDuration(Integer workDuration) {
-    this.workDuration = workDuration;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "Duration of work in minutes")
-  @JsonProperty("workDuration")
-
-  public Integer getWorkDuration() {
-    return workDuration;
-  }
-  public void setWorkDuration(Integer workDuration) {
-    this.workDuration = workDuration;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -152,13 +132,12 @@ public class PlantingEventData   {
         Objects.equals(gutterNumber, plantingEventData.gutterNumber) &&
         Objects.equals(gutterCount, plantingEventData.gutterCount) &&
         Objects.equals(trayCount, plantingEventData.trayCount) &&
-        Objects.equals(workerCount, plantingEventData.workerCount) &&
-        Objects.equals(workDuration, plantingEventData.workDuration);
+        Objects.equals(workerCount, plantingEventData.workerCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount, workDuration);
+    return Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount);
   }
 
   @Override
@@ -171,7 +150,6 @@ public class PlantingEventData   {
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
-    sb.append("    workDuration: ").append(toIndentedString(workDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
