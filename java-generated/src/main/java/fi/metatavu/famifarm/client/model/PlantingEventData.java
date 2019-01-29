@@ -23,7 +23,7 @@ import java.util.UUID;
  * PlantingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-28T07:53:33.473+02:00[Europe/Helsinki]")public class PlantingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-29T15:10:40.383+02:00[Europe/Helsinki]")public class PlantingEventData {
 
   @JsonProperty("productionLineId")
 
@@ -44,10 +44,6 @@ import java.util.UUID;
   @JsonProperty("workerCount")
 
   private Integer workerCount = null;
-
-  @JsonProperty("workDuration")
-
-  private Integer workDuration = null;
   public PlantingEventData productionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
     return this;
@@ -138,24 +134,6 @@ import java.util.UUID;
   public void setWorkerCount(Integer workerCount) {
     this.workerCount = workerCount;
   }
-  public PlantingEventData workDuration(Integer workDuration) {
-    this.workDuration = workDuration;
-    return this;
-  }
-
-  
-
-  /**
-  * Duration of work in minutes
-  * @return workDuration
-  **/
-  @Schema(description = "Duration of work in minutes")
-  public Integer getWorkDuration() {
-    return workDuration;
-  }
-  public void setWorkDuration(Integer workDuration) {
-    this.workDuration = workDuration;
-  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -169,13 +147,12 @@ import java.util.UUID;
         Objects.equals(this.gutterNumber, plantingEventData.gutterNumber) &&
         Objects.equals(this.gutterCount, plantingEventData.gutterCount) &&
         Objects.equals(this.trayCount, plantingEventData.trayCount) &&
-        Objects.equals(this.workerCount, plantingEventData.workerCount) &&
-        Objects.equals(this.workDuration, plantingEventData.workDuration);
+        Objects.equals(this.workerCount, plantingEventData.workerCount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount, workDuration);
+    return java.util.Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount);
   }
 
   @Override
@@ -188,7 +165,6 @@ import java.util.UUID;
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
-    sb.append("    workDuration: ").append(toIndentedString(workDuration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

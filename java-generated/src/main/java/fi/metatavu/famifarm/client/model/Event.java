@@ -24,7 +24,7 @@ import java.util.UUID;
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-28T07:53:33.473+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-29T15:10:40.383+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
@@ -38,9 +38,13 @@ import java.util.UUID;
 
   private UUID userId = null;
 
-  @JsonProperty("time")
+  @JsonProperty("startTime")
 
-  private OffsetDateTime time = null;
+  private String startTime = null;
+
+  @JsonProperty("endTime")
+
+  private OffsetDateTime endTime = null;
   /**
    * Gets or Sets type
    */
@@ -139,8 +143,8 @@ import java.util.UUID;
   public void setUserId(UUID userId) {
     this.userId = userId;
   }
-  public Event time(OffsetDateTime time) {
-    this.time = time;
+  public Event startTime(String startTime) {
+    this.startTime = startTime;
     return this;
   }
 
@@ -148,14 +152,32 @@ import java.util.UUID;
 
   /**
   * Time when the entry was added
-  * @return time
+  * @return startTime
   **/
-  @Schema(required = true, description = "Time when the entry was added")
-  public OffsetDateTime getTime() {
-    return time;
+  @Schema(description = "Time when the entry was added")
+  public String getStartTime() {
+    return startTime;
   }
-  public void setTime(OffsetDateTime time) {
-    this.time = time;
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+  public Event endTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+  
+
+  /**
+  * Time when the entry was added
+  * @return endTime
+  **/
+  @Schema(description = "Time when the entry was added")
+  public OffsetDateTime getEndTime() {
+    return endTime;
+  }
+  public void setEndTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
   }
   public Event type(TypeEnum type) {
     this.type = type;
@@ -205,14 +227,15 @@ import java.util.UUID;
     return Objects.equals(this.id, event.id) &&
         Objects.equals(this.batchId, event.batchId) &&
         Objects.equals(this.userId, event.userId) &&
-        Objects.equals(this.time, event.time) &&
+        Objects.equals(this.startTime, event.startTime) &&
+        Objects.equals(this.endTime, event.endTime) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, batchId, userId, time, type, data);
+    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, type, data);
   }
 
   @Override
@@ -223,7 +246,8 @@ import java.util.UUID;
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
