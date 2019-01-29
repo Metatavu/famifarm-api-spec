@@ -1,6 +1,6 @@
 {
   "name": "famifarm-typescript-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "swagger client for famifarm-typescript-client",
   "author": "Swagger Codegen Contributors",
   "keywords": [
@@ -8,7 +8,7 @@
   ],
   "license": "Unlicense",
   "main": "dist/index.js",
-  "module": "dist/index.js",  
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "ngc",
