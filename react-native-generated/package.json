@@ -1,0 +1,24 @@
+{
+  "name": "famifarm-react-native-client",
+  "version": "0.0.1",
+  "description": "swagger client for famifarm-react-native-client",
+  "author": "Swagger Codegen Contributors",
+  "keywords": [
+    "fetch",
+    "typescript",
+    "swagger-client",
+    "famifarm-react-native-client"
+  ],
+  "license": "Unlicense",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^8.0.9",
+    "typescript": "^2.0"
+  }
+}

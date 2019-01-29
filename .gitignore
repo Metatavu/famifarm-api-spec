@@ -3,3 +3,4 @@ swagger-codegen-cli.jar
 jaxrs-spec-generated/target/
 java-generated/.project
 swagger-codegen-cli-3.0.3.jar
+openapi-generator-cli.jar
