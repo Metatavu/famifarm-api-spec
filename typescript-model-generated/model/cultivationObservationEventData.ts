@@ -29,3 +29,21 @@ export interface CultivationObservationEventData {
      */
     performedActionIds?: Array<string>;
 }
+export interface CultivationObservationEventDataOpt { 
+    /**
+     * Weight in grams
+     */
+    weight?: number;
+    /**
+     * Possible pest observations
+     */
+    pests?: string;
+    /**
+     * Luminance in lumens on the time of observation
+     */
+    luminance?: number;
+    /**
+     * List of ids of cultivation actions done based on observations
+     */
+    performedActionIds?: Array<string>;
+}

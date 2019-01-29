@@ -36,6 +36,24 @@ export interface Event {
     type: Event.TypeEnum;
     data: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
 }
+export interface EventOpt { 
+    id?: string;
+    batchId?: string;
+    /**
+     * Id of user who added this entry
+     */
+    userId?: string;
+    /**
+     * Time when the entry was added
+     */
+    startTime?: string;
+    /**
+     * Time when the entry was added
+     */
+    endTime?: string;
+    type?: Event.TypeEnum;
+    data?: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
+}
 export namespace Event {
     export type TypeEnum = 'PLANTING' | 'SOWING' | 'PACKING' | 'TABLE_SPREAD' | 'CULTIVATION_OBSERVATION' | 'HARVEST' | 'WASTEAGE';
     export const TypeEnum = {

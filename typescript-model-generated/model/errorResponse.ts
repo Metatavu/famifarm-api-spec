@@ -17,3 +17,9 @@ export interface ErrorResponse {
      */
     message: string;
 }
+export interface ErrorResponseOpt { 
+    /**
+     * The error message
+     */
+    message?: string;
+}

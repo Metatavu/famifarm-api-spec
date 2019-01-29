@@ -21,3 +21,10 @@ export interface WastageEventData {
     reasonId?: string;
     amount?: number;
 }
+export interface WastageEventDataOpt { 
+    /**
+     * Id of reason a product has been thrown away
+     */
+    reasonId?: string;
+    amount?: number;
+}

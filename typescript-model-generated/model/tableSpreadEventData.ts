@@ -24,3 +24,13 @@ export interface TableSpreadEventData {
      */
     location?: string;
 }
+export interface TableSpreadEventDataOpt { 
+    /**
+     * Count of tables used
+     */
+    tableCount?: number;
+    /**
+     * Where the batch has been placed
+     */
+    location?: string;
+}
