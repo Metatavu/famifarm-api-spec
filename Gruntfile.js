@@ -167,7 +167,15 @@ module.exports = function(grunt) {
             cwd: 'typescript-model-generated'
           }
         }
-      }
+      },
+      "typescript-model-publish": {
+        command : 'npm publish',
+        options: {
+          execOptions: {
+            cwd: 'typescript-model-generated'
+          }
+        }
+      },
     }
   });
 
