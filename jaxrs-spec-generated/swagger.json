@@ -1314,6 +1314,17 @@
         "summary" : "List all batches",
         "operationId" : "listBatches",
         "parameters" : [ {
+          "name" : "firstResult",
+          "in" : "query",
+          "description" : "Where to start listing",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
           "name" : "maxResult",
           "in" : "query",
           "description" : "How many items to return at one time",
@@ -2331,12 +2342,12 @@
           "startTime" : {
             "type" : "string",
             "description" : "Time when the entry was added",
-            "format" : "datetime"
+            "format" : "date-time"
           },
           "endTime" : {
             "type" : "string",
             "description" : "Time when the entry was added",
-            "format" : "datetime"
+            "format" : "date-time"
           },
           "type" : {
             "type" : "string",
