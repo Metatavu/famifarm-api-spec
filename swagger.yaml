@@ -1593,7 +1593,7 @@ components:
         endTime:
           description: "Time when the entry was added"
           type: "string"
-          format: "date-time"
+          format: "datetime"
         type:
           type: "string"
           enum:
