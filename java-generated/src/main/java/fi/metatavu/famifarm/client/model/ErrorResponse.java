@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * ErrorResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-30T10:50:19.546+02:00[Europe/Helsinki]")public class ErrorResponse {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-30T11:06:59.031+02:00[Europe/Helsinki]")public class ErrorResponse {
 
   @JsonProperty("message")
 

@@ -17,13 +17,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-30T10:50:19.546+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-30T11:06:59.031+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
@@ -39,11 +40,11 @@ import java.util.UUID;
 
   @JsonProperty("startTime")
 
-  private String startTime = null;
+  private OffsetDateTime startTime = null;
 
   @JsonProperty("endTime")
 
-  private String endTime = null;
+  private OffsetDateTime endTime = null;
   /**
    * Gets or Sets type
    */
@@ -142,7 +143,7 @@ import java.util.UUID;
   public void setUserId(UUID userId) {
     this.userId = userId;
   }
-  public Event startTime(String startTime) {
+  public Event startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -154,13 +155,13 @@ import java.util.UUID;
   * @return startTime
   **/
   @Schema(description = "Time when the entry was added")
-  public String getStartTime() {
+  public OffsetDateTime getStartTime() {
     return startTime;
   }
-  public void setStartTime(String startTime) {
+  public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
-  public Event endTime(String endTime) {
+  public Event endTime(OffsetDateTime endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -172,10 +173,10 @@ import java.util.UUID;
   * @return endTime
   **/
   @Schema(description = "Time when the entry was added")
-  public String getEndTime() {
+  public OffsetDateTime getEndTime() {
     return endTime;
   }
-  public void setEndTime(String endTime) {
+  public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
   public Event type(TypeEnum type) {
