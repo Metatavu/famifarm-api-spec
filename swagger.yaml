@@ -879,6 +879,13 @@ paths:
       tags:
         - batches
       parameters:
+        - name: firstResult
+          in: query
+          description: Where to start listing
+          required: false
+          schema:
+            type: integer
+            format: int32
         - name: maxResult
           in: query
           description: How many items to return at one time
