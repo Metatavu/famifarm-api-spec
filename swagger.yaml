@@ -1596,11 +1596,11 @@ components:
         startTime:
           description: "Time when the entry was added"
           type: "string"
-          format: "datetime"
+          format: "date-time"
         endTime:
           description: "Time when the entry was added"
           type: "string"
-          format: "datetime"
+          format: "date-time"
         type:
           type: "string"
           enum:
