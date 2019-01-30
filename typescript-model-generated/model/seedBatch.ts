@@ -23,3 +23,15 @@ export interface SeedBatch {
      */
     time?: string;
 }
+export interface SeedBatchOpt { 
+    id?: string;
+    /**
+     * Manufacturer's code for the batch
+     */
+    code?: string;
+    seedId?: string;
+    /**
+     * Time when the seed has arrived
+     */
+    time?: string;
+}

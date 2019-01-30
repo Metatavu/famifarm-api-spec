@@ -18,3 +18,10 @@ export interface PackingEventData {
     packedAmount?: number;
     packageSize?: string;
 }
+export interface PackingEventDataOpt { 
+    /**
+     * Amount of packed items
+     */
+    packedAmount?: number;
+    packageSize?: string;
+}

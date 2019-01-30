@@ -22,3 +22,10 @@ export interface SowingEventData {
     cellType: CellType;
     amount: number;
 }
+export interface SowingEventDataOpt { 
+    productionLineId?: string;
+    gutterNumber?: number;
+    seedBatchId?: string;
+    cellType?: CellType;
+    amount?: number;
+}

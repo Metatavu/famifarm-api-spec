@@ -17,8 +17,8 @@ module.exports = function(grunt) {
   const JAVA_ARTIFACT = "famifarm-api-client";
   const JAVA_PACKAGE = "fi.metatavu.famifarm.client";
   const JAVA_GROUP = "fi.metatavu.famifarm.client";
-  const TYPESCRIPT_MODEL_PACKAGE = "famifarm-typescript-client";
-  const TYPESCRIPT_MODEL_VERSION = "0.0.1";//require("./typescript-generated/package.json").version;
+  const TYPESCRIPT_MODEL_PACKAGE = "famifarm-typescript-models";
+  const TYPESCRIPT_MODEL_VERSION = require("./typescript-model-generated/package.json").version;
 
   grunt.registerMultiTask('typescript-post-process', 'Post process', function () {
     const modelFiles = {};
@@ -41,8 +41,9 @@ module.exports = function(grunt) {
 
     const eventFile = `${this.data.folder}/model/event.ts`;
     let contents = fs.readFileSync(eventFile, "utf8");
-    contents = contents.replace("import { ModelObject } from './modelObject';", eventDataModelImports);
-    contents = contents.replace("data: ModelObject;", `data: ${eventDataModelType};`);
+    contents = contents.replace(/import \{ ModelObject } from \'\.\/modelObject\'\;/g, eventDataModelImports);
+    contents = contents.replace(/data\: ModelObject\;/g, `data: ${eventDataModelType};`);
+    contents = contents.replace(/data\?\: ModelObject\;/g, `data?: ${eventDataModelType};`);
 
     fs.writeFileSync(eventFile, contents);
   });

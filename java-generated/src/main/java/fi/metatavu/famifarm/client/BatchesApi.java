@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-29T15:10:40.383+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-30T10:50:19.546+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -53,16 +53,15 @@ import feign.*;
   /**
    * List all batches
    * 
-   * @param firstResult Where to start listing (optional)
    * @param maxResult How many items to return at one time (optional)
    * @return List&lt;Batch&gt;
    */
-  @RequestLine("GET /v1/batches?firstResult={firstResult}&maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?maxResult={maxResult}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Batch> listBatches(@Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult);
+  List<Batch> listBatches(@Param("maxResult") Integer maxResult);
 
   /**
    * List all batches
@@ -75,13 +74,12 @@ import feign.*;
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
-   *   <li>firstResult - Where to start listing (optional)</li>
    *   <li>maxResult - How many items to return at one time (optional)</li>
    *   </ul>
    * @return List&lt;Batch&gt;
 
    */
-  @RequestLine("GET /v1/batches?firstResult={firstResult}&maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?maxResult={maxResult}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -92,10 +90,6 @@ import feign.*;
    * <code>listBatches</code> method in a fluent style.
    */
   public static class ListBatchesQueryParams extends HashMap<String, Object> {
-    public ListBatchesQueryParams firstResult(final Integer value) {
-      put("firstResult", EncodingUtils.encode(value));
-      return this;
-    }
     public ListBatchesQueryParams maxResult(final Integer value) {
       put("maxResult", EncodingUtils.encode(value));
       return this;

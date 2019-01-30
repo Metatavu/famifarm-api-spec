@@ -17,3 +17,8 @@ export interface Product {
     name?: LocalizedEntry;
     defaultPackageSize?: string;
 }
+export interface ProductOpt { 
+    id?: string;
+    name?: LocalizedEntry;
+    defaultPackageSize?: string;
+}

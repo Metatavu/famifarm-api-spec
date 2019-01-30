@@ -22,7 +22,7 @@ public class Event   {
   private @Valid UUID batchId = null;
   private @Valid UUID userId = null;
   private @Valid String startTime = null;
-  private @Valid OffsetDateTime endTime = null;
+  private @Valid String endTime = null;
 public enum TypeEnum {
 
     PLANTING(String.valueOf("PLANTING")), SOWING(String.valueOf("SOWING")), PACKING(String.valueOf("PACKING")), TABLE_SPREAD(String.valueOf("TABLE_SPREAD")), CULTIVATION_OBSERVATION(String.valueOf("CULTIVATION_OBSERVATION")), HARVEST(String.valueOf("HARVEST")), WASTEAGE(String.valueOf("WASTEAGE"));
@@ -136,7 +136,7 @@ public enum TypeEnum {
   /**
    * Time when the entry was added
    **/
-  public Event endTime(OffsetDateTime endTime) {
+  public Event endTime(String endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -145,10 +145,10 @@ public enum TypeEnum {
   //@ApiModelProperty(value = "Time when the entry was added")
   @JsonProperty("endTime")
 
-  public OffsetDateTime getEndTime() {
+  public String getEndTime() {
     return endTime;
   }
-  public void setEndTime(OffsetDateTime endTime) {
+  public void setEndTime(String endTime) {
     this.endTime = endTime;
   }
 

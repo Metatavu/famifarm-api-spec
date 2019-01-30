@@ -19,6 +19,14 @@ export interface HarvestEventData {
      */
     productionLineId?: string;
 }
+export interface HarvestEventDataOpt { 
+    teamId?: string;
+    type?: HarvestEventData.TypeEnum;
+    /**
+     * Production line id
+     */
+    productionLineId?: string;
+}
 export namespace HarvestEventData {
     export type TypeEnum = 'BAGGING' | 'CUTTING' | 'BOXING';
     export const TypeEnum = {

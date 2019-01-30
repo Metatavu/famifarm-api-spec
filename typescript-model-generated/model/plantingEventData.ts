@@ -30,3 +30,22 @@ export interface PlantingEventData {
      */
     workerCount?: number;
 }
+export interface PlantingEventDataOpt { 
+    /**
+     * Production line id
+     */
+    productionLineId?: string;
+    gutterNumber?: number;
+    /**
+     * How many gutter were used during the planting
+     */
+    gutterCount?: number;
+    /**
+     * How many trays were planted
+     */
+    trayCount?: number;
+    /**
+     * How many workers were doing the planting
+     */
+    workerCount?: number;
+}
