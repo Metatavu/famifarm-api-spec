@@ -2323,7 +2323,7 @@
         "description" : "Identifies a single batch for it's entire life-cycle"
       },
       "Event" : {
-        "required" : [ "batchId", "data", "time", "type", "userId" ],
+        "required" : [ "batchId", "data", "time", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {

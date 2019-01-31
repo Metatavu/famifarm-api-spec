@@ -103,9 +103,8 @@ public enum TypeEnum {
   }
 
   
-  //@ApiModelProperty(required = true, value = "Id of user who added this entry")
+  //@ApiModelProperty(value = "Id of user who added this entry")
   @JsonProperty("userId")
-  @NotNull
 
   public UUID getUserId() {
     return userId;
