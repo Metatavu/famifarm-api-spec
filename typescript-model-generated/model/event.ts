@@ -9,7 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ModelObject } from './modelObject';
+import { CultivationObservationEventData } from './cultivationObservationEventData';
+import { HarvestEventData } from './harvestEventData';
+import { PackingEventData } from './packingEventData';
+import { PlantingEventData } from './plantingEventData';
+import { SowingEventData } from './sowingEventData';
+import { TableSpreadEventData } from './tableSpreadEventData';
+import { WastageEventData } from './wastageEventData';
 
 
 export interface Event { 
@@ -28,7 +34,7 @@ export interface Event {
      */
     endTime?: string;
     type: Event.TypeEnum;
-    data: ModelObject;
+    data: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
 }
 export interface EventOpt { 
     id?: string;
@@ -46,7 +52,7 @@ export interface EventOpt {
      */
     endTime?: string;
     type?: Event.TypeEnum;
-    data?: ModelObject;
+    data?: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
 }
 export namespace Event {
     export type TypeEnum = 'PLANTING' | 'SOWING' | 'PACKING' | 'TABLE_SPREAD' | 'CULTIVATION_OBSERVATION' | 'HARVEST' | 'WASTEAGE';
