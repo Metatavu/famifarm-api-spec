@@ -23,7 +23,7 @@ import java.util.UUID;
  * Entry of products has been thrown away
  */
 @Schema(description = "Entry of products has been thrown away")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-01-31T10:27:43.303+02:00[Europe/Helsinki]")public class WastageEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-08T11:23:51.442+02:00[Europe/Helsinki]")public class WastageEventData {
 
   @JsonProperty("reasonId")
 
@@ -32,6 +32,10 @@ import java.util.UUID;
   @JsonProperty("amount")
 
   private Integer amount = null;
+
+  @JsonProperty("description")
+
+  private String description = null;
   public WastageEventData reasonId(UUID reasonId) {
     this.reasonId = reasonId;
     return this;
@@ -68,6 +72,24 @@ import java.util.UUID;
   public void setAmount(Integer amount) {
     this.amount = amount;
   }
+  public WastageEventData description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+
+  /**
+  * Get description
+  * @return description
+  **/
+  @Schema(description = "")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -78,12 +100,13 @@ import java.util.UUID;
     }
     WastageEventData wastageEventData = (WastageEventData) o;
     return Objects.equals(this.reasonId, wastageEventData.reasonId) &&
-        Objects.equals(this.amount, wastageEventData.amount);
+        Objects.equals(this.amount, wastageEventData.amount) &&
+        Objects.equals(this.description, wastageEventData.description);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(reasonId, amount);
+    return java.util.Objects.hash(reasonId, amount, description);
   }
 
   @Override
@@ -93,6 +116,7 @@ import java.util.UUID;
     
     sb.append("    reasonId: ").append(toIndentedString(reasonId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
