@@ -1732,6 +1732,8 @@ components:
         amount:
           type: "integer"
           format: "int32"
+        description:
+          type: "string"
           
     ErrorResponse:
       type: object
