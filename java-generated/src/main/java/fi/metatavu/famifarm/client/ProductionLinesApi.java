@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-08T11:23:51.442+02:00[Europe/Helsinki]")public interface ProductionLinesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-08T11:27:58.465+02:00[Europe/Helsinki]")public interface ProductionLinesApi extends ApiClient.Api {
 
   /**
    * Create new production line
