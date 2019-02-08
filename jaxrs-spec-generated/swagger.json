@@ -2506,6 +2506,9 @@
           "amount" : {
             "type" : "integer",
             "format" : "int32"
+          },
+          "description" : {
+            "type" : "string"
           }
         },
         "description" : "Entry of products has been thrown away"

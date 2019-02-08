@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class WastageEventData   {
   private @Valid UUID reasonId = null;
   private @Valid Integer amount = null;
+  private @Valid String description = null;
 
   /**
    * Id of reason a product has been thrown away
@@ -60,6 +61,24 @@ public class WastageEventData   {
     this.amount = amount;
   }
 
+  /**
+   **/
+  public WastageEventData description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("description")
+
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -71,12 +90,13 @@ public class WastageEventData   {
     }
     WastageEventData wastageEventData = (WastageEventData) o;
     return Objects.equals(reasonId, wastageEventData.reasonId) &&
-        Objects.equals(amount, wastageEventData.amount);
+        Objects.equals(amount, wastageEventData.amount) &&
+        Objects.equals(description, wastageEventData.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reasonId, amount);
+    return Objects.hash(reasonId, amount, description);
   }
 
   @Override
@@ -86,6 +106,7 @@ public class WastageEventData   {
     
     sb.append("    reasonId: ").append(toIndentedString(reasonId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
