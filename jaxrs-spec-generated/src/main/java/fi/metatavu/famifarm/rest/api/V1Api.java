@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-08T11:22:00.312+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-08T11:26:09.770+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
