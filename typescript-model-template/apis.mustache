@@ -8,5 +8,15 @@ import { {{ classname }} } from './{{ classFilename }}';
 export * from './{{ classFilename }}Interface'
 {{/withInterfaces}}
 {{/apis}}
-export const APIS = [{{#apis}}{{#operations}}{{ classname }}{{/operations}}{{^-last}}, {{/-last}}{{/apis}}];
+
+import { AccessToken } from "../types";
+import { API_URL } from 'react-native-dotenv';
+
+export default new class Api {
+  {{#apis}}{{#operations}}
+  public get{{ classname }}(token: AccessToken): {{ classname }} {
+    return new {{ classname }}(API_URL, token.access_token);
+  }
+  {{/operations}}{{/apis}}
+}
 {{/apiInfo}}

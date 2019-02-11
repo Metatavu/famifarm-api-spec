@@ -13,6 +13,7 @@
     "grunt-publish": "^1.0.0",
     "grunt-shell": "^2.1.0",
     "load-grunt-tasks": "^4.0.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "rimraf": "^2.6.3"
   }
 }

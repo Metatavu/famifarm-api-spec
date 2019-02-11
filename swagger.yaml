@@ -1447,6 +1447,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  '/v1/reports/{type}':
+    get:
+      summary: Constructs report
+      operationId: getReport
+      tags:
+        - reports
+      parameters:
+        - name: type
+          in: path
+          description: Report type
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excel report
+          content:
+            application/vnd.ms-excel:
+              schema:
+                type: "string"
+                format: "binary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 
 components:
   securitySchemes:

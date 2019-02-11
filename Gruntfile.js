@@ -3,6 +3,7 @@
 const _ = require("lodash");
 const fs = require("fs");
 const path = require("path");
+const rimraf = require("rimraf");
 
 module.exports = function(grunt) {
   require("load-grunt-tasks")(grunt);
@@ -20,7 +21,7 @@ module.exports = function(grunt) {
   const TYPESCRIPT_MODEL_PACKAGE = "famifarm-typescript-models";
   const TYPESCRIPT_MODEL_VERSION = require("./typescript-model-generated/package.json").version;
 
-  grunt.registerMultiTask('typescript-post-process', 'Post process', function () {
+  grunt.registerMultiTask('typescript-model-post-process', 'Post process', function () {
     const modelFiles = {};
 
     const eventDataFiles = fs.readdirSync(`${this.data.folder}/model`).filter((eventDataFile) => {
@@ -48,6 +49,31 @@ module.exports = function(grunt) {
     fs.writeFileSync(eventFile, contents);
   });
 
+  grunt.registerMultiTask('typescript-api-post-process', 'Post process', function () {
+    const serviceFiles = fs.readdirSync(`${this.data.folder}/api`).filter((file) => {
+      return file.endsWith("service.ts");
+    })  
+    .map((file) => {
+      return `${this.data.folder}/api/${file}`;
+    });
+
+    serviceFiles.forEach((serviceFile) => {
+      let contents = fs.readFileSync(serviceFile, "utf8");
+      contents = contents.replace(/from '\.\.\/model\/[a-zA-Z]*\'/g, 'from "famifarm-typescript-models"');
+      fs.writeFileSync(serviceFile, contents);
+    });
+
+    fs.renameSync(`${this.data.folder}/api/api.ts`, `${this.data.folder}/api/index.ts`);
+
+    if (process.env.FAMIFARM_API_FOLDER) {
+      if (fs.existsSync(process.env.FAMIFARM_API_FOLDER)) {
+        rimraf.sync(process.env.FAMIFARM_API_FOLDER);
+      }
+
+      fs.renameSync(`${this.data.folder}/api`, process.env.FAMIFARM_API_FOLDER);
+    }
+  });
+
   grunt.initConfig({
     "curl": {
       "swagger-codegen":  {
@@ -71,10 +97,15 @@ module.exports = function(grunt) {
         "typescript-model-generated/git_push.sh"
       ]
     },
-    "typescript-post-process": {
+    "typescript-model-post-process": {
       "event-data": {
         "folder": "typescript-model-generated"
-      }       
+      }
+    },
+    "typescript-api-post-process": {
+      "api": {
+        "folder": "typescript-model-generated"
+      }
     },
     "shell": {
       "jaxrs-spec-generate": {
@@ -185,8 +216,9 @@ module.exports = function(grunt) {
   grunt.registerTask("jaxrs-spec", [ "jaxrs-gen", "shell:jaxrs-spec-release" ]);
   grunt.registerTask('java-gen', [ 'download-dependencies', 'clean:java-sources', 'shell:java-generate', 'shell:java-install' ]);
   grunt.registerTask('java', [ 'java-gen', 'shell:java-release' ]);
-  grunt.registerTask('typescript-model-gen', [ 'shell:typescript-model-generate', 'clean:typescript-model-api', 'typescript-post-process:event-data' ]);
+  grunt.registerTask('typescript-model-gen', [ 'shell:typescript-model-generate', 'clean:typescript-model-api', 'typescript-model-post-process:event-data' ]);
   grunt.registerTask('typescript-model', [ 'typescript-model-gen', "shell:typescript-model-bump-version", "shell:typescript-model-push", "shell:typescript-model-publish" ]);
+  grunt.registerTask('typescript-api-gen', [ 'shell:typescript-model-generate', 'typescript-api-post-process:api' ]);
 
   grunt.registerTask("default", [ "jaxrs-spec", "java"]);
   
