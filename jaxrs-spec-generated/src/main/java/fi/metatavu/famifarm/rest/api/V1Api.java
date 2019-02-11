@@ -4,6 +4,7 @@ import java.util.UUID;
 import fi.metatavu.famifarm.rest.model.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.io.File;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-08T11:26:09.770+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-11T07:52:19.439+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -363,6 +364,18 @@ public interface V1Api {
     Response findWastageReason( @PathParam("wastageReasonId")
 
  @Parameter(description = "Wastage reason id") UUID wastageReasonId
+);
+    @GET
+    @Path("/reports/{type}")
+    @Produces({ "application/vnd.ms-excel", "application/json" })
+    @Operation(summary = "Constructs report", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "reports" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Excel report", content = @Content(schema = @Schema(implementation = File.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response getReport( @PathParam("type")
+
+ @Parameter(description = "Report type") String type
 );
     @GET
     @Path("/batches")

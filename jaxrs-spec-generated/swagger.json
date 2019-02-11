@@ -2171,6 +2171,47 @@
           }
         }
       }
+    },
+    "/v1/reports/{type}" : {
+      "get" : {
+        "tags" : [ "reports" ],
+        "summary" : "Constructs report",
+        "operationId" : "getReport",
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "path",
+          "description" : "Report type",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Excel report",
+            "content" : {
+              "application/vnd.ms-excel" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
