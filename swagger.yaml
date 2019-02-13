@@ -28,11 +28,18 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: batchId
+          in: query
+          description: Filter results by batch id
+          required: false
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: A paged array of events
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
                 items: 
@@ -1600,7 +1607,9 @@ components:
         productId:
           type: "string"
           format: "uuid"
-        
+        createdAt:
+          type: "string"
+          format: "date-time"
     Event:
       type: "object"
       required:
