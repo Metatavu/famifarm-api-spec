@@ -23,7 +23,7 @@ import java.util.UUID;
  * HarvestEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-11T07:53:51.852+02:00[Europe/Helsinki]")public class HarvestEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-13T15:29:49.443+02:00[Europe/Helsinki]")public class HarvestEventData {
 
   @JsonProperty("teamId")
 

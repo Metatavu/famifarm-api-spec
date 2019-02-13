@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-11T07:53:51.852+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-13T15:29:49.443+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
 
   /**
    * Create new event
@@ -55,14 +55,15 @@ import feign.*;
    * 
    * @param firstResult First index of results to be returned (optional)
    * @param maxResults How many items to return at one time (optional)
+   * @param batchId Filter results by batch id (optional)
    * @return List&lt;Event&gt;
    */
-  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&batchId={batchId}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Event> listEvents(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
+  List<Event> listEvents(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults, @Param("batchId") UUID batchId);
 
   /**
    * List all events
@@ -77,11 +78,12 @@ import feign.*;
    *   <ul>
    *   <li>firstResult - First index of results to be returned (optional)</li>
    *   <li>maxResults - How many items to return at one time (optional)</li>
+   *   <li>batchId - Filter results by batch id (optional)</li>
    *   </ul>
    * @return List&lt;Event&gt;
 
    */
-  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&batchId={batchId}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -98,6 +100,10 @@ import feign.*;
     }
     public ListEventsQueryParams maxResults(final Integer value) {
       put("maxResults", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListEventsQueryParams batchId(final UUID value) {
+      put("batchId", EncodingUtils.encode(value));
       return this;
     }
   }

@@ -72,7 +72,8 @@ public class EventsApiTest {
     public void listEventsTest() {
         Integer firstResult = null;
         Integer maxResults = null;
-        // List<Event> response = api.listEvents(firstResult, maxResults);
+        UUID batchId = null;
+        // List<Event> response = api.listEvents(firstResult, maxResults, batchId);
 
         // TODO: test validations
     }
@@ -89,7 +90,8 @@ public class EventsApiTest {
     public void listEventsTestQueryMap() {
         EventsApi.ListEventsQueryParams queryParams = new EventsApi.ListEventsQueryParams()
             .firstResult(null)
-            .maxResults(null);
+            .maxResults(null)
+            .batchId(null);
         // List<Event> response = api.listEvents(queryParams);
 
     // TODO: test validations
