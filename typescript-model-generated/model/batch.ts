@@ -17,8 +17,10 @@
 export interface Batch { 
     id?: string;
     productId: string;
+    createdAt?: string;
 }
 export interface BatchOpt { 
     id?: string;
     productId?: string;
+    createdAt?: string;
 }
