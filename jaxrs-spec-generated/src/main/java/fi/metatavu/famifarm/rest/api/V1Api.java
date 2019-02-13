@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-11T07:52:19.439+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-13T15:27:11.380+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -406,6 +406,9 @@ public interface V1Api {
 ,  @QueryParam("maxResults") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResults
+,  @QueryParam("batchId") 
+
+ @Parameter(description = "Filter results by batch id")  UUID batchId
 );
     @GET
     @Path("/packageSizes")

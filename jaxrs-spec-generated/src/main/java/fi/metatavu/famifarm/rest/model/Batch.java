@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Batch   {
   private @Valid UUID id = null;
   private @Valid UUID productId = null;
+  private @Valid OffsetDateTime createdAt = null;
 
   /**
    **/
@@ -60,6 +61,24 @@ public class Batch   {
     this.productId = productId;
   }
 
+  /**
+   **/
+  public Batch createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("createdAt")
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -71,12 +90,13 @@ public class Batch   {
     }
     Batch batch = (Batch) o;
     return Objects.equals(id, batch.id) &&
-        Objects.equals(productId, batch.productId);
+        Objects.equals(productId, batch.productId) &&
+        Objects.equals(createdAt, batch.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId);
+    return Objects.hash(id, productId, createdAt);
   }
 
   @Override
@@ -86,6 +106,7 @@ public class Batch   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

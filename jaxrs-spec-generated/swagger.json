@@ -39,6 +39,17 @@
             "type" : "integer",
             "format" : "int32"
           }
+        }, {
+          "name" : "batchId",
+          "in" : "query",
+          "description" : "Filter results by batch id",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -2359,6 +2370,10 @@
           "productId" : {
             "type" : "string",
             "format" : "uuid"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time"
           }
         },
         "description" : "Identifies a single batch for it's entire life-cycle"
