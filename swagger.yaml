@@ -900,6 +900,18 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: createdBefore
+          in: query
+          description: Created before time
+          required: false
+          schema:
+            type: "string"
+        - name: createdAfter
+          in: query
+          description: Created after time
+          required: false
+          schema:
+            type: "string"
       responses:
         '200':
           description: A paged array of batches
