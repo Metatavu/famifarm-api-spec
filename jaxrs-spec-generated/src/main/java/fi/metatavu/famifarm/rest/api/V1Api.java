@@ -6,7 +6,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
-import java.time.OffsetDateTime;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-18T09:51:24.304+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-18T10:12:38.199+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -386,18 +385,15 @@ public interface V1Api {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "A paged array of batches", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Batch.class)))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response listBatches(  @QueryParam("firstResult") 
+    Response listBatches(  @QueryParam("status") 
+
+ @Parameter(description = "Filters list by derived batch status.")  String status
+,  @QueryParam("firstResult") 
 
  @Parameter(description = "Where to start listing")  Integer firstResult
 ,  @QueryParam("maxResult") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResult
-,  @QueryParam("createdBefore") 
-
- @Parameter(description = "Created before time")  String createdBefore
-,  @QueryParam("createdAfter") 
-
- @Parameter(description = "Created after time")  String createdAfter
 );
     @GET
     @Path("/events")
