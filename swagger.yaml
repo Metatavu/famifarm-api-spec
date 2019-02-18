@@ -886,6 +886,16 @@ paths:
       tags:
         - batches
       parameters:
+        - name: status
+          in: query
+          description: Filters list by derived batch status.
+          required: false
+          schema:
+            type: string
+            enum: 
+              - OPEN
+              - CLOSED
+              - NEGATIVE
         - name: firstResult
           in: query
           description: Where to start listing
@@ -1636,6 +1646,10 @@ components:
           description: "Time when the entry was added"
           type: "string"
           format: "date-time"
+        remainingUnits:
+          type: "number"
+          format: int32
+          readOnly: true
         type:
           type: "string"
           enum:
