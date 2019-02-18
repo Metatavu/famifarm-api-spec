@@ -6,7 +6,6 @@ import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.Batch;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T07:40:10.079+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T09:54:01.389+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -66,7 +65,7 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Batch> listBatches(@Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") OffsetDateTime createdBefore, @Param("createdAfter") OffsetDateTime createdAfter);
+  List<Batch> listBatches(@Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
 
   /**
    * List all batches
@@ -106,11 +105,11 @@ import feign.*;
       put("maxResult", EncodingUtils.encode(value));
       return this;
     }
-    public ListBatchesQueryParams createdBefore(final OffsetDateTime value) {
+    public ListBatchesQueryParams createdBefore(final String value) {
       put("createdBefore", EncodingUtils.encode(value));
       return this;
     }
-    public ListBatchesQueryParams createdAfter(final OffsetDateTime value) {
+    public ListBatchesQueryParams createdAfter(final String value) {
       put("createdAfter", EncodingUtils.encode(value));
       return this;
     }
