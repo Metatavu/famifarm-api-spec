@@ -23,6 +23,7 @@ public class Event   {
   private @Valid UUID userId = null;
   private @Valid OffsetDateTime startTime = null;
   private @Valid OffsetDateTime endTime = null;
+  private @Valid Integer remainingUnits = null;
 public enum TypeEnum {
 
     PLANTING(String.valueOf("PLANTING")), SOWING(String.valueOf("SOWING")), PACKING(String.valueOf("PACKING")), TABLE_SPREAD(String.valueOf("TABLE_SPREAD")), CULTIVATION_OBSERVATION(String.valueOf("CULTIVATION_OBSERVATION")), HARVEST(String.valueOf("HARVEST")), WASTEAGE(String.valueOf("WASTEAGE"));
@@ -153,6 +154,24 @@ public enum TypeEnum {
 
   /**
    **/
+  public Event remainingUnits(Integer remainingUnits) {
+    this.remainingUnits = remainingUnits;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("remainingUnits")
+
+  public Integer getRemainingUnits() {
+    return remainingUnits;
+  }
+  public void setRemainingUnits(Integer remainingUnits) {
+    this.remainingUnits = remainingUnits;
+  }
+
+  /**
+   **/
   public Event type(TypeEnum type) {
     this.type = type;
     return this;
@@ -204,13 +223,14 @@ public enum TypeEnum {
         Objects.equals(userId, event.userId) &&
         Objects.equals(startTime, event.startTime) &&
         Objects.equals(endTime, event.endTime) &&
+        Objects.equals(remainingUnits, event.remainingUnits) &&
         Objects.equals(type, event.type) &&
         Objects.equals(data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, batchId, userId, startTime, endTime, type, data);
+    return Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, type, data);
   }
 
   @Override
@@ -223,6 +243,7 @@ public enum TypeEnum {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

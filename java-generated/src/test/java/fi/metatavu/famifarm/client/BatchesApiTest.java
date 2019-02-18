@@ -70,11 +70,10 @@ public class BatchesApiTest {
      */
     @Test
     public void listBatchesTest() {
+        String status = null;
         Integer firstResult = null;
         Integer maxResult = null;
-        String createdBefore = null;
-        String createdAfter = null;
-        // List<Batch> response = api.listBatches(firstResult, maxResult, createdBefore, createdAfter);
+        // List<Batch> response = api.listBatches(status, firstResult, maxResult);
 
         // TODO: test validations
     }
@@ -90,10 +89,9 @@ public class BatchesApiTest {
     @Test
     public void listBatchesTestQueryMap() {
         BatchesApi.ListBatchesQueryParams queryParams = new BatchesApi.ListBatchesQueryParams()
+            .status(null)
             .firstResult(null)
-            .maxResult(null)
-            .createdBefore(null)
-            .createdAfter(null);
+            .maxResult(null);
         // List<Batch> response = api.listBatches(queryParams);
 
     // TODO: test validations

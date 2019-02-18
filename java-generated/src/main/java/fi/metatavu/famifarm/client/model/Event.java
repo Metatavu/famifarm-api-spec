@@ -24,7 +24,7 @@ import java.util.UUID;
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T09:54:01.389+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T10:14:54.634+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
@@ -45,6 +45,10 @@ import java.util.UUID;
   @JsonProperty("endTime")
 
   private OffsetDateTime endTime = null;
+
+  @JsonProperty("remainingUnits")
+
+  private Integer remainingUnits = null;
   /**
    * Gets or Sets type
    */
@@ -179,6 +183,14 @@ import java.util.UUID;
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
+  /**
+  * Get remainingUnits
+  * @return remainingUnits
+  **/
+  @Schema(description = "")
+  public Integer getRemainingUnits() {
+    return remainingUnits;
+  }
   public Event type(TypeEnum type) {
     this.type = type;
     return this;
@@ -229,13 +241,14 @@ import java.util.UUID;
         Objects.equals(this.userId, event.userId) &&
         Objects.equals(this.startTime, event.startTime) &&
         Objects.equals(this.endTime, event.endTime) &&
+        Objects.equals(this.remainingUnits, event.remainingUnits) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, type, data);
+    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, type, data);
   }
 
   @Override
@@ -248,6 +261,7 @@ import java.util.UUID;
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
