@@ -1346,6 +1346,28 @@
             "type" : "integer",
             "format" : "int32"
           }
+        }, {
+          "name" : "createdBefore",
+          "in" : "query",
+          "description" : "Created before time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }, {
+          "name" : "createdAfter",
+          "in" : "query",
+          "description" : "Created after time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
         } ],
         "responses" : {
           "200" : {
