@@ -23,7 +23,7 @@ import java.util.UUID;
  * PlantingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T07:31:56.542+02:00[Europe/Helsinki]")public class PlantingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T07:40:10.079+02:00[Europe/Helsinki]")public class PlantingEventData {
 
   @JsonProperty("productionLineId")
 
