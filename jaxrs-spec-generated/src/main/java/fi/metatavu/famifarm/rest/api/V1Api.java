@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-18T07:36:49.833+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-18T09:51:24.304+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -394,10 +394,10 @@ public interface V1Api {
  @Parameter(description = "How many items to return at one time")  Integer maxResult
 ,  @QueryParam("createdBefore") 
 
- @Parameter(description = "Created before time")  OffsetDateTime createdBefore
+ @Parameter(description = "Created before time")  String createdBefore
 ,  @QueryParam("createdAfter") 
 
- @Parameter(description = "Created after time")  OffsetDateTime createdAfter
+ @Parameter(description = "Created after time")  String createdAfter
 );
     @GET
     @Path("/events")

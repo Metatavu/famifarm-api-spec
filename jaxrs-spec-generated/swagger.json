@@ -1354,8 +1354,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type" : "string"
           }
         }, {
           "name" : "createdAfter",
@@ -1365,8 +1364,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type" : "string"
           }
         } ],
         "responses" : {
