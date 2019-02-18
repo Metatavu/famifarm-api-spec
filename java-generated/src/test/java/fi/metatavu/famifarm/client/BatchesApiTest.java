@@ -3,6 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.client.model.Batch;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,7 +73,9 @@ public class BatchesApiTest {
     public void listBatchesTest() {
         Integer firstResult = null;
         Integer maxResult = null;
-        // List<Batch> response = api.listBatches(firstResult, maxResult);
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
+        // List<Batch> response = api.listBatches(firstResult, maxResult, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -89,7 +92,9 @@ public class BatchesApiTest {
     public void listBatchesTestQueryMap() {
         BatchesApi.ListBatchesQueryParams queryParams = new BatchesApi.ListBatchesQueryParams()
             .firstResult(null)
-            .maxResult(null);
+            .maxResult(null)
+            .createdBefore(null)
+            .createdAfter(null);
         // List<Batch> response = api.listBatches(queryParams);
 
     // TODO: test validations
