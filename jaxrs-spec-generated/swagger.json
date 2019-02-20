@@ -2481,9 +2481,9 @@
             "description" : "How many gutter were used during the planting",
             "format" : "int32"
           },
-          "trayCount" : {
+          "cellCount" : {
             "type" : "integer",
-            "description" : "How many trays were planted",
+            "description" : "How many cells were planted",
             "format" : "int32"
           },
           "workerCount" : {

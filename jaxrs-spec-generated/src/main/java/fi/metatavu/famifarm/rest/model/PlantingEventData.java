@@ -21,7 +21,7 @@ public class PlantingEventData   {
   private @Valid UUID productionLineId = null;
   private @Valid Integer gutterSize = null;
   private @Valid Integer gutterCount = null;
-  private @Valid Integer trayCount = null;
+  private @Valid Integer cellCount = null;
   private @Valid Integer workerCount = null;
 
   /**
@@ -82,22 +82,22 @@ public class PlantingEventData   {
   }
 
   /**
-   * How many trays were planted
+   * How many cells were planted
    **/
-  public PlantingEventData trayCount(Integer trayCount) {
-    this.trayCount = trayCount;
+  public PlantingEventData cellCount(Integer cellCount) {
+    this.cellCount = cellCount;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "How many trays were planted")
-  @JsonProperty("trayCount")
+  //@ApiModelProperty(value = "How many cells were planted")
+  @JsonProperty("cellCount")
 
-  public Integer getTrayCount() {
-    return trayCount;
+  public Integer getCellCount() {
+    return cellCount;
   }
-  public void setTrayCount(Integer trayCount) {
-    this.trayCount = trayCount;
+  public void setCellCount(Integer cellCount) {
+    this.cellCount = cellCount;
   }
 
   /**
@@ -132,13 +132,13 @@ public class PlantingEventData   {
     return Objects.equals(productionLineId, plantingEventData.productionLineId) &&
         Objects.equals(gutterSize, plantingEventData.gutterSize) &&
         Objects.equals(gutterCount, plantingEventData.gutterCount) &&
-        Objects.equals(trayCount, plantingEventData.trayCount) &&
+        Objects.equals(cellCount, plantingEventData.cellCount) &&
         Objects.equals(workerCount, plantingEventData.workerCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, gutterSize, gutterCount, trayCount, workerCount);
+    return Objects.hash(productionLineId, gutterSize, gutterCount, cellCount, workerCount);
   }
 
   @Override
@@ -149,7 +149,7 @@ public class PlantingEventData   {
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("    gutterSize: ").append(toIndentedString(gutterSize)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
-    sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
+    sb.append("    cellCount: ").append(toIndentedString(cellCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
     sb.append("}");
     return sb.toString();
