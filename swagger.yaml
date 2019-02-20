@@ -1476,6 +1476,90 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  '/v1/drafts':
+    get:
+      summary: List all drafts
+      operationId: listDrafts
+      tags:
+        - drafts
+      parameters:
+        - name: userId
+          in: query
+          description: User id who's drafts are beign listed
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: type
+          in: query
+          description: Type of draft
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paged array of drafts
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Draft"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new draft
+      operationId: createDraft
+      requestBody:
+        description: Draft body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Draft"
+      tags:
+        - drafts
+      responses:
+        '200':
+          description: A created draft
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Draft"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/drafts/{draftId}':
+    delete:
+      summary: Deletes a draft
+      operationId: deleteDraft
+      tags:
+        - drafts
+      parameters:
+        - name: draftId
+          in: path
+          description: Draft id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   '/v1/reports/{type}':
     get:
       summary: Constructs report
@@ -1797,6 +1881,30 @@ components:
           format: "int32"
         description:
           type: "string"
+          
+    Draft:
+      type: "object"
+      required:
+        - type
+        - data
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        type:
+          type: "string"
+        data:
+          type: "string"
+        userId:
+          description: "Id of user who added draft"
+          type: "string"
+          format: "uuid"
+          readOnly: true
+        createdAt:
+          description: "Time when the draft was created"
+          type: "string"
+          format: "date-time"
+          readOnly: true
           
     ErrorResponse:
       type: object
