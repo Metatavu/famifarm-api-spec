@@ -1696,8 +1696,8 @@ components:
           description: "How many gutter were used during the planting"
           type: "integer"
           format: "int32"
-        trayCount:
-          description: "How many trays were planted"
+        cellCount:
+          description: "How many cells were planted"
           type: "integer"
           format: "int32"
         workerCount:
