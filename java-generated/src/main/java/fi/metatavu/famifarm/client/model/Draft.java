@@ -21,23 +21,31 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Identifies a single batch for it&#x27;s entire life-cycle
+ * Draft
  */
-@Schema(description = "Identifies a single batch for it's entire life-cycle")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T19:21:39.764+02:00[Europe/Helsinki]")public class Batch {
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T19:21:39.764+02:00[Europe/Helsinki]")public class Draft {
 
   @JsonProperty("id")
 
   private UUID id = null;
 
-  @JsonProperty("productId")
+  @JsonProperty("type")
 
-  private UUID productId = null;
+  private String type = null;
+
+  @JsonProperty("data")
+
+  private String data = null;
+
+  @JsonProperty("userId")
+
+  private UUID userId = null;
 
   @JsonProperty("createdAt")
 
   private OffsetDateTime createdAt = null;
-  public Batch id(UUID id) {
+  public Draft id(UUID id) {
     this.id = id;
     return this;
   }
@@ -55,41 +63,57 @@ import java.util.UUID;
   public void setId(UUID id) {
     this.id = id;
   }
-  public Batch productId(UUID productId) {
-    this.productId = productId;
+  public Draft type(String type) {
+    this.type = type;
     return this;
   }
 
   
 
   /**
-  * Get productId
-  * @return productId
+  * Get type
+  * @return type
   **/
   @Schema(required = true, description = "")
-  public UUID getProductId() {
-    return productId;
+  public String getType() {
+    return type;
   }
-  public void setProductId(UUID productId) {
-    this.productId = productId;
+  public void setType(String type) {
+    this.type = type;
   }
-  public Batch createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public Draft data(String data) {
+    this.data = data;
     return this;
   }
 
   
 
   /**
-  * Get createdAt
+  * Get data
+  * @return data
+  **/
+  @Schema(required = true, description = "")
+  public String getData() {
+    return data;
+  }
+  public void setData(String data) {
+    this.data = data;
+  }
+  /**
+  * Id of user who added draft
+  * @return userId
+  **/
+  @Schema(description = "Id of user who added draft")
+  public UUID getUserId() {
+    return userId;
+  }
+  /**
+  * Time when the draft was created
   * @return createdAt
   **/
-  @Schema(description = "")
+  @Schema(description = "Time when the draft was created")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
-  }
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,24 +123,28 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Batch batch = (Batch) o;
-    return Objects.equals(this.id, batch.id) &&
-        Objects.equals(this.productId, batch.productId) &&
-        Objects.equals(this.createdAt, batch.createdAt);
+    Draft draft = (Draft) o;
+    return Objects.equals(this.id, draft.id) &&
+        Objects.equals(this.type, draft.type) &&
+        Objects.equals(this.data, draft.data) &&
+        Objects.equals(this.userId, draft.userId) &&
+        Objects.equals(this.createdAt, draft.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, productId, createdAt);
+    return java.util.Objects.hash(id, type, data, userId, createdAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Batch {\n");
+    sb.append("class Draft {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

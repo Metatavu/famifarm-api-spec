@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Event of spreading the young plant trays to nursery tables
  */
 @Schema(description = "Event of spreading the young plant trays to nursery tables")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T15:39:05.163+02:00[Europe/Helsinki]")public class TableSpreadEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T19:21:39.764+02:00[Europe/Helsinki]")public class TableSpreadEventData {
 
   @JsonProperty("tableCount")
 
