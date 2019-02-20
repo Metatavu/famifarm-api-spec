@@ -23,7 +23,7 @@ import java.util.UUID;
  * PlantingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T14:36:54.043+02:00[Europe/Helsinki]")public class PlantingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T15:39:05.163+02:00[Europe/Helsinki]")public class PlantingEventData {
 
   @JsonProperty("productionLineId")
 
@@ -37,9 +37,9 @@ import java.util.UUID;
 
   private Integer gutterCount = null;
 
-  @JsonProperty("trayCount")
+  @JsonProperty("cellCount")
 
-  private Integer trayCount = null;
+  private Integer cellCount = null;
 
   @JsonProperty("workerCount")
 
@@ -98,23 +98,23 @@ import java.util.UUID;
   public void setGutterCount(Integer gutterCount) {
     this.gutterCount = gutterCount;
   }
-  public PlantingEventData trayCount(Integer trayCount) {
-    this.trayCount = trayCount;
+  public PlantingEventData cellCount(Integer cellCount) {
+    this.cellCount = cellCount;
     return this;
   }
 
   
 
   /**
-  * How many trays were planted
-  * @return trayCount
+  * How many cells were planted
+  * @return cellCount
   **/
-  @Schema(description = "How many trays were planted")
-  public Integer getTrayCount() {
-    return trayCount;
+  @Schema(description = "How many cells were planted")
+  public Integer getCellCount() {
+    return cellCount;
   }
-  public void setTrayCount(Integer trayCount) {
-    this.trayCount = trayCount;
+  public void setCellCount(Integer cellCount) {
+    this.cellCount = cellCount;
   }
   public PlantingEventData workerCount(Integer workerCount) {
     this.workerCount = workerCount;
@@ -146,13 +146,13 @@ import java.util.UUID;
     return Objects.equals(this.productionLineId, plantingEventData.productionLineId) &&
         Objects.equals(this.gutterSize, plantingEventData.gutterSize) &&
         Objects.equals(this.gutterCount, plantingEventData.gutterCount) &&
-        Objects.equals(this.trayCount, plantingEventData.trayCount) &&
+        Objects.equals(this.cellCount, plantingEventData.cellCount) &&
         Objects.equals(this.workerCount, plantingEventData.workerCount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, gutterSize, gutterCount, trayCount, workerCount);
+    return java.util.Objects.hash(productionLineId, gutterSize, gutterCount, cellCount, workerCount);
   }
 
   @Override
@@ -163,7 +163,7 @@ import java.util.UUID;
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("    gutterSize: ").append(toIndentedString(gutterSize)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
-    sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
+    sb.append("    cellCount: ").append(toIndentedString(cellCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
     sb.append("}");
     return sb.toString();
