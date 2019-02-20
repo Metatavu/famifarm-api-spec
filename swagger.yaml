@@ -1688,9 +1688,10 @@ components:
           description: "Production line id"
           type: "string"
           format: "uuid"
-        gutterNumber:
+        gutterSize:
           type: "integer"
           format: "int32"
+          description: "Size of gutter used in planting"
         gutterCount:
           description: "How many gutter were used during the planting"
           type: "integer"
