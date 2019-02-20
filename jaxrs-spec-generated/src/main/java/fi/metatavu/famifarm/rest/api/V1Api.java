@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-20T15:35:49.974+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-20T19:19:42.404+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -36,6 +36,16 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created batch", content = @Content(schema = @Schema(implementation = Batch.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createBatch(@Valid Batch body);
+    @POST
+    @Path("/drafts")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Create new draft", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "drafts" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A created draft", content = @Content(schema = @Schema(implementation = Draft.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response createDraft(@Valid Draft body);
     @POST
     @Path("/events")
     @Consumes({ "application/json" })
@@ -137,6 +147,18 @@ public interface V1Api {
     Response deleteBatch( @PathParam("batchId")
 
  @Parameter(description = "BatchId") UUID batchId
+);
+    @DELETE
+    @Path("/drafts/{draftId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Deletes a draft", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "drafts" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response deleteDraft( @PathParam("draftId")
+
+ @Parameter(description = "Draft id") UUID draftId
 );
     @DELETE
     @Path("/events/{eventId}")
@@ -401,6 +423,21 @@ public interface V1Api {
 ,  @QueryParam("createdAfter") 
 
  @Parameter(description = "Created after time")  String createdAfter
+);
+    @GET
+    @Path("/drafts")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all drafts", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "drafts" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A paged array of drafts", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Draft.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listDrafts( @NotNull  @QueryParam("userId") 
+
+ @Parameter(description = "User id who&#x27;s drafts are beign listed")  UUID userId
+, @NotNull  @QueryParam("type") 
+
+ @Parameter(description = "Type of draft")  String type
 );
     @GET
     @Path("/events")

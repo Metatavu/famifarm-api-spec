@@ -2214,6 +2214,132 @@
         }
       }
     },
+    "/v1/drafts" : {
+      "get" : {
+        "tags" : [ "drafts" ],
+        "summary" : "List all drafts",
+        "operationId" : "listDrafts",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "query",
+          "description" : "User id who's drafts are beign listed",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "Type of draft",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A paged array of drafts",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Draft"
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "drafts" ],
+        "summary" : "Create new draft",
+        "operationId" : "createDraft",
+        "requestBody" : {
+          "description" : "Draft body",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Draft"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "A created draft",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Draft"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/drafts/{draftId}" : {
+      "delete" : {
+        "tags" : [ "drafts" ],
+        "summary" : "Deletes a draft",
+        "operationId" : "deleteDraft",
+        "parameters" : [ {
+          "name" : "draftId",
+          "in" : "path",
+          "description" : "Draft id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Empty result indication a successful removal"
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reports/{type}" : {
       "get" : {
         "tags" : [ "reports" ],
@@ -2605,6 +2731,34 @@
           }
         },
         "description" : "Entry of products has been thrown away"
+      },
+      "Draft" : {
+        "required" : [ "data", "type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string",
+            "description" : "Id of user who added draft",
+            "format" : "uuid",
+            "readOnly" : true
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "Time when the draft was created",
+            "format" : "date-time",
+            "readOnly" : true
+          }
+        }
       },
       "ErrorResponse" : {
         "required" : [ "message" ],
