@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.File;
 
+import java.time.OffsetDateTime;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-18T10:12:38.199+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-20T07:03:24.635+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -394,6 +395,12 @@ public interface V1Api {
 ,  @QueryParam("maxResult") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResult
+,  @QueryParam("createdBefore") 
+
+ @Parameter(description = "Created before time")  String createdBefore
+,  @QueryParam("createdAfter") 
+
+ @Parameter(description = "Created after time")  String createdAfter
 );
     @GET
     @Path("/events")
