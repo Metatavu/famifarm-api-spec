@@ -23,15 +23,15 @@ import java.util.UUID;
  * PlantingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T07:05:50.380+02:00[Europe/Helsinki]")public class PlantingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T14:36:54.043+02:00[Europe/Helsinki]")public class PlantingEventData {
 
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
 
-  @JsonProperty("gutterNumber")
+  @JsonProperty("gutterSize")
 
-  private Integer gutterNumber = null;
+  private Integer gutterSize = null;
 
   @JsonProperty("gutterCount")
 
@@ -62,23 +62,23 @@ import java.util.UUID;
   public void setProductionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
   }
-  public PlantingEventData gutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
+  public PlantingEventData gutterSize(Integer gutterSize) {
+    this.gutterSize = gutterSize;
     return this;
   }
 
   
 
   /**
-  * Get gutterNumber
-  * @return gutterNumber
+  * Size of gutter used in planting
+  * @return gutterSize
   **/
-  @Schema(description = "")
-  public Integer getGutterNumber() {
-    return gutterNumber;
+  @Schema(description = "Size of gutter used in planting")
+  public Integer getGutterSize() {
+    return gutterSize;
   }
-  public void setGutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
+  public void setGutterSize(Integer gutterSize) {
+    this.gutterSize = gutterSize;
   }
   public PlantingEventData gutterCount(Integer gutterCount) {
     this.gutterCount = gutterCount;
@@ -144,7 +144,7 @@ import java.util.UUID;
     }
     PlantingEventData plantingEventData = (PlantingEventData) o;
     return Objects.equals(this.productionLineId, plantingEventData.productionLineId) &&
-        Objects.equals(this.gutterNumber, plantingEventData.gutterNumber) &&
+        Objects.equals(this.gutterSize, plantingEventData.gutterSize) &&
         Objects.equals(this.gutterCount, plantingEventData.gutterCount) &&
         Objects.equals(this.trayCount, plantingEventData.trayCount) &&
         Objects.equals(this.workerCount, plantingEventData.workerCount);
@@ -152,7 +152,7 @@ import java.util.UUID;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount);
+    return java.util.Objects.hash(productionLineId, gutterSize, gutterCount, trayCount, workerCount);
   }
 
   @Override
@@ -161,7 +161,7 @@ import java.util.UUID;
     sb.append("class PlantingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    gutterNumber: ").append(toIndentedString(gutterNumber)).append("\n");
+    sb.append("    gutterSize: ").append(toIndentedString(gutterSize)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
