@@ -1,6 +1,7 @@
 package fi.metatavu.famifarm.client;
 
 import fi.metatavu.famifarm.ApiClient;
+import java.time.OffsetDateTime;
 import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.Batch;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T10:14:54.634+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T07:05:50.380+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -56,14 +57,16 @@ import feign.*;
    * @param status Filters list by derived batch status. (optional)
    * @param firstResult Where to start listing (optional)
    * @param maxResult How many items to return at one time (optional)
+   * @param createdBefore Created before time (optional)
+   * @param createdAfter Created after time (optional)
    * @return List&lt;Batch&gt;
    */
-  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Batch> listBatches(@Param("status") String status, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult);
+  List<Batch> listBatches(@Param("status") String status, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
 
   /**
    * List all batches
@@ -79,11 +82,13 @@ import feign.*;
    *   <li>status - Filters list by derived batch status. (optional)</li>
    *   <li>firstResult - Where to start listing (optional)</li>
    *   <li>maxResult - How many items to return at one time (optional)</li>
+   *   <li>createdBefore - Created before time (optional)</li>
+   *   <li>createdAfter - Created after time (optional)</li>
    *   </ul>
    * @return List&lt;Batch&gt;
 
    */
-  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}")
+  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -104,6 +109,14 @@ import feign.*;
     }
     public ListBatchesQueryParams maxResult(final Integer value) {
       put("maxResult", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListBatchesQueryParams createdBefore(final String value) {
+      put("createdBefore", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListBatchesQueryParams createdAfter(final String value) {
+      put("createdAfter", EncodingUtils.encode(value));
       return this;
     }
   }

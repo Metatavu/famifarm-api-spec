@@ -73,7 +73,9 @@ public class BatchesApiTest {
         String status = null;
         Integer firstResult = null;
         Integer maxResult = null;
-        // List<Batch> response = api.listBatches(status, firstResult, maxResult);
+        String createdBefore = null;
+        String createdAfter = null;
+        // List<Batch> response = api.listBatches(status, firstResult, maxResult, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -91,7 +93,9 @@ public class BatchesApiTest {
         BatchesApi.ListBatchesQueryParams queryParams = new BatchesApi.ListBatchesQueryParams()
             .status(null)
             .firstResult(null)
-            .maxResult(null);
+            .maxResult(null)
+            .createdBefore(null)
+            .createdAfter(null);
         // List<Batch> response = api.listBatches(queryParams);
 
     // TODO: test validations

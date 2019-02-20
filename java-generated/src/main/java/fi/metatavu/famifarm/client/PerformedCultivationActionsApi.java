@@ -1,6 +1,7 @@
 package fi.metatavu.famifarm.client;
 
 import fi.metatavu.famifarm.ApiClient;
+import java.time.OffsetDateTime;
 import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.ErrorResponse;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-18T10:14:54.634+02:00[Europe/Helsinki]")public interface PerformedCultivationActionsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T07:05:50.380+02:00[Europe/Helsinki]")public interface PerformedCultivationActionsApi extends ApiClient.Api {
 
   /**
    * Create new performed cultivation action
