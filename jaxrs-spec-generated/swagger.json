@@ -2471,8 +2471,9 @@
             "description" : "Production line id",
             "format" : "uuid"
           },
-          "gutterNumber" : {
+          "gutterSize" : {
             "type" : "integer",
+            "description" : "Size of gutter used in planting",
             "format" : "int32"
           },
           "gutterCount" : {

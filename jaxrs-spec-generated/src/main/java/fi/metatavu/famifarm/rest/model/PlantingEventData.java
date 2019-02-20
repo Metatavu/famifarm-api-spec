@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class PlantingEventData   {
   private @Valid UUID productionLineId = null;
-  private @Valid Integer gutterNumber = null;
+  private @Valid Integer gutterSize = null;
   private @Valid Integer gutterCount = null;
   private @Valid Integer trayCount = null;
   private @Valid Integer workerCount = null;
@@ -44,21 +44,22 @@ public class PlantingEventData   {
   }
 
   /**
+   * Size of gutter used in planting
    **/
-  public PlantingEventData gutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
+  public PlantingEventData gutterSize(Integer gutterSize) {
+    this.gutterSize = gutterSize;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "")
-  @JsonProperty("gutterNumber")
+  //@ApiModelProperty(value = "Size of gutter used in planting")
+  @JsonProperty("gutterSize")
 
-  public Integer getGutterNumber() {
-    return gutterNumber;
+  public Integer getGutterSize() {
+    return gutterSize;
   }
-  public void setGutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
+  public void setGutterSize(Integer gutterSize) {
+    this.gutterSize = gutterSize;
   }
 
   /**
@@ -129,7 +130,7 @@ public class PlantingEventData   {
     }
     PlantingEventData plantingEventData = (PlantingEventData) o;
     return Objects.equals(productionLineId, plantingEventData.productionLineId) &&
-        Objects.equals(gutterNumber, plantingEventData.gutterNumber) &&
+        Objects.equals(gutterSize, plantingEventData.gutterSize) &&
         Objects.equals(gutterCount, plantingEventData.gutterCount) &&
         Objects.equals(trayCount, plantingEventData.trayCount) &&
         Objects.equals(workerCount, plantingEventData.workerCount);
@@ -137,7 +138,7 @@ public class PlantingEventData   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, gutterNumber, gutterCount, trayCount, workerCount);
+    return Objects.hash(productionLineId, gutterSize, gutterCount, trayCount, workerCount);
   }
 
   @Override
@@ -146,7 +147,7 @@ public class PlantingEventData   {
     sb.append("class PlantingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    gutterNumber: ").append(toIndentedString(gutterNumber)).append("\n");
+    sb.append("    gutterSize: ").append(toIndentedString(gutterSize)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
