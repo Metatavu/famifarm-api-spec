@@ -24,7 +24,7 @@ import java.util.UUID;
  * Product
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class Product {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class Product {
 
   @JsonProperty("id")
 
@@ -34,9 +34,9 @@ import java.util.UUID;
 
   private LocalizedEntry name = null;
 
-  @JsonProperty("defaultPackageSize")
+  @JsonProperty("defaultPackageSizeId")
 
-  private UUID defaultPackageSize = null;
+  private UUID defaultPackageSizeId = null;
   public Product id(UUID id) {
     this.id = id;
     return this;
@@ -73,23 +73,23 @@ import java.util.UUID;
   public void setName(LocalizedEntry name) {
     this.name = name;
   }
-  public Product defaultPackageSize(UUID defaultPackageSize) {
-    this.defaultPackageSize = defaultPackageSize;
+  public Product defaultPackageSizeId(UUID defaultPackageSizeId) {
+    this.defaultPackageSizeId = defaultPackageSizeId;
     return this;
   }
 
   
 
   /**
-  * Get defaultPackageSize
-  * @return defaultPackageSize
+  * Get defaultPackageSizeId
+  * @return defaultPackageSizeId
   **/
   @Schema(description = "")
-  public UUID getDefaultPackageSize() {
-    return defaultPackageSize;
+  public UUID getDefaultPackageSizeId() {
+    return defaultPackageSizeId;
   }
-  public void setDefaultPackageSize(UUID defaultPackageSize) {
-    this.defaultPackageSize = defaultPackageSize;
+  public void setDefaultPackageSizeId(UUID defaultPackageSizeId) {
+    this.defaultPackageSizeId = defaultPackageSizeId;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,12 +102,12 @@ import java.util.UUID;
     Product product = (Product) o;
     return Objects.equals(this.id, product.id) &&
         Objects.equals(this.name, product.name) &&
-        Objects.equals(this.defaultPackageSize, product.defaultPackageSize);
+        Objects.equals(this.defaultPackageSizeId, product.defaultPackageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, defaultPackageSize);
+    return java.util.Objects.hash(id, name, defaultPackageSizeId);
   }
 
   @Override
@@ -117,7 +117,7 @@ import java.util.UUID;
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    defaultPackageSize: ").append(toIndentedString(defaultPackageSize)).append("\n");
+    sb.append("    defaultPackageSizeId: ").append(toIndentedString(defaultPackageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

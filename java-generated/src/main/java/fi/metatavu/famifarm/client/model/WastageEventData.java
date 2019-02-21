@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.famifarm.client.model.EventType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
@@ -23,7 +24,7 @@ import java.util.UUID;
  * Entry of products has been thrown away
  */
 @Schema(description = "Entry of products has been thrown away")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class WastageEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class WastageEventData {
 
   @JsonProperty("reasonId")
 
@@ -33,9 +34,13 @@ import java.util.UUID;
 
   private Integer amount = null;
 
-  @JsonProperty("description")
+  @JsonProperty("productionLineId")
 
-  private String description = null;
+  private UUID productionLineId = null;
+
+  @JsonProperty("phase")
+
+  private EventType phase = null;
   public WastageEventData reasonId(UUID reasonId) {
     this.reasonId = reasonId;
     return this;
@@ -47,7 +52,7 @@ import java.util.UUID;
   * Id of reason a product has been thrown away
   * @return reasonId
   **/
-  @Schema(description = "Id of reason a product has been thrown away")
+  @Schema(required = true, description = "Id of reason a product has been thrown away")
   public UUID getReasonId() {
     return reasonId;
   }
@@ -65,30 +70,48 @@ import java.util.UUID;
   * Get amount
   * @return amount
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getAmount() {
     return amount;
   }
   public void setAmount(Integer amount) {
     this.amount = amount;
   }
-  public WastageEventData description(String description) {
-    this.description = description;
+  public WastageEventData productionLineId(UUID productionLineId) {
+    this.productionLineId = productionLineId;
     return this;
   }
 
   
 
   /**
-  * Get description
-  * @return description
+  * Get productionLineId
+  * @return productionLineId
   **/
   @Schema(description = "")
-  public String getDescription() {
-    return description;
+  public UUID getProductionLineId() {
+    return productionLineId;
   }
-  public void setDescription(String description) {
-    this.description = description;
+  public void setProductionLineId(UUID productionLineId) {
+    this.productionLineId = productionLineId;
+  }
+  public WastageEventData phase(EventType phase) {
+    this.phase = phase;
+    return this;
+  }
+
+  
+
+  /**
+  * Get phase
+  * @return phase
+  **/
+  @Schema(required = true, description = "")
+  public EventType getPhase() {
+    return phase;
+  }
+  public void setPhase(EventType phase) {
+    this.phase = phase;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -101,12 +124,13 @@ import java.util.UUID;
     WastageEventData wastageEventData = (WastageEventData) o;
     return Objects.equals(this.reasonId, wastageEventData.reasonId) &&
         Objects.equals(this.amount, wastageEventData.amount) &&
-        Objects.equals(this.description, wastageEventData.description);
+        Objects.equals(this.productionLineId, wastageEventData.productionLineId) &&
+        Objects.equals(this.phase, wastageEventData.phase);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(reasonId, amount, description);
+    return java.util.Objects.hash(reasonId, amount, productionLineId, phase);
   }
 
   @Override
@@ -116,7 +140,8 @@ import java.util.UUID;
     
     sb.append("    reasonId: ").append(toIndentedString(reasonId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
+    sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("}");
     return sb.toString();
   }

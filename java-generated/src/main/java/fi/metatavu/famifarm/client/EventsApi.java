@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
 
   /**
    * Create new event

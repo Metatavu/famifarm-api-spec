@@ -23,7 +23,7 @@ import java.util.UUID;
  * ProductionLine
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class ProductionLine {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class ProductionLine {
 
   @JsonProperty("id")
 
@@ -31,7 +31,7 @@ import java.util.UUID;
 
   @JsonProperty("lineNumber")
 
-  private Integer lineNumber = null;
+  private String lineNumber = null;
 
   @JsonProperty("defaultTeamId")
 
@@ -54,7 +54,7 @@ import java.util.UUID;
   public void setId(UUID id) {
     this.id = id;
   }
-  public ProductionLine lineNumber(Integer lineNumber) {
+  public ProductionLine lineNumber(String lineNumber) {
     this.lineNumber = lineNumber;
     return this;
   }
@@ -66,10 +66,10 @@ import java.util.UUID;
   * @return lineNumber
   **/
   @Schema(description = "")
-  public Integer getLineNumber() {
+  public String getLineNumber() {
     return lineNumber;
   }
-  public void setLineNumber(Integer lineNumber) {
+  public void setLineNumber(String lineNumber) {
     this.lineNumber = lineNumber;
   }
   public ProductionLine defaultTeamId(UUID defaultTeamId) {

@@ -25,15 +25,15 @@ import java.util.UUID;
  * CultivationObservationEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class CultivationObservationEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class CultivationObservationEventData {
 
   @JsonProperty("weight")
 
   private Double weight = null;
 
-  @JsonProperty("pests")
+  @JsonProperty("pestIds")
 
-  private String pests = null;
+  private List<UUID> pestIds = null;
 
   @JsonProperty("luminance")
 
@@ -60,23 +60,29 @@ import java.util.UUID;
   public void setWeight(Double weight) {
     this.weight = weight;
   }
-  public CultivationObservationEventData pests(String pests) {
-    this.pests = pests;
+  public CultivationObservationEventData pestIds(List<UUID> pestIds) {
+    this.pestIds = pestIds;
     return this;
   }
 
-  
+  public CultivationObservationEventData addPestIdsItem(UUID pestIdsItem) {
+    if (this.pestIds == null) {
+      this.pestIds = new ArrayList<>();
+    }
+    this.pestIds.add(pestIdsItem);
+    return this;
+  }
 
   /**
-  * Possible pest observations
-  * @return pests
+  * List of ids pests observed
+  * @return pestIds
   **/
-  @Schema(description = "Possible pest observations")
-  public String getPests() {
-    return pests;
+  @Schema(description = "List of ids pests observed")
+  public List<UUID> getPestIds() {
+    return pestIds;
   }
-  public void setPests(String pests) {
-    this.pests = pests;
+  public void setPestIds(List<UUID> pestIds) {
+    this.pestIds = pestIds;
   }
   public CultivationObservationEventData luminance(Double luminance) {
     this.luminance = luminance;
@@ -130,14 +136,14 @@ import java.util.UUID;
     }
     CultivationObservationEventData cultivationObservationEventData = (CultivationObservationEventData) o;
     return Objects.equals(this.weight, cultivationObservationEventData.weight) &&
-        Objects.equals(this.pests, cultivationObservationEventData.pests) &&
+        Objects.equals(this.pestIds, cultivationObservationEventData.pestIds) &&
         Objects.equals(this.luminance, cultivationObservationEventData.luminance) &&
         Objects.equals(this.performedActionIds, cultivationObservationEventData.performedActionIds);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(weight, pests, luminance, performedActionIds);
+    return java.util.Objects.hash(weight, pestIds, luminance, performedActionIds);
   }
 
   @Override
@@ -146,7 +152,7 @@ import java.util.UUID;
     sb.append("class CultivationObservationEventData {\n");
     
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
-    sb.append("    pests: ").append(toIndentedString(pests)).append("\n");
+    sb.append("    pestIds: ").append(toIndentedString(pestIds)).append("\n");
     sb.append("    luminance: ").append(toIndentedString(luminance)).append("\n");
     sb.append("    performedActionIds: ").append(toIndentedString(performedActionIds)).append("\n");
     sb.append("}");

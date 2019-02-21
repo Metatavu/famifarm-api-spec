@@ -24,7 +24,7 @@ import java.util.UUID;
  * Entry when a batch has been sowed
  */
 @Schema(description = "Entry when a batch has been sowed")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class SowingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class SowingEventData {
 
   @JsonProperty("productionLineId")
 
@@ -40,7 +40,7 @@ import java.util.UUID;
 
   @JsonProperty("amount")
 
-  private Double amount = null;
+  private Integer amount = null;
   public SowingEventData productionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
     return this;
@@ -95,7 +95,7 @@ import java.util.UUID;
   public void setCellType(CellType cellType) {
     this.cellType = cellType;
   }
-  public SowingEventData amount(Double amount) {
+  public SowingEventData amount(Integer amount) {
     this.amount = amount;
     return this;
   }
@@ -107,10 +107,10 @@ import java.util.UUID;
   * @return amount
   **/
   @Schema(required = true, description = "")
-  public Double getAmount() {
+  public Integer getAmount() {
     return amount;
   }
-  public void setAmount(Double amount) {
+  public void setAmount(Integer amount) {
     this.amount = amount;
   }
   @Override

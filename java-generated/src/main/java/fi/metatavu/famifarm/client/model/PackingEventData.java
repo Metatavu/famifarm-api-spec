@@ -23,15 +23,15 @@ import java.util.UUID;
  * PackingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class PackingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class PackingEventData {
 
   @JsonProperty("packedAmount")
 
   private Integer packedAmount = null;
 
-  @JsonProperty("packageSize")
+  @JsonProperty("packageSizeId")
 
-  private UUID packageSize = null;
+  private UUID packageSizeId = null;
   public PackingEventData packedAmount(Integer packedAmount) {
     this.packedAmount = packedAmount;
     return this;
@@ -50,23 +50,23 @@ import java.util.UUID;
   public void setPackedAmount(Integer packedAmount) {
     this.packedAmount = packedAmount;
   }
-  public PackingEventData packageSize(UUID packageSize) {
-    this.packageSize = packageSize;
+  public PackingEventData packageSizeId(UUID packageSizeId) {
+    this.packageSizeId = packageSizeId;
     return this;
   }
 
   
 
   /**
-  * Get packageSize
-  * @return packageSize
+  * Get packageSizeId
+  * @return packageSizeId
   **/
   @Schema(description = "")
-  public UUID getPackageSize() {
-    return packageSize;
+  public UUID getPackageSizeId() {
+    return packageSizeId;
   }
-  public void setPackageSize(UUID packageSize) {
-    this.packageSize = packageSize;
+  public void setPackageSizeId(UUID packageSizeId) {
+    this.packageSizeId = packageSizeId;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ import java.util.UUID;
     }
     PackingEventData packingEventData = (PackingEventData) o;
     return Objects.equals(this.packedAmount, packingEventData.packedAmount) &&
-        Objects.equals(this.packageSize, packingEventData.packageSize);
+        Objects.equals(this.packageSizeId, packingEventData.packageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(packedAmount, packageSize);
+    return java.util.Objects.hash(packedAmount, packageSizeId);
   }
 
   @Override
@@ -92,7 +92,7 @@ import java.util.UUID;
     sb.append("class PackingEventData {\n");
     
     sb.append("    packedAmount: ").append(toIndentedString(packedAmount)).append("\n");
-    sb.append("    packageSize: ").append(toIndentedString(packageSize)).append("\n");
+    sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

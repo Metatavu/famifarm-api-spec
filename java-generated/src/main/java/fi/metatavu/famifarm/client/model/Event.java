@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.famifarm.client.model.EventType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -24,7 +25,7 @@ import java.util.UUID;
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T10:34:09.122+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
@@ -49,46 +50,14 @@ import java.util.UUID;
   @JsonProperty("remainingUnits")
 
   private Integer remainingUnits = null;
-  /**
-   * Gets or Sets type
-   */
-  public enum TypeEnum {
-    PLANTING("PLANTING"),
-    SOWING("SOWING"),
-    PACKING("PACKING"),
-    TABLE_SPREAD("TABLE_SPREAD"),
-    CULTIVATION_OBSERVATION("CULTIVATION_OBSERVATION"),
-    HARVEST("HARVEST"),
-    WASTEAGE("WASTEAGE");
 
-    private String value;
+  @JsonProperty("additionalInformation")
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
+  private String additionalInformation = null;
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-  }
   @JsonProperty("type")
 
-  private TypeEnum type = null;
+  private EventType type = null;
 
   @JsonProperty("data")
 
@@ -191,7 +160,25 @@ import java.util.UUID;
   public Integer getRemainingUnits() {
     return remainingUnits;
   }
-  public Event type(TypeEnum type) {
+  public Event additionalInformation(String additionalInformation) {
+    this.additionalInformation = additionalInformation;
+    return this;
+  }
+
+  
+
+  /**
+  * Get additionalInformation
+  * @return additionalInformation
+  **/
+  @Schema(description = "")
+  public String getAdditionalInformation() {
+    return additionalInformation;
+  }
+  public void setAdditionalInformation(String additionalInformation) {
+    this.additionalInformation = additionalInformation;
+  }
+  public Event type(EventType type) {
     this.type = type;
     return this;
   }
@@ -203,10 +190,10 @@ import java.util.UUID;
   * @return type
   **/
   @Schema(required = true, description = "")
-  public TypeEnum getType() {
+  public EventType getType() {
     return type;
   }
-  public void setType(TypeEnum type) {
+  public void setType(EventType type) {
     this.type = type;
   }
   public Event data(Object data) {
@@ -242,13 +229,14 @@ import java.util.UUID;
         Objects.equals(this.startTime, event.startTime) &&
         Objects.equals(this.endTime, event.endTime) &&
         Objects.equals(this.remainingUnits, event.remainingUnits) &&
+        Objects.equals(this.additionalInformation, event.additionalInformation) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, type, data);
+    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, additionalInformation, type, data);
   }
 
   @Override
@@ -262,6 +250,7 @@ import java.util.UUID;
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
+    sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
