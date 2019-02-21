@@ -31,9 +31,29 @@ public class ReportsApiTest {
     @Test
     public void getReportTest() {
         String type = null;
-        // File response = api.getReport(type);
+        String fromTime = null;
+        String toTime = null;
+        // File response = api.getReport(type, fromTime, toTime);
 
         // TODO: test validations
     }
 
+    /**
+     * Constructs report
+     *
+     * 
+     *
+     * This tests the overload of the method that uses a Map for query parameters instead of
+     * listing them out individually.
+     */
+    @Test
+    public void getReportTestQueryMap() {
+        String type = null;
+        ReportsApi.GetReportQueryParams queryParams = new ReportsApi.GetReportQueryParams()
+            .fromTime(null)
+            .toTime(null);
+        // File response = api.getReport(type, queryParams);
+
+    // TODO: test validations
+    }
 }

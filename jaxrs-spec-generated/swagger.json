@@ -2571,6 +2571,26 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "name" : "fromTime",
+          "in" : "query",
+          "description" : "From time of the report",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "toTime",
+          "in" : "query",
+          "description" : "To time of the report",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -2737,6 +2757,10 @@
           "lineNumber" : {
             "type" : "integer",
             "format" : "int32"
+          },
+          "defaultTeamId" : {
+            "type" : "string",
+            "format" : "uuid"
           }
         }
       },

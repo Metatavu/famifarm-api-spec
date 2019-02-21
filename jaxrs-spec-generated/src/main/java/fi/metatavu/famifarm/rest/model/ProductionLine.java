@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class ProductionLine   {
   private @Valid UUID id = null;
   private @Valid Integer lineNumber = null;
+  private @Valid UUID defaultTeamId = null;
 
   /**
    **/
@@ -57,6 +58,24 @@ public class ProductionLine   {
     this.lineNumber = lineNumber;
   }
 
+  /**
+   **/
+  public ProductionLine defaultTeamId(UUID defaultTeamId) {
+    this.defaultTeamId = defaultTeamId;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("defaultTeamId")
+
+  public UUID getDefaultTeamId() {
+    return defaultTeamId;
+  }
+  public void setDefaultTeamId(UUID defaultTeamId) {
+    this.defaultTeamId = defaultTeamId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -68,12 +87,13 @@ public class ProductionLine   {
     }
     ProductionLine productionLine = (ProductionLine) o;
     return Objects.equals(id, productionLine.id) &&
-        Objects.equals(lineNumber, productionLine.lineNumber);
+        Objects.equals(lineNumber, productionLine.lineNumber) &&
+        Objects.equals(defaultTeamId, productionLine.defaultTeamId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, lineNumber);
+    return Objects.hash(id, lineNumber, defaultTeamId);
   }
 
   @Override
@@ -83,6 +103,7 @@ public class ProductionLine   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lineNumber: ").append(toIndentedString(lineNumber)).append("\n");
+    sb.append("    defaultTeamId: ").append(toIndentedString(defaultTeamId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
