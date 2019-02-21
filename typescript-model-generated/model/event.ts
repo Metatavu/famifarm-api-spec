@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { EventType } from './eventType';
 import { CultivationObservationEventData } from './cultivationObservationEventData';
 import { HarvestEventData } from './harvestEventData';
 import { PackingEventData } from './packingEventData';
@@ -33,7 +34,9 @@ export interface Event {
      * Time when the entry was added
      */
     endTime?: string;
-    type: Event.TypeEnum;
+    readonly remainingUnits?: number;
+    additionalInformation?: string;
+    type: EventType;
     data: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
 }
 export interface EventOpt { 
@@ -51,18 +54,8 @@ export interface EventOpt {
      * Time when the entry was added
      */
     endTime?: string;
-    type?: Event.TypeEnum;
+    readonly remainingUnits?: number;
+    additionalInformation?: string;
+    type?: EventType;
     data?: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
-}
-export namespace Event {
-    export type TypeEnum = 'PLANTING' | 'SOWING' | 'PACKING' | 'TABLE_SPREAD' | 'CULTIVATION_OBSERVATION' | 'HARVEST' | 'WASTEAGE';
-    export const TypeEnum = {
-        PLANTING: 'PLANTING' as TypeEnum,
-        SOWING: 'SOWING' as TypeEnum,
-        PACKING: 'PACKING' as TypeEnum,
-        TABLESPREAD: 'TABLE_SPREAD' as TypeEnum,
-        CULTIVATIONOBSERVATION: 'CULTIVATION_OBSERVATION' as TypeEnum,
-        HARVEST: 'HARVEST' as TypeEnum,
-        WASTEAGE: 'WASTEAGE' as TypeEnum
-    };
 }

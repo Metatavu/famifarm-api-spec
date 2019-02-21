@@ -16,12 +16,12 @@ export interface PackingEventData {
      * Amount of packed items
      */
     packedAmount?: number;
-    packageSize?: string;
+    packageSizeId?: string;
 }
 export interface PackingEventDataOpt { 
     /**
      * Amount of packed items
      */
     packedAmount?: number;
-    packageSize?: string;
+    packageSizeId?: string;
 }

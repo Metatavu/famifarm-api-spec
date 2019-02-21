@@ -16,15 +16,18 @@ export interface PlantingEventData {
      * Production line id
      */
     productionLineId?: string;
-    gutterNumber?: number;
+    /**
+     * Size of gutter used in planting
+     */
+    gutterSize?: number;
     /**
      * How many gutter were used during the planting
      */
     gutterCount?: number;
     /**
-     * How many trays were planted
+     * How many cells were planted
      */
-    trayCount?: number;
+    cellCount?: number;
     /**
      * How many workers were doing the planting
      */
@@ -35,15 +38,18 @@ export interface PlantingEventDataOpt {
      * Production line id
      */
     productionLineId?: string;
-    gutterNumber?: number;
+    /**
+     * Size of gutter used in planting
+     */
+    gutterSize?: number;
     /**
      * How many gutter were used during the planting
      */
     gutterCount?: number;
     /**
-     * How many trays were planted
+     * How many cells were planted
      */
-    trayCount?: number;
+    cellCount?: number;
     /**
      * How many workers were doing the planting
      */

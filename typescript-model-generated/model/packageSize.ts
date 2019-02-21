@@ -9,13 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { LocalizedEntry } from './localizedEntry';
 
 
 export interface PackageSize { 
     id?: string;
-    name?: string;
+    name?: LocalizedEntry;
+    size?: number;
 }
 export interface PackageSizeOpt { 
     id?: string;
-    name?: string;
+    name?: LocalizedEntry;
+    size?: number;
 }

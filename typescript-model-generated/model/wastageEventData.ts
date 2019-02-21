@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { EventType } from './eventType';
 
 
 /**
@@ -18,9 +19,10 @@ export interface WastageEventData {
     /**
      * Id of reason a product has been thrown away
      */
-    reasonId?: string;
-    amount?: number;
-    description?: string;
+    reasonId: string;
+    amount: number;
+    productionLineId?: string;
+    phase: EventType;
 }
 export interface WastageEventDataOpt { 
     /**
@@ -28,5 +30,6 @@ export interface WastageEventDataOpt {
      */
     reasonId?: string;
     amount?: number;
-    description?: string;
+    productionLineId?: string;
+    phase?: EventType;
 }

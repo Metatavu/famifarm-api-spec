@@ -17,9 +17,9 @@ export interface CultivationObservationEventData {
      */
     weight?: number;
     /**
-     * Possible pest observations
+     * List of ids pests observed
      */
-    pests?: string;
+    pestIds?: Array<string>;
     /**
      * Luminance in lumens on the time of observation
      */
@@ -35,9 +35,9 @@ export interface CultivationObservationEventDataOpt {
      */
     weight?: number;
     /**
-     * Possible pest observations
+     * List of ids pests observed
      */
-    pests?: string;
+    pestIds?: Array<string>;
     /**
      * Luminance in lumens on the time of observation
      */

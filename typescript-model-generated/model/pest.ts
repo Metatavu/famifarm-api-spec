@@ -9,15 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { LocalizedEntry } from './localizedEntry';
 
 
-export interface ProductionLine { 
+export interface Pest { 
     id?: string;
-    lineNumber?: string;
-    defaultTeamId?: string;
+    name?: LocalizedEntry;
 }
-export interface ProductionLineOpt { 
+export interface PestOpt { 
     id?: string;
-    lineNumber?: string;
-    defaultTeamId?: string;
+    name?: LocalizedEntry;
 }
