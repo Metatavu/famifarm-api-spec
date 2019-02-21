@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-21T07:04:12.439+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-02-21T09:18:19.569+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -76,6 +76,16 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created performedCultivationAction", content = @Content(schema = @Schema(implementation = PerformedCultivationAction.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createPerformedCultivationAction(@Valid PerformedCultivationAction body);
+    @POST
+    @Path("/pests")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Create new pest", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "pests" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A created pest", content = @Content(schema = @Schema(implementation = Pest.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response createPest(@Valid Pest body);
     @POST
     @Path("/products")
     @Consumes({ "application/json" })
@@ -197,6 +207,18 @@ public interface V1Api {
  @Parameter(description = "PerformedCultivationActionId") UUID performedCultivationActionId
 );
     @DELETE
+    @Path("/pests/{pestId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Deletes a pest", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "pests" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response deletePest( @PathParam("pestId")
+
+ @Parameter(description = "Pest id") UUID pestId
+);
+    @DELETE
     @Path("/products/{productId}")
     @Produces({ "application/json" })
     @Operation(summary = "Deletes a product", description = "", security = {
@@ -315,6 +337,18 @@ public interface V1Api {
     Response findPerformedCultivationAction( @PathParam("performedCultivationActionId")
 
  @Parameter(description = "Wastage reason id") UUID performedCultivationActionId
+);
+    @GET
+    @Path("/pests/{pestId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Find a pest", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "pests" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A found pest", content = @Content(schema = @Schema(implementation = Pest.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response findPest( @PathParam("pestId")
+
+ @Parameter(description = "Pest id") UUID pestId
 );
     @GET
     @Path("/products/{productId}")
@@ -488,6 +522,21 @@ public interface V1Api {
  @Parameter(description = "How many items to return at one time")  Integer maxResults
 );
     @GET
+    @Path("/pests")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all pests", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "pests" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A paged array of pests", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pest.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listPests(  @QueryParam("firstResult") 
+
+ @Parameter(description = "First index of results to be returned")  Integer firstResult
+,  @QueryParam("maxResults") 
+
+ @Parameter(description = "How many items to return at one time")  Integer maxResults
+);
+    @GET
     @Path("/productionLines")
     @Produces({ "application/json" })
     @Operation(summary = "List all production lines", description = "", security = {
@@ -628,6 +677,19 @@ public interface V1Api {
     Response updatePerformedCultivationAction(@Valid PerformedCultivationAction body, @PathParam("performedCultivationActionId")
 
  @Parameter(description = "Wastage reason id") UUID performedCultivationActionId
+);
+    @PUT
+    @Path("/pests/{pestId}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Updates a pest", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "pests" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An updated pest", content = @Content(schema = @Schema(implementation = Pest.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response updatePest(@Valid Pest body, @PathParam("pestId")
+
+ @Parameter(description = "Pest id") UUID pestId
 );
     @PUT
     @Path("/products/{productId}")
