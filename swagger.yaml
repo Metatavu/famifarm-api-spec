@@ -1800,9 +1800,6 @@ components:
         productionLineId:
           type: "string"
           format: "uuid"
-        gutterNumber:
-          type: "integer"
-          format: "int32"
         seedBatchId:
           type: "string"
           format: "uuid"
