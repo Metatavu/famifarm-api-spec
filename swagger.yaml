@@ -1715,6 +1715,18 @@ paths:
           required: true
           schema:
             type: string
+        - name: fromTime
+          in: query
+          description: From time of the report
+          required: false
+          schema:
+            type: "string"
+        - name: toTime
+          in: query
+          description: To time of the report
+          required: false
+          schema:
+            type: "string"
       responses:
         '200':
           description: Excel report
