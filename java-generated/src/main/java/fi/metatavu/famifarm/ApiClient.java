@@ -20,7 +20,7 @@ import feign.slf4j.Slf4jLogger;
 import fi.metatavu.famifarm.auth.*;
 import fi.metatavu.famifarm.auth.OAuth.AccessTokenListener;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T11:50:42.570+02:00[Europe/Helsinki]")public class ApiClient {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T14:10:27.946+02:00[Europe/Helsinki]")public class ApiClient {
   public interface Api {}
 
   protected ObjectMapper objectMapper;
