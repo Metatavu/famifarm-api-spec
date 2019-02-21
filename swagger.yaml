@@ -1867,7 +1867,7 @@ components:
       type: "string"
       enum:
         - SMALL
-        - LARGE   
+        - LARGE
 
     Batch:
       description: Identifies a single batch for it's entire life-cycle 
@@ -1884,6 +1884,7 @@ components:
         createdAt:
           type: "string"
           format: "date-time"
+
     Event:
       type: "object"
       required:
@@ -1914,16 +1915,10 @@ components:
           type: "integer"
           format: int32
           readOnly: true
-        type:
+        additionalInformation:
           type: "string"
-          enum:
-            - PLANTING
-            - SOWING
-            - PACKING
-            - TABLE_SPREAD
-            - CULTIVATION_OBSERVATION
-            - HARVEST
-            - WASTEAGE
+        type:
+          $ref: '#/components/schemas/EventType'
         data:
           oneOf:
             - $ref: '#/components/schemas/PlantingEventData'
@@ -1933,7 +1928,7 @@ components:
             - $ref: '#/components/schemas/CultivationObservationEventData'
             - $ref: '#/components/schemas/HarvestEventData'
             - $ref: '#/components/schemas/WastageEventData'
-            
+
     PlantingEventData:
       properties:
         productionLineId:
@@ -1974,8 +1969,8 @@ components:
         cellType:
           $ref: "#/components/schemas/CellType"
         amount:
-          type: "number"
-          format: "double"
+          type: "integer"
+          format: "int32"
           
     TableSpreadEventData:
       description: Event of spreading the young plant trays to nursery tables
@@ -1994,7 +1989,7 @@ components:
           description: "Amount of packed items"
           type: "integer"
           format: "int32"
-        packageSize:
+        packageSizeId:
           type: "string"
           format: "uuid"
           
@@ -2004,9 +1999,12 @@ components:
           description: "Weight in grams"
           type: "number"
           format: "double"
-        pests:
-          description: "Possible pest observations"
-          type: "string"        
+        pestIds:
+          description: "List of ids pests observed"
+          type: "array"
+          items:
+            type: "string"
+            format: "uuid"
         luminance:
           description: "Luminance in lumens on the time of observation"
           type: "number"
@@ -2035,6 +2033,10 @@ components:
           format: "uuid"
             
     WastageEventData:
+      required:
+        - amount
+        - phase
+        - reasonId
       description: "Entry of products has been thrown away"
       properties:
         reasonId:
@@ -2044,9 +2046,23 @@ components:
         amount:
           type: "integer"
           format: "int32"
-        description:
+        productionLineId:
           type: "string"
-          
+          format: "uuid"
+        phase:
+          $ref: '#/components/schemas/EventType'
+
+    EventType:
+      type: "string"
+      enum:
+        - PLANTING
+        - SOWING
+        - PACKING
+        - TABLE_SPREAD
+        - CULTIVATION_OBSERVATION
+        - HARVEST
+        - WASTEAGE
+
     Draft:
       type: "object"
       required:
