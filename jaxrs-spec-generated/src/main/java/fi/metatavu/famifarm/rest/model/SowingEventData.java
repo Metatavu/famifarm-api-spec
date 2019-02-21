@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class SowingEventData   {
   private @Valid UUID productionLineId = null;
-  private @Valid Integer gutterNumber = null;
   private @Valid UUID seedBatchId = null;
   private @Valid CellType cellType = null;
   private @Valid Double amount = null;
@@ -43,24 +42,6 @@ public class SowingEventData   {
   }
   public void setProductionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
-  }
-
-  /**
-   **/
-  public SowingEventData gutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "")
-  @JsonProperty("gutterNumber")
-
-  public Integer getGutterNumber() {
-    return gutterNumber;
-  }
-  public void setGutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
   }
 
   /**
@@ -130,7 +111,6 @@ public class SowingEventData   {
     }
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(productionLineId, sowingEventData.productionLineId) &&
-        Objects.equals(gutterNumber, sowingEventData.gutterNumber) &&
         Objects.equals(seedBatchId, sowingEventData.seedBatchId) &&
         Objects.equals(cellType, sowingEventData.cellType) &&
         Objects.equals(amount, sowingEventData.amount);
@@ -138,7 +118,7 @@ public class SowingEventData   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, gutterNumber, seedBatchId, cellType, amount);
+    return Objects.hash(productionLineId, seedBatchId, cellType, amount);
   }
 
   @Override
@@ -147,7 +127,6 @@ public class SowingEventData   {
     sb.append("class SowingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    gutterNumber: ").append(toIndentedString(gutterNumber)).append("\n");
     sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
     sb.append("    cellType: ").append(toIndentedString(cellType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
