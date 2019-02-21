@@ -1789,7 +1789,10 @@ components:
           type: "string"
           format: "uuid"
         name:
-          type: "string"
+          $ref: '#/components/schemas/LocalizedEntry'
+        size:
+          type: "integer"
+          format: "int32"
 
     Product:
       properties:
@@ -1798,9 +1801,10 @@ components:
           format: "uuid"
         name:
           $ref: '#/components/schemas/LocalizedEntry'
-        defaultPackageSize:
+        defaultPackageSizeId:
           type: "string"
           format: "uuid"
+
     Pest:
       type: "object"
       properties:
@@ -1809,6 +1813,7 @@ components:
           format: "uuid"
         name:
           $ref: '#/components/schemas/LocalizedEntry'
+
     Seed:
       type: "object"
       properties:
@@ -1816,8 +1821,8 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'      
-          
+          $ref: '#/components/schemas/LocalizedEntry'
+
     SeedBatch:
       type: "object"
       properties:
@@ -1825,7 +1830,7 @@ components:
           type: "string"
           format: "uuid"
         code:
-          description: "Manufacturer's code for the batch"        
+          description: "Manufacturer's code for the batch"
           type: "string"
         seedId:
           type: "string"
@@ -1834,22 +1839,21 @@ components:
           description: "Time when the seed has arrived"
           type: "string"
           format: "date-time"
-          
+
     ProductionLine:
       properties:
         id:
           type: "string"
           format: "uuid"
         lineNumber:
-          type: "integer"
-          format: "int32"    
-          
+          type: "string"
+
     CellType:
       type: "string"
       enum:
         - SMALL
         - LARGE   
-        
+
     Batch:
       description: Identifies a single batch for it's entire life-cycle 
       type: "object"
