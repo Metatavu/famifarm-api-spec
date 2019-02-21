@@ -2996,7 +2996,7 @@
       },
       "EventType" : {
         "type" : "string",
-        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTEAGE" ]
+        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTAGE" ]
       },
       "Draft" : {
         "required" : [ "data", "type" ],
