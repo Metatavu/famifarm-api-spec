@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class CultivationObservationEventData   {
   private @Valid Double weight = null;
-  private @Valid String pests = null;
+  private @Valid List<UUID> pestIds = new ArrayList<>();
   private @Valid Double luminance = null;
   private @Valid List<UUID> performedActionIds = new ArrayList<>();
 
@@ -43,22 +43,22 @@ public class CultivationObservationEventData   {
   }
 
   /**
-   * Possible pest observations
+   * List of ids pests observed
    **/
-  public CultivationObservationEventData pests(String pests) {
-    this.pests = pests;
+  public CultivationObservationEventData pestIds(List<UUID> pestIds) {
+    this.pestIds = pestIds;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "Possible pest observations")
-  @JsonProperty("pests")
+  //@ApiModelProperty(value = "List of ids pests observed")
+  @JsonProperty("pestIds")
 
-  public String getPests() {
-    return pests;
+  public List<UUID> getPestIds() {
+    return pestIds;
   }
-  public void setPests(String pests) {
-    this.pests = pests;
+  public void setPestIds(List<UUID> pestIds) {
+    this.pestIds = pestIds;
   }
 
   /**
@@ -110,14 +110,14 @@ public class CultivationObservationEventData   {
     }
     CultivationObservationEventData cultivationObservationEventData = (CultivationObservationEventData) o;
     return Objects.equals(weight, cultivationObservationEventData.weight) &&
-        Objects.equals(pests, cultivationObservationEventData.pests) &&
+        Objects.equals(pestIds, cultivationObservationEventData.pestIds) &&
         Objects.equals(luminance, cultivationObservationEventData.luminance) &&
         Objects.equals(performedActionIds, cultivationObservationEventData.performedActionIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(weight, pests, luminance, performedActionIds);
+    return Objects.hash(weight, pestIds, luminance, performedActionIds);
   }
 
   @Override
@@ -126,7 +126,7 @@ public class CultivationObservationEventData   {
     sb.append("class CultivationObservationEventData {\n");
     
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
-    sb.append("    pests: ").append(toIndentedString(pests)).append("\n");
+    sb.append("    pestIds: ").append(toIndentedString(pestIds)).append("\n");
     sb.append("    luminance: ").append(toIndentedString(luminance)).append("\n");
     sb.append("    performedActionIds: ").append(toIndentedString(performedActionIds)).append("\n");
     sb.append("}");

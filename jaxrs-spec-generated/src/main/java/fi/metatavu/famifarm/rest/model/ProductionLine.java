@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class ProductionLine   {
   private @Valid UUID id = null;
-  private @Valid Integer lineNumber = null;
+  private @Valid String lineNumber = null;
   private @Valid UUID defaultTeamId = null;
 
   /**
@@ -42,7 +42,7 @@ public class ProductionLine   {
 
   /**
    **/
-  public ProductionLine lineNumber(Integer lineNumber) {
+  public ProductionLine lineNumber(String lineNumber) {
     this.lineNumber = lineNumber;
     return this;
   }
@@ -51,10 +51,10 @@ public class ProductionLine   {
   //@ApiModelProperty(value = "")
   @JsonProperty("lineNumber")
 
-  public Integer getLineNumber() {
+  public String getLineNumber() {
     return lineNumber;
   }
-  public void setLineNumber(Integer lineNumber) {
+  public void setLineNumber(String lineNumber) {
     this.lineNumber = lineNumber;
   }
 

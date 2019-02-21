@@ -2683,7 +2683,11 @@
             "format" : "uuid"
           },
           "name" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/LocalizedEntry"
+          },
+          "size" : {
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       },
@@ -2696,7 +2700,7 @@
           "name" : {
             "$ref" : "#/components/schemas/LocalizedEntry"
           },
-          "defaultPackageSize" : {
+          "defaultPackageSizeId" : {
             "type" : "string",
             "format" : "uuid"
           }
@@ -2755,8 +2759,7 @@
             "format" : "uuid"
           },
           "lineNumber" : {
-            "type" : "integer",
-            "format" : "int32"
+            "type" : "string"
           },
           "defaultTeamId" : {
             "type" : "string",
@@ -2819,9 +2822,11 @@
             "format" : "int32",
             "readOnly" : true
           },
+          "additionalInformation" : {
+            "type" : "string"
+          },
           "type" : {
-            "type" : "string",
-            "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTEAGE" ]
+            "$ref" : "#/components/schemas/EventType"
           },
           "data" : {
             "oneOf" : [ {
@@ -2887,8 +2892,8 @@
             "$ref" : "#/components/schemas/CellType"
           },
           "amount" : {
-            "type" : "number",
-            "format" : "double"
+            "type" : "integer",
+            "format" : "int32"
           }
         },
         "description" : "Entry when a batch has been sowed"
@@ -2914,7 +2919,7 @@
             "description" : "Amount of packed items",
             "format" : "int32"
           },
-          "packageSize" : {
+          "packageSizeId" : {
             "type" : "string",
             "format" : "uuid"
           }
@@ -2927,9 +2932,13 @@
             "description" : "Weight in grams",
             "format" : "double"
           },
-          "pests" : {
-            "type" : "string",
-            "description" : "Possible pest observations"
+          "pestIds" : {
+            "type" : "array",
+            "description" : "List of ids pests observed",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
           },
           "luminance" : {
             "type" : "number",
@@ -2964,6 +2973,7 @@
         }
       },
       "WastageEventData" : {
+        "required" : [ "amount", "phase", "reasonId" ],
         "properties" : {
           "reasonId" : {
             "type" : "string",
@@ -2974,11 +2984,19 @@
             "type" : "integer",
             "format" : "int32"
           },
-          "description" : {
-            "type" : "string"
+          "productionLineId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "phase" : {
+            "$ref" : "#/components/schemas/EventType"
           }
         },
         "description" : "Entry of products has been thrown away"
+      },
+      "EventType" : {
+        "type" : "string",
+        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTEAGE" ]
       },
       "Draft" : {
         "required" : [ "data", "type" ],

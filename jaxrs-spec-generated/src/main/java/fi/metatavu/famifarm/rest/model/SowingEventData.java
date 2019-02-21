@@ -23,7 +23,7 @@ public class SowingEventData   {
   private @Valid UUID productionLineId = null;
   private @Valid UUID seedBatchId = null;
   private @Valid CellType cellType = null;
-  private @Valid Double amount = null;
+  private @Valid Integer amount = null;
 
   /**
    **/
@@ -83,7 +83,7 @@ public class SowingEventData   {
 
   /**
    **/
-  public SowingEventData amount(Double amount) {
+  public SowingEventData amount(Integer amount) {
     this.amount = amount;
     return this;
   }
@@ -93,10 +93,10 @@ public class SowingEventData   {
   @JsonProperty("amount")
   @NotNull
 
-  public Double getAmount() {
+  public Integer getAmount() {
     return amount;
   }
-  public void setAmount(Double amount) {
+  public void setAmount(Integer amount) {
     this.amount = amount;
   }
 

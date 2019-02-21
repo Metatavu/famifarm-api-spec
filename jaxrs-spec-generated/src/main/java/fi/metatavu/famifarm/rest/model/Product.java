@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Product   {
   private @Valid UUID id = null;
   private @Valid LocalizedEntry name = null;
-  private @Valid UUID defaultPackageSize = null;
+  private @Valid UUID defaultPackageSizeId = null;
 
   /**
    **/
@@ -60,20 +60,20 @@ public class Product   {
 
   /**
    **/
-  public Product defaultPackageSize(UUID defaultPackageSize) {
-    this.defaultPackageSize = defaultPackageSize;
+  public Product defaultPackageSizeId(UUID defaultPackageSizeId) {
+    this.defaultPackageSizeId = defaultPackageSizeId;
     return this;
   }
 
   
   //@ApiModelProperty(value = "")
-  @JsonProperty("defaultPackageSize")
+  @JsonProperty("defaultPackageSizeId")
 
-  public UUID getDefaultPackageSize() {
-    return defaultPackageSize;
+  public UUID getDefaultPackageSizeId() {
+    return defaultPackageSizeId;
   }
-  public void setDefaultPackageSize(UUID defaultPackageSize) {
-    this.defaultPackageSize = defaultPackageSize;
+  public void setDefaultPackageSizeId(UUID defaultPackageSizeId) {
+    this.defaultPackageSizeId = defaultPackageSizeId;
   }
 
 
@@ -88,12 +88,12 @@ public class Product   {
     Product product = (Product) o;
     return Objects.equals(id, product.id) &&
         Objects.equals(name, product.name) &&
-        Objects.equals(defaultPackageSize, product.defaultPackageSize);
+        Objects.equals(defaultPackageSizeId, product.defaultPackageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, defaultPackageSize);
+    return Objects.hash(id, name, defaultPackageSizeId);
   }
 
   @Override
@@ -103,7 +103,7 @@ public class Product   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    defaultPackageSize: ").append(toIndentedString(defaultPackageSize)).append("\n");
+    sb.append("    defaultPackageSizeId: ").append(toIndentedString(defaultPackageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

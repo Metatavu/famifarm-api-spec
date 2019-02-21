@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class PackageSize   {
   private @Valid UUID id = null;
-  private @Valid String name = null;
+  private @Valid LocalizedEntry name = null;
+  private @Valid Integer size = null;
 
   /**
    **/
@@ -41,7 +42,7 @@ public class PackageSize   {
 
   /**
    **/
-  public PackageSize name(String name) {
+  public PackageSize name(LocalizedEntry name) {
     this.name = name;
     return this;
   }
@@ -50,11 +51,29 @@ public class PackageSize   {
   //@ApiModelProperty(value = "")
   @JsonProperty("name")
 
-  public String getName() {
+  public LocalizedEntry getName() {
     return name;
   }
-  public void setName(String name) {
+  public void setName(LocalizedEntry name) {
     this.name = name;
+  }
+
+  /**
+   **/
+  public PackageSize size(Integer size) {
+    this.size = size;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("size")
+
+  public Integer getSize() {
+    return size;
+  }
+  public void setSize(Integer size) {
+    this.size = size;
   }
 
 
@@ -68,12 +87,13 @@ public class PackageSize   {
     }
     PackageSize packageSize = (PackageSize) o;
     return Objects.equals(id, packageSize.id) &&
-        Objects.equals(name, packageSize.name);
+        Objects.equals(name, packageSize.name) &&
+        Objects.equals(size, packageSize.size);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, size);
   }
 
   @Override
@@ -83,6 +103,7 @@ public class PackageSize   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("}");
     return sb.toString();
   }

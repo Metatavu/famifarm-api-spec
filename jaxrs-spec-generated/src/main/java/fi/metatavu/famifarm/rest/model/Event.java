@@ -24,38 +24,8 @@ public class Event   {
   private @Valid OffsetDateTime startTime = null;
   private @Valid OffsetDateTime endTime = null;
   private @Valid Integer remainingUnits = null;
-public enum TypeEnum {
-
-    PLANTING(String.valueOf("PLANTING")), SOWING(String.valueOf("SOWING")), PACKING(String.valueOf("PACKING")), TABLE_SPREAD(String.valueOf("TABLE_SPREAD")), CULTIVATION_OBSERVATION(String.valueOf("CULTIVATION_OBSERVATION")), HARVEST(String.valueOf("HARVEST")), WASTEAGE(String.valueOf("WASTEAGE"));
-
-
-    private String value;
-
-    TypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String v) {
-        for (TypeEnum b : TypeEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-  private @Valid TypeEnum type = null;
+  private @Valid String additionalInformation = null;
+  private @Valid EventType type = null;
   private @Valid Object data = null;
 
   /**
@@ -172,7 +142,25 @@ public enum TypeEnum {
 
   /**
    **/
-  public Event type(TypeEnum type) {
+  public Event additionalInformation(String additionalInformation) {
+    this.additionalInformation = additionalInformation;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("additionalInformation")
+
+  public String getAdditionalInformation() {
+    return additionalInformation;
+  }
+  public void setAdditionalInformation(String additionalInformation) {
+    this.additionalInformation = additionalInformation;
+  }
+
+  /**
+   **/
+  public Event type(EventType type) {
     this.type = type;
     return this;
   }
@@ -182,10 +170,10 @@ public enum TypeEnum {
   @JsonProperty("type")
   @NotNull
 
-  public TypeEnum getType() {
+  public EventType getType() {
     return type;
   }
-  public void setType(TypeEnum type) {
+  public void setType(EventType type) {
     this.type = type;
   }
 
@@ -224,13 +212,14 @@ public enum TypeEnum {
         Objects.equals(startTime, event.startTime) &&
         Objects.equals(endTime, event.endTime) &&
         Objects.equals(remainingUnits, event.remainingUnits) &&
+        Objects.equals(additionalInformation, event.additionalInformation) &&
         Objects.equals(type, event.type) &&
         Objects.equals(data, event.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, type, data);
+    return Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, additionalInformation, type, data);
   }
 
   @Override
@@ -244,6 +233,7 @@ public enum TypeEnum {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
+    sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

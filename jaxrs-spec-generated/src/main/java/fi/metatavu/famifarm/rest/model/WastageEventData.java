@@ -22,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class WastageEventData   {
   private @Valid UUID reasonId = null;
   private @Valid Integer amount = null;
-  private @Valid String description = null;
+  private @Valid UUID productionLineId = null;
+  private @Valid EventType phase = null;
 
   /**
    * Id of reason a product has been thrown away
@@ -33,8 +34,9 @@ public class WastageEventData   {
   }
 
   
-  //@ApiModelProperty(value = "Id of reason a product has been thrown away")
+  //@ApiModelProperty(required = true, value = "Id of reason a product has been thrown away")
   @JsonProperty("reasonId")
+  @NotNull
 
   public UUID getReasonId() {
     return reasonId;
@@ -51,8 +53,9 @@ public class WastageEventData   {
   }
 
   
-  //@ApiModelProperty(value = "")
+  //@ApiModelProperty(required = true, value = "")
   @JsonProperty("amount")
+  @NotNull
 
   public Integer getAmount() {
     return amount;
@@ -63,20 +66,39 @@ public class WastageEventData   {
 
   /**
    **/
-  public WastageEventData description(String description) {
-    this.description = description;
+  public WastageEventData productionLineId(UUID productionLineId) {
+    this.productionLineId = productionLineId;
     return this;
   }
 
   
   //@ApiModelProperty(value = "")
-  @JsonProperty("description")
+  @JsonProperty("productionLineId")
 
-  public String getDescription() {
-    return description;
+  public UUID getProductionLineId() {
+    return productionLineId;
   }
-  public void setDescription(String description) {
-    this.description = description;
+  public void setProductionLineId(UUID productionLineId) {
+    this.productionLineId = productionLineId;
+  }
+
+  /**
+   **/
+  public WastageEventData phase(EventType phase) {
+    this.phase = phase;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("phase")
+  @NotNull
+
+  public EventType getPhase() {
+    return phase;
+  }
+  public void setPhase(EventType phase) {
+    this.phase = phase;
   }
 
 
@@ -91,12 +113,13 @@ public class WastageEventData   {
     WastageEventData wastageEventData = (WastageEventData) o;
     return Objects.equals(reasonId, wastageEventData.reasonId) &&
         Objects.equals(amount, wastageEventData.amount) &&
-        Objects.equals(description, wastageEventData.description);
+        Objects.equals(productionLineId, wastageEventData.productionLineId) &&
+        Objects.equals(phase, wastageEventData.phase);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reasonId, amount, description);
+    return Objects.hash(reasonId, amount, productionLineId, phase);
   }
 
   @Override
@@ -106,7 +129,8 @@ public class WastageEventData   {
     
     sb.append("    reasonId: ").append(toIndentedString(reasonId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
+    sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("}");
     return sb.toString();
   }

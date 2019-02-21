@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class PackingEventData   {
   private @Valid Integer packedAmount = null;
-  private @Valid UUID packageSize = null;
+  private @Valid UUID packageSizeId = null;
 
   /**
    * Amount of packed items
@@ -42,20 +42,20 @@ public class PackingEventData   {
 
   /**
    **/
-  public PackingEventData packageSize(UUID packageSize) {
-    this.packageSize = packageSize;
+  public PackingEventData packageSizeId(UUID packageSizeId) {
+    this.packageSizeId = packageSizeId;
     return this;
   }
 
   
   //@ApiModelProperty(value = "")
-  @JsonProperty("packageSize")
+  @JsonProperty("packageSizeId")
 
-  public UUID getPackageSize() {
-    return packageSize;
+  public UUID getPackageSizeId() {
+    return packageSizeId;
   }
-  public void setPackageSize(UUID packageSize) {
-    this.packageSize = packageSize;
+  public void setPackageSizeId(UUID packageSizeId) {
+    this.packageSizeId = packageSizeId;
   }
 
 
@@ -69,12 +69,12 @@ public class PackingEventData   {
     }
     PackingEventData packingEventData = (PackingEventData) o;
     return Objects.equals(packedAmount, packingEventData.packedAmount) &&
-        Objects.equals(packageSize, packingEventData.packageSize);
+        Objects.equals(packageSizeId, packingEventData.packageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(packedAmount, packageSize);
+    return Objects.hash(packedAmount, packageSizeId);
   }
 
   @Override
@@ -83,7 +83,7 @@ public class PackingEventData   {
     sb.append("class PackingEventData {\n");
     
     sb.append("    packedAmount: ").append(toIndentedString(packedAmount)).append("\n");
-    sb.append("    packageSize: ").append(toIndentedString(packageSize)).append("\n");
+    sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
