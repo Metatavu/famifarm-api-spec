@@ -1842,8 +1842,11 @@ components:
           format: "uuid"
         lineNumber:
           type: "integer"
-          format: "int32"    
-          
+          format: "int32"
+        defaultTeamId:
+          type: "string"
+          format: "uuid"
+
     CellType:
       type: "string"
       enum:
