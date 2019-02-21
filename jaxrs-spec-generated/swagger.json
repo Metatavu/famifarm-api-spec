@@ -2737,6 +2737,10 @@
           "lineNumber" : {
             "type" : "integer",
             "format" : "int32"
+          },
+          "defaultTeamId" : {
+            "type" : "string",
+            "format" : "uuid"
           }
         }
       },
