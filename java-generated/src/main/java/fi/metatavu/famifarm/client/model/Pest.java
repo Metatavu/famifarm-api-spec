@@ -16,23 +16,24 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.famifarm.client.model.LocalizedEntry;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * ProductionLine
+ * Pest
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T09:20:59.306+02:00[Europe/Helsinki]")public class ProductionLine {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T09:20:59.306+02:00[Europe/Helsinki]")public class Pest {
 
   @JsonProperty("id")
 
   private UUID id = null;
 
-  @JsonProperty("lineNumber")
+  @JsonProperty("name")
 
-  private Integer lineNumber = null;
-  public ProductionLine id(UUID id) {
+  private LocalizedEntry name = null;
+  public Pest id(UUID id) {
     this.id = id;
     return this;
   }
@@ -50,23 +51,23 @@ import java.util.UUID;
   public void setId(UUID id) {
     this.id = id;
   }
-  public ProductionLine lineNumber(Integer lineNumber) {
-    this.lineNumber = lineNumber;
+  public Pest name(LocalizedEntry name) {
+    this.name = name;
     return this;
   }
 
   
 
   /**
-  * Get lineNumber
-  * @return lineNumber
+  * Get name
+  * @return name
   **/
   @Schema(description = "")
-  public Integer getLineNumber() {
-    return lineNumber;
+  public LocalizedEntry getName() {
+    return name;
   }
-  public void setLineNumber(Integer lineNumber) {
-    this.lineNumber = lineNumber;
+  public void setName(LocalizedEntry name) {
+    this.name = name;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -76,23 +77,23 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductionLine productionLine = (ProductionLine) o;
-    return Objects.equals(this.id, productionLine.id) &&
-        Objects.equals(this.lineNumber, productionLine.lineNumber);
+    Pest pest = (Pest) o;
+    return Objects.equals(this.id, pest.id) &&
+        Objects.equals(this.name, pest.name);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, lineNumber);
+    return java.util.Objects.hash(id, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductionLine {\n");
+    sb.append("class Pest {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    lineNumber: ").append(toIndentedString(lineNumber)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
