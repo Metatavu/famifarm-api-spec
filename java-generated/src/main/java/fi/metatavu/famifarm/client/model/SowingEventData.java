@@ -24,15 +24,11 @@ import java.util.UUID;
  * Entry when a batch has been sowed
  */
 @Schema(description = "Entry when a batch has been sowed")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-20T19:21:39.764+02:00[Europe/Helsinki]")public class SowingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T07:07:18.869+02:00[Europe/Helsinki]")public class SowingEventData {
 
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
-
-  @JsonProperty("gutterNumber")
-
-  private Integer gutterNumber = null;
 
   @JsonProperty("seedBatchId")
 
@@ -62,24 +58,6 @@ import java.util.UUID;
   }
   public void setProductionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
-  }
-  public SowingEventData gutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
-    return this;
-  }
-
-  
-
-  /**
-  * Get gutterNumber
-  * @return gutterNumber
-  **/
-  @Schema(description = "")
-  public Integer getGutterNumber() {
-    return gutterNumber;
-  }
-  public void setGutterNumber(Integer gutterNumber) {
-    this.gutterNumber = gutterNumber;
   }
   public SowingEventData seedBatchId(UUID seedBatchId) {
     this.seedBatchId = seedBatchId;
@@ -145,7 +123,6 @@ import java.util.UUID;
     }
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(this.productionLineId, sowingEventData.productionLineId) &&
-        Objects.equals(this.gutterNumber, sowingEventData.gutterNumber) &&
         Objects.equals(this.seedBatchId, sowingEventData.seedBatchId) &&
         Objects.equals(this.cellType, sowingEventData.cellType) &&
         Objects.equals(this.amount, sowingEventData.amount);
@@ -153,7 +130,7 @@ import java.util.UUID;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, gutterNumber, seedBatchId, cellType, amount);
+    return java.util.Objects.hash(productionLineId, seedBatchId, cellType, amount);
   }
 
   @Override
@@ -162,7 +139,6 @@ import java.util.UUID;
     sb.append("class SowingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    gutterNumber: ").append(toIndentedString(gutterNumber)).append("\n");
     sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
     sb.append("    cellType: ").append(toIndentedString(cellType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
