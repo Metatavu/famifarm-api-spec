@@ -1044,7 +1044,149 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+  '/v1/pests':
+    get:
+      summary: List all pests
+      operationId: listPests
+      tags:
+        - pests
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of pests
+          content:
+            application/json:    
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Pest"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new pest
+      operationId: createPest
+      requestBody:
+        description: Pest to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Pest"
+      tags:
+        - pests
+      responses:
+        '200':
+          description: A created pest
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Pest"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/pests/{pestId}':
+    get:
+      summary: Find a pest
+      operationId: findPest
+      tags:
+        - pests
+      parameters:
+        - name: pestId
+          in: path
+          description: Pest id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found pest
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Pest"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a pest
+      operationId: updatePest
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Pest"
+      tags:
+        - pests
+      parameters:
+        - name: pestId
+          in: path
+          description: Pest id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated pest
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Pest"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a pest
+      operationId: deletePest
+      tags:
+        - pests
+      parameters:
+        - name: pestId
+          in: path
+          description: Pest id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   '/v1/seeds':
     get:
       summary: List all seeds
@@ -1648,7 +1790,7 @@ components:
           format: "uuid"
         name:
           type: "string"
-  
+
     Product:
       properties:
         id:
@@ -1659,7 +1801,14 @@ components:
         defaultPackageSize:
           type: "string"
           format: "uuid"
-    
+    Pest:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          $ref: '#/components/schemas/LocalizedEntry'
     Seed:
       type: "object"
       properties:
