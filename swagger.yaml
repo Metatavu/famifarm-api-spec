@@ -2061,7 +2061,7 @@ components:
         - TABLE_SPREAD
         - CULTIVATION_OBSERVATION
         - HARVEST
-        - WASTEAGE
+        - WASTAGE
 
     Draft:
       type: "object"
