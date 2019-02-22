@@ -22,7 +22,7 @@ public enum EventType {
     TABLE_SPREAD("TABLE_SPREAD"),
     CULTIVATION_OBSERVATION("CULTIVATION_OBSERVATION"),
     HARVEST("HARVEST"),
-    WASTAGE("WASTAGE");
+    WASTEAGE("WASTEAGE");
 
   private String value;
 
