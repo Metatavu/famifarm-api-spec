@@ -24,7 +24,7 @@ import java.util.UUID;
  * Draft
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T14:10:27.946+02:00[Europe/Helsinki]")public class Draft {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-22T05:20:27.398+02:00[Europe/Helsinki]")public class Draft {
 
   @JsonProperty("id")
 

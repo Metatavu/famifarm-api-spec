@@ -24,7 +24,7 @@ import java.util.UUID;
  * Entry when a batch has been sowed
  */
 @Schema(description = "Entry when a batch has been sowed")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-21T14:10:27.946+02:00[Europe/Helsinki]")public class SowingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-22T05:20:27.398+02:00[Europe/Helsinki]")public class SowingEventData {
 
   @JsonProperty("productionLineId")
 
