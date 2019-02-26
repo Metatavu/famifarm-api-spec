@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-22T05:20:27.398+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-26T09:54:05.278+02:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -55,18 +55,19 @@ import feign.*;
    * List all batches
    * 
    * @param status Filters list by derived batch status. (optional)
+   * @param productId Filters list by product id (optional)
    * @param firstResult Where to start listing (optional)
    * @param maxResult How many items to return at one time (optional)
    * @param createdBefore Created before time (optional)
    * @param createdAfter Created after time (optional)
    * @return List&lt;Batch&gt;
    */
-  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
+  @RequestLine("GET /v1/batches?status={status}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Batch> listBatches(@Param("status") String status, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
+  List<Batch> listBatches(@Param("status") String status, @Param("productId") UUID productId, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
 
   /**
    * List all batches
@@ -80,6 +81,7 @@ import feign.*;
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
    *   <li>status - Filters list by derived batch status. (optional)</li>
+   *   <li>productId - Filters list by product id (optional)</li>
    *   <li>firstResult - Where to start listing (optional)</li>
    *   <li>maxResult - How many items to return at one time (optional)</li>
    *   <li>createdBefore - Created before time (optional)</li>
@@ -88,7 +90,7 @@ import feign.*;
    * @return List&lt;Batch&gt;
 
    */
-  @RequestLine("GET /v1/batches?status={status}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
+  @RequestLine("GET /v1/batches?status={status}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -101,6 +103,10 @@ import feign.*;
   public static class ListBatchesQueryParams extends HashMap<String, Object> {
     public ListBatchesQueryParams status(final String value) {
       put("status", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListBatchesQueryParams productId(final UUID value) {
+      put("productId", EncodingUtils.encode(value));
       return this;
     }
     public ListBatchesQueryParams firstResult(final Integer value) {
