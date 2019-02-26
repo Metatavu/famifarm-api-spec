@@ -896,6 +896,13 @@ paths:
               - OPEN
               - CLOSED
               - NEGATIVE
+        - name: productId
+          in: query
+          description: Filters list by product id
+          required: false
+          schema:
+            type: string
+            format: uuid
         - name: firstResult
           in: query
           description: Where to start listing
