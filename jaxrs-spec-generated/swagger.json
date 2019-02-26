@@ -1336,6 +1336,17 @@
             "enum" : [ "OPEN", "CLOSED", "NEGATIVE" ]
           }
         }, {
+          "name" : "productId",
+          "in" : "query",
+          "description" : "Filters list by product id",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
           "name" : "firstResult",
           "in" : "query",
           "description" : "Where to start listing",
@@ -2996,7 +3007,7 @@
       },
       "EventType" : {
         "type" : "string",
-        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTEAGE" ]
+        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTAGE" ]
       },
       "Draft" : {
         "required" : [ "data", "type" ],
