@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class HarvestEventData   {
   private @Valid UUID teamId = null;
+  private @Valid Integer amount = null;
 public enum TypeEnum {
 
     BAGGING(String.valueOf("BAGGING")), CUTTING(String.valueOf("CUTTING")), BOXING(String.valueOf("BOXING"));
@@ -73,6 +74,25 @@ public enum TypeEnum {
 
   /**
    **/
+  public HarvestEventData amount(Integer amount) {
+    this.amount = amount;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("amount")
+  @NotNull
+
+  public Integer getAmount() {
+    return amount;
+  }
+  public void setAmount(Integer amount) {
+    this.amount = amount;
+  }
+
+  /**
+   **/
   public HarvestEventData type(TypeEnum type) {
     this.type = type;
     return this;
@@ -119,13 +139,14 @@ public enum TypeEnum {
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
     return Objects.equals(teamId, harvestEventData.teamId) &&
+        Objects.equals(amount, harvestEventData.amount) &&
         Objects.equals(type, harvestEventData.type) &&
         Objects.equals(productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(teamId, type, productionLineId);
+    return Objects.hash(teamId, amount, type, productionLineId);
   }
 
   @Override
@@ -134,6 +155,7 @@ public enum TypeEnum {
     sb.append("class HarvestEventData {\n");
     
     sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("}");
