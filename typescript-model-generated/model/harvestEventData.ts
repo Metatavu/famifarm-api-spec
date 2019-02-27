@@ -13,6 +13,7 @@
 
 export interface HarvestEventData { 
     teamId?: string;
+    amount: number;
     type?: HarvestEventData.TypeEnum;
     /**
      * Production line id
@@ -21,6 +22,7 @@ export interface HarvestEventData {
 }
 export interface HarvestEventDataOpt { 
     teamId?: string;
+    amount?: number;
     type?: HarvestEventData.TypeEnum;
     /**
      * Production line id
