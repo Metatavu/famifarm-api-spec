@@ -23,11 +23,15 @@ import java.util.UUID;
  * HarvestEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-26T09:54:05.278+02:00[Europe/Helsinki]")public class HarvestEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class HarvestEventData {
 
   @JsonProperty("teamId")
 
   private UUID teamId = null;
+
+  @JsonProperty("amount")
+
+  private Integer amount = null;
   /**
    * Gets or Sets type
    */
@@ -86,6 +90,24 @@ import java.util.UUID;
   public void setTeamId(UUID teamId) {
     this.teamId = teamId;
   }
+  public HarvestEventData amount(Integer amount) {
+    this.amount = amount;
+    return this;
+  }
+
+  
+
+  /**
+  * Get amount
+  * @return amount
+  **/
+  @Schema(required = true, description = "")
+  public Integer getAmount() {
+    return amount;
+  }
+  public void setAmount(Integer amount) {
+    this.amount = amount;
+  }
   public HarvestEventData type(TypeEnum type) {
     this.type = type;
     return this;
@@ -132,13 +154,14 @@ import java.util.UUID;
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
     return Objects.equals(this.teamId, harvestEventData.teamId) &&
+        Objects.equals(this.amount, harvestEventData.amount) &&
         Objects.equals(this.type, harvestEventData.type) &&
         Objects.equals(this.productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(teamId, type, productionLineId);
+    return java.util.Objects.hash(teamId, amount, type, productionLineId);
   }
 
   @Override
@@ -147,6 +170,7 @@ import java.util.UUID;
     sb.append("class HarvestEventData {\n");
     
     sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("}");
