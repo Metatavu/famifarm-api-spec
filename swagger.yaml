@@ -2024,10 +2024,15 @@ components:
             format: "uuid"
             
     HarvestEventData:
+      required:
+        - amount
       properties:
         teamId:
           type: "string"
           format: "uuid"
+        amount:
+          type: "integer"
+          format: "int32"
         type:
           type: "string"
           enum:

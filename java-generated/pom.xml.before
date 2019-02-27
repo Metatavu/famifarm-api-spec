@@ -4,7 +4,7 @@
   <artifactId>famifarm-api-client</artifactId>
   <packaging>jar</packaging>
   <name>famifarm-api-client</name>
-  <version>1.0.23-SNAPSHOT</version>
+  <version>1.0.26-SNAPSHOT</version>
   <description>Famifarm API specifications</description>
   <url>https://github.com/Metatavu/famifarm-api-spec</url>
 
