@@ -23,32 +23,32 @@ import java.util.UUID;
  * PackingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class PackingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class PackingEventData {
 
-  @JsonProperty("packedAmount")
+  @JsonProperty("packedCount")
 
-  private Integer packedAmount = null;
+  private Integer packedCount = null;
 
   @JsonProperty("packageSizeId")
 
   private UUID packageSizeId = null;
-  public PackingEventData packedAmount(Integer packedAmount) {
-    this.packedAmount = packedAmount;
+  public PackingEventData packedCount(Integer packedCount) {
+    this.packedCount = packedCount;
     return this;
   }
 
   
 
   /**
-  * Amount of packed items
-  * @return packedAmount
+  * Amount of created packages
+  * @return packedCount
   **/
-  @Schema(description = "Amount of packed items")
-  public Integer getPackedAmount() {
-    return packedAmount;
+  @Schema(description = "Amount of created packages")
+  public Integer getPackedCount() {
+    return packedCount;
   }
-  public void setPackedAmount(Integer packedAmount) {
-    this.packedAmount = packedAmount;
+  public void setPackedCount(Integer packedCount) {
+    this.packedCount = packedCount;
   }
   public PackingEventData packageSizeId(UUID packageSizeId) {
     this.packageSizeId = packageSizeId;
@@ -77,13 +77,13 @@ import java.util.UUID;
       return false;
     }
     PackingEventData packingEventData = (PackingEventData) o;
-    return Objects.equals(this.packedAmount, packingEventData.packedAmount) &&
+    return Objects.equals(this.packedCount, packingEventData.packedCount) &&
         Objects.equals(this.packageSizeId, packingEventData.packageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(packedAmount, packageSizeId);
+    return java.util.Objects.hash(packedCount, packageSizeId);
   }
 
   @Override
@@ -91,7 +91,7 @@ import java.util.UUID;
     StringBuilder sb = new StringBuilder();
     sb.append("class PackingEventData {\n");
     
-    sb.append("    packedAmount: ").append(toIndentedString(packedAmount)).append("\n");
+    sb.append("    packedCount: ").append(toIndentedString(packedCount)).append("\n");
     sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();

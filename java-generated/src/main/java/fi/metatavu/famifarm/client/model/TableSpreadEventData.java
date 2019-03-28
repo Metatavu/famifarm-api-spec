@@ -22,32 +22,32 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Event of spreading the young plant trays to nursery tables
  */
 @Schema(description = "Event of spreading the young plant trays to nursery tables")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class TableSpreadEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class TableSpreadEventData {
 
-  @JsonProperty("tableCount")
+  @JsonProperty("trayCount")
 
-  private Integer tableCount = null;
+  private Integer trayCount = null;
 
   @JsonProperty("location")
 
   private String location = null;
-  public TableSpreadEventData tableCount(Integer tableCount) {
-    this.tableCount = tableCount;
+  public TableSpreadEventData trayCount(Integer trayCount) {
+    this.trayCount = trayCount;
     return this;
   }
 
   
 
   /**
-  * Count of tables used
-  * @return tableCount
+  * Count of trays used
+  * @return trayCount
   **/
-  @Schema(description = "Count of tables used")
-  public Integer getTableCount() {
-    return tableCount;
+  @Schema(description = "Count of trays used")
+  public Integer getTrayCount() {
+    return trayCount;
   }
-  public void setTableCount(Integer tableCount) {
-    this.tableCount = tableCount;
+  public void setTrayCount(Integer trayCount) {
+    this.trayCount = trayCount;
   }
   public TableSpreadEventData location(String location) {
     this.location = location;
@@ -76,13 +76,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
       return false;
     }
     TableSpreadEventData tableSpreadEventData = (TableSpreadEventData) o;
-    return Objects.equals(this.tableCount, tableSpreadEventData.tableCount) &&
+    return Objects.equals(this.trayCount, tableSpreadEventData.trayCount) &&
         Objects.equals(this.location, tableSpreadEventData.location);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(tableCount, location);
+    return java.util.Objects.hash(trayCount, location);
   }
 
   @Override
@@ -90,7 +90,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     StringBuilder sb = new StringBuilder();
     sb.append("class TableSpreadEventData {\n");
     
-    sb.append("    tableCount: ").append(toIndentedString(tableCount)).append("\n");
+    sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();

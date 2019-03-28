@@ -23,15 +23,11 @@ import java.util.UUID;
  * HarvestEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class HarvestEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class HarvestEventData {
 
-  @JsonProperty("teamId")
+  @JsonProperty("gutterCount")
 
-  private UUID teamId = null;
-
-  @JsonProperty("amount")
-
-  private Integer amount = null;
+  private Integer gutterCount = null;
   /**
    * Gets or Sets type
    */
@@ -72,41 +68,23 @@ import java.util.UUID;
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
-  public HarvestEventData teamId(UUID teamId) {
-    this.teamId = teamId;
+  public HarvestEventData gutterCount(Integer gutterCount) {
+    this.gutterCount = gutterCount;
     return this;
   }
 
   
 
   /**
-  * Get teamId
-  * @return teamId
+  * Get gutterCount
+  * @return gutterCount
   **/
   @Schema(description = "")
-  public UUID getTeamId() {
-    return teamId;
+  public Integer getGutterCount() {
+    return gutterCount;
   }
-  public void setTeamId(UUID teamId) {
-    this.teamId = teamId;
-  }
-  public HarvestEventData amount(Integer amount) {
-    this.amount = amount;
-    return this;
-  }
-
-  
-
-  /**
-  * Get amount
-  * @return amount
-  **/
-  @Schema(required = true, description = "")
-  public Integer getAmount() {
-    return amount;
-  }
-  public void setAmount(Integer amount) {
-    this.amount = amount;
+  public void setGutterCount(Integer gutterCount) {
+    this.gutterCount = gutterCount;
   }
   public HarvestEventData type(TypeEnum type) {
     this.type = type;
@@ -153,15 +131,14 @@ import java.util.UUID;
       return false;
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
-    return Objects.equals(this.teamId, harvestEventData.teamId) &&
-        Objects.equals(this.amount, harvestEventData.amount) &&
+    return Objects.equals(this.gutterCount, harvestEventData.gutterCount) &&
         Objects.equals(this.type, harvestEventData.type) &&
         Objects.equals(this.productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(teamId, amount, type, productionLineId);
+    return java.util.Objects.hash(gutterCount, type, productionLineId);
   }
 
   @Override
@@ -169,8 +146,7 @@ import java.util.UUID;
     StringBuilder sb = new StringBuilder();
     sb.append("class HarvestEventData {\n");
     
-    sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("}");

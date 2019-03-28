@@ -16,7 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.famifarm.client.model.CellType;
+import fi.metatavu.famifarm.client.model.PotType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ import java.util.UUID;
  * Entry when a batch has been sowed
  */
 @Schema(description = "Entry when a batch has been sowed")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class SowingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class SowingEventData {
 
   @JsonProperty("productionLineId")
 
@@ -34,9 +34,9 @@ import java.util.UUID;
 
   private UUID seedBatchId = null;
 
-  @JsonProperty("cellType")
+  @JsonProperty("potType")
 
-  private CellType cellType = null;
+  private PotType potType = null;
 
   @JsonProperty("amount")
 
@@ -77,23 +77,23 @@ import java.util.UUID;
   public void setSeedBatchId(UUID seedBatchId) {
     this.seedBatchId = seedBatchId;
   }
-  public SowingEventData cellType(CellType cellType) {
-    this.cellType = cellType;
+  public SowingEventData potType(PotType potType) {
+    this.potType = potType;
     return this;
   }
 
   
 
   /**
-  * Get cellType
-  * @return cellType
+  * Get potType
+  * @return potType
   **/
-  @Schema(required = true, description = "")
-  public CellType getCellType() {
-    return cellType;
+  @Schema(description = "")
+  public PotType getPotType() {
+    return potType;
   }
-  public void setCellType(CellType cellType) {
-    this.cellType = cellType;
+  public void setPotType(PotType potType) {
+    this.potType = potType;
   }
   public SowingEventData amount(Integer amount) {
     this.amount = amount;
@@ -124,13 +124,13 @@ import java.util.UUID;
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(this.productionLineId, sowingEventData.productionLineId) &&
         Objects.equals(this.seedBatchId, sowingEventData.seedBatchId) &&
-        Objects.equals(this.cellType, sowingEventData.cellType) &&
+        Objects.equals(this.potType, sowingEventData.potType) &&
         Objects.equals(this.amount, sowingEventData.amount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, seedBatchId, cellType, amount);
+    return java.util.Objects.hash(productionLineId, seedBatchId, potType, amount);
   }
 
   @Override
@@ -140,7 +140,7 @@ import java.util.UUID;
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
-    sb.append("    cellType: ").append(toIndentedString(cellType)).append("\n");
+    sb.append("    potType: ").append(toIndentedString(potType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -23,23 +23,23 @@ import java.util.UUID;
  * PlantingEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-02-27T09:23:24.046+02:00[Europe/Helsinki]")public class PlantingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class PlantingEventData {
 
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
 
-  @JsonProperty("gutterSize")
+  @JsonProperty("gutterHoleCount")
 
-  private Integer gutterSize = null;
+  private Integer gutterHoleCount = null;
 
   @JsonProperty("gutterCount")
 
   private Integer gutterCount = null;
 
-  @JsonProperty("cellCount")
+  @JsonProperty("trayCount")
 
-  private Integer cellCount = null;
+  private Integer trayCount = null;
 
   @JsonProperty("workerCount")
 
@@ -62,23 +62,23 @@ import java.util.UUID;
   public void setProductionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
   }
-  public PlantingEventData gutterSize(Integer gutterSize) {
-    this.gutterSize = gutterSize;
+  public PlantingEventData gutterHoleCount(Integer gutterHoleCount) {
+    this.gutterHoleCount = gutterHoleCount;
     return this;
   }
 
   
 
   /**
-  * Size of gutter used in planting
-  * @return gutterSize
+  * Number of holes in gutter used in planting
+  * @return gutterHoleCount
   **/
-  @Schema(description = "Size of gutter used in planting")
-  public Integer getGutterSize() {
-    return gutterSize;
+  @Schema(description = "Number of holes in gutter used in planting")
+  public Integer getGutterHoleCount() {
+    return gutterHoleCount;
   }
-  public void setGutterSize(Integer gutterSize) {
-    this.gutterSize = gutterSize;
+  public void setGutterHoleCount(Integer gutterHoleCount) {
+    this.gutterHoleCount = gutterHoleCount;
   }
   public PlantingEventData gutterCount(Integer gutterCount) {
     this.gutterCount = gutterCount;
@@ -98,23 +98,23 @@ import java.util.UUID;
   public void setGutterCount(Integer gutterCount) {
     this.gutterCount = gutterCount;
   }
-  public PlantingEventData cellCount(Integer cellCount) {
-    this.cellCount = cellCount;
+  public PlantingEventData trayCount(Integer trayCount) {
+    this.trayCount = trayCount;
     return this;
   }
 
   
 
   /**
-  * How many cells were planted
-  * @return cellCount
+  * How many trays were planted
+  * @return trayCount
   **/
-  @Schema(description = "How many cells were planted")
-  public Integer getCellCount() {
-    return cellCount;
+  @Schema(description = "How many trays were planted")
+  public Integer getTrayCount() {
+    return trayCount;
   }
-  public void setCellCount(Integer cellCount) {
-    this.cellCount = cellCount;
+  public void setTrayCount(Integer trayCount) {
+    this.trayCount = trayCount;
   }
   public PlantingEventData workerCount(Integer workerCount) {
     this.workerCount = workerCount;
@@ -144,15 +144,15 @@ import java.util.UUID;
     }
     PlantingEventData plantingEventData = (PlantingEventData) o;
     return Objects.equals(this.productionLineId, plantingEventData.productionLineId) &&
-        Objects.equals(this.gutterSize, plantingEventData.gutterSize) &&
+        Objects.equals(this.gutterHoleCount, plantingEventData.gutterHoleCount) &&
         Objects.equals(this.gutterCount, plantingEventData.gutterCount) &&
-        Objects.equals(this.cellCount, plantingEventData.cellCount) &&
+        Objects.equals(this.trayCount, plantingEventData.trayCount) &&
         Objects.equals(this.workerCount, plantingEventData.workerCount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, gutterSize, gutterCount, cellCount, workerCount);
+    return java.util.Objects.hash(productionLineId, gutterHoleCount, gutterCount, trayCount, workerCount);
   }
 
   @Override
@@ -161,9 +161,9 @@ import java.util.UUID;
     sb.append("class PlantingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    gutterSize: ").append(toIndentedString(gutterSize)).append("\n");
+    sb.append("    gutterHoleCount: ").append(toIndentedString(gutterHoleCount)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
-    sb.append("    cellCount: ").append(toIndentedString(cellCount)).append("\n");
+    sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    workerCount: ").append(toIndentedString(workerCount)).append("\n");
     sb.append("}");
     return sb.toString();
