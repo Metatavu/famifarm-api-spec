@@ -1869,6 +1869,9 @@ components:
         defaultTeamId:
           type: "string"
           format: "uuid"
+        defaultGutterHoleCount:
+          type: "integer"
+          format: "int32"
 
     PotType:
       type: "string"
