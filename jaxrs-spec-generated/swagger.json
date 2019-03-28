@@ -2775,6 +2775,10 @@
           "defaultTeamId" : {
             "type" : "string",
             "format" : "uuid"
+          },
+          "defaultGutterHoleCount" : {
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       },
