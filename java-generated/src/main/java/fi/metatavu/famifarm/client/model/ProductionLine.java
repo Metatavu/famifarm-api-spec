@@ -23,7 +23,7 @@ import java.util.UUID;
  * ProductionLine
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-28T21:28:58.335+02:00[Europe/Helsinki]")public class ProductionLine {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-03-29T01:01:17.550+02:00[Europe/Helsinki]")public class ProductionLine {
 
   @JsonProperty("id")
 
@@ -36,6 +36,10 @@ import java.util.UUID;
   @JsonProperty("defaultTeamId")
 
   private UUID defaultTeamId = null;
+
+  @JsonProperty("defaultGutterHoleCount")
+
+  private Integer defaultGutterHoleCount = null;
   public ProductionLine id(UUID id) {
     this.id = id;
     return this;
@@ -90,6 +94,24 @@ import java.util.UUID;
   public void setDefaultTeamId(UUID defaultTeamId) {
     this.defaultTeamId = defaultTeamId;
   }
+  public ProductionLine defaultGutterHoleCount(Integer defaultGutterHoleCount) {
+    this.defaultGutterHoleCount = defaultGutterHoleCount;
+    return this;
+  }
+
+  
+
+  /**
+  * Get defaultGutterHoleCount
+  * @return defaultGutterHoleCount
+  **/
+  @Schema(description = "")
+  public Integer getDefaultGutterHoleCount() {
+    return defaultGutterHoleCount;
+  }
+  public void setDefaultGutterHoleCount(Integer defaultGutterHoleCount) {
+    this.defaultGutterHoleCount = defaultGutterHoleCount;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -101,12 +123,13 @@ import java.util.UUID;
     ProductionLine productionLine = (ProductionLine) o;
     return Objects.equals(this.id, productionLine.id) &&
         Objects.equals(this.lineNumber, productionLine.lineNumber) &&
-        Objects.equals(this.defaultTeamId, productionLine.defaultTeamId);
+        Objects.equals(this.defaultTeamId, productionLine.defaultTeamId) &&
+        Objects.equals(this.defaultGutterHoleCount, productionLine.defaultGutterHoleCount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, lineNumber, defaultTeamId);
+    return java.util.Objects.hash(id, lineNumber, defaultTeamId, defaultGutterHoleCount);
   }
 
   @Override
@@ -117,6 +140,7 @@ import java.util.UUID;
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lineNumber: ").append(toIndentedString(lineNumber)).append("\n");
     sb.append("    defaultTeamId: ").append(toIndentedString(defaultTeamId)).append("\n");
+    sb.append("    defaultGutterHoleCount: ").append(toIndentedString(defaultGutterHoleCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
