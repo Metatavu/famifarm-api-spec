@@ -1870,7 +1870,7 @@ components:
           type: "string"
           format: "uuid"
 
-    CellType:
+    PotType:
       type: "string"
       enum:
         - SMALL
@@ -1942,16 +1942,16 @@ components:
           description: "Production line id"
           type: "string"
           format: "uuid"
-        gutterSize:
+        gutterHoleCount:
           type: "integer"
           format: "int32"
-          description: "Size of gutter used in planting"
+          description: "Number of holes in gutter used in planting"
         gutterCount:
           description: "How many gutter were used during the planting"
           type: "integer"
           format: "int32"
-        cellCount:
-          description: "How many cells were planted"
+        trayCount:
+          description: "How many trays were planted"
           type: "integer"
           format: "int32"
         workerCount:
@@ -1964,7 +1964,7 @@ components:
       type: "object"
       required: 
         - productionLineId
-        - cellType
+        - trayType
         - amount
       properties:
         productionLineId:
@@ -1973,8 +1973,8 @@ components:
         seedBatchId:
           type: "string"
           format: "uuid"
-        cellType:
-          $ref: "#/components/schemas/CellType"
+        potType:
+          $ref: "#/components/schemas/PotType"
         amount:
           type: "integer"
           format: "int32"
@@ -1982,8 +1982,8 @@ components:
     TableSpreadEventData:
       description: Event of spreading the young plant trays to nursery tables
       properties:
-        tableCount:
-          description: "Count of tables used"
+        trayCount:
+          description: "Count of trays used"
           type: "integer"
           format: "int32"
         location:
@@ -1992,8 +1992,8 @@ components:
 
     PackingEventData:
       properties:
-        packedAmount:
-          description: "Amount of packed items"
+        packedCount:
+          description: "Amount of creatd packages"
           type: "integer"
           format: "int32"
         packageSizeId:
@@ -2027,10 +2027,7 @@ components:
       required:
         - amount
       properties:
-        teamId:
-          type: "string"
-          format: "uuid"
-        amount:
+        gutterCount:
           type: "integer"
           format: "int32"
         type:
