@@ -18,26 +18,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class PackingEventData   {
-  private @Valid Integer packedAmount = null;
+  private @Valid Integer packedCount = null;
   private @Valid UUID packageSizeId = null;
 
   /**
-   * Amount of packed items
+   * Amount of created packages
    **/
-  public PackingEventData packedAmount(Integer packedAmount) {
-    this.packedAmount = packedAmount;
+  public PackingEventData packedCount(Integer packedCount) {
+    this.packedCount = packedCount;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "Amount of packed items")
-  @JsonProperty("packedAmount")
+  //@ApiModelProperty(value = "Amount of created packages")
+  @JsonProperty("packedCount")
 
-  public Integer getPackedAmount() {
-    return packedAmount;
+  public Integer getPackedCount() {
+    return packedCount;
   }
-  public void setPackedAmount(Integer packedAmount) {
-    this.packedAmount = packedAmount;
+  public void setPackedCount(Integer packedCount) {
+    this.packedCount = packedCount;
   }
 
   /**
@@ -68,13 +68,13 @@ public class PackingEventData   {
       return false;
     }
     PackingEventData packingEventData = (PackingEventData) o;
-    return Objects.equals(packedAmount, packingEventData.packedAmount) &&
+    return Objects.equals(packedCount, packingEventData.packedCount) &&
         Objects.equals(packageSizeId, packingEventData.packageSizeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(packedAmount, packageSizeId);
+    return Objects.hash(packedCount, packageSizeId);
   }
 
   @Override
@@ -82,7 +82,7 @@ public class PackingEventData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PackingEventData {\n");
     
-    sb.append("    packedAmount: ").append(toIndentedString(packedAmount)).append("\n");
+    sb.append("    packedCount: ").append(toIndentedString(packedCount)).append("\n");
     sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("}");
     return sb.toString();

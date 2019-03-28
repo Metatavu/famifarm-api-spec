@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class SowingEventData   {
   private @Valid UUID productionLineId = null;
   private @Valid UUID seedBatchId = null;
-  private @Valid CellType cellType = null;
+  private @Valid PotType potType = null;
   private @Valid Integer amount = null;
 
   /**
@@ -64,21 +64,20 @@ public class SowingEventData   {
 
   /**
    **/
-  public SowingEventData cellType(CellType cellType) {
-    this.cellType = cellType;
+  public SowingEventData potType(PotType potType) {
+    this.potType = potType;
     return this;
   }
 
   
-  //@ApiModelProperty(required = true, value = "")
-  @JsonProperty("cellType")
-  @NotNull
+  //@ApiModelProperty(value = "")
+  @JsonProperty("potType")
 
-  public CellType getCellType() {
-    return cellType;
+  public PotType getPotType() {
+    return potType;
   }
-  public void setCellType(CellType cellType) {
-    this.cellType = cellType;
+  public void setPotType(PotType potType) {
+    this.potType = potType;
   }
 
   /**
@@ -112,13 +111,13 @@ public class SowingEventData   {
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(productionLineId, sowingEventData.productionLineId) &&
         Objects.equals(seedBatchId, sowingEventData.seedBatchId) &&
-        Objects.equals(cellType, sowingEventData.cellType) &&
+        Objects.equals(potType, sowingEventData.potType) &&
         Objects.equals(amount, sowingEventData.amount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, seedBatchId, cellType, amount);
+    return Objects.hash(productionLineId, seedBatchId, potType, amount);
   }
 
   @Override
@@ -128,7 +127,7 @@ public class SowingEventData   {
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
-    sb.append("    cellType: ").append(toIndentedString(cellType)).append("\n");
+    sb.append("    potType: ").append(toIndentedString(potType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();

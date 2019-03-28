@@ -13,15 +13,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets CellType
+ * Gets or Sets PotType
  */
-public enum CellType {
+public enum PotType {
   SMALL("SMALL"),
     LARGE("LARGE");
 
   private String value;
 
-  CellType(String value) {
+  PotType(String value) {
     this.value = value;
   }
 
@@ -32,8 +32,8 @@ public enum CellType {
   }
 
   @JsonCreator
-  public static CellType fromValue(String text) {
-    for (CellType b : CellType.values()) {
+  public static PotType fromValue(String text) {
+    for (PotType b : PotType.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

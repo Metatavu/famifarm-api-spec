@@ -18,8 +18,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class HarvestEventData   {
-  private @Valid UUID teamId = null;
-  private @Valid Integer amount = null;
+  private @Valid Integer gutterCount = null;
 public enum TypeEnum {
 
     BAGGING(String.valueOf("BAGGING")), CUTTING(String.valueOf("CUTTING")), BOXING(String.valueOf("BOXING"));
@@ -56,39 +55,20 @@ public enum TypeEnum {
 
   /**
    **/
-  public HarvestEventData teamId(UUID teamId) {
-    this.teamId = teamId;
+  public HarvestEventData gutterCount(Integer gutterCount) {
+    this.gutterCount = gutterCount;
     return this;
   }
 
   
   //@ApiModelProperty(value = "")
-  @JsonProperty("teamId")
+  @JsonProperty("gutterCount")
 
-  public UUID getTeamId() {
-    return teamId;
+  public Integer getGutterCount() {
+    return gutterCount;
   }
-  public void setTeamId(UUID teamId) {
-    this.teamId = teamId;
-  }
-
-  /**
-   **/
-  public HarvestEventData amount(Integer amount) {
-    this.amount = amount;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(required = true, value = "")
-  @JsonProperty("amount")
-  @NotNull
-
-  public Integer getAmount() {
-    return amount;
-  }
-  public void setAmount(Integer amount) {
-    this.amount = amount;
+  public void setGutterCount(Integer gutterCount) {
+    this.gutterCount = gutterCount;
   }
 
   /**
@@ -138,15 +118,14 @@ public enum TypeEnum {
       return false;
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
-    return Objects.equals(teamId, harvestEventData.teamId) &&
-        Objects.equals(amount, harvestEventData.amount) &&
+    return Objects.equals(gutterCount, harvestEventData.gutterCount) &&
         Objects.equals(type, harvestEventData.type) &&
         Objects.equals(productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(teamId, amount, type, productionLineId);
+    return Objects.hash(gutterCount, type, productionLineId);
   }
 
   @Override
@@ -154,8 +133,7 @@ public enum TypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class HarvestEventData {\n");
     
-    sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
     sb.append("}");

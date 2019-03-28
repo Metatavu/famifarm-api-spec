@@ -2778,7 +2778,7 @@
           }
         }
       },
-      "CellType" : {
+      "PotType" : {
         "type" : "string",
         "enum" : [ "SMALL", "LARGE" ]
       },
@@ -2865,9 +2865,9 @@
             "description" : "Production line id",
             "format" : "uuid"
           },
-          "gutterSize" : {
+          "gutterHoleCount" : {
             "type" : "integer",
-            "description" : "Size of gutter used in planting",
+            "description" : "Number of holes in gutter used in planting",
             "format" : "int32"
           },
           "gutterCount" : {
@@ -2875,9 +2875,9 @@
             "description" : "How many gutter were used during the planting",
             "format" : "int32"
           },
-          "cellCount" : {
+          "trayCount" : {
             "type" : "integer",
-            "description" : "How many cells were planted",
+            "description" : "How many trays were planted",
             "format" : "int32"
           },
           "workerCount" : {
@@ -2888,7 +2888,7 @@
         }
       },
       "SowingEventData" : {
-        "required" : [ "amount", "cellType", "productionLineId" ],
+        "required" : [ "amount", "productionLineId", "trayType" ],
         "type" : "object",
         "properties" : {
           "productionLineId" : {
@@ -2899,8 +2899,8 @@
             "type" : "string",
             "format" : "uuid"
           },
-          "cellType" : {
-            "$ref" : "#/components/schemas/CellType"
+          "potType" : {
+            "$ref" : "#/components/schemas/PotType"
           },
           "amount" : {
             "type" : "integer",
@@ -2911,9 +2911,9 @@
       },
       "TableSpreadEventData" : {
         "properties" : {
-          "tableCount" : {
+          "trayCount" : {
             "type" : "integer",
-            "description" : "Count of tables used",
+            "description" : "Count of trays used",
             "format" : "int32"
           },
           "location" : {
@@ -2925,9 +2925,9 @@
       },
       "PackingEventData" : {
         "properties" : {
-          "packedAmount" : {
+          "packedCount" : {
             "type" : "integer",
-            "description" : "Amount of packed items",
+            "description" : "Amount of created packages",
             "format" : "int32"
           },
           "packageSizeId" : {
@@ -2969,11 +2969,7 @@
       "HarvestEventData" : {
         "required" : [ "amount" ],
         "properties" : {
-          "teamId" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "amount" : {
+          "gutterCount" : {
             "type" : "integer",
             "format" : "int32"
           },

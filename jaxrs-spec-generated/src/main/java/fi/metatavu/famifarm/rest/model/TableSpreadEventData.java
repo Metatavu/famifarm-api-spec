@@ -20,26 +20,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 @Schema(description = "Event of spreading the young plant trays to nursery tables")
 
 public class TableSpreadEventData   {
-  private @Valid Integer tableCount = null;
+  private @Valid Integer trayCount = null;
   private @Valid String location = null;
 
   /**
-   * Count of tables used
+   * Count of trays used
    **/
-  public TableSpreadEventData tableCount(Integer tableCount) {
-    this.tableCount = tableCount;
+  public TableSpreadEventData trayCount(Integer trayCount) {
+    this.trayCount = trayCount;
     return this;
   }
 
   
-  //@ApiModelProperty(value = "Count of tables used")
-  @JsonProperty("tableCount")
+  //@ApiModelProperty(value = "Count of trays used")
+  @JsonProperty("trayCount")
 
-  public Integer getTableCount() {
-    return tableCount;
+  public Integer getTrayCount() {
+    return trayCount;
   }
-  public void setTableCount(Integer tableCount) {
-    this.tableCount = tableCount;
+  public void setTrayCount(Integer trayCount) {
+    this.trayCount = trayCount;
   }
 
   /**
@@ -71,13 +71,13 @@ public class TableSpreadEventData   {
       return false;
     }
     TableSpreadEventData tableSpreadEventData = (TableSpreadEventData) o;
-    return Objects.equals(tableCount, tableSpreadEventData.tableCount) &&
+    return Objects.equals(trayCount, tableSpreadEventData.trayCount) &&
         Objects.equals(location, tableSpreadEventData.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tableCount, location);
+    return Objects.hash(trayCount, location);
   }
 
   @Override
@@ -85,7 +85,7 @@ public class TableSpreadEventData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TableSpreadEventData {\n");
     
-    sb.append("    tableCount: ").append(toIndentedString(tableCount)).append("\n");
+    sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();
