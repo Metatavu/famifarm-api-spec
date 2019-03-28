@@ -1993,7 +1993,7 @@ components:
     PackingEventData:
       properties:
         packedCount:
-          description: "Amount of creatd packages"
+          description: "Amount of created packages"
           type: "integer"
           format: "int32"
         packageSizeId:
