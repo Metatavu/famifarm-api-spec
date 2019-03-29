@@ -1,10 +1,26 @@
 {
   "name": "famifarm-typescript-models",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "swagger client for famifarm-typescript-models",
-  "author": "Metatavu",
+  "author": "Swagger Codegen Contributors",
   "keywords": [
-    "swagger-client"
+    "fetch",
+    "typescript",
+    "swagger-client",
+    "famifarm-typescript-models"
   ],
-  "license": "AGPL-3.0"
+  "license": "Unlicense",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/"
+  },
+  "dependencies": {
+    "urijs": "^1.19.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.9",
+    "@types/urijs": "^1.15.38",
+    "typescript": "^2.0"
+  }
 }
