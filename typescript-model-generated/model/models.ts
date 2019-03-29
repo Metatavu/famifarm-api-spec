@@ -1,5 +1,4 @@
 export * from './batch';
-export * from './cellType';
 export * from './cultivationObservationEventData';
 export * from './draft';
 export * from './errorResponse';
@@ -13,6 +12,7 @@ export * from './packingEventData';
 export * from './performedCultivationAction';
 export * from './pest';
 export * from './plantingEventData';
+export * from './potType';
 export * from './product';
 export * from './productionLine';
 export * from './seed';

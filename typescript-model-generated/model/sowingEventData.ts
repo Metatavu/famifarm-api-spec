@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CellType } from './cellType';
+import { PotType } from './potType';
 
 
 /**
@@ -18,12 +18,12 @@ import { CellType } from './cellType';
 export interface SowingEventData { 
     productionLineId: string;
     seedBatchId?: string;
-    cellType: CellType;
+    potType?: PotType;
     amount: number;
 }
 export interface SowingEventDataOpt { 
     productionLineId?: string;
     seedBatchId?: string;
-    cellType?: CellType;
+    potType?: PotType;
     amount?: number;
 }

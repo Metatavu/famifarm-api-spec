@@ -13,15 +13,15 @@
 
 export interface PackingEventData { 
     /**
-     * Amount of packed items
+     * Amount of created packages
      */
-    packedAmount?: number;
+    packedCount?: number;
     packageSizeId?: string;
 }
 export interface PackingEventDataOpt { 
     /**
-     * Amount of packed items
+     * Amount of created packages
      */
-    packedAmount?: number;
+    packedCount?: number;
     packageSizeId?: string;
 }
