@@ -2973,6 +2973,10 @@
       "HarvestEventData" : {
         "required" : [ "amount" ],
         "properties" : {
+          "teamId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
           "gutterCount" : {
             "type" : "integer",
             "format" : "int32"
