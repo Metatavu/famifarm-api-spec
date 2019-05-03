@@ -896,6 +896,12 @@ paths:
               - OPEN
               - CLOSED
               - NEGATIVE
+        - name: phase
+          in: query
+          description: Filters list by phase
+          required: false
+          schema:
+            $ref: "#/components/schemas/BatchPhase"
         - name: productId
           in: query
           description: Filters list by product id
@@ -1891,6 +1897,8 @@ components:
         productId:
           type: "string"
           format: "uuid"
+        phase:
+          $ref: "#/components/schemas/BatchPhase"
         createdAt:
           type: "string"
           format: "date-time"
@@ -2066,6 +2074,16 @@ components:
           format: "uuid"
         phase:
           $ref: '#/components/schemas/EventType'
+
+    BatchPhase:
+      type: "string"
+      enum:
+        - SOWING
+        - PLANTING
+        - TABLE_SPREAD
+        - HARVEST
+        - PACKING
+        - COMPLETE
 
     EventType:
       type: "string"
