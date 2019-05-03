@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Batch   {
   private @Valid UUID id = null;
   private @Valid UUID productId = null;
+  private @Valid BatchPhase phase = null;
   private @Valid OffsetDateTime createdAt = null;
 
   /**
@@ -63,6 +64,24 @@ public class Batch   {
 
   /**
    **/
+  public Batch phase(BatchPhase phase) {
+    this.phase = phase;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("phase")
+
+  public BatchPhase getPhase() {
+    return phase;
+  }
+  public void setPhase(BatchPhase phase) {
+    this.phase = phase;
+  }
+
+  /**
+   **/
   public Batch createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
@@ -91,12 +110,13 @@ public class Batch   {
     Batch batch = (Batch) o;
     return Objects.equals(id, batch.id) &&
         Objects.equals(productId, batch.productId) &&
+        Objects.equals(phase, batch.phase) &&
         Objects.equals(createdAt, batch.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId, createdAt);
+    return Objects.hash(id, productId, phase, createdAt);
   }
 
   @Override
@@ -106,6 +126,7 @@ public class Batch   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

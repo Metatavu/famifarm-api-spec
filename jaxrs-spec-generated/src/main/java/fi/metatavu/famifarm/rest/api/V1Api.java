@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-04-09T09:55:55.114+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2019-05-03T21:30:47.916+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -451,6 +451,9 @@ public interface V1Api {
     Response listBatches(  @QueryParam("status") 
 
  @Parameter(description = "Filters list by derived batch status.")  String status
+,  @QueryParam("phase") 
+
+ @Parameter(description = "Filters list by phase")  BatchPhase phase
 ,  @QueryParam("productId") 
 
  @Parameter(description = "Filters list by product id")  UUID productId
