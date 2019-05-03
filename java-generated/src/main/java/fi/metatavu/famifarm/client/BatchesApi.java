@@ -5,6 +5,7 @@ import java.time.OffsetDateTime;
 import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.Batch;
+import fi.metatavu.famifarm.client.model.BatchPhase;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-04-09T09:59:14.196+03:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-03T21:32:37.437+03:00[Europe/Helsinki]")public interface BatchesApi extends ApiClient.Api {
 
   /**
    * Create new batch
@@ -55,6 +56,7 @@ import feign.*;
    * List all batches
    * 
    * @param status Filters list by derived batch status. (optional)
+   * @param phase Filters list by phase (optional)
    * @param productId Filters list by product id (optional)
    * @param firstResult Where to start listing (optional)
    * @param maxResult How many items to return at one time (optional)
@@ -62,12 +64,12 @@ import feign.*;
    * @param createdAfter Created after time (optional)
    * @return List&lt;Batch&gt;
    */
-  @RequestLine("GET /v1/batches?status={status}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
+  @RequestLine("GET /v1/batches?status={status}&phase={phase}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Batch> listBatches(@Param("status") String status, @Param("productId") UUID productId, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
+  List<Batch> listBatches(@Param("status") String status, @Param("phase") BatchPhase phase, @Param("productId") UUID productId, @Param("firstResult") Integer firstResult, @Param("maxResult") Integer maxResult, @Param("createdBefore") String createdBefore, @Param("createdAfter") String createdAfter);
 
   /**
    * List all batches
@@ -81,6 +83,7 @@ import feign.*;
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
    *   <li>status - Filters list by derived batch status. (optional)</li>
+   *   <li>phase - Filters list by phase (optional)</li>
    *   <li>productId - Filters list by product id (optional)</li>
    *   <li>firstResult - Where to start listing (optional)</li>
    *   <li>maxResult - How many items to return at one time (optional)</li>
@@ -90,7 +93,7 @@ import feign.*;
    * @return List&lt;Batch&gt;
 
    */
-  @RequestLine("GET /v1/batches?status={status}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
+  @RequestLine("GET /v1/batches?status={status}&phase={phase}&productId={productId}&firstResult={firstResult}&maxResult={maxResult}&createdBefore={createdBefore}&createdAfter={createdAfter}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -103,6 +106,10 @@ import feign.*;
   public static class ListBatchesQueryParams extends HashMap<String, Object> {
     public ListBatchesQueryParams status(final String value) {
       put("status", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListBatchesQueryParams phase(final BatchPhase value) {
+      put("phase", EncodingUtils.encode(value));
       return this;
     }
     public ListBatchesQueryParams productId(final UUID value) {

@@ -25,7 +25,7 @@ import java.util.UUID;
  * CultivationObservationEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-04-09T09:59:14.196+03:00[Europe/Helsinki]")public class CultivationObservationEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-03T21:32:37.437+03:00[Europe/Helsinki]")public class CultivationObservationEventData {
 
   @JsonProperty("weight")
 

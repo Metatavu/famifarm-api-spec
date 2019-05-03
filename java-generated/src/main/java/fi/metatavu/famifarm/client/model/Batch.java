@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import fi.metatavu.famifarm.client.model.BatchPhase;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -24,7 +25,7 @@ import java.util.UUID;
  * Identifies a single batch for it&#x27;s entire life-cycle
  */
 @Schema(description = "Identifies a single batch for it's entire life-cycle")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-04-09T09:59:14.196+03:00[Europe/Helsinki]")public class Batch {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-03T21:32:37.437+03:00[Europe/Helsinki]")public class Batch {
 
   @JsonProperty("id")
 
@@ -33,6 +34,10 @@ import java.util.UUID;
   @JsonProperty("productId")
 
   private UUID productId = null;
+
+  @JsonProperty("phase")
+
+  private BatchPhase phase = null;
 
   @JsonProperty("createdAt")
 
@@ -73,6 +78,24 @@ import java.util.UUID;
   public void setProductId(UUID productId) {
     this.productId = productId;
   }
+  public Batch phase(BatchPhase phase) {
+    this.phase = phase;
+    return this;
+  }
+
+  
+
+  /**
+  * Get phase
+  * @return phase
+  **/
+  @Schema(description = "")
+  public BatchPhase getPhase() {
+    return phase;
+  }
+  public void setPhase(BatchPhase phase) {
+    this.phase = phase;
+  }
   public Batch createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
@@ -102,12 +125,13 @@ import java.util.UUID;
     Batch batch = (Batch) o;
     return Objects.equals(this.id, batch.id) &&
         Objects.equals(this.productId, batch.productId) &&
+        Objects.equals(this.phase, batch.phase) &&
         Objects.equals(this.createdAt, batch.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, productId, createdAt);
+    return java.util.Objects.hash(id, productId, phase, createdAt);
   }
 
   @Override
@@ -117,6 +141,7 @@ import java.util.UUID;
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();

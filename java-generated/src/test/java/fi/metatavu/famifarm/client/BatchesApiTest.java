@@ -2,6 +2,7 @@ package fi.metatavu.famifarm.client;
 
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.client.model.Batch;
+import fi.metatavu.famifarm.client.model.BatchPhase;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import java.util.UUID;
 import org.junit.Before;
@@ -71,12 +72,13 @@ public class BatchesApiTest {
     @Test
     public void listBatchesTest() {
         String status = null;
+        BatchPhase phase = null;
         UUID productId = null;
         Integer firstResult = null;
         Integer maxResult = null;
         String createdBefore = null;
         String createdAfter = null;
-        // List<Batch> response = api.listBatches(status, productId, firstResult, maxResult, createdBefore, createdAfter);
+        // List<Batch> response = api.listBatches(status, phase, productId, firstResult, maxResult, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -93,6 +95,7 @@ public class BatchesApiTest {
     public void listBatchesTestQueryMap() {
         BatchesApi.ListBatchesQueryParams queryParams = new BatchesApi.ListBatchesQueryParams()
             .status(null)
+            .phase(null)
             .productId(null)
             .firstResult(null)
             .maxResult(null)
