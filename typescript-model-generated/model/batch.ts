@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { BatchPhase } from './batchPhase';
 
 
 /**
@@ -17,10 +18,12 @@
 export interface Batch { 
     id?: string;
     productId: string;
+    phase?: BatchPhase;
     createdAt?: string;
 }
 export interface BatchOpt { 
     id?: string;
     productId?: string;
+    phase?: BatchPhase;
     createdAt?: string;
 }
