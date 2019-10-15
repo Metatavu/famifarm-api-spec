@@ -1997,9 +1997,6 @@ components:
           description: "Count of trays used"
           type: "integer"
           format: "int32"
-        location:
-          description: "Where the batch has been placed"
-          type: "string"
 
     PackingEventData:
       properties:
