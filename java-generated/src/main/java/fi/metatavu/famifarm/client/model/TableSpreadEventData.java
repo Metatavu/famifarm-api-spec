@@ -22,15 +22,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Event of spreading the young plant trays to nursery tables
  */
 @Schema(description = "Event of spreading the young plant trays to nursery tables")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-03T21:32:37.437+03:00[Europe/Helsinki]")public class TableSpreadEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-01-30T15:17:14.560+02:00[Europe/Helsinki]")public class TableSpreadEventData {
 
   @JsonProperty("trayCount")
 
   private Integer trayCount = null;
-
-  @JsonProperty("location")
-
-  private String location = null;
   public TableSpreadEventData trayCount(Integer trayCount) {
     this.trayCount = trayCount;
     return this;
@@ -49,24 +45,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
   public void setTrayCount(Integer trayCount) {
     this.trayCount = trayCount;
   }
-  public TableSpreadEventData location(String location) {
-    this.location = location;
-    return this;
-  }
-
-  
-
-  /**
-  * Where the batch has been placed
-  * @return location
-  **/
-  @Schema(description = "Where the batch has been placed")
-  public String getLocation() {
-    return location;
-  }
-  public void setLocation(String location) {
-    this.location = location;
-  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -76,13 +54,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
       return false;
     }
     TableSpreadEventData tableSpreadEventData = (TableSpreadEventData) o;
-    return Objects.equals(this.trayCount, tableSpreadEventData.trayCount) &&
-        Objects.equals(this.location, tableSpreadEventData.location);
+    return Objects.equals(this.trayCount, tableSpreadEventData.trayCount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(trayCount, location);
+    return java.util.Objects.hash(trayCount);
   }
 
   @Override
@@ -91,7 +68,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
     sb.append("class TableSpreadEventData {\n");
     
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();
   }

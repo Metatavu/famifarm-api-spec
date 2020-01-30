@@ -19,13 +19,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.famifarm.client.model.BatchPhase;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Identifies a single batch for it&#x27;s entire life-cycle
  */
 @Schema(description = "Identifies a single batch for it's entire life-cycle")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2019-05-03T21:32:37.437+03:00[Europe/Helsinki]")public class Batch {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-01-30T15:17:14.560+02:00[Europe/Helsinki]")public class Batch {
 
   @JsonProperty("id")
 
@@ -34,6 +36,10 @@ import java.util.UUID;
   @JsonProperty("productId")
 
   private UUID productId = null;
+
+  @JsonProperty("sowingLineNumbers")
+
+  private List<String> sowingLineNumbers = null;
 
   @JsonProperty("phase")
 
@@ -77,6 +83,30 @@ import java.util.UUID;
   }
   public void setProductId(UUID productId) {
     this.productId = productId;
+  }
+  public Batch sowingLineNumbers(List<String> sowingLineNumbers) {
+    this.sowingLineNumbers = sowingLineNumbers;
+    return this;
+  }
+
+  public Batch addSowingLineNumbersItem(String sowingLineNumbersItem) {
+    if (this.sowingLineNumbers == null) {
+      this.sowingLineNumbers = new ArrayList<>();
+    }
+    this.sowingLineNumbers.add(sowingLineNumbersItem);
+    return this;
+  }
+
+  /**
+  * Read-only field that shows line numbers used in sowing phase
+  * @return sowingLineNumbers
+  **/
+  @Schema(description = "Read-only field that shows line numbers used in sowing phase")
+  public List<String> getSowingLineNumbers() {
+    return sowingLineNumbers;
+  }
+  public void setSowingLineNumbers(List<String> sowingLineNumbers) {
+    this.sowingLineNumbers = sowingLineNumbers;
   }
   public Batch phase(BatchPhase phase) {
     this.phase = phase;
@@ -125,13 +155,14 @@ import java.util.UUID;
     Batch batch = (Batch) o;
     return Objects.equals(this.id, batch.id) &&
         Objects.equals(this.productId, batch.productId) &&
+        Objects.equals(this.sowingLineNumbers, batch.sowingLineNumbers) &&
         Objects.equals(this.phase, batch.phase) &&
         Objects.equals(this.createdAt, batch.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, productId, phase, createdAt);
+    return java.util.Objects.hash(id, productId, sowingLineNumbers, phase, createdAt);
   }
 
   @Override
@@ -141,6 +172,7 @@ import java.util.UUID;
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    sowingLineNumbers: ").append(toIndentedString(sowingLineNumbers)).append("\n");
     sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
