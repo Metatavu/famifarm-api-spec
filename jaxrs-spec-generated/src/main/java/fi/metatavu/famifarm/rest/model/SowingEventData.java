@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class SowingEventData   {
   private @Valid UUID productionLineId = null;
-  private @Valid UUID seedBatchId = null;
+  private @Valid List<UUID> seedBatchIds = new ArrayList<>();
   private @Valid PotType potType = null;
   private @Valid Integer amount = null;
 
@@ -46,20 +46,20 @@ public class SowingEventData   {
 
   /**
    **/
-  public SowingEventData seedBatchId(UUID seedBatchId) {
-    this.seedBatchId = seedBatchId;
+  public SowingEventData seedBatchIds(List<UUID> seedBatchIds) {
+    this.seedBatchIds = seedBatchIds;
     return this;
   }
 
   
   //@ApiModelProperty(value = "")
-  @JsonProperty("seedBatchId")
+  @JsonProperty("seedBatchIds")
 
-  public UUID getSeedBatchId() {
-    return seedBatchId;
+  public List<UUID> getSeedBatchIds() {
+    return seedBatchIds;
   }
-  public void setSeedBatchId(UUID seedBatchId) {
-    this.seedBatchId = seedBatchId;
+  public void setSeedBatchIds(List<UUID> seedBatchIds) {
+    this.seedBatchIds = seedBatchIds;
   }
 
   /**
@@ -110,14 +110,14 @@ public class SowingEventData   {
     }
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(productionLineId, sowingEventData.productionLineId) &&
-        Objects.equals(seedBatchId, sowingEventData.seedBatchId) &&
+        Objects.equals(seedBatchIds, sowingEventData.seedBatchIds) &&
         Objects.equals(potType, sowingEventData.potType) &&
         Objects.equals(amount, sowingEventData.amount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productionLineId, seedBatchId, potType, amount);
+    return Objects.hash(productionLineId, seedBatchIds, potType, amount);
   }
 
   @Override
@@ -126,7 +126,7 @@ public class SowingEventData   {
     sb.append("class SowingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
+    sb.append("    seedBatchIds: ").append(toIndentedString(seedBatchIds)).append("\n");
     sb.append("    potType: ").append(toIndentedString(potType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");

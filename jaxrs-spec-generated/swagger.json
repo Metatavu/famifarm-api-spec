@@ -2811,6 +2811,7 @@
           "sowingLineNumbers" : {
             "type" : "array",
             "description" : "Read-only field that shows line numbers used in sowing phase",
+            "readOnly" : true,
             "items" : {
               "type" : "string"
             }
@@ -2919,9 +2920,12 @@
             "type" : "string",
             "format" : "uuid"
           },
-          "seedBatchId" : {
-            "type" : "string",
-            "format" : "uuid"
+          "seedBatchIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "format" : "uuid"
+            }
           },
           "potType" : {
             "$ref" : "#/components/schemas/PotType"
