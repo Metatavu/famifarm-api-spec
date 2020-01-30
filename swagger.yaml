@@ -1897,6 +1897,12 @@ components:
         productId:
           type: "string"
           format: "uuid"
+        sowingLineNumbers:
+          type: "array"
+          readyOnly: true
+          description: Read-only field that shows line numbers used in sowing phase
+          items:
+            type: "string"
         phase:
           $ref: "#/components/schemas/BatchPhase"
         createdAt:
