@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class TableSpreadEventData   {
   private @Valid Integer trayCount = null;
-  private @Valid String location = null;
 
   /**
    * Count of trays used
@@ -42,25 +41,6 @@ public class TableSpreadEventData   {
     this.trayCount = trayCount;
   }
 
-  /**
-   * Where the batch has been placed
-   **/
-  public TableSpreadEventData location(String location) {
-    this.location = location;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "Where the batch has been placed")
-  @JsonProperty("location")
-
-  public String getLocation() {
-    return location;
-  }
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -71,13 +51,12 @@ public class TableSpreadEventData   {
       return false;
     }
     TableSpreadEventData tableSpreadEventData = (TableSpreadEventData) o;
-    return Objects.equals(trayCount, tableSpreadEventData.trayCount) &&
-        Objects.equals(location, tableSpreadEventData.location);
+    return Objects.equals(trayCount, tableSpreadEventData.trayCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(trayCount, location);
+    return Objects.hash(trayCount);
   }
 
   @Override
@@ -86,7 +65,6 @@ public class TableSpreadEventData   {
     sb.append("class TableSpreadEventData {\n");
     
     sb.append("    trayCount: ").append(toIndentedString(trayCount)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();
   }

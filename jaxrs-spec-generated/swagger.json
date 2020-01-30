@@ -2808,6 +2808,13 @@
             "type" : "string",
             "format" : "uuid"
           },
+          "sowingLineNumbers" : {
+            "type" : "array",
+            "description" : "Read-only field that shows line numbers used in sowing phase",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "phase" : {
             "$ref" : "#/components/schemas/BatchPhase"
           },
@@ -2932,10 +2939,6 @@
             "type" : "integer",
             "description" : "Count of trays used",
             "format" : "int32"
-          },
-          "location" : {
-            "type" : "string",
-            "description" : "Where the batch has been placed"
           }
         },
         "description" : "Event of spreading the young plant trays to nursery tables"

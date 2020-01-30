@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Batch   {
   private @Valid UUID id = null;
   private @Valid UUID productId = null;
+  private @Valid List<String> sowingLineNumbers = new ArrayList<>();
   private @Valid BatchPhase phase = null;
   private @Valid OffsetDateTime createdAt = null;
 
@@ -60,6 +61,25 @@ public class Batch   {
   }
   public void setProductId(UUID productId) {
     this.productId = productId;
+  }
+
+  /**
+   * Read-only field that shows line numbers used in sowing phase
+   **/
+  public Batch sowingLineNumbers(List<String> sowingLineNumbers) {
+    this.sowingLineNumbers = sowingLineNumbers;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "Read-only field that shows line numbers used in sowing phase")
+  @JsonProperty("sowingLineNumbers")
+
+  public List<String> getSowingLineNumbers() {
+    return sowingLineNumbers;
+  }
+  public void setSowingLineNumbers(List<String> sowingLineNumbers) {
+    this.sowingLineNumbers = sowingLineNumbers;
   }
 
   /**
@@ -110,13 +130,14 @@ public class Batch   {
     Batch batch = (Batch) o;
     return Objects.equals(id, batch.id) &&
         Objects.equals(productId, batch.productId) &&
+        Objects.equals(sowingLineNumbers, batch.sowingLineNumbers) &&
         Objects.equals(phase, batch.phase) &&
         Objects.equals(createdAt, batch.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId, phase, createdAt);
+    return Objects.hash(id, productId, sowingLineNumbers, phase, createdAt);
   }
 
   @Override
@@ -126,6 +147,7 @@ public class Batch   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    sowingLineNumbers: ").append(toIndentedString(sowingLineNumbers)).append("\n");
     sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
