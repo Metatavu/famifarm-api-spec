@@ -1899,7 +1899,7 @@ components:
           format: "uuid"
         sowingLineNumbers:
           type: "array"
-          readyOnly: true
+          readOnly: true
           description: Read-only field that shows line numbers used in sowing phase
           items:
             type: "string"
@@ -1987,9 +1987,11 @@ components:
         productionLineId:
           type: "string"
           format: "uuid"
-        seedBatchId:
-          type: "string"
-          format: "uuid"
+        seedBatchIds:
+          type: "array"
+          items:
+            type: "string"
+            format: "uuid"
         potType:
           $ref: "#/components/schemas/PotType"
         amount:
