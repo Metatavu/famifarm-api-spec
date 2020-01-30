@@ -18,21 +18,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.famifarm.client.model.PotType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Entry when a batch has been sowed
  */
 @Schema(description = "Entry when a batch has been sowed")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-01-30T15:17:14.560+02:00[Europe/Helsinki]")public class SowingEventData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-01-30T19:23:01.685+02:00[Europe/Helsinki]")public class SowingEventData {
 
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
 
-  @JsonProperty("seedBatchId")
+  @JsonProperty("seedBatchIds")
 
-  private UUID seedBatchId = null;
+  private List<UUID> seedBatchIds = null;
 
   @JsonProperty("potType")
 
@@ -59,23 +61,29 @@ import java.util.UUID;
   public void setProductionLineId(UUID productionLineId) {
     this.productionLineId = productionLineId;
   }
-  public SowingEventData seedBatchId(UUID seedBatchId) {
-    this.seedBatchId = seedBatchId;
+  public SowingEventData seedBatchIds(List<UUID> seedBatchIds) {
+    this.seedBatchIds = seedBatchIds;
     return this;
   }
 
-  
+  public SowingEventData addSeedBatchIdsItem(UUID seedBatchIdsItem) {
+    if (this.seedBatchIds == null) {
+      this.seedBatchIds = new ArrayList<>();
+    }
+    this.seedBatchIds.add(seedBatchIdsItem);
+    return this;
+  }
 
   /**
-  * Get seedBatchId
-  * @return seedBatchId
+  * Get seedBatchIds
+  * @return seedBatchIds
   **/
   @Schema(description = "")
-  public UUID getSeedBatchId() {
-    return seedBatchId;
+  public List<UUID> getSeedBatchIds() {
+    return seedBatchIds;
   }
-  public void setSeedBatchId(UUID seedBatchId) {
-    this.seedBatchId = seedBatchId;
+  public void setSeedBatchIds(List<UUID> seedBatchIds) {
+    this.seedBatchIds = seedBatchIds;
   }
   public SowingEventData potType(PotType potType) {
     this.potType = potType;
@@ -123,14 +131,14 @@ import java.util.UUID;
     }
     SowingEventData sowingEventData = (SowingEventData) o;
     return Objects.equals(this.productionLineId, sowingEventData.productionLineId) &&
-        Objects.equals(this.seedBatchId, sowingEventData.seedBatchId) &&
+        Objects.equals(this.seedBatchIds, sowingEventData.seedBatchIds) &&
         Objects.equals(this.potType, sowingEventData.potType) &&
         Objects.equals(this.amount, sowingEventData.amount);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(productionLineId, seedBatchId, potType, amount);
+    return java.util.Objects.hash(productionLineId, seedBatchIds, potType, amount);
   }
 
   @Override
@@ -139,7 +147,7 @@ import java.util.UUID;
     sb.append("class SowingEventData {\n");
     
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
-    sb.append("    seedBatchId: ").append(toIndentedString(seedBatchId)).append("\n");
+    sb.append("    seedBatchIds: ").append(toIndentedString(seedBatchIds)).append("\n");
     sb.append("    potType: ").append(toIndentedString(potType)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
