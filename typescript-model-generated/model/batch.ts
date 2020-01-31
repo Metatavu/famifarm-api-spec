@@ -18,12 +18,20 @@ import { BatchPhase } from './batchPhase';
 export interface Batch { 
     id?: string;
     productId: string;
+    /**
+     * Read-only field that shows line numbers used in sowing phase
+     */
+    readonly sowingLineNumbers?: Array<string>;
     phase?: BatchPhase;
     createdAt?: string;
 }
 export interface BatchOpt { 
     id?: string;
     productId?: string;
+    /**
+     * Read-only field that shows line numbers used in sowing phase
+     */
+    readonly sowingLineNumbers?: Array<string>;
     phase?: BatchPhase;
     createdAt?: string;
 }

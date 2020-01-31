@@ -17,13 +17,13 @@ import { PotType } from './potType';
  */
 export interface SowingEventData { 
     productionLineId: string;
-    seedBatchId?: string;
+    seedBatchIds?: Array<string>;
     potType?: PotType;
     amount: number;
 }
 export interface SowingEventDataOpt { 
     productionLineId?: string;
-    seedBatchId?: string;
+    seedBatchIds?: Array<string>;
     potType?: PotType;
     amount?: number;
 }

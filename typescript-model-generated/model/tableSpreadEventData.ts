@@ -19,18 +19,10 @@ export interface TableSpreadEventData {
      * Count of trays used
      */
     trayCount?: number;
-    /**
-     * Where the batch has been placed
-     */
-    location?: string;
 }
 export interface TableSpreadEventDataOpt { 
     /**
      * Count of trays used
      */
     trayCount?: number;
-    /**
-     * Where the batch has been placed
-     */
-    location?: string;
 }
