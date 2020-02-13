@@ -2770,6 +2770,10 @@
             "type" : "string",
             "description" : "Time when the seed has arrived",
             "format" : "date-time"
+          },
+          "active" : {
+            "type" : "boolean",
+            "description" : "if seed batch is active"
           }
         }
       },

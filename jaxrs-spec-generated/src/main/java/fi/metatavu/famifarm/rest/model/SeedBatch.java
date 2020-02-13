@@ -22,6 +22,7 @@ public class SeedBatch   {
   private @Valid String code = null;
   private @Valid UUID seedId = null;
   private @Valid OffsetDateTime time = null;
+  private @Valid Boolean active = null;
 
   /**
    **/
@@ -97,6 +98,25 @@ public class SeedBatch   {
     this.time = time;
   }
 
+  /**
+   * if seed batch is active
+   **/
+  public SeedBatch active(Boolean active) {
+    this.active = active;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "if seed batch is active")
+  @JsonProperty("active")
+
+  public Boolean isisActive() {
+    return active;
+  }
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -110,12 +130,13 @@ public class SeedBatch   {
     return Objects.equals(id, seedBatch.id) &&
         Objects.equals(code, seedBatch.code) &&
         Objects.equals(seedId, seedBatch.seedId) &&
-        Objects.equals(time, seedBatch.time);
+        Objects.equals(time, seedBatch.time) &&
+        Objects.equals(active, seedBatch.active);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, code, seedId, time);
+    return Objects.hash(id, code, seedId, time, active);
   }
 
   @Override
@@ -127,6 +148,7 @@ public class SeedBatch   {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    seedId: ").append(toIndentedString(seedId)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("}");
     return sb.toString();
   }
