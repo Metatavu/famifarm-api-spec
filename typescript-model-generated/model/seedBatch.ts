@@ -22,6 +22,10 @@ export interface SeedBatch {
      * Time when the seed has arrived
      */
     time?: string;
+    /**
+     * if seed batch is active
+     */
+    active?: boolean;
 }
 export interface SeedBatchOpt { 
     id?: string;
@@ -34,4 +38,8 @@ export interface SeedBatchOpt {
      * Time when the seed has arrived
      */
     time?: string;
+    /**
+     * if seed batch is active
+     */
+    active?: boolean;
 }
