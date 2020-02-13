@@ -24,7 +24,7 @@ import java.util.UUID;
  * SeedBatch
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-01-30T19:23:01.685+02:00[Europe/Helsinki]")public class SeedBatch {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-13T22:42:23.922+02:00[Europe/Helsinki]")public class SeedBatch {
 
   @JsonProperty("id")
 
@@ -41,6 +41,10 @@ import java.util.UUID;
   @JsonProperty("time")
 
   private OffsetDateTime time = null;
+
+  @JsonProperty("active")
+
+  private Boolean active = null;
   public SeedBatch id(UUID id) {
     this.id = id;
     return this;
@@ -113,6 +117,24 @@ import java.util.UUID;
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
+  public SeedBatch active(Boolean active) {
+    this.active = active;
+    return this;
+  }
+
+  
+
+  /**
+  * if seed batch is active
+  * @return active
+  **/
+  @Schema(description = "if seed batch is active")
+  public Boolean isActive() {
+    return active;
+  }
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -125,12 +147,13 @@ import java.util.UUID;
     return Objects.equals(this.id, seedBatch.id) &&
         Objects.equals(this.code, seedBatch.code) &&
         Objects.equals(this.seedId, seedBatch.seedId) &&
-        Objects.equals(this.time, seedBatch.time);
+        Objects.equals(this.time, seedBatch.time) &&
+        Objects.equals(this.active, seedBatch.active);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, code, seedId, time);
+    return java.util.Objects.hash(id, code, seedId, time, active);
   }
 
   @Override
@@ -142,6 +165,7 @@ import java.util.UUID;
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    seedId: ").append(toIndentedString(seedId)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("}");
     return sb.toString();
   }
