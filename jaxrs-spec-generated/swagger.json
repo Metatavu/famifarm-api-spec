@@ -335,7 +335,7 @@
         }
       },
       "post" : {
-        "tags" : [ "packing" ],
+        "tags" : [ "packings" ],
         "summary" : "Create new packing",
         "operationId" : "createPackaging",
         "requestBody" : {

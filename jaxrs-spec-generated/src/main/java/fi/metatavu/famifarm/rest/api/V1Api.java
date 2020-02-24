@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-02-24T13:59:42.580+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-02-24T14:13:47.534+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -71,7 +71,7 @@ public interface V1Api {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Create new packing", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packing" })
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packings" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "A created packing", content = @Content(schema = @Schema(implementation = Packing.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
