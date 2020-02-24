@@ -239,6 +239,263 @@
         }
       }
     },
+    "/v1/packings" : {
+      "get" : {
+        "tags" : [ "packings" ],
+        "summary" : "List all packings",
+        "operationId" : "listPackings",
+        "parameters" : [ {
+          "name" : "firstResult",
+          "in" : "query",
+          "description" : "First index of results to be returned",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "maxResults",
+          "in" : "query",
+          "description" : "How many items to return at one time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "productId",
+          "in" : "query",
+          "description" : "Filter results by product id",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Filter results by packing status",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/PackingState"
+          }
+        }, {
+          "name" : "createdBefore",
+          "in" : "query",
+          "description" : "Created before time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "createdAfter",
+          "in" : "query",
+          "description" : "Created after time",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A paged array of packings",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Packing"
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "packing" ],
+        "summary" : "Create new packing",
+        "operationId" : "createPackaging",
+        "requestBody" : {
+          "description" : "Packing to be added",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Packing"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "A created packing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Packing"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/packings/{packingId}" : {
+      "get" : {
+        "tags" : [ "packings" ],
+        "summary" : "Find a packing",
+        "operationId" : "findPacking",
+        "parameters" : [ {
+          "name" : "packingId",
+          "in" : "path",
+          "description" : "Packing id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A found packing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Packing"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "packings" ],
+        "summary" : "Updates a packing",
+        "operationId" : "updatePacking",
+        "parameters" : [ {
+          "name" : "packingId",
+          "in" : "path",
+          "description" : "Packing id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Request payload",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Packing"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "An updated packing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Packing"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "packings" ],
+        "summary" : "Deletes a packing",
+        "operationId" : "deletePacking",
+        "parameters" : [ {
+          "name" : "packingId",
+          "in" : "path",
+          "description" : "Packing id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Empty result indication a successful removal"
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/wastageReasons" : {
       "get" : {
         "tags" : [ "wastageReasons" ],
@@ -2874,8 +3131,6 @@
             }, {
               "$ref" : "#/components/schemas/SowingEventData"
             }, {
-              "$ref" : "#/components/schemas/PackingEventData"
-            }, {
               "$ref" : "#/components/schemas/TableSpreadEventData"
             }, {
               "$ref" : "#/components/schemas/CultivationObservationEventData"
@@ -2886,6 +3141,40 @@
             } ]
           }
         }
+      },
+      "Packing" : {
+        "required" : [ "productId", "state", "time" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "time" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "packedCount" : {
+            "type" : "integer",
+            "description" : "Amount of created packages",
+            "format" : "int32"
+          },
+          "packageSizeId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "state" : {
+            "$ref" : "#/components/schemas/PackingState"
+          }
+        }
+      },
+      "PackingState" : {
+        "type" : "string",
+        "enum" : [ "IN_STORE", "REMOVED" ]
       },
       "PlantingEventData" : {
         "properties" : {
@@ -2950,19 +3239,6 @@
           }
         },
         "description" : "Event of spreading the young plant trays to nursery tables"
-      },
-      "PackingEventData" : {
-        "properties" : {
-          "packedCount" : {
-            "type" : "integer",
-            "description" : "Amount of created packages",
-            "format" : "int32"
-          },
-          "packageSizeId" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        }
       },
       "CultivationObservationEventData" : {
         "properties" : {
@@ -3040,11 +3316,11 @@
       },
       "BatchPhase" : {
         "type" : "string",
-        "enum" : [ "SOWING", "PLANTING", "TABLE_SPREAD", "HARVEST", "PACKING", "COMPLETE" ]
+        "enum" : [ "SOWING", "PLANTING", "TABLE_SPREAD", "HARVEST", "COMPLETE" ]
       },
       "EventType" : {
         "type" : "string",
-        "enum" : [ "PLANTING", "SOWING", "PACKING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTAGE" ]
+        "enum" : [ "PLANTING", "SOWING", "TABLE_SPREAD", "CULTIVATION_OBSERVATION", "HARVEST", "WASTAGE" ]
       },
       "Draft" : {
         "required" : [ "data", "type" ],

@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-02-13T22:54:32.901+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-02-24T13:59:42.580+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -66,6 +66,16 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created packageSize", content = @Content(schema = @Schema(implementation = PackageSize.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createPackageSize(@Valid PackageSize body);
+    @POST
+    @Path("/packings")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Create new packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packing" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A created packing", content = @Content(schema = @Schema(implementation = Packing.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response createPackaging(@Valid Packing body);
     @POST
     @Path("/performedCultivationActions")
     @Consumes({ "application/json" })
@@ -193,6 +203,18 @@ public interface V1Api {
     Response deletePackageSize( @PathParam("packageSizeId")
 
  @Parameter(description = "PackageSizeId") UUID packageSizeId
+);
+    @DELETE
+    @Path("/packings/{packingId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Deletes a packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response deletePacking( @PathParam("packingId")
+
+ @Parameter(description = "Packing id") UUID packingId
 );
     @DELETE
     @Path("/performedCultivationActions/{performedCultivationActionId}")
@@ -325,6 +347,18 @@ public interface V1Api {
     Response findPackageSize( @PathParam("packageSizeId")
 
  @Parameter(description = "Wastage reason id") UUID packageSizeId
+);
+    @GET
+    @Path("/packings/{packingId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Find a packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A found packing", content = @Content(schema = @Schema(implementation = Packing.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response findPacking( @PathParam("packingId")
+
+ @Parameter(description = "Packing id") UUID packingId
 );
     @GET
     @Path("/performedCultivationActions/{performedCultivationActionId}")
@@ -519,6 +553,33 @@ public interface V1Api {
  @Parameter(description = "How many items to return at one time")  Integer maxResults
 );
     @GET
+    @Path("/packings")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all packings", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A paged array of packings", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Packing.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listPackings(  @QueryParam("firstResult") 
+
+ @Parameter(description = "First index of results to be returned")  Integer firstResult
+,  @QueryParam("maxResults") 
+
+ @Parameter(description = "How many items to return at one time")  Integer maxResults
+,  @QueryParam("productId") 
+
+ @Parameter(description = "Filter results by product id")  UUID productId
+,  @QueryParam("status") 
+
+ @Parameter(description = "Filter results by packing status")  PackingState status
+,  @QueryParam("createdBefore") 
+
+ @Parameter(description = "Created before time")  String createdBefore
+,  @QueryParam("createdAfter") 
+
+ @Parameter(description = "Created after time")  String createdAfter
+);
+    @GET
     @Path("/performedCultivationActions")
     @Produces({ "application/json" })
     @Operation(summary = "List all performed cultivation actions", description = "", security = {
@@ -676,6 +737,19 @@ public interface V1Api {
     Response updatePackageSize(@Valid PackageSize body, @PathParam("packageSizeId")
 
  @Parameter(description = "Wastage reason id") UUID packageSizeId
+);
+    @PUT
+    @Path("/packings/{packingId}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Updates a packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "packings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An updated packing", content = @Content(schema = @Schema(implementation = Packing.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response updatePacking(@Valid Packing body, @PathParam("packingId")
+
+ @Parameter(description = "Packing id") UUID packingId
 );
     @PUT
     @Path("/performedCultivationActions/{performedCultivationActionId}")
