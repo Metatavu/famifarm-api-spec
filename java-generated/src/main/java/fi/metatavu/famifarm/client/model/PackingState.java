@@ -17,19 +17,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets EventType
+ * Gets or Sets PackingState
  */
-public enum EventType {
-  PLANTING("PLANTING"),
-  SOWING("SOWING"),
-  TABLE_SPREAD("TABLE_SPREAD"),
-  CULTIVATION_OBSERVATION("CULTIVATION_OBSERVATION"),
-  HARVEST("HARVEST"),
-  WASTAGE("WASTAGE");
+public enum PackingState {
+  IN_STORE("IN_STORE"),
+  REMOVED("REMOVED");
 
   private String value;
 
-  EventType(String value) {
+  PackingState(String value) {
     this.value = value;
   }
 
@@ -44,8 +40,8 @@ public enum EventType {
   }
 
   @JsonCreator
-  public static EventType fromValue(String text) {
-    for (EventType b : EventType.values()) {
+  public static PackingState fromValue(String text) {
+    for (PackingState b : PackingState.values()) {
       if (String.valueOf(b.value).equals(text)) {
         return b;
       }

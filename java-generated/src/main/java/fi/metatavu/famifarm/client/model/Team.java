@@ -24,7 +24,7 @@ import java.util.UUID;
  * Team
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-13T22:48:42.208+02:00[Europe/Helsinki]")public class Team {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-24T14:03:26.829+02:00[Europe/Helsinki]")public class Team {
 
   @JsonProperty("id")
 

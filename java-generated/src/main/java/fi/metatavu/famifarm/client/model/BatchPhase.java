@@ -24,7 +24,6 @@ public enum BatchPhase {
   PLANTING("PLANTING"),
   TABLE_SPREAD("TABLE_SPREAD"),
   HARVEST("HARVEST"),
-  PACKING("PACKING"),
   COMPLETE("COMPLETE");
 
   private String value;
