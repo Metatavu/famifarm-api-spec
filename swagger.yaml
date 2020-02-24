@@ -185,6 +185,31 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: status
+          in: query
+          description: Filter results by packing status
+          required: false
+          schema:
+            $ref: "#/components/schemas/PackingState"
+        - name: startTime
+          in: query
+          description: Filter results by packing start time
+          required: false
+          schema:
+            type: string
+            format: datetime
+        - name: createdBefore
+          in: query
+          description: Created before time
+          required: false
+          schema:
+            type: "string"
+        - name: createdAfter
+          in: query
+          description: Created after time
+          required: false
+          schema:
+            type: "string"
       responses:
         '200':
           description: A paged array of packings
@@ -2115,12 +2140,7 @@ components:
         productId:
           type: "string"
           format: "uuid"
-        startTime:
-          description: "Time when the entry was added"
-          type: "string"
-          format: "date-time"
-        endTime:
-          description: "Time when the entry was added"
+        time:
           type: "string"
           format: "date-time"
         packedCount:
