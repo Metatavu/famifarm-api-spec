@@ -21,7 +21,7 @@ import java.util.List;
  * LocalizedEntry
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-24T14:03:26.829+02:00[Europe/Helsinki]")public class LocalizedEntry extends ArrayList<LocalizedValue> {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-24T14:17:22.156+02:00[Europe/Helsinki]")public class LocalizedEntry extends ArrayList<LocalizedValue> {
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {

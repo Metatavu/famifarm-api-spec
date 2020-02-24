@@ -26,6 +26,19 @@ public class PackingsApiTest {
     }
 
     /**
+     * Create new packing
+     *
+     * 
+     */
+    @Test
+    public void createPackagingTest() {
+        Packing body = null;
+        // Packing response = api.createPackaging(body);
+
+        // TODO: test validations
+    }
+
+    /**
      * Deletes a packing
      *
      * 
