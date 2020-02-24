@@ -2115,11 +2115,11 @@ components:
         productId:
           type: "string"
           format: "uuid"
-        userId:
-          description: "Id of user who added this entry"
+        startTime:
+          description: "Time when the entry was added"
           type: "string"
-          format: "uuid"
-        time:
+          format: "date-time"
+        endTime:
           description: "Time when the entry was added"
           type: "string"
           format: "date-time"
