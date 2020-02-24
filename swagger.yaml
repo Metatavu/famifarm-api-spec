@@ -191,13 +191,6 @@ paths:
           required: false
           schema:
             $ref: "#/components/schemas/PackingState"
-        - name: startTime
-          in: query
-          description: Filter results by packing start time
-          required: false
-          schema:
-            type: string
-            format: datetime
         - name: createdBefore
           in: query
           description: Created before time
