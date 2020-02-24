@@ -1864,6 +1864,9 @@ components:
           description: "Time when the seed has arrived"
           type: "string"
           format: "date-time"
+        active:
+          description: "if seed batch is active"
+          type: "boolean"
 
     ProductionLine:
       properties:
