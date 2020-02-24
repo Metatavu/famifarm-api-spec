@@ -157,7 +157,175 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+  '/v1/packings':
+    get:
+      summary: List all packings
+      operationId: listPackings
+      tags:
+        - packings
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: productId
+          in: query
+          description: Filter results by product id
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: status
+          in: query
+          description: Filter results by packing status
+          required: false
+          schema:
+            $ref: "#/components/schemas/PackingState"
+        - name: createdBefore
+          in: query
+          description: Created before time
+          required: false
+          schema:
+            type: "string"
+        - name: createdAfter
+          in: query
+          description: Created after time
+          required: false
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: A paged array of packings
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Packing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new packing
+      operationId: createPackaging
+      requestBody:
+        description: Packing to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Packing"
+      tags:
+        - packing
+      responses:
+        '200':
+          description: A created packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Packing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/packings/{packingId}':
+    get:
+      summary: Find a packing
+      operationId: findPacking
+      tags:
+        - packings
+      parameters:
+        - name: packingId
+          in: path
+          description: Packing id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Packing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a packing
+      operationId: updatePacking
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/Packing"
+      tags:
+        - packings
+      parameters:
+        - name: packingId
+          in: path
+          description: Packing id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Packing"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a packing
+      operationId: deletePacking
+      tags:
+        - packings
+      parameters:
+        - name: packingId
+          in: path
+          description: Packing id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+                              
   '/v1/wastageReasons':
     get:
       summary: List all wastage reasons
@@ -1950,12 +2118,43 @@ components:
           oneOf:
             - $ref: '#/components/schemas/PlantingEventData'
             - $ref: '#/components/schemas/SowingEventData'
-            - $ref: '#/components/schemas/PackingEventData'
             - $ref: '#/components/schemas/TableSpreadEventData'
             - $ref: '#/components/schemas/CultivationObservationEventData'
             - $ref: '#/components/schemas/HarvestEventData'
             - $ref: '#/components/schemas/WastageEventData'
-
+    
+    Packing:
+      type: "object"
+      required:
+        - productId
+        - time
+        - state
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        productId:
+          type: "string"
+          format: "uuid"
+        time:
+          type: "string"
+          format: "date-time"
+        packedCount:
+          description: "Amount of created packages"
+          type: "integer"
+          format: "int32"
+        packageSizeId:
+          type: "string"
+          format: "uuid"
+        state:
+          $ref: "#/components/schemas/PackingState"
+    
+    PackingState:
+      type: "string"
+      enum:
+        - IN_STORE
+        - REMOVED
+        
     PlantingEventData:
       properties:
         productionLineId:
@@ -2009,16 +2208,6 @@ components:
           type: "integer"
           format: "int32"
 
-    PackingEventData:
-      properties:
-        packedCount:
-          description: "Amount of created packages"
-          type: "integer"
-          format: "int32"
-        packageSizeId:
-          type: "string"
-          format: "uuid"
-          
     CultivationObservationEventData:
       properties:
         weight:
@@ -2090,7 +2279,6 @@ components:
         - PLANTING
         - TABLE_SPREAD
         - HARVEST
-        - PACKING
         - COMPLETE
 
     EventType:
@@ -2098,7 +2286,6 @@ components:
       enum:
         - PLANTING
         - SOWING
-        - PACKING
         - TABLE_SPREAD
         - CULTIVATION_OBSERVATION
         - HARVEST
