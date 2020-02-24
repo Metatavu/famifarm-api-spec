@@ -229,7 +229,7 @@ paths:
             schema:
              $ref: "#/components/schemas/Packing"
       tags:
-        - packing
+        - packings
       responses:
         '200':
           description: A created packing
