@@ -11,12 +11,11 @@
  */
 
 
-export type EventType = 'PLANTING' | 'SOWING' | 'PACKING' | 'TABLE_SPREAD' | 'CULTIVATION_OBSERVATION' | 'HARVEST' | 'WASTAGE';
+export type EventType = 'PLANTING' | 'SOWING' | 'TABLE_SPREAD' | 'CULTIVATION_OBSERVATION' | 'HARVEST' | 'WASTAGE';
 
 export const EventType = {
     PLANTING: 'PLANTING' as EventType,
     SOWING: 'SOWING' as EventType,
-    PACKING: 'PACKING' as EventType,
     TABLESPREAD: 'TABLE_SPREAD' as EventType,
     CULTIVATIONOBSERVATION: 'CULTIVATION_OBSERVATION' as EventType,
     HARVEST: 'HARVEST' as EventType,

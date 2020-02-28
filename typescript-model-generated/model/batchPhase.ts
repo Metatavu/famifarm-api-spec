@@ -11,13 +11,12 @@
  */
 
 
-export type BatchPhase = 'SOWING' | 'PLANTING' | 'TABLE_SPREAD' | 'HARVEST' | 'PACKING' | 'COMPLETE';
+export type BatchPhase = 'SOWING' | 'PLANTING' | 'TABLE_SPREAD' | 'HARVEST' | 'COMPLETE';
 
 export const BatchPhase = {
     SOWING: 'SOWING' as BatchPhase,
     PLANTING: 'PLANTING' as BatchPhase,
     TABLESPREAD: 'TABLE_SPREAD' as BatchPhase,
     HARVEST: 'HARVEST' as BatchPhase,
-    PACKING: 'PACKING' as BatchPhase,
     COMPLETE: 'COMPLETE' as BatchPhase
 };
