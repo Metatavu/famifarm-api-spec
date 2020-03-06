@@ -635,9 +635,9 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: active
+        - name: includePassive
           in: query
-          description: Is seed batch active
+          description: Include passive seed batches
           required: false
           schema:
             type: boolean
