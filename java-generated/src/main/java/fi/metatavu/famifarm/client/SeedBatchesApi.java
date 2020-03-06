@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-02-24T14:17:22.156+02:00[Europe/Helsinki]")public interface SeedBatchesApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-03-06T14:19:55.440+02:00[Europe/Helsinki]")public interface SeedBatchesApi extends ApiClient.Api {
 
   /**
    * Create new seed batch
@@ -56,14 +56,15 @@ import feign.*;
    * 
    * @param firstResult First index of results to be returned (optional)
    * @param maxResults How many items to return at one time (optional)
+   * @param includePassive Include passive seed batches (optional)
    * @return List&lt;SeedBatch&gt;
    */
-  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}&includePassive={includePassive}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<SeedBatch> listSeedBatches(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
+  List<SeedBatch> listSeedBatches(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults, @Param("includePassive") Boolean includePassive);
 
   /**
    * List all seed batches
@@ -78,11 +79,12 @@ import feign.*;
    *   <ul>
    *   <li>firstResult - First index of results to be returned (optional)</li>
    *   <li>maxResults - How many items to return at one time (optional)</li>
+   *   <li>includePassive - Include passive seed batches (optional)</li>
    *   </ul>
    * @return List&lt;SeedBatch&gt;
 
    */
-  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/seedBatches?firstResult={firstResult}&maxResults={maxResults}&includePassive={includePassive}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -99,6 +101,10 @@ import feign.*;
     }
     public ListSeedBatchesQueryParams maxResults(final Integer value) {
       put("maxResults", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListSeedBatchesQueryParams includePassive(final Boolean value) {
+      put("includePassive", EncodingUtils.encode(value));
       return this;
     }
   }

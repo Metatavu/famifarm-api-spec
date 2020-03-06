@@ -72,7 +72,8 @@ public class SeedBatchesApiTest {
     public void listSeedBatchesTest() {
         Integer firstResult = null;
         Integer maxResults = null;
-        // List<SeedBatch> response = api.listSeedBatches(firstResult, maxResults);
+        Boolean includePassive = null;
+        // List<SeedBatch> response = api.listSeedBatches(firstResult, maxResults, includePassive);
 
         // TODO: test validations
     }
@@ -89,7 +90,8 @@ public class SeedBatchesApiTest {
     public void listSeedBatchesTestQueryMap() {
         SeedBatchesApi.ListSeedBatchesQueryParams queryParams = new SeedBatchesApi.ListSeedBatchesQueryParams()
             .firstResult(null)
-            .maxResults(null);
+            .maxResults(null)
+            .includePassive(null);
         // List<SeedBatch> response = api.listSeedBatches(queryParams);
 
     // TODO: test validations
