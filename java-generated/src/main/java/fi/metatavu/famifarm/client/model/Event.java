@@ -25,7 +25,7 @@ import java.util.UUID;
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-03-06T14:19:55.440+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-03-09T14:11:42.122+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
