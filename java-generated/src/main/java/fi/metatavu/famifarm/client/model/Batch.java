@@ -27,7 +27,7 @@ import java.util.UUID;
  * Identifies a single batch for it&#x27;s entire life-cycle
  */
 @Schema(description = "Identifies a single batch for it's entire life-cycle")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-03-09T14:11:42.122+02:00[Europe/Helsinki]")public class Batch {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-03-09T14:21:36.530+02:00[Europe/Helsinki]")public class Batch {
 
   @JsonProperty("id")
 
