@@ -7,6 +7,61 @@ security:
 - BearerAuth: []
   
 paths:
+  '/v1/printers':
+    get:
+      summary: List all connected printers
+      operationId: listPrinters
+      tags:
+        - printers
+      responses:
+        '200':
+          description: An array of printers
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/Printer"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/printers/{printerId}/print':
+    post:
+      summary: Print
+      operationId: print
+      tags:
+        - printers
+      requestBody:
+        description: Data to print
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PrintData"
+      parameters:
+        - name: printerId
+          in: path
+          description: Printer id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Empty response
+          content:
+            application/json:
+              schema:
+                type: "object"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"    
   '/v1/events':
     get:
       summary: List all events
@@ -2321,6 +2376,27 @@ components:
           format: "date-time"
           readOnly: true
           
+    Printer:
+      type: "object"
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          type: "string"
+          
+    PrintData:
+      type: "object"
+      required:
+        - packingId
+      properties:
+        packingId:
+          type: "string"
+          format: "uuid"
+        
     ErrorResponse:
       type: object
       required: [message]
