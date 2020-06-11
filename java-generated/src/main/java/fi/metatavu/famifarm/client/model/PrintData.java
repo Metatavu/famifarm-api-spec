@@ -16,58 +16,35 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.famifarm.client.model.LocalizedEntry;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * Seed
+ * PrintData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-11T14:37:47.989+03:00[Europe/Helsinki]")public class Seed {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-11T14:37:47.989+03:00[Europe/Helsinki]")public class PrintData {
 
-  @JsonProperty("id")
+  @JsonProperty("packingId")
 
-  private UUID id = null;
-
-  @JsonProperty("name")
-
-  private LocalizedEntry name = null;
-  public Seed id(UUID id) {
-    this.id = id;
+  private UUID packingId = null;
+  public PrintData packingId(UUID packingId) {
+    this.packingId = packingId;
     return this;
   }
 
   
 
   /**
-  * Get id
-  * @return id
+  * Get packingId
+  * @return packingId
   **/
-  @Schema(description = "")
-  public UUID getId() {
-    return id;
+  @Schema(required = true, description = "")
+  public UUID getPackingId() {
+    return packingId;
   }
-  public void setId(UUID id) {
-    this.id = id;
-  }
-  public Seed name(LocalizedEntry name) {
-    this.name = name;
-    return this;
-  }
-
-  
-
-  /**
-  * Get name
-  * @return name
-  **/
-  @Schema(description = "")
-  public LocalizedEntry getName() {
-    return name;
-  }
-  public void setName(LocalizedEntry name) {
-    this.name = name;
+  public void setPackingId(UUID packingId) {
+    this.packingId = packingId;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -77,23 +54,21 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Seed seed = (Seed) o;
-    return Objects.equals(this.id, seed.id) &&
-        Objects.equals(this.name, seed.name);
+    PrintData printData = (PrintData) o;
+    return Objects.equals(this.packingId, printData.packingId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name);
+    return java.util.Objects.hash(packingId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Seed {\n");
+    sb.append("class PrintData {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    packingId: ").append(toIndentedString(packingId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

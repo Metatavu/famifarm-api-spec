@@ -16,24 +16,23 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.famifarm.client.model.LocalizedEntry;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * Reason why a product has been thrown away
+ * Printer
  */
-@Schema(description = "Reason why a product has been thrown away")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-11T14:37:47.989+03:00[Europe/Helsinki]")public class WastageReason {
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-11T14:37:47.989+03:00[Europe/Helsinki]")public class Printer {
 
   @JsonProperty("id")
 
   private UUID id = null;
 
-  @JsonProperty("reason")
+  @JsonProperty("name")
 
-  private LocalizedEntry reason = null;
-  public WastageReason id(UUID id) {
+  private String name = null;
+  public Printer id(UUID id) {
     this.id = id;
     return this;
   }
@@ -44,30 +43,30 @@ import java.util.UUID;
   * Get id
   * @return id
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public UUID getId() {
     return id;
   }
   public void setId(UUID id) {
     this.id = id;
   }
-  public WastageReason reason(LocalizedEntry reason) {
-    this.reason = reason;
+  public Printer name(String name) {
+    this.name = name;
     return this;
   }
 
   
 
   /**
-  * Get reason
-  * @return reason
+  * Get name
+  * @return name
   **/
-  @Schema(description = "")
-  public LocalizedEntry getReason() {
-    return reason;
+  @Schema(required = true, description = "")
+  public String getName() {
+    return name;
   }
-  public void setReason(LocalizedEntry reason) {
-    this.reason = reason;
+  public void setName(String name) {
+    this.name = name;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -77,23 +76,23 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WastageReason wastageReason = (WastageReason) o;
-    return Objects.equals(this.id, wastageReason.id) &&
-        Objects.equals(this.reason, wastageReason.reason);
+    Printer printer = (Printer) o;
+    return Objects.equals(this.id, printer.id) &&
+        Objects.equals(this.name, printer.name);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, reason);
+    return java.util.Objects.hash(id, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WastageReason {\n");
+    sb.append("class Printer {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
