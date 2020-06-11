@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-03-09T14:17:59.047+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-06-11T14:33:18.780+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -610,6 +610,15 @@ public interface V1Api {
  @Parameter(description = "How many items to return at one time")  Integer maxResults
 );
     @GET
+    @Path("/printers")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all connected printers", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "printers" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An array of printers", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Printer.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listPrinters();
+    @GET
     @Path("/productionLines")
     @Produces({ "application/json" })
     @Operation(summary = "List all production lines", description = "", security = {
@@ -701,6 +710,19 @@ public interface V1Api {
 ,  @QueryParam("maxResults") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResults
+);
+    @POST
+    @Path("/printers/{printerId}/print")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Print", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "printers" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Empty response", content = @Content(schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response print(@Valid PrintData body, @PathParam("printerId")
+
+ @Parameter(description = "Printer id") UUID printerId
 );
     @PUT
     @Path("/batches/{batchId}")

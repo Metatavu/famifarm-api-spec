@@ -12,6 +12,90 @@
     "BearerAuth" : [ ]
   } ],
   "paths" : {
+    "/v1/printers" : {
+      "get" : {
+        "tags" : [ "printers" ],
+        "summary" : "List all connected printers",
+        "operationId" : "listPrinters",
+        "responses" : {
+          "200" : {
+            "description" : "An array of printers",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Printer"
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/printers/{printerId}/print" : {
+      "post" : {
+        "tags" : [ "printers" ],
+        "summary" : "Print",
+        "operationId" : "print",
+        "parameters" : [ {
+          "name" : "printerId",
+          "in" : "path",
+          "description" : "Printer id",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Data to print",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PrintData"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Empty response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/events" : {
       "get" : {
         "tags" : [ "events" ],
@@ -3357,6 +3441,29 @@
             "description" : "Time when the draft was created",
             "format" : "date-time",
             "readOnly" : true
+          }
+        }
+      },
+      "Printer" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PrintData" : {
+        "required" : [ "packingId" ],
+        "type" : "object",
+        "properties" : {
+          "packingId" : {
+            "type" : "string",
+            "format" : "uuid"
           }
         }
       },
