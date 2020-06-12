@@ -15,6 +15,8 @@ export * from './performedCultivationAction';
 export * from './pest';
 export * from './plantingEventData';
 export * from './potType';
+export * from './printData';
+export * from './printer';
 export * from './product';
 export * from './productionLine';
 export * from './seed';
