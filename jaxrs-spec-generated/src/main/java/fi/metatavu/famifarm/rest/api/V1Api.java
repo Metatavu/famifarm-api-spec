@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-06-11T14:33:18.780+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-06-12T09:48:27.267+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -722,7 +722,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response print(@Valid PrintData body, @PathParam("printerId")
 
- @Parameter(description = "Printer id") UUID printerId
+ @Parameter(description = "Printer id") String printerId
 );
     @PUT
     @Path("/batches/{batchId}")
