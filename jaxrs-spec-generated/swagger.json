@@ -57,7 +57,8 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "type" : "string"
+            "type" : "string",
+            "format" : "uuid"
           }
         } ],
         "requestBody" : {
@@ -1212,222 +1213,6 @@
           "name" : "seedBatchId",
           "in" : "path",
           "description" : "SeedBatchId",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "responses" : {
-          "204" : {
-            "description" : "Empty result indication a successful removal"
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/teams" : {
-      "get" : {
-        "tags" : [ "teams" ],
-        "summary" : "List all teams",
-        "operationId" : "listTeams",
-        "parameters" : [ {
-          "name" : "firstResult",
-          "in" : "query",
-          "description" : "First index of results to be returned",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "maxResults",
-          "in" : "query",
-          "description" : "How many items to return at one time",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "A paged array of teams",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Team"
-                  }
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post" : {
-        "tags" : [ "teams" ],
-        "summary" : "Create new team",
-        "operationId" : "createTeam",
-        "requestBody" : {
-          "description" : "Team to be added",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Team"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "A created team",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Team"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/teams/{teamId}" : {
-      "get" : {
-        "tags" : [ "teams" ],
-        "summary" : "Find a team",
-        "operationId" : "findTeam",
-        "parameters" : [ {
-          "name" : "teamId",
-          "in" : "path",
-          "description" : "Team id",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "A found team",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Team"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put" : {
-        "tags" : [ "teams" ],
-        "summary" : "Updates a team",
-        "operationId" : "updateTeam",
-        "parameters" : [ {
-          "name" : "teamId",
-          "in" : "path",
-          "description" : "Team id",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "requestBody" : {
-          "description" : "Request payload",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Team"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "An updated team",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Team"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete" : {
-        "tags" : [ "teams" ],
-        "summary" : "Deletes a team",
-        "operationId" : "deleteTeam",
-        "parameters" : [ {
-          "name" : "teamId",
-          "in" : "path",
-          "description" : "Team id",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -3011,18 +2796,6 @@
           }
         }
       },
-      "Team" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "name" : {
-            "$ref" : "#/components/schemas/LocalizedEntry"
-          }
-        }
-      },
       "WastageReason" : {
         "properties" : {
           "id" : {
@@ -3135,10 +2908,6 @@
           },
           "lineNumber" : {
             "type" : "string"
-          },
-          "defaultTeamId" : {
-            "type" : "string",
-            "format" : "uuid"
           },
           "defaultGutterHoleCount" : {
             "type" : "integer",
@@ -3366,10 +3135,6 @@
       "HarvestEventData" : {
         "required" : [ "amount" ],
         "properties" : {
-          "teamId" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
           "gutterCount" : {
             "type" : "integer",
             "format" : "int32"
@@ -3448,7 +3213,8 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string"
+            "type" : "string",
+            "format" : "uuid"
           },
           "name" : {
             "type" : "string"

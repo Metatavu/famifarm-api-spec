@@ -18,12 +18,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class Printer   {
-  private @Valid String id = null;
+  private @Valid UUID id = null;
   private @Valid String name = null;
 
   /**
    **/
-  public Printer id(String id) {
+  public Printer id(UUID id) {
     this.id = id;
     return this;
   }
@@ -33,10 +33,10 @@ public class Printer   {
   @JsonProperty("id")
   @NotNull
 
-  public String getId() {
+  public UUID getId() {
     return id;
   }
-  public void setId(String id) {
+  public void setId(UUID id) {
     this.id = id;
   }
 

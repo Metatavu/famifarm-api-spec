@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 
 public class HarvestEventData   {
-  private @Valid UUID teamId = null;
   private @Valid Integer gutterCount = null;
 public enum TypeEnum {
 
@@ -53,24 +52,6 @@ public enum TypeEnum {
 }
   private @Valid TypeEnum type = null;
   private @Valid UUID productionLineId = null;
-
-  /**
-   **/
-  public HarvestEventData teamId(UUID teamId) {
-    this.teamId = teamId;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "")
-  @JsonProperty("teamId")
-
-  public UUID getTeamId() {
-    return teamId;
-  }
-  public void setTeamId(UUID teamId) {
-    this.teamId = teamId;
-  }
 
   /**
    **/
@@ -137,15 +118,14 @@ public enum TypeEnum {
       return false;
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
-    return Objects.equals(teamId, harvestEventData.teamId) &&
-        Objects.equals(gutterCount, harvestEventData.gutterCount) &&
+    return Objects.equals(gutterCount, harvestEventData.gutterCount) &&
         Objects.equals(type, harvestEventData.type) &&
         Objects.equals(productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(teamId, gutterCount, type, productionLineId);
+    return Objects.hash(gutterCount, type, productionLineId);
   }
 
   @Override
@@ -153,7 +133,6 @@ public enum TypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class HarvestEventData {\n");
     
-    sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");

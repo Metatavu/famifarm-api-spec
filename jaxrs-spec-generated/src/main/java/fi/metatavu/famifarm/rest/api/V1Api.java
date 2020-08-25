@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-06-12T10:04:32.109+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-08-25T11:13:35.260+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -136,16 +136,6 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created seedBatch", content = @Content(schema = @Schema(implementation = SeedBatch.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createSeedBatch(@Valid SeedBatch body);
-    @POST
-    @Path("/teams")
-    @Consumes({ "application/json" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Create new team", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "teams" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A created team", content = @Content(schema = @Schema(implementation = Team.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response createTeam(@Valid Team body);
     @POST
     @Path("/wastageReasons")
     @Consumes({ "application/json" })
@@ -289,18 +279,6 @@ public interface V1Api {
  @Parameter(description = "SeedBatchId") UUID seedBatchId
 );
     @DELETE
-    @Path("/teams/{teamId}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Deletes a team", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "teams" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response deleteTeam( @PathParam("teamId")
-
- @Parameter(description = "Team id") UUID teamId
-);
-    @DELETE
     @Path("/wastageReasons/{wastageReasonId}")
     @Produces({ "application/json" })
     @Operation(summary = "Deletes an wastage reason", description = "", security = {
@@ -431,18 +409,6 @@ public interface V1Api {
     Response findSeedBatch( @PathParam("seedBatchId")
 
  @Parameter(description = "Wastage reason id") UUID seedBatchId
-);
-    @GET
-    @Path("/teams/{teamId}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Find a team", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "teams" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A found team", content = @Content(schema = @Schema(implementation = Team.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response findTeam( @PathParam("teamId")
-
- @Parameter(description = "Team id") UUID teamId
 );
     @GET
     @Path("/wastageReasons/{wastageReasonId}")
@@ -682,21 +648,6 @@ public interface V1Api {
  @Parameter(description = "How many items to return at one time")  Integer maxResults
 );
     @GET
-    @Path("/teams")
-    @Produces({ "application/json" })
-    @Operation(summary = "List all teams", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "teams" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A paged array of teams", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Team.class)))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response listTeams(  @QueryParam("firstResult") 
-
- @Parameter(description = "First index of results to be returned")  Integer firstResult
-,  @QueryParam("maxResults") 
-
- @Parameter(description = "How many items to return at one time")  Integer maxResults
-);
-    @GET
     @Path("/wastageReasons")
     @Produces({ "application/json" })
     @Operation(summary = "List all wastage reasons", description = "", security = {
@@ -722,7 +673,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response print(@Valid PrintData body, @PathParam("printerId")
 
- @Parameter(description = "Printer id") String printerId
+ @Parameter(description = "Printer id") UUID printerId
 );
     @PUT
     @Path("/batches/{batchId}")
@@ -853,19 +804,6 @@ public interface V1Api {
     Response updateSeedBatch(@Valid SeedBatch body, @PathParam("seedBatchId")
 
  @Parameter(description = "Wastage reason id") UUID seedBatchId
-);
-    @PUT
-    @Path("/teams/{teamId}")
-    @Consumes({ "application/json" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Updates a team", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "teams" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "An updated team", content = @Content(schema = @Schema(implementation = Team.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response updateTeam(@Valid Team body, @PathParam("teamId")
-
- @Parameter(description = "Team id") UUID teamId
 );
     @PUT
     @Path("/wastageReasons/{wastageReasonId}")
