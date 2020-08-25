@@ -31,9 +31,9 @@ public class PackingsApiTest {
      * 
      */
     @Test
-    public void createPackagingTest() {
+    public void createPackingTest() {
         Packing body = null;
-        // Packing response = api.createPackaging(body);
+        // Packing response = api.createPacking(body);
 
         // TODO: test validations
     }

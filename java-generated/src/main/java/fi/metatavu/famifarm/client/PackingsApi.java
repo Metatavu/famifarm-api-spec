@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T11:16:55.980+03:00[Europe/Helsinki]")public interface PackingsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T13:37:44.039+03:00[Europe/Helsinki]")public interface PackingsApi extends ApiClient.Api {
 
   /**
    * Create new packing
@@ -28,7 +28,7 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  Packing createPackaging(Packing body);
+  Packing createPacking(Packing body);
   /**
    * Deletes a packing
    * 

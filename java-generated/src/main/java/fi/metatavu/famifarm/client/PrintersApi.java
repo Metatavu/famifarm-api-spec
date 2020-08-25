@@ -7,7 +7,6 @@ import fi.metatavu.famifarm.EncodingUtils;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.PrintData;
 import fi.metatavu.famifarm.client.model.Printer;
-import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T11:16:55.980+03:00[Europe/Helsinki]")public interface PrintersApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T13:37:44.039+03:00[Europe/Helsinki]")public interface PrintersApi extends ApiClient.Api {
 
   /**
    * List all connected printers
@@ -40,5 +39,5 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  Object print(PrintData body, @Param("printerId") UUID printerId);
+  Object print(PrintData body, @Param("printerId") String printerId);
 }
