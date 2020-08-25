@@ -12,7 +12,6 @@
 
 
 export interface HarvestEventData { 
-    teamId?: string;
     gutterCount?: number;
     type?: HarvestEventData.TypeEnum;
     /**
@@ -21,7 +20,6 @@ export interface HarvestEventData {
     productionLineId?: string;
 }
 export interface HarvestEventDataOpt { 
-    teamId?: string;
     gutterCount?: number;
     type?: HarvestEventData.TypeEnum;
     /**

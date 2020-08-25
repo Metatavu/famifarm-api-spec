@@ -23,6 +23,5 @@ export * from './seed';
 export * from './seedBatch';
 export * from './sowingEventData';
 export * from './tableSpreadEventData';
-export * from './team';
 export * from './wastageEventData';
 export * from './wastageReason';

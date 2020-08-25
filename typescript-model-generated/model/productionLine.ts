@@ -14,12 +14,10 @@
 export interface ProductionLine { 
     id?: string;
     lineNumber?: string;
-    defaultTeamId?: string;
     defaultGutterHoleCount?: number;
 }
 export interface ProductionLineOpt { 
     id?: string;
     lineNumber?: string;
-    defaultTeamId?: string;
     defaultGutterHoleCount?: number;
 }
