@@ -274,7 +274,7 @@ paths:
                 $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create new packing
-      operationId: createPackaging
+      operationId: createPacking
       requestBody:
         description: Packing to be added
         required: true
