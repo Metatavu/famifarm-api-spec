@@ -57,8 +57,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "type" : "string",
-            "format" : "uuid"
+            "type" : "string"
           }
         } ],
         "requestBody" : {
@@ -421,7 +420,7 @@
       "post" : {
         "tags" : [ "packings" ],
         "summary" : "Create new packing",
-        "operationId" : "createPackaging",
+        "operationId" : "createPacking",
         "requestBody" : {
           "description" : "Packing to be added",
           "content" : {
@@ -3213,8 +3212,7 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "string",
-            "format" : "uuid"
+            "type" : "string"
           },
           "name" : {
             "type" : "string"

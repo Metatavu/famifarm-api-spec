@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-08-25T11:13:35.260+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-08-25T13:34:19.223+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -75,7 +75,7 @@ public interface V1Api {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "A created packing", content = @Content(schema = @Schema(implementation = Packing.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response createPackaging(@Valid Packing body);
+    Response createPacking(@Valid Packing body);
     @POST
     @Path("/performedCultivationActions")
     @Consumes({ "application/json" })
@@ -673,7 +673,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response print(@Valid PrintData body, @PathParam("printerId")
 
- @Parameter(description = "Printer id") UUID printerId
+ @Parameter(description = "Printer id") String printerId
 );
     @PUT
     @Path("/batches/{batchId}")
