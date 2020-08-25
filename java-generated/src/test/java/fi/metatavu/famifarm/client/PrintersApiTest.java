@@ -4,6 +4,7 @@ import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.PrintData;
 import fi.metatavu.famifarm.client.model.Printer;
+import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class PrintersApiTest {
     @Test
     public void printTest() {
         PrintData body = null;
-        String printerId = null;
+        UUID printerId = null;
         // Object response = api.print(body, printerId);
 
         // TODO: test validations

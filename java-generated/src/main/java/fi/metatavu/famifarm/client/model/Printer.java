@@ -17,21 +17,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.UUID;
 
 /**
  * Printer
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-12T10:07:22.492+03:00[Europe/Helsinki]")public class Printer {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T11:16:55.980+03:00[Europe/Helsinki]")public class Printer {
 
   @JsonProperty("id")
 
-  private String id = null;
+  private UUID id = null;
 
   @JsonProperty("name")
 
   private String name = null;
-  public Printer id(String id) {
+  public Printer id(UUID id) {
     this.id = id;
     return this;
   }
@@ -43,10 +44,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   * @return id
   **/
   @Schema(required = true, description = "")
-  public String getId() {
+  public UUID getId() {
     return id;
   }
-  public void setId(String id) {
+  public void setId(UUID id) {
     this.id = id;
   }
   public Printer name(String name) {

@@ -23,11 +23,7 @@ import java.util.UUID;
  * HarvestEventData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-06-12T10:07:22.492+03:00[Europe/Helsinki]")public class HarvestEventData {
-
-  @JsonProperty("teamId")
-
-  private UUID teamId = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T11:16:55.980+03:00[Europe/Helsinki]")public class HarvestEventData {
 
   @JsonProperty("gutterCount")
 
@@ -72,24 +68,6 @@ import java.util.UUID;
   @JsonProperty("productionLineId")
 
   private UUID productionLineId = null;
-  public HarvestEventData teamId(UUID teamId) {
-    this.teamId = teamId;
-    return this;
-  }
-
-  
-
-  /**
-  * Get teamId
-  * @return teamId
-  **/
-  @Schema(description = "")
-  public UUID getTeamId() {
-    return teamId;
-  }
-  public void setTeamId(UUID teamId) {
-    this.teamId = teamId;
-  }
   public HarvestEventData gutterCount(Integer gutterCount) {
     this.gutterCount = gutterCount;
     return this;
@@ -153,15 +131,14 @@ import java.util.UUID;
       return false;
     }
     HarvestEventData harvestEventData = (HarvestEventData) o;
-    return Objects.equals(this.teamId, harvestEventData.teamId) &&
-        Objects.equals(this.gutterCount, harvestEventData.gutterCount) &&
+    return Objects.equals(this.gutterCount, harvestEventData.gutterCount) &&
         Objects.equals(this.type, harvestEventData.type) &&
         Objects.equals(this.productionLineId, harvestEventData.productionLineId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(teamId, gutterCount, type, productionLineId);
+    return java.util.Objects.hash(gutterCount, type, productionLineId);
   }
 
   @Override
@@ -169,7 +146,6 @@ import java.util.UUID;
     StringBuilder sb = new StringBuilder();
     sb.append("class HarvestEventData {\n");
     
-    sb.append("    teamId: ").append(toIndentedString(teamId)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    productionLineId: ").append(toIndentedString(productionLineId)).append("\n");
