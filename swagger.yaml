@@ -1986,7 +1986,7 @@ components:
           items:
             type: object
             required:
-              - product
+              - productId
               - count
             properties:
               productId:
