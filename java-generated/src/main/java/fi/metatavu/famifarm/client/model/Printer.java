@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Printer
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-08-25T13:37:44.039+03:00[Europe/Helsinki]")public class Printer {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class Printer {
 
   @JsonProperty("id")
 

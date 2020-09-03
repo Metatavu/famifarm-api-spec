@@ -16,15 +16,17 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.famifarm.client.model.LocalizedEntry;
+import fi.metatavu.famifarm.client.model.CampaignProducts;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
- * Product
+ * Campaign
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class Product {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class Campaign {
 
   @JsonProperty("id")
 
@@ -32,12 +34,12 @@ import java.util.UUID;
 
   @JsonProperty("name")
 
-  private LocalizedEntry name = null;
+  private String name = null;
 
-  @JsonProperty("defaultPackageSizeId")
+  @JsonProperty("products")
 
-  private UUID defaultPackageSizeId = null;
-  public Product id(UUID id) {
+  private List<CampaignProducts> products = new ArrayList<>();
+  public Campaign id(UUID id) {
     this.id = id;
     return this;
   }
@@ -55,7 +57,7 @@ import java.util.UUID;
   public void setId(UUID id) {
     this.id = id;
   }
-  public Product name(LocalizedEntry name) {
+  public Campaign name(String name) {
     this.name = name;
     return this;
   }
@@ -66,30 +68,33 @@ import java.util.UUID;
   * Get name
   * @return name
   **/
-  @Schema(description = "")
-  public LocalizedEntry getName() {
+  @Schema(required = true, description = "")
+  public String getName() {
     return name;
   }
-  public void setName(LocalizedEntry name) {
+  public void setName(String name) {
     this.name = name;
   }
-  public Product defaultPackageSizeId(UUID defaultPackageSizeId) {
-    this.defaultPackageSizeId = defaultPackageSizeId;
+  public Campaign products(List<CampaignProducts> products) {
+    this.products = products;
     return this;
   }
 
-  
+  public Campaign addProductsItem(CampaignProducts productsItem) {
+    this.products.add(productsItem);
+    return this;
+  }
 
   /**
-  * Get defaultPackageSizeId
-  * @return defaultPackageSizeId
+  * Get products
+  * @return products
   **/
-  @Schema(description = "")
-  public UUID getDefaultPackageSizeId() {
-    return defaultPackageSizeId;
+  @Schema(required = true, description = "")
+  public List<CampaignProducts> getProducts() {
+    return products;
   }
-  public void setDefaultPackageSizeId(UUID defaultPackageSizeId) {
-    this.defaultPackageSizeId = defaultPackageSizeId;
+  public void setProducts(List<CampaignProducts> products) {
+    this.products = products;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,25 +104,25 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Product product = (Product) o;
-    return Objects.equals(this.id, product.id) &&
-        Objects.equals(this.name, product.name) &&
-        Objects.equals(this.defaultPackageSizeId, product.defaultPackageSizeId);
+    Campaign campaign = (Campaign) o;
+    return Objects.equals(this.id, campaign.id) &&
+        Objects.equals(this.name, campaign.name) &&
+        Objects.equals(this.products, campaign.products);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, defaultPackageSizeId);
+    return java.util.Objects.hash(id, name, products);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Product {\n");
+    sb.append("class Campaign {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    defaultPackageSizeId: ").append(toIndentedString(defaultPackageSizeId)).append("\n");
+    sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("}");
     return sb.toString();
   }

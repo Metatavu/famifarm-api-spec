@@ -16,58 +16,57 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fi.metatavu.famifarm.client.model.LocalizedEntry;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.UUID;
 
 /**
- * Reason why a product has been thrown away
+ * CampaignProducts
  */
-@Schema(description = "Reason why a product has been thrown away")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class WastageReason {
 
-  @JsonProperty("id")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class CampaignProducts {
 
-  private UUID id = null;
+  @JsonProperty("productId")
 
-  @JsonProperty("reason")
+  private UUID productId = null;
 
-  private LocalizedEntry reason = null;
-  public WastageReason id(UUID id) {
-    this.id = id;
+  @JsonProperty("count")
+
+  private Integer count = null;
+  public CampaignProducts productId(UUID productId) {
+    this.productId = productId;
     return this;
   }
 
   
 
   /**
-  * Get id
-  * @return id
+  * Get productId
+  * @return productId
   **/
   @Schema(description = "")
-  public UUID getId() {
-    return id;
+  public UUID getProductId() {
+    return productId;
   }
-  public void setId(UUID id) {
-    this.id = id;
+  public void setProductId(UUID productId) {
+    this.productId = productId;
   }
-  public WastageReason reason(LocalizedEntry reason) {
-    this.reason = reason;
+  public CampaignProducts count(Integer count) {
+    this.count = count;
     return this;
   }
 
   
 
   /**
-  * Get reason
-  * @return reason
+  * Get count
+  * @return count
   **/
   @Schema(description = "")
-  public LocalizedEntry getReason() {
-    return reason;
+  public Integer getCount() {
+    return count;
   }
-  public void setReason(LocalizedEntry reason) {
-    this.reason = reason;
+  public void setCount(Integer count) {
+    this.count = count;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -77,23 +76,23 @@ import java.util.UUID;
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WastageReason wastageReason = (WastageReason) o;
-    return Objects.equals(this.id, wastageReason.id) &&
-        Objects.equals(this.reason, wastageReason.reason);
+    CampaignProducts campaignProducts = (CampaignProducts) o;
+    return Objects.equals(this.productId, campaignProducts.productId) &&
+        Objects.equals(this.count, campaignProducts.count);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, reason);
+    return java.util.Objects.hash(productId, count);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WastageReason {\n");
+    sb.append("class CampaignProducts {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("}");
     return sb.toString();
   }
