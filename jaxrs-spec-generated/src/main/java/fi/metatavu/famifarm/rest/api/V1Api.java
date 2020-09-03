@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-08-25T13:34:19.223+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-09-03T13:34:09.173+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -36,6 +36,16 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created batch", content = @Content(schema = @Schema(implementation = Batch.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createBatch(@Valid Batch body);
+    @POST
+    @Path("/campaigns")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Create a campaign", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A created campaign", content = @Content(schema = @Schema(implementation = Campaign.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response createCampaign(@Valid Campaign body);
     @POST
     @Path("/drafts")
     @Consumes({ "application/json" })
@@ -157,6 +167,18 @@ public interface V1Api {
     Response deleteBatch( @PathParam("batchId")
 
  @Parameter(description = "BatchId") UUID batchId
+);
+    @DELETE
+    @Path("/campaigns/{campaignId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Delete a campaign", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "An empty response indicating a successful removal"),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response deleteCampaign( @PathParam("campaignId")
+
+ String campaignId
 );
     @DELETE
     @Path("/drafts/{draftId}")
@@ -301,6 +323,18 @@ public interface V1Api {
     Response findBatch( @PathParam("batchId")
 
  @Parameter(description = "Batch id") UUID batchId
+);
+    @GET
+    @Path("/campaigns/{campaignId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Find a campaign", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A found campaign", content = @Content(schema = @Schema(implementation = Campaign.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response findCampaign( @PathParam("campaignId")
+
+ String campaignId
 );
     @GET
     @Path("/events/{eventId}")
@@ -470,6 +504,15 @@ public interface V1Api {
 
  @Parameter(description = "Created after time")  String createdAfter
 );
+    @GET
+    @Path("/campaigns")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all campaigns", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An array of campaigns", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Campaign.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listCampaigns();
     @GET
     @Path("/drafts")
     @Produces({ "application/json" })
@@ -687,6 +730,19 @@ public interface V1Api {
     Response updateBatch(@Valid Batch body, @PathParam("batchId")
 
  @Parameter(description = "Batch id") UUID batchId
+);
+    @PUT
+    @Path("/campaigns/{campaignId}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Update a campaign", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "campaigns" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An updated campaign", content = @Content(schema = @Schema(implementation = Campaign.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response updateCampaign(@Valid Campaign body, @PathParam("campaignId")
+
+ String campaignId
 );
     @PUT
     @Path("/events/{eventId}")

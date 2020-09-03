@@ -12,6 +12,193 @@
     "BearerAuth" : [ ]
   } ],
   "paths" : {
+    "/v1/campaigns" : {
+      "get" : {
+        "tags" : [ "campaigns" ],
+        "summary" : "List all campaigns",
+        "operationId" : "listCampaigns",
+        "responses" : {
+          "200" : {
+            "description" : "An array of campaigns",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Campaign"
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "campaigns" ],
+        "summary" : "Create a campaign",
+        "operationId" : "createCampaign",
+        "requestBody" : {
+          "description" : "A campaign to create",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Campaign"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "A created campaign",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/campaigns/{campaignId}" : {
+      "get" : {
+        "tags" : [ "campaigns" ],
+        "summary" : "Find a campaign",
+        "operationId" : "findCampaign",
+        "parameters" : [ {
+          "name" : "campaignId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A found campaign",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "campaigns" ],
+        "summary" : "Update a campaign",
+        "operationId" : "updateCampaign",
+        "parameters" : [ {
+          "name" : "campaignId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "An updated campaign",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Campaign"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "An updated campaign",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "campaigns" ],
+        "summary" : "Delete a campaign",
+        "operationId" : "deleteCampaign",
+        "parameters" : [ {
+          "name" : "campaignId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "An empty response indicating a successful removal"
+          },
+          "default" : {
+            "description" : "unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/printers" : {
       "get" : {
         "tags" : [ "printers" ],
@@ -2775,6 +2962,25 @@
   },
   "components" : {
     "schemas" : {
+      "Campaign" : {
+        "required" : [ "name", "products" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "products" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Campaign_products"
+            }
+          }
+        }
+      },
       "LocalizedEntry" : {
         "type" : "array",
         "items" : {
@@ -3236,6 +3442,19 @@
           "message" : {
             "type" : "string",
             "description" : "The error message"
+          }
+        }
+      },
+      "Campaign_products" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "count" : {
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       }
