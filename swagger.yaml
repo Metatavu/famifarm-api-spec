@@ -7,6 +7,130 @@ security:
 - BearerAuth: []
   
 paths:
+  '/v1/campaigns':
+    get:
+      summary: List all campaigns
+      operationId: listCampaigns
+      tags:
+        - campaigns
+      responses:
+        '200':
+          description: An array of campaigns
+          content:
+            application/json:
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/Campaign'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"          
+    post:
+      summary: Create a campaign
+      operationId: createCampaign
+      tags:
+        - campaigns
+      requestBody:
+        description: A campaign to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: A created campaign
+          content:
+            application/json:    
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+                
+  '/v1/campaigns/{campaignId}':
+    get:
+      summary: Find a campaign
+      operationId: findCampaign
+      tags:
+       - campaigns
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A found campaign
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a campaign
+      operationId: deleteCampaign
+      tags:
+       - campaigns
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: An empty response indicating a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Update a campaign
+      operationId: updateCampaign
+      tags:
+       - campaigns
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: An updated campaign
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Campaign'
+      responses:
+        '200':
+          description: An updated campaign
+          content:
+            application/json:    
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      
   '/v1/printers':
     get:
       summary: List all connected printers
@@ -1846,6 +1970,31 @@ components:
       scheme: bearer
 
   schemas:
+    Campaign:
+      type: object
+      required:
+        - name
+        - products
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        products:
+          type: array
+          items:
+            type: object
+            required:
+              - productId
+              - count
+            properties:
+              productId:
+               type: string
+               format: uuid
+              count:
+                type: integer
+        
     LocalizedEntry: 
        type: array
        items:
