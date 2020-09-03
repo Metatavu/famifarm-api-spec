@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-09-03T13:34:09.173+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-09-03T15:47:23.853+03:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -178,7 +178,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response deleteCampaign( @PathParam("campaignId")
 
- String campaignId
+ UUID campaignId
 );
     @DELETE
     @Path("/drafts/{draftId}")
@@ -334,7 +334,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response findCampaign( @PathParam("campaignId")
 
- String campaignId
+ UUID campaignId
 );
     @GET
     @Path("/events/{eventId}")
@@ -742,7 +742,7 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response updateCampaign(@Valid Campaign body, @PathParam("campaignId")
 
- String campaignId
+ UUID campaignId
 );
     @PUT
     @Path("/events/{eventId}")
