@@ -6,6 +6,7 @@ import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.Campaign;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
+import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public interface CampaignsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T16:19:25.038+03:00[Europe/Helsinki]")public interface CampaignsApi extends ApiClient.Api {
 
   /**
    * Create a campaign
@@ -37,7 +38,7 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  void deleteCampaign(@Param("campaignId") String campaignId);
+  void deleteCampaign(@Param("campaignId") UUID campaignId);
   /**
    * Find a campaign
    * 
@@ -49,7 +50,7 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  Campaign findCampaign(@Param("campaignId") String campaignId);
+  Campaign findCampaign(@Param("campaignId") UUID campaignId);
   /**
    * List all campaigns
    * 
@@ -73,5 +74,5 @@ import feign.*;
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  Campaign updateCampaign(Campaign body, @Param("campaignId") String campaignId);
+  Campaign updateCampaign(Campaign body, @Param("campaignId") UUID campaignId);
 }

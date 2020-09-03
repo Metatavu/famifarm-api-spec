@@ -3,6 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.client.model.Campaign;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
+import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ public class CampaignsApiTest {
      */
     @Test
     public void deleteCampaignTest() {
-        String campaignId = null;
+        UUID campaignId = null;
         // api.deleteCampaign(campaignId);
 
         // TODO: test validations
@@ -56,7 +57,7 @@ public class CampaignsApiTest {
      */
     @Test
     public void findCampaignTest() {
-        String campaignId = null;
+        UUID campaignId = null;
         // Campaign response = api.findCampaign(campaignId);
 
         // TODO: test validations
@@ -82,7 +83,7 @@ public class CampaignsApiTest {
     @Test
     public void updateCampaignTest() {
         Campaign body = null;
-        String campaignId = null;
+        UUID campaignId = null;
         // Campaign response = api.updateCampaign(body, campaignId);
 
         // TODO: test validations

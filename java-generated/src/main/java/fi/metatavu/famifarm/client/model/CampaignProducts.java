@@ -23,7 +23,7 @@ import java.util.UUID;
  * CampaignProducts
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public class CampaignProducts {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T16:19:25.038+03:00[Europe/Helsinki]")public class CampaignProducts {
 
   @JsonProperty("productId")
 

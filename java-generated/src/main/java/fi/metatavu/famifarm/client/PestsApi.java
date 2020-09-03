@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T13:39:14.225+03:00[Europe/Helsinki]")public interface PestsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T16:19:25.038+03:00[Europe/Helsinki]")public interface PestsApi extends ApiClient.Api {
 
   /**
    * Create new pest
