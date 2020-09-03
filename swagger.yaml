@@ -1989,8 +1989,9 @@ components:
               - product
               - count
             properties:
-              product:
-               $ref: '#/components/schemas/Product'
+              productId:
+               type: string
+               format: uuid
               count:
                 type: integer
         
