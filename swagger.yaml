@@ -66,6 +66,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
       responses:
         '200':
           description: A found campaign
@@ -90,6 +91,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
       responses:
         '204':
           description: An empty response indicating a successful removal
@@ -110,6 +112,7 @@ paths:
           required: true
           schema:
             type: string
+            format: uuid
       requestBody:
         description: An updated campaign
         required: true
