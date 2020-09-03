@@ -1,5 +1,7 @@
 export * from './batch';
 export * from './batchPhase';
+export * from './campaign';
+export * from './campaignProducts';
 export * from './cultivationObservationEventData';
 export * from './draft';
 export * from './errorResponse';

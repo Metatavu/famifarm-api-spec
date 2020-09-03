@@ -1,4 +1,4 @@
-## famifarm-typescript-models@0.0.21
+## famifarm-typescript-models@0.0.22
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install famifarm-typescript-models@0.0.21 --save
+npm install famifarm-typescript-models@0.0.22 --save
 ```
 
 _without publishing (not recommended):_
