@@ -20,10 +20,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class Packing   {
   private @Valid UUID id = null;
   private @Valid UUID productId = null;
+  private @Valid UUID campaignId = null;
   private @Valid OffsetDateTime time = null;
   private @Valid Integer packedCount = null;
   private @Valid UUID packageSizeId = null;
   private @Valid PackingState state = null;
+  private @Valid PackingType type = null;
 
   /**
    **/
@@ -51,15 +53,32 @@ public class Packing   {
   }
 
   
-  //@ApiModelProperty(required = true, value = "")
+  //@ApiModelProperty(value = "")
   @JsonProperty("productId")
-  @NotNull
 
   public UUID getProductId() {
     return productId;
   }
   public void setProductId(UUID productId) {
     this.productId = productId;
+  }
+
+  /**
+   **/
+  public Packing campaignId(UUID campaignId) {
+    this.campaignId = campaignId;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(value = "")
+  @JsonProperty("campaignId")
+
+  public UUID getCampaignId() {
+    return campaignId;
+  }
+  public void setCampaignId(UUID campaignId) {
+    this.campaignId = campaignId;
   }
 
   /**
@@ -137,6 +156,25 @@ public class Packing   {
     this.state = state;
   }
 
+  /**
+   **/
+  public Packing type(PackingType type) {
+    this.type = type;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("type")
+  @NotNull
+
+  public PackingType getType() {
+    return type;
+  }
+  public void setType(PackingType type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -149,15 +187,17 @@ public class Packing   {
     Packing packing = (Packing) o;
     return Objects.equals(id, packing.id) &&
         Objects.equals(productId, packing.productId) &&
+        Objects.equals(campaignId, packing.campaignId) &&
         Objects.equals(time, packing.time) &&
         Objects.equals(packedCount, packing.packedCount) &&
         Objects.equals(packageSizeId, packing.packageSizeId) &&
-        Objects.equals(state, packing.state);
+        Objects.equals(state, packing.state) &&
+        Objects.equals(type, packing.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, productId, time, packedCount, packageSizeId, state);
+    return Objects.hash(id, productId, campaignId, time, packedCount, packageSizeId, state, type);
   }
 
   @Override
@@ -167,10 +207,12 @@ public class Packing   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    packedCount: ").append(toIndentedString(packedCount)).append("\n");
     sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

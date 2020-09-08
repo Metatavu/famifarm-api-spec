@@ -3213,7 +3213,7 @@
         }
       },
       "Packing" : {
-        "required" : [ "productId", "state", "time" ],
+        "required" : [ "state", "time", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -3221,6 +3221,10 @@
             "format" : "uuid"
           },
           "productId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "campaignId" : {
             "type" : "string",
             "format" : "uuid"
           },
@@ -3239,12 +3243,19 @@
           },
           "state" : {
             "$ref" : "#/components/schemas/PackingState"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/PackingType"
           }
         }
       },
       "PackingState" : {
         "type" : "string",
         "enum" : [ "IN_STORE", "REMOVED" ]
+      },
+      "PackingType" : {
+        "type" : "string",
+        "enum" : [ "BASIC", "CAMPAIGN" ]
       },
       "PlantingEventData" : {
         "properties" : {
