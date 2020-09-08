@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fi.metatavu.famifarm.client.model.PackingState;
+import fi.metatavu.famifarm.client.model.PackingType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -25,7 +26,7 @@ import java.util.UUID;
  * Packing
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-03T16:19:25.038+03:00[Europe/Helsinki]")public class Packing {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-08T08:43:27.518+03:00[Europe/Helsinki]")public class Packing {
 
   @JsonProperty("id")
 
@@ -34,6 +35,10 @@ import java.util.UUID;
   @JsonProperty("productId")
 
   private UUID productId = null;
+
+  @JsonProperty("campaignId")
+
+  private UUID campaignId = null;
 
   @JsonProperty("time")
 
@@ -50,6 +55,10 @@ import java.util.UUID;
   @JsonProperty("state")
 
   private PackingState state = null;
+
+  @JsonProperty("type")
+
+  private PackingType type = null;
   public Packing id(UUID id) {
     this.id = id;
     return this;
@@ -79,12 +88,30 @@ import java.util.UUID;
   * Get productId
   * @return productId
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public UUID getProductId() {
     return productId;
   }
   public void setProductId(UUID productId) {
     this.productId = productId;
+  }
+  public Packing campaignId(UUID campaignId) {
+    this.campaignId = campaignId;
+    return this;
+  }
+
+  
+
+  /**
+  * Get campaignId
+  * @return campaignId
+  **/
+  @Schema(description = "")
+  public UUID getCampaignId() {
+    return campaignId;
+  }
+  public void setCampaignId(UUID campaignId) {
+    this.campaignId = campaignId;
   }
   public Packing time(OffsetDateTime time) {
     this.time = time;
@@ -158,6 +185,24 @@ import java.util.UUID;
   public void setState(PackingState state) {
     this.state = state;
   }
+  public Packing type(PackingType type) {
+    this.type = type;
+    return this;
+  }
+
+  
+
+  /**
+  * Get type
+  * @return type
+  **/
+  @Schema(required = true, description = "")
+  public PackingType getType() {
+    return type;
+  }
+  public void setType(PackingType type) {
+    this.type = type;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -169,15 +214,17 @@ import java.util.UUID;
     Packing packing = (Packing) o;
     return Objects.equals(this.id, packing.id) &&
         Objects.equals(this.productId, packing.productId) &&
+        Objects.equals(this.campaignId, packing.campaignId) &&
         Objects.equals(this.time, packing.time) &&
         Objects.equals(this.packedCount, packing.packedCount) &&
         Objects.equals(this.packageSizeId, packing.packageSizeId) &&
-        Objects.equals(this.state, packing.state);
+        Objects.equals(this.state, packing.state) &&
+        Objects.equals(this.type, packing.type);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, productId, time, packedCount, packageSizeId, state);
+    return java.util.Objects.hash(id, productId, campaignId, time, packedCount, packageSizeId, state, type);
   }
 
   @Override
@@ -187,10 +234,12 @@ import java.util.UUID;
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    packedCount: ").append(toIndentedString(packedCount)).append("\n");
     sb.append("    packageSizeId: ").append(toIndentedString(packageSizeId)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
