@@ -13,6 +13,7 @@ export * from './localizedValue';
 export * from './packageSize';
 export * from './packing';
 export * from './packingState';
+export * from './packingType';
 export * from './performedCultivationAction';
 export * from './pest';
 export * from './plantingEventData';

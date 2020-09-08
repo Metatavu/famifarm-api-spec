@@ -10,11 +10,13 @@
  * Do not edit the class manually.
  */
 import { PackingState } from './packingState';
+import { PackingType } from './packingType';
 
 
 export interface Packing { 
     id?: string;
-    productId: string;
+    productId?: string;
+    campaignId?: string;
     time: string;
     /**
      * Amount of created packages
@@ -22,10 +24,12 @@ export interface Packing {
     packedCount?: number;
     packageSizeId?: string;
     state: PackingState;
+    type: PackingType;
 }
 export interface PackingOpt { 
     id?: string;
     productId?: string;
+    campaignId?: string;
     time?: string;
     /**
      * Amount of created packages
@@ -33,4 +37,5 @@ export interface PackingOpt {
     packedCount?: number;
     packageSizeId?: string;
     state?: PackingState;
+    type?: PackingType;
 }
