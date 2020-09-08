@@ -2181,9 +2181,9 @@ components:
     Packing:
       type: "object"
       required:
-        - productId
         - time
         - state
+        - type
       properties:
         id:
           type: "string"
@@ -2191,6 +2191,9 @@ components:
         productId:
           type: "string"
           format: "uuid"
+        campaignId:
+          type: "string"
+          format: "uuid"  
         time:
           type: "string"
           format: "date-time"
@@ -2203,12 +2206,20 @@ components:
           format: "uuid"
         state:
           $ref: "#/components/schemas/PackingState"
+        type:
+          $ref: "#/components/schemas/PackingType"
     
     PackingState:
       type: "string"
       enum:
         - IN_STORE
         - REMOVED
+        
+    PackingType:
+      type: "string"
+      enum:
+        - BASIC
+        - CAMPAIGN
         
     PlantingEventData:
       properties:
