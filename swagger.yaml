@@ -967,6 +967,12 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: includeSubcontractorProducts
+          in: query
+          description: "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false" 
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: A paged array of products
@@ -2046,6 +2052,8 @@ components:
           format: "int32"
 
     Product:
+      required:
+        - isSubcontractorProduct
       properties:
         id:
           type: "string"
@@ -2055,6 +2063,8 @@ components:
         defaultPackageSizeId:
           type: "string"
           format: "uuid"
+        isSubcontractorProduct:
+          type: "boolean"
 
     Pest:
       type: "object"
