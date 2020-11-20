@@ -24,7 +24,7 @@ import java.util.UUID;
  * Reason why a product has been thrown away
  */
 @Schema(description = "Reason why a product has been thrown away")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-08T08:43:27.518+03:00[Europe/Helsinki]")public class WastageReason {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-20T14:19:00.698+02:00[Europe/Helsinki]")public class WastageReason {
 
   @JsonProperty("id")
 

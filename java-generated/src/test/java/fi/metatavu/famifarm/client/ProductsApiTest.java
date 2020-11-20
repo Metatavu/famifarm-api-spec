@@ -72,7 +72,8 @@ public class ProductsApiTest {
     public void listProductsTest() {
         Integer firstResult = null;
         Integer maxResults = null;
-        // List<Product> response = api.listProducts(firstResult, maxResults);
+        Boolean includeSubcontractorProducts = null;
+        // List<Product> response = api.listProducts(firstResult, maxResults, includeSubcontractorProducts);
 
         // TODO: test validations
     }
@@ -89,7 +90,8 @@ public class ProductsApiTest {
     public void listProductsTestQueryMap() {
         ProductsApi.ListProductsQueryParams queryParams = new ProductsApi.ListProductsQueryParams()
             .firstResult(null)
-            .maxResults(null);
+            .maxResults(null)
+            .includeSubcontractorProducts(null);
         // List<Product> response = api.listProducts(queryParams);
 
     // TODO: test validations

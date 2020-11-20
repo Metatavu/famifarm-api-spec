@@ -24,7 +24,7 @@ import java.util.UUID;
  * Product
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-08T08:43:27.518+03:00[Europe/Helsinki]")public class Product {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-20T14:19:00.698+02:00[Europe/Helsinki]")public class Product {
 
   @JsonProperty("id")
 
@@ -37,6 +37,10 @@ import java.util.UUID;
   @JsonProperty("defaultPackageSizeId")
 
   private UUID defaultPackageSizeId = null;
+
+  @JsonProperty("isSubcontractorProduct")
+
+  private Boolean isSubcontractorProduct = null;
   public Product id(UUID id) {
     this.id = id;
     return this;
@@ -91,6 +95,24 @@ import java.util.UUID;
   public void setDefaultPackageSizeId(UUID defaultPackageSizeId) {
     this.defaultPackageSizeId = defaultPackageSizeId;
   }
+  public Product isSubcontractorProduct(Boolean isSubcontractorProduct) {
+    this.isSubcontractorProduct = isSubcontractorProduct;
+    return this;
+  }
+
+  
+
+  /**
+  * Get isSubcontractorProduct
+  * @return isSubcontractorProduct
+  **/
+  @Schema(required = true, description = "")
+  public Boolean isIsSubcontractorProduct() {
+    return isSubcontractorProduct;
+  }
+  public void setIsSubcontractorProduct(Boolean isSubcontractorProduct) {
+    this.isSubcontractorProduct = isSubcontractorProduct;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -102,12 +124,13 @@ import java.util.UUID;
     Product product = (Product) o;
     return Objects.equals(this.id, product.id) &&
         Objects.equals(this.name, product.name) &&
-        Objects.equals(this.defaultPackageSizeId, product.defaultPackageSizeId);
+        Objects.equals(this.defaultPackageSizeId, product.defaultPackageSizeId) &&
+        Objects.equals(this.isSubcontractorProduct, product.isSubcontractorProduct);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, name, defaultPackageSizeId);
+    return java.util.Objects.hash(id, name, defaultPackageSizeId, isSubcontractorProduct);
   }
 
   @Override
@@ -118,6 +141,7 @@ import java.util.UUID;
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    defaultPackageSizeId: ").append(toIndentedString(defaultPackageSizeId)).append("\n");
+    sb.append("    isSubcontractorProduct: ").append(toIndentedString(isSubcontractorProduct)).append("\n");
     sb.append("}");
     return sb.toString();
   }

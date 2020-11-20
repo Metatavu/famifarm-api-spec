@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-09-08T08:43:27.518+03:00[Europe/Helsinki]")public interface ProductsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-20T14:19:00.698+02:00[Europe/Helsinki]")public interface ProductsApi extends ApiClient.Api {
 
   /**
    * Create new product
@@ -56,14 +56,15 @@ import feign.*;
    * 
    * @param firstResult First index of results to be returned (optional)
    * @param maxResults How many items to return at one time (optional)
+   * @param includeSubcontractorProducts Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false (optional)
    * @return List&lt;Product&gt;
    */
-  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}&includeSubcontractorProducts={includeSubcontractorProducts}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Product> listProducts(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults);
+  List<Product> listProducts(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults, @Param("includeSubcontractorProducts") Boolean includeSubcontractorProducts);
 
   /**
    * List all products
@@ -78,11 +79,12 @@ import feign.*;
    *   <ul>
    *   <li>firstResult - First index of results to be returned (optional)</li>
    *   <li>maxResults - How many items to return at one time (optional)</li>
+   *   <li>includeSubcontractorProducts - Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false (optional)</li>
    *   </ul>
    * @return List&lt;Product&gt;
 
    */
-  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}")
+  @RequestLine("GET /v1/products?firstResult={firstResult}&maxResults={maxResults}&includeSubcontractorProducts={includeSubcontractorProducts}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -99,6 +101,10 @@ import feign.*;
     }
     public ListProductsQueryParams maxResults(final Integer value) {
       put("maxResults", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListProductsQueryParams includeSubcontractorProducts(final Boolean value) {
+      put("includeSubcontractorProducts", EncodingUtils.encode(value));
       return this;
     }
   }
