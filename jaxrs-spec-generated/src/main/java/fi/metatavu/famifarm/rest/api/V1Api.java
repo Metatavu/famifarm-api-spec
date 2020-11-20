@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-09-08T08:39:49.492+03:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-11-20T14:14:36.638+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -656,6 +656,9 @@ public interface V1Api {
 ,  @QueryParam("maxResults") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResults
+,  @QueryParam("includeSubcontractorProducts") 
+
+ @Parameter(description = "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false")  Boolean includeSubcontractorProducts
 );
     @GET
     @Path("/seedBatches")

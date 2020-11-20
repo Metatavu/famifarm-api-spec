@@ -21,6 +21,7 @@ public class Product   {
   private @Valid UUID id = null;
   private @Valid LocalizedEntry name = null;
   private @Valid UUID defaultPackageSizeId = null;
+  private @Valid Boolean isSubcontractorProduct = null;
 
   /**
    **/
@@ -76,6 +77,25 @@ public class Product   {
     this.defaultPackageSizeId = defaultPackageSizeId;
   }
 
+  /**
+   **/
+  public Product isSubcontractorProduct(Boolean isSubcontractorProduct) {
+    this.isSubcontractorProduct = isSubcontractorProduct;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("isSubcontractorProduct")
+  @NotNull
+
+  public Boolean isisIsSubcontractorProduct() {
+    return isSubcontractorProduct;
+  }
+  public void setIsSubcontractorProduct(Boolean isSubcontractorProduct) {
+    this.isSubcontractorProduct = isSubcontractorProduct;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -88,12 +108,13 @@ public class Product   {
     Product product = (Product) o;
     return Objects.equals(id, product.id) &&
         Objects.equals(name, product.name) &&
-        Objects.equals(defaultPackageSizeId, product.defaultPackageSizeId);
+        Objects.equals(defaultPackageSizeId, product.defaultPackageSizeId) &&
+        Objects.equals(isSubcontractorProduct, product.isSubcontractorProduct);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, defaultPackageSizeId);
+    return Objects.hash(id, name, defaultPackageSizeId, isSubcontractorProduct);
   }
 
   @Override
@@ -104,6 +125,7 @@ public class Product   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    defaultPackageSizeId: ").append(toIndentedString(defaultPackageSizeId)).append("\n");
+    sb.append("    isSubcontractorProduct: ").append(toIndentedString(isSubcontractorProduct)).append("\n");
     sb.append("}");
     return sb.toString();
   }

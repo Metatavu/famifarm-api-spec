@@ -1454,6 +1454,16 @@
             "type" : "integer",
             "format" : "int32"
           }
+        }, {
+          "name" : "includeSubcontractorProducts",
+          "in" : "query",
+          "description" : "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -3044,6 +3054,7 @@
         }
       },
       "Product" : {
+        "required" : [ "isSubcontractorProduct" ],
         "properties" : {
           "id" : {
             "type" : "string",
@@ -3055,6 +3066,9 @@
           "defaultPackageSizeId" : {
             "type" : "string",
             "format" : "uuid"
+          },
+          "isSubcontractorProduct" : {
+            "type" : "boolean"
           }
         }
       },
