@@ -16,9 +16,11 @@ export interface Product {
     id?: string;
     name?: LocalizedEntry;
     defaultPackageSizeId?: string;
+    isSubcontractorProduct: boolean;
 }
 export interface ProductOpt { 
     id?: string;
     name?: LocalizedEntry;
     defaultPackageSizeId?: string;
+    isSubcontractorProduct?: boolean;
 }
