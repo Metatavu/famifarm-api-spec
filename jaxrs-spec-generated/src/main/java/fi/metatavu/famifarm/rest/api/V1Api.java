@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-11-20T14:14:36.638+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-11-24T18:10:25.736+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -46,6 +46,16 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created campaign", content = @Content(schema = @Schema(implementation = Campaign.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createCampaign(@Valid Campaign body);
+    @POST
+    @Path("/cutPackings")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Create a new cut packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "CutPackings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A created cut packing", content = @Content(schema = @Schema(implementation = CutPacking.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response createCutPacking(@Valid CutPacking body);
     @POST
     @Path("/drafts")
     @Consumes({ "application/json" })
@@ -179,6 +189,18 @@ public interface V1Api {
     Response deleteCampaign( @PathParam("campaignId")
 
  UUID campaignId
+);
+    @DELETE
+    @Path("/cutPackings/{cutPackingId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Deletes a cut packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "CutPackings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response deleteCutPacking( @PathParam("cutPackingId")
+
+ @Parameter(description = "The id of a cut packing to delete") UUID cutPackingId
 );
     @DELETE
     @Path("/drafts/{draftId}")
@@ -335,6 +357,18 @@ public interface V1Api {
     Response findCampaign( @PathParam("campaignId")
 
  UUID campaignId
+);
+    @GET
+    @Path("/cutPackings/{cutPackingId}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Find a cut packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "CutPackings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A found cut packing", content = @Content(schema = @Schema(implementation = CutPacking.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response findCutPacking( @PathParam("cutPackingId")
+
+ @Parameter(description = "The id of a cut packing to find") UUID cutPackingId
 );
     @GET
     @Path("/events/{eventId}")
@@ -513,6 +547,30 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "An array of campaigns", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Campaign.class)))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response listCampaigns();
+    @GET
+    @Path("/cutPackings")
+    @Produces({ "application/json" })
+    @Operation(summary = "List all cut packings", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "CutPackings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A paged array of cut packings", content = @Content(array = @ArraySchema(schema = @Schema(implementation = CutPacking.class)))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response listCutPackings(  @QueryParam("firstResult") 
+
+ @Parameter(description = "First index of results to be returned")  Integer firstResult
+,  @QueryParam("maxResults") 
+
+ @Parameter(description = "How many items to return at one time")  Integer maxResults
+,  @QueryParam("productId") 
+
+ @Parameter(description = "Filter results by product id")  UUID productId
+,  @QueryParam("createdBefore") 
+
+ @Parameter(description = "Created before time")  String createdBefore
+,  @QueryParam("createdAfter") 
+
+ @Parameter(description = "Created after time")  String createdAfter
+);
     @GET
     @Path("/drafts")
     @Produces({ "application/json" })
@@ -746,6 +804,19 @@ public interface V1Api {
     Response updateCampaign(@Valid Campaign body, @PathParam("campaignId")
 
  UUID campaignId
+);
+    @PUT
+    @Path("/cutPackings/{cutPackingId}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Updates a cut packing", description = "", security = {
+        @SecurityRequirement(name = "BearerAuth")    }, tags={ "CutPackings" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "An updated cut packing", content = @Content(schema = @Schema(implementation = CutPacking.class))),
+        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
+    Response updateCutPacking(@Valid CutPacking body, @PathParam("cutPackingId")
+
+ @Parameter(description = "The id of a cut packing to update") UUID cutPackingId
 );
     @PUT
     @Path("/events/{eventId}")
