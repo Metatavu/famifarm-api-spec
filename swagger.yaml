@@ -2608,7 +2608,6 @@ components:
           type: number
         gutterHoleCount:
           type: number
-
         
     ErrorResponse:
       type: object
