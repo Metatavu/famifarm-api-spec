@@ -3,6 +3,7 @@ export * from './batchPhase';
 export * from './campaign';
 export * from './campaignProducts';
 export * from './cultivationObservationEventData';
+export * from './cutPacking';
 export * from './draft';
 export * from './errorResponse';
 export * from './event';
