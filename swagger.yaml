@@ -2606,11 +2606,10 @@ components:
         contactInformation:
           type: string
         gutterCount:
-          type: number
+          type: integer
         gutterHoleCount:
-          type: number
+          type: integer
 
-        
     ErrorResponse:
       type: object
       required: [message]
