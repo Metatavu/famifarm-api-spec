@@ -23,7 +23,7 @@ import java.util.UUID;
  * PrintData
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-20T14:19:00.698+02:00[Europe/Helsinki]")public class PrintData {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-24T18:18:32.873+02:00[Europe/Helsinki]")public class PrintData {
 
   @JsonProperty("packingId")
 
