@@ -506,6 +506,168 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  '/v1/cutPackings':
+    get:
+      summary: List all cut packings
+      operationId: listCutPackings
+      tags:
+        - CutPackings
+      parameters:
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: productId
+          in: query
+          description: Filter results by product id
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: createdBefore
+          in: query
+          description: Created before time
+          required: false
+          schema:
+            type: "string"
+        - name: createdAfter
+          in: query
+          description: Created after time
+          required: false
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: A paged array of cut packings
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items: 
+                  $ref: "#/components/schemas/CutPacking"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create a new cut packing
+      operationId: createCutPacking
+      requestBody:
+        description: A cut packing to be added
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/CutPacking"
+      tags:
+        - CutPackings
+      responses:
+        '200':
+          description: A created cut packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/CutPacking"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  '/v1/cutPackings/{cutPackingId}':
+    get:
+      summary: Find a cut packing
+      operationId: findCutPacking
+      tags:
+        - CutPackings
+      parameters:
+        - name: cutPackingId
+          in: path
+          description: The id of a cut packing to find
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: A found cut packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/CutPacking"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a cut packing
+      operationId: updateCutPacking
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+             $ref: "#/components/schemas/CutPacking"
+      tags:
+        - CutPackings
+      parameters:
+        - name: cutPackingId
+          in: path
+          description: The id of a cut packing to update
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: An updated cut packing
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/CutPacking"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a cut packing
+      operationId: deleteCutPacking
+      tags:
+        - CutPackings
+      parameters:
+        - name: cutPackingId
+          in: path
+          description: The id of a cut packing to delete
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"                
                               
   '/v1/wastageReasons':
     get:
@@ -2407,6 +2569,46 @@ components:
         packingId:
           type: "string"
           format: "uuid"
+    
+    CutPacking:
+      type: object
+      required:
+        - weight
+        - productId
+        - productionLineId
+        - cuttingDay
+        - sowingDay
+        - producer
+        - contactInformation
+        - gutterHoleCount
+        - gutterCount
+      properties:
+        id:
+          type: string
+          format: uuid
+        weight:
+          type: number
+        productId:
+          type: string
+          format: uuid
+        productionLineId:
+          type: string
+          format: uuid
+        cuttingDay:
+          type: string
+          format: date-time
+        sowingDay:
+          type: string
+          format: date-time
+        producer:
+          type: string
+        contactInformation:
+          type: string
+        gutterCount:
+          type: number
+        gutterHoleCount:
+          type: number
+
         
     ErrorResponse:
       type: object
