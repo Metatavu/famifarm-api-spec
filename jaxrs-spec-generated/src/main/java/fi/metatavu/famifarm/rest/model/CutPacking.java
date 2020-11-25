@@ -28,6 +28,7 @@ public class CutPacking   {
   private @Valid String contactInformation = null;
   private @Valid Integer gutterCount = null;
   private @Valid Integer gutterHoleCount = null;
+  private @Valid String storageCondition = null;
 
   /**
    **/
@@ -218,6 +219,25 @@ public class CutPacking   {
     this.gutterHoleCount = gutterHoleCount;
   }
 
+  /**
+   **/
+  public CutPacking storageCondition(String storageCondition) {
+    this.storageCondition = storageCondition;
+    return this;
+  }
+
+  
+  //@ApiModelProperty(required = true, value = "")
+  @JsonProperty("storageCondition")
+  @NotNull
+
+  public String getStorageCondition() {
+    return storageCondition;
+  }
+  public void setStorageCondition(String storageCondition) {
+    this.storageCondition = storageCondition;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -237,12 +257,13 @@ public class CutPacking   {
         Objects.equals(producer, cutPacking.producer) &&
         Objects.equals(contactInformation, cutPacking.contactInformation) &&
         Objects.equals(gutterCount, cutPacking.gutterCount) &&
-        Objects.equals(gutterHoleCount, cutPacking.gutterHoleCount);
+        Objects.equals(gutterHoleCount, cutPacking.gutterHoleCount) &&
+        Objects.equals(storageCondition, cutPacking.storageCondition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, weight, productId, productionLineId, cuttingDay, sowingDay, producer, contactInformation, gutterCount, gutterHoleCount);
+    return Objects.hash(id, weight, productId, productionLineId, cuttingDay, sowingDay, producer, contactInformation, gutterCount, gutterHoleCount, storageCondition);
   }
 
   @Override
@@ -260,6 +281,7 @@ public class CutPacking   {
     sb.append("    contactInformation: ").append(toIndentedString(contactInformation)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    gutterHoleCount: ").append(toIndentedString(gutterHoleCount)).append("\n");
+    sb.append("    storageCondition: ").append(toIndentedString(storageCondition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
