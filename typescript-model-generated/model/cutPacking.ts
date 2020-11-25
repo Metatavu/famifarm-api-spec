@@ -22,6 +22,7 @@ export interface CutPacking {
     contactInformation: string;
     gutterCount: number;
     gutterHoleCount: number;
+    storageCondition: string;
 }
 export interface CutPackingOpt { 
     id?: string;
@@ -34,4 +35,5 @@ export interface CutPackingOpt {
     contactInformation?: string;
     gutterCount?: number;
     gutterHoleCount?: number;
+    storageCondition?: string;
 }
