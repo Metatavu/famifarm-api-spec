@@ -2582,6 +2582,7 @@ components:
         - contactInformation
         - gutterHoleCount
         - gutterCount
+        - storageCondition
       properties:
         id:
           type: string
@@ -2609,7 +2610,10 @@ components:
           type: integer
         gutterHoleCount:
           type: integer
+        storageCondition:
+          type: string
 
+        
     ErrorResponse:
       type: object
       required: [message]
