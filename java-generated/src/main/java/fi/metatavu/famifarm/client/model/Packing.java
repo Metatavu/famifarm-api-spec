@@ -26,7 +26,7 @@ import java.util.UUID;
  * Packing
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-24T18:18:32.873+02:00[Europe/Helsinki]")public class Packing {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-25T14:58:19.013+02:00[Europe/Helsinki]")public class Packing {
 
   @JsonProperty("id")
 

@@ -24,7 +24,7 @@ import java.util.UUID;
  * CutPacking
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-24T18:18:32.873+02:00[Europe/Helsinki]")public class CutPacking {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-25T14:58:19.013+02:00[Europe/Helsinki]")public class CutPacking {
 
   @JsonProperty("id")
 
@@ -65,6 +65,10 @@ import java.util.UUID;
   @JsonProperty("gutterHoleCount")
 
   private Integer gutterHoleCount = null;
+
+  @JsonProperty("storageCondition")
+
+  private String storageCondition = null;
   public CutPacking id(UUID id) {
     this.id = id;
     return this;
@@ -245,6 +249,24 @@ import java.util.UUID;
   public void setGutterHoleCount(Integer gutterHoleCount) {
     this.gutterHoleCount = gutterHoleCount;
   }
+  public CutPacking storageCondition(String storageCondition) {
+    this.storageCondition = storageCondition;
+    return this;
+  }
+
+  
+
+  /**
+  * Get storageCondition
+  * @return storageCondition
+  **/
+  @Schema(required = true, description = "")
+  public String getStorageCondition() {
+    return storageCondition;
+  }
+  public void setStorageCondition(String storageCondition) {
+    this.storageCondition = storageCondition;
+  }
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -263,12 +285,13 @@ import java.util.UUID;
         Objects.equals(this.producer, cutPacking.producer) &&
         Objects.equals(this.contactInformation, cutPacking.contactInformation) &&
         Objects.equals(this.gutterCount, cutPacking.gutterCount) &&
-        Objects.equals(this.gutterHoleCount, cutPacking.gutterHoleCount);
+        Objects.equals(this.gutterHoleCount, cutPacking.gutterHoleCount) &&
+        Objects.equals(this.storageCondition, cutPacking.storageCondition);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, weight, productId, productionLineId, cuttingDay, sowingDay, producer, contactInformation, gutterCount, gutterHoleCount);
+    return java.util.Objects.hash(id, weight, productId, productionLineId, cuttingDay, sowingDay, producer, contactInformation, gutterCount, gutterHoleCount, storageCondition);
   }
 
   @Override
@@ -286,6 +309,7 @@ import java.util.UUID;
     sb.append("    contactInformation: ").append(toIndentedString(contactInformation)).append("\n");
     sb.append("    gutterCount: ").append(toIndentedString(gutterCount)).append("\n");
     sb.append("    gutterHoleCount: ").append(toIndentedString(gutterHoleCount)).append("\n");
+    sb.append("    storageCondition: ").append(toIndentedString(storageCondition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
