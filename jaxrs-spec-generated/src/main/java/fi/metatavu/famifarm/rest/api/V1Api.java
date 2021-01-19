@@ -23,19 +23,9 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2020-11-25T14:54:24.678+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2021-01-19T12:58:59.299+02:00[Europe/Helsinki]")
 public interface V1Api {
 
-    @POST
-    @Path("/batches")
-    @Consumes({ "application/json" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Create new batch", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "batches" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A created batch", content = @Content(schema = @Schema(implementation = Batch.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response createBatch(@Valid Batch body);
     @POST
     @Path("/campaigns")
     @Consumes({ "application/json" })
@@ -166,18 +156,6 @@ public interface V1Api {
         @ApiResponse(responseCode = "200", description = "A created wastageReason", content = @Content(schema = @Schema(implementation = WastageReason.class))),
         @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
     Response createWastageReason(@Valid WastageReason body);
-    @DELETE
-    @Path("/batches/{batchId}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Deletes a batch", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "batches" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "204", description = "Empty result indication a successful removal"),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response deleteBatch( @PathParam("batchId")
-
- @Parameter(description = "BatchId") UUID batchId
-);
     @DELETE
     @Path("/campaigns/{campaignId}")
     @Produces({ "application/json" })
@@ -333,18 +311,6 @@ public interface V1Api {
     Response deleteWastageReason( @PathParam("wastageReasonId")
 
  @Parameter(description = "WastageReasonId") UUID wastageReasonId
-);
-    @GET
-    @Path("/batches/{batchId}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Find a batch", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "batches" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A found batch", content = @Content(schema = @Schema(implementation = Batch.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response findBatch( @PathParam("batchId")
-
- @Parameter(description = "Batch id") UUID batchId
 );
     @GET
     @Path("/campaigns/{campaignId}")
@@ -509,36 +475,6 @@ public interface V1Api {
  @Parameter(description = "To time of the report")  String toTime
 );
     @GET
-    @Path("/batches")
-    @Produces({ "application/json" })
-    @Operation(summary = "List all batches", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "batches" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A paged array of batches", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Batch.class)))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response listBatches(  @QueryParam("status") 
-
- @Parameter(description = "Filters list by derived batch status.")  String status
-,  @QueryParam("phase") 
-
- @Parameter(description = "Filters list by phase")  BatchPhase phase
-,  @QueryParam("productId") 
-
- @Parameter(description = "Filters list by product id")  UUID productId
-,  @QueryParam("firstResult") 
-
- @Parameter(description = "Where to start listing")  Integer firstResult
-,  @QueryParam("maxResult") 
-
- @Parameter(description = "How many items to return at one time")  Integer maxResult
-,  @QueryParam("createdBefore") 
-
- @Parameter(description = "Created before time")  String createdBefore
-,  @QueryParam("createdAfter") 
-
- @Parameter(description = "Created after time")  String createdAfter
-);
-    @GET
     @Path("/campaigns")
     @Produces({ "application/json" })
     @Operation(summary = "List all campaigns", description = "", security = {
@@ -600,9 +536,15 @@ public interface V1Api {
 ,  @QueryParam("maxResults") 
 
  @Parameter(description = "How many items to return at one time")  Integer maxResults
-,  @QueryParam("batchId") 
+,  @QueryParam("productId") 
 
- @Parameter(description = "Filter results by batch id")  UUID batchId
+ @Parameter(description = "Filter results by productId")  UUID productId
+,  @QueryParam("createdAfter") 
+
+ @Parameter(description = "Filter results by created after")  OffsetDateTime createdAfter
+,  @QueryParam("createdBefore") 
+
+ @Parameter(description = "Filter results by created before")  OffsetDateTime createdBefore
 );
     @GET
     @Path("/packageSizes")
@@ -778,19 +720,6 @@ public interface V1Api {
     Response print(@Valid PrintData body, @PathParam("printerId")
 
  @Parameter(description = "Printer id") String printerId
-);
-    @PUT
-    @Path("/batches/{batchId}")
-    @Consumes({ "application/json" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Updates a batch", description = "", security = {
-        @SecurityRequirement(name = "BearerAuth")    }, tags={ "batches" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "An updated batch", content = @Content(schema = @Schema(implementation = Batch.class))),
-        @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(schema = @Schema(implementation = ErrorResponse.class))) })
-    Response updateBatch(@Valid Batch body, @PathParam("batchId")
-
- @Parameter(description = "Batch id") UUID batchId
 );
     @PUT
     @Path("/campaigns/{campaignId}")

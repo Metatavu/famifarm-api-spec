@@ -19,11 +19,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Event   {
   private @Valid UUID id = null;
-  private @Valid UUID batchId = null;
+  private @Valid UUID productId = null;
   private @Valid UUID userId = null;
   private @Valid OffsetDateTime startTime = null;
   private @Valid OffsetDateTime endTime = null;
-  private @Valid Integer remainingUnits = null;
   private @Valid String additionalInformation = null;
   private @Valid EventType type = null;
   private @Valid Object data = null;
@@ -48,21 +47,21 @@ public class Event   {
 
   /**
    **/
-  public Event batchId(UUID batchId) {
-    this.batchId = batchId;
+  public Event productId(UUID productId) {
+    this.productId = productId;
     return this;
   }
 
   
   //@ApiModelProperty(required = true, value = "")
-  @JsonProperty("batchId")
+  @JsonProperty("productId")
   @NotNull
 
-  public UUID getBatchId() {
-    return batchId;
+  public UUID getProductId() {
+    return productId;
   }
-  public void setBatchId(UUID batchId) {
-    this.batchId = batchId;
+  public void setProductId(UUID productId) {
+    this.productId = productId;
   }
 
   /**
@@ -120,24 +119,6 @@ public class Event   {
   }
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
-  }
-
-  /**
-   **/
-  public Event remainingUnits(Integer remainingUnits) {
-    this.remainingUnits = remainingUnits;
-    return this;
-  }
-
-  
-  //@ApiModelProperty(value = "")
-  @JsonProperty("remainingUnits")
-
-  public Integer getRemainingUnits() {
-    return remainingUnits;
-  }
-  public void setRemainingUnits(Integer remainingUnits) {
-    this.remainingUnits = remainingUnits;
   }
 
   /**
@@ -207,11 +188,10 @@ public class Event   {
     }
     Event event = (Event) o;
     return Objects.equals(id, event.id) &&
-        Objects.equals(batchId, event.batchId) &&
+        Objects.equals(productId, event.productId) &&
         Objects.equals(userId, event.userId) &&
         Objects.equals(startTime, event.startTime) &&
         Objects.equals(endTime, event.endTime) &&
-        Objects.equals(remainingUnits, event.remainingUnits) &&
         Objects.equals(additionalInformation, event.additionalInformation) &&
         Objects.equals(type, event.type) &&
         Objects.equals(data, event.data);
@@ -219,7 +199,7 @@ public class Event   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, additionalInformation, type, data);
+    return Objects.hash(id, productId, userId, startTime, endTime, additionalInformation, type, data);
   }
 
   @Override
@@ -228,11 +208,10 @@ public class Event   {
     sb.append("class Event {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
     sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

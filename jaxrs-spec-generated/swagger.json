@@ -313,15 +313,37 @@
             "format" : "int32"
           }
         }, {
-          "name" : "batchId",
+          "name" : "productId",
           "in" : "query",
-          "description" : "Filter results by batch id",
+          "description" : "Filter results by productId",
           "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
             "type" : "string",
             "format" : "uuid"
+          }
+        }, {
+          "name" : "createdAfter",
+          "in" : "query",
+          "description" : "Filter results by created after",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }, {
+          "name" : "createdBefore",
+          "in" : "query",
+          "description" : "Filter results by created before",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date-time"
           }
         } ],
         "responses" : {
@@ -1900,274 +1922,6 @@
         }
       }
     },
-    "/v1/batches" : {
-      "get" : {
-        "tags" : [ "batches" ],
-        "summary" : "List all batches",
-        "operationId" : "listBatches",
-        "parameters" : [ {
-          "name" : "status",
-          "in" : "query",
-          "description" : "Filters list by derived batch status.",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string",
-            "enum" : [ "OPEN", "CLOSED", "NEGATIVE" ]
-          }
-        }, {
-          "name" : "phase",
-          "in" : "query",
-          "description" : "Filters list by phase",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "$ref" : "#/components/schemas/BatchPhase"
-          }
-        }, {
-          "name" : "productId",
-          "in" : "query",
-          "description" : "Filters list by product id",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        }, {
-          "name" : "firstResult",
-          "in" : "query",
-          "description" : "Where to start listing",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "maxResult",
-          "in" : "query",
-          "description" : "How many items to return at one time",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }, {
-          "name" : "createdBefore",
-          "in" : "query",
-          "description" : "Created before time",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "createdAfter",
-          "in" : "query",
-          "description" : "Created after time",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "A paged array of batches",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Batch"
-                  }
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post" : {
-        "tags" : [ "batches" ],
-        "summary" : "Create new batch",
-        "operationId" : "createBatch",
-        "requestBody" : {
-          "description" : "Batch to be added",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Batch"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "A created batch",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Batch"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/batches/{batchId}" : {
-      "get" : {
-        "tags" : [ "batches" ],
-        "summary" : "Find a batch",
-        "operationId" : "findBatch",
-        "parameters" : [ {
-          "name" : "batchId",
-          "in" : "path",
-          "description" : "Batch id",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "A found batch",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Batch"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put" : {
-        "tags" : [ "batches" ],
-        "summary" : "Updates a batch",
-        "operationId" : "updateBatch",
-        "parameters" : [ {
-          "name" : "batchId",
-          "in" : "path",
-          "description" : "Batch id",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "requestBody" : {
-          "description" : "Request payload",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Batch"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "An updated batch",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Batch"
-                }
-              }
-            }
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete" : {
-        "tags" : [ "batches" ],
-        "summary" : "Deletes a batch",
-        "operationId" : "deleteBatch",
-        "parameters" : [ {
-          "name" : "batchId",
-          "in" : "path",
-          "description" : "BatchId",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "responses" : {
-          "204" : {
-            "description" : "Empty result indication a successful removal"
-          },
-          "default" : {
-            "description" : "unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/pests" : {
       "get" : {
         "tags" : [ "pests" ],
@@ -3388,8 +3142,8 @@
         "type" : "string",
         "enum" : [ "SMALL", "LARGE" ]
       },
-      "Batch" : {
-        "required" : [ "productId" ],
+      "Event" : {
+        "required" : [ "data", "productId", "time", "type" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -3397,36 +3151,6 @@
             "format" : "uuid"
           },
           "productId" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "sowingLineNumbers" : {
-            "type" : "array",
-            "description" : "Read-only field that shows line numbers used in sowing phase",
-            "readOnly" : true,
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "phase" : {
-            "$ref" : "#/components/schemas/BatchPhase"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          }
-        },
-        "description" : "Identifies a single batch for it's entire life-cycle"
-      },
-      "Event" : {
-        "required" : [ "batchId", "data", "time", "type" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "batchId" : {
             "type" : "string",
             "format" : "uuid"
           },
@@ -3444,11 +3168,6 @@
             "type" : "string",
             "description" : "Time when the entry was added",
             "format" : "date-time"
-          },
-          "remainingUnits" : {
-            "type" : "integer",
-            "format" : "int32",
-            "readOnly" : true
           },
           "additionalInformation" : {
             "type" : "string"
@@ -3651,10 +3370,6 @@
           }
         },
         "description" : "Entry of products has been thrown away"
-      },
-      "BatchPhase" : {
-        "type" : "string",
-        "enum" : [ "SOWING", "PLANTING", "TABLE_SPREAD", "HARVEST", "COMPLETE" ]
       },
       "EventType" : {
         "type" : "string",
