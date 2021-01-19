@@ -25,15 +25,15 @@ import java.util.UUID;
  * Event
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-25T14:58:19.013+02:00[Europe/Helsinki]")public class Event {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-01-19T13:04:40.726+02:00[Europe/Helsinki]")public class Event {
 
   @JsonProperty("id")
 
   private UUID id = null;
 
-  @JsonProperty("batchId")
+  @JsonProperty("productId")
 
-  private UUID batchId = null;
+  private UUID productId = null;
 
   @JsonProperty("userId")
 
@@ -46,10 +46,6 @@ import java.util.UUID;
   @JsonProperty("endTime")
 
   private OffsetDateTime endTime = null;
-
-  @JsonProperty("remainingUnits")
-
-  private Integer remainingUnits = null;
 
   @JsonProperty("additionalInformation")
 
@@ -80,23 +76,23 @@ import java.util.UUID;
   public void setId(UUID id) {
     this.id = id;
   }
-  public Event batchId(UUID batchId) {
-    this.batchId = batchId;
+  public Event productId(UUID productId) {
+    this.productId = productId;
     return this;
   }
 
   
 
   /**
-  * Get batchId
-  * @return batchId
+  * Get productId
+  * @return productId
   **/
   @Schema(required = true, description = "")
-  public UUID getBatchId() {
-    return batchId;
+  public UUID getProductId() {
+    return productId;
   }
-  public void setBatchId(UUID batchId) {
-    this.batchId = batchId;
+  public void setProductId(UUID productId) {
+    this.productId = productId;
   }
   public Event userId(UUID userId) {
     this.userId = userId;
@@ -151,14 +147,6 @@ import java.util.UUID;
   }
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
-  }
-  /**
-  * Get remainingUnits
-  * @return remainingUnits
-  **/
-  @Schema(description = "")
-  public Integer getRemainingUnits() {
-    return remainingUnits;
   }
   public Event additionalInformation(String additionalInformation) {
     this.additionalInformation = additionalInformation;
@@ -224,11 +212,10 @@ import java.util.UUID;
     }
     Event event = (Event) o;
     return Objects.equals(this.id, event.id) &&
-        Objects.equals(this.batchId, event.batchId) &&
+        Objects.equals(this.productId, event.productId) &&
         Objects.equals(this.userId, event.userId) &&
         Objects.equals(this.startTime, event.startTime) &&
         Objects.equals(this.endTime, event.endTime) &&
-        Objects.equals(this.remainingUnits, event.remainingUnits) &&
         Objects.equals(this.additionalInformation, event.additionalInformation) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.data, event.data);
@@ -236,7 +223,7 @@ import java.util.UUID;
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, batchId, userId, startTime, endTime, remainingUnits, additionalInformation, type, data);
+    return java.util.Objects.hash(id, productId, userId, startTime, endTime, additionalInformation, type, data);
   }
 
   @Override
@@ -245,11 +232,10 @@ import java.util.UUID;
     sb.append("class Event {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    remainingUnits: ").append(toIndentedString(remainingUnits)).append("\n");
     sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

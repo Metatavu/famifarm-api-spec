@@ -6,6 +6,7 @@ import fi.metatavu.famifarm.EncodingUtils;
 
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.Event;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-25T14:58:19.013+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2021-01-19T13:04:40.726+02:00[Europe/Helsinki]")public interface EventsApi extends ApiClient.Api {
 
   /**
    * Create new event
@@ -56,15 +57,17 @@ import feign.*;
    * 
    * @param firstResult First index of results to be returned (optional)
    * @param maxResults How many items to return at one time (optional)
-   * @param batchId Filter results by batch id (optional)
+   * @param productId Filter results by productId (optional)
+   * @param createdAfter Filter results by created after (optional)
+   * @param createdBefore Filter results by created before (optional)
    * @return List&lt;Event&gt;
    */
-  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&batchId={batchId}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&productId={productId}&createdAfter={createdAfter}&createdBefore={createdBefore}")
   @Headers({
       "Content-Type: application/json",
       "Accept: application/json",
   })
-  List<Event> listEvents(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults, @Param("batchId") UUID batchId);
+  List<Event> listEvents(@Param("firstResult") Integer firstResult, @Param("maxResults") Integer maxResults, @Param("productId") UUID productId, @Param("createdAfter") OffsetDateTime createdAfter, @Param("createdBefore") OffsetDateTime createdBefore);
 
   /**
    * List all events
@@ -79,12 +82,14 @@ import feign.*;
    *   <ul>
    *   <li>firstResult - First index of results to be returned (optional)</li>
    *   <li>maxResults - How many items to return at one time (optional)</li>
-   *   <li>batchId - Filter results by batch id (optional)</li>
+   *   <li>productId - Filter results by productId (optional)</li>
+   *   <li>createdAfter - Filter results by created after (optional)</li>
+   *   <li>createdBefore - Filter results by created before (optional)</li>
    *   </ul>
    * @return List&lt;Event&gt;
 
    */
-  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&batchId={batchId}")
+  @RequestLine("GET /v1/events?firstResult={firstResult}&maxResults={maxResults}&productId={productId}&createdAfter={createdAfter}&createdBefore={createdBefore}")
   @Headers({
       "Content-Type: application/json",
   })
@@ -103,8 +108,16 @@ import feign.*;
       put("maxResults", EncodingUtils.encode(value));
       return this;
     }
-    public ListEventsQueryParams batchId(final UUID value) {
-      put("batchId", EncodingUtils.encode(value));
+    public ListEventsQueryParams productId(final UUID value) {
+      put("productId", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListEventsQueryParams createdAfter(final OffsetDateTime value) {
+      put("createdAfter", EncodingUtils.encode(value));
+      return this;
+    }
+    public ListEventsQueryParams createdBefore(final OffsetDateTime value) {
+      put("createdBefore", EncodingUtils.encode(value));
       return this;
     }
   }

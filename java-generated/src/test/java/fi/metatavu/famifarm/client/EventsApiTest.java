@@ -3,6 +3,7 @@ package fi.metatavu.famifarm.client;
 import fi.metatavu.famifarm.ApiClient;
 import fi.metatavu.famifarm.client.model.ErrorResponse;
 import fi.metatavu.famifarm.client.model.Event;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,8 +73,10 @@ public class EventsApiTest {
     public void listEventsTest() {
         Integer firstResult = null;
         Integer maxResults = null;
-        UUID batchId = null;
-        // List<Event> response = api.listEvents(firstResult, maxResults, batchId);
+        UUID productId = null;
+        OffsetDateTime createdAfter = null;
+        OffsetDateTime createdBefore = null;
+        // List<Event> response = api.listEvents(firstResult, maxResults, productId, createdAfter, createdBefore);
 
         // TODO: test validations
     }
@@ -91,7 +94,9 @@ public class EventsApiTest {
         EventsApi.ListEventsQueryParams queryParams = new EventsApi.ListEventsQueryParams()
             .firstResult(null)
             .maxResults(null)
-            .batchId(null);
+            .productId(null)
+            .createdAfter(null)
+            .createdBefore(null);
         // List<Event> response = api.listEvents(queryParams);
 
     // TODO: test validations
