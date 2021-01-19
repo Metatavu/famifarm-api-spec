@@ -209,13 +209,27 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: batchId
+        - name: productId
           in: query
-          description: Filter results by batch id
+          description: Filter results by productId
           required: false
           schema:
             type: string
             format: uuid
+        - name: createdAfter
+          in: query
+          description: Filter results by created after
+          required: false
+          schema:
+            type: string
+            format: "date-time"
+        - name: createdBefore
+          in: query
+          description: Filter results by created before
+          required: false
+          schema:
+            type: string
+            format: "date-time"
       responses:
         '200':
           description: A paged array of events
@@ -1257,185 +1271,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-
-  '/v1/batches':
-    get:
-      summary: List all batches
-      operationId: listBatches
-      tags:
-        - batches
-      parameters:
-        - name: status
-          in: query
-          description: Filters list by derived batch status.
-          required: false
-          schema:
-            type: string
-            enum: 
-              - OPEN
-              - CLOSED
-              - NEGATIVE
-        - name: phase
-          in: query
-          description: Filters list by phase
-          required: false
-          schema:
-            $ref: "#/components/schemas/BatchPhase"
-        - name: productId
-          in: query
-          description: Filters list by product id
-          required: false
-          schema:
-            type: string
-            format: uuid
-        - name: firstResult
-          in: query
-          description: Where to start listing
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: maxResult
-          in: query
-          description: How many items to return at one time
-          required: false
-          schema:
-            type: integer
-            format: int32
-        - name: createdBefore
-          in: query
-          description: Created before time
-          required: false
-          schema:
-            type: "string"
-        - name: createdAfter
-          in: query
-          description: Created after time
-          required: false
-          schema:
-            type: "string"
-      responses:
-        '200':
-          description: A paged array of batches
-          content:
-            application/json:    
-              schema:
-                type: "array"
-                items: 
-                  $ref: "#/components/schemas/Batch"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-    post:
-      summary: Create new batch
-      operationId: createBatch
-      requestBody:
-        description: Batch to be added
-        required: true
-        content:
-          application/json:
-            schema:
-             $ref: "#/components/schemas/Batch"
-      tags:
-        - batches
-      responses:
-        '200':
-          description: A created batch
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/Batch"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-  '/v1/batches/{batchId}':
-    get:
-      summary: Find a batch
-      operationId: findBatch
-      tags:
-        - batches
-      parameters:
-        - name: batchId
-          in: path
-          description: Batch id
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: A found batch
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/Batch"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-    put:
-      summary: Updates a batch
-      operationId: updateBatch
-      requestBody:
-        description: Request payload
-        required: true
-        content:
-          application/json:
-            schema:
-             $ref: "#/components/schemas/Batch"
-      tags:
-        - batches
-      parameters:
-        - name: batchId
-          in: path
-          description: Batch id
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: An updated batch
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/Batch"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-    delete:
-      summary: Deletes a batch
-      operationId: deleteBatch
-      tags:
-        - batches
-      parameters:
-        - name: batchId
-          in: path
-          description: BatchId
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '204':
-          description: Empty result indication a successful removal
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
   '/v1/pests':
     get:
       summary: List all pests
@@ -2283,42 +2118,18 @@ components:
         - SMALL
         - LARGE
 
-    Batch:
-      description: Identifies a single batch for it's entire life-cycle 
-      type: "object"
-      required:
-        - productId
-      properties:
-        id:
-          type: "string"
-          format: "uuid"
-        productId:
-          type: "string"
-          format: "uuid"
-        sowingLineNumbers:
-          type: "array"
-          readOnly: true
-          description: Read-only field that shows line numbers used in sowing phase
-          items:
-            type: "string"
-        phase:
-          $ref: "#/components/schemas/BatchPhase"
-        createdAt:
-          type: "string"
-          format: "date-time"
-
     Event:
       type: "object"
       required:
         - type
         - data
-        - batchId
+        - productId
         - time
       properties:
         id:
           type: "string"
           format: "uuid"
-        batchId:
+        productId:
           type: "string"
           format: "uuid"
         userId:
@@ -2333,10 +2144,6 @@ components:
           description: "Time when the entry was added"
           type: "string"
           format: "date-time"
-        remainingUnits:
-          type: "integer"
-          format: int32
-          readOnly: true
         additionalInformation:
           type: "string"
         type:
@@ -2506,15 +2313,6 @@ components:
           format: "uuid"
         phase:
           $ref: '#/components/schemas/EventType'
-
-    BatchPhase:
-      type: "string"
-      enum:
-        - SOWING
-        - PLANTING
-        - TABLE_SPREAD
-        - HARVEST
-        - COMPLETE
 
     EventType:
       type: "string"
