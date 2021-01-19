@@ -21,7 +21,7 @@ import { WastageEventData } from './wastageEventData';
 
 export interface Event { 
     id?: string;
-    batchId: string;
+    productId: string;
     /**
      * Id of user who added this entry
      */
@@ -34,14 +34,13 @@ export interface Event {
      * Time when the entry was added
      */
     endTime?: string;
-    readonly remainingUnits?: number;
     additionalInformation?: string;
     type: EventType;
     data: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
 }
 export interface EventOpt { 
     id?: string;
-    batchId?: string;
+    productId?: string;
     /**
      * Id of user who added this entry
      */
@@ -54,7 +53,6 @@ export interface EventOpt {
      * Time when the entry was added
      */
     endTime?: string;
-    readonly remainingUnits?: number;
     additionalInformation?: string;
     type?: EventType;
     data?: CultivationObservationEventData | HarvestEventData | PackingEventData | PlantingEventData | SowingEventData | TableSpreadEventData | WastageEventData;
