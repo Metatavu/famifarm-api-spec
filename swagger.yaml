@@ -222,14 +222,12 @@ paths:
           required: false
           schema:
             type: string
-            format: "date-time"
         - name: createdBefore
           in: query
           description: Filter results by created before
           required: false
           schema:
             type: string
-            format: "date-time"
       responses:
         '200':
           description: A paged array of events
