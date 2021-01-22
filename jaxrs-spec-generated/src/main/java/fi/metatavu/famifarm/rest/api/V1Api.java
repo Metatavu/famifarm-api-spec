@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/v1")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2021-01-19T12:58:59.299+02:00[Europe/Helsinki]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2021-01-22T15:57:06.977+02:00[Europe/Helsinki]")
 public interface V1Api {
 
     @POST
@@ -541,10 +541,10 @@ public interface V1Api {
  @Parameter(description = "Filter results by productId")  UUID productId
 ,  @QueryParam("createdAfter") 
 
- @Parameter(description = "Filter results by created after")  OffsetDateTime createdAfter
+ @Parameter(description = "Filter results by created after")  String createdAfter
 ,  @QueryParam("createdBefore") 
 
- @Parameter(description = "Filter results by created before")  OffsetDateTime createdBefore
+ @Parameter(description = "Filter results by created before")  String createdBefore
 );
     @GET
     @Path("/packageSizes")
