@@ -2147,14 +2147,7 @@ components:
         type:
           $ref: '#/components/schemas/EventType'
         data:
-          oneOf:
-            - $ref: '#/components/schemas/PlantingEventData'
-            - $ref: '#/components/schemas/SowingEventData'
-            - $ref: '#/components/schemas/TableSpreadEventData'
-            - $ref: '#/components/schemas/CultivationObservationEventData'
-            - $ref: '#/components/schemas/HarvestEventData'
-            - $ref: '#/components/schemas/WastageEventData'
-    
+          type: object
     Packing:
       type: "object"
       required:
