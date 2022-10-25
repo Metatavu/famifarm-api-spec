@@ -279,6 +279,14 @@ paths:
           required: false
           schema:
             type: string
+        - name: eventType
+          in: query
+          description: Filter results by event type
+          required: false
+          schema:
+            type: object
+            $ref: "#/components/schemas/EventType"
+
       responses:
         "200":
           description: A paged array of events
@@ -456,6 +464,13 @@ paths:
         - name: productId
           in: query
           description: Filter results by product id
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: campaingId
+          in: query
+          description: Filter results by campaing id
           required: false
           schema:
             type: string
@@ -1378,6 +1393,12 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: includeInActiveProducts
+          in: query
+          description: "Should inactive products be included. If this parameter is left undefined, it will interpreted as false" 
+          required: false
+          schema:
+            type: boolean
         - name: includeSubcontractorProducts
           in: query
           description: "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false" 
@@ -2363,14 +2384,217 @@ paths:
           required: false
           schema:
             type: "string"
+        - name: format
+          in: query
+          description: Format of the report
+          required: false
+          schema:
+            type: "string"
       responses:
         "200":
-          description: Excel report
+          description: report
           content:
             application/vnd.ms-excel:
               schema:
                 type: "string"
                 format: "binary"
+            application/json:
+              schema:
+                type: "string"
+                format: "binary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/v1/{facility}/storageDiscards":
+    get:
+      summary: List all storage discard events
+      operationId: listStorageDiscards
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: fromTime
+          in: query
+          description: From time of the report
+          required: false
+          schema:
+            type: string
+        - name: toTime
+          in: query
+          description: To time of the report
+          required: false
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: Id of discarded product
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A paged array of storage discard events
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new storage discard event
+      operationId: createStorageDiscard
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+      requestBody:
+        description: Storage discard body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageDiscard"
+      tags:
+        - StorageDiscards
+      responses:
+        "200":
+          description: A created storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/v1/{facility}/storageDiscards/{storageDiscardId}":
+    get:
+      summary: Finds storage discard event
+      operationId: getStorageDiscard
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A foung storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a storage discard event
+      operationId: updateStorageDiscard
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageDiscard"
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: An updated storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a storage discard event
+      operationId: deleteStorageDiscard
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Empty result indication a successful removal
         default:
           description: unexpected error
           content:
@@ -2466,10 +2690,18 @@ components:
           format: "uuid"
         name:
           $ref: "#/components/schemas/LocalizedEntry"
-        defaultPackageSizeId:
-          type: "string"
-          format: "uuid"
+        defaultPackageSizeIds:
+          type: array
+          items:
+            type: "string"
+            format: "uuid"
+        allowedHarvestTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/HarvestEventType"
         isSubcontractorProduct:
+          type: "boolean"
+        active:
           type: "boolean"
 
     Pest:
@@ -2526,6 +2758,7 @@ components:
       enum:
         - SMALL
         - LARGE
+        - PAPER
 
     Event:
       type: "object"
@@ -2595,6 +2828,7 @@ components:
       enum:
         - IN_STORE
         - REMOVED
+        - WASTAGE
         
     PackingType:
       type: "string"
@@ -2624,6 +2858,10 @@ components:
           description: "How many workers were doing the planting"
           type: "integer"
           format: "int32"
+        sowingDate:
+          description: "Sowing date"
+          type: "string"
+          format: "date-time"
           
     SowingEventData:
       description: "Entry when a batch has been sowed"
@@ -2642,6 +2880,8 @@ components:
             type: "string"
             format: "uuid"
         potType:
+          readOnly: true
+          description: Will always be PotType.PAPER, kept here for past events
           $ref: "#/components/schemas/PotType"
         amount:
           type: "integer"
@@ -2677,24 +2917,35 @@ components:
           items:
             type: "string"
             format: "uuid"
-            
+    HarvestEventType:
+      type: "string"
+      enum:
+        - BAGGING
+        - CUTTING
+        - BOXING
+  
     HarvestEventData:
       required:
         - amount
+        - sowingDate
       properties:
+        gutterHoleCount:
+          type: "integer"
+          format: "int32"
+          description: "Number of holes in gutter used in planting"
         gutterCount:
           type: "integer"
           format: "int32"
         type:
-          type: "string"
-          enum:
-            - BAGGING
-            - CUTTING
-            - BOXING
+          $ref: "#/components/schemas/HarvestEventType"
         productionLineId:
           description: "Production line id"
           type: "string"
           format: "uuid"
+        sowingDate:
+          description: "Sowing date"
+          type: "string"
+          format: "date-time"
             
     WastageEventData:
       required:
@@ -2812,6 +3063,25 @@ components:
           type: integer
         storageCondition:
           type: string
+
+    StorageDiscard:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        discardDate:
+          type: string
+          format: date-time
+        packageSizeId:
+          type: string
+          format: uuid
+        discardAmount:
+          type: integer
+          format: int32
     
     Facility:
       type: string
@@ -2821,7 +3091,8 @@ components:
 
     ErrorResponse:
       type: object
-      required: [message]
+      required:
+        - message
       properties:
         message:
           description: The error message
