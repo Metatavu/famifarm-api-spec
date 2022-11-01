@@ -1,27 +1,34 @@
 openapi: 3.0.3
 info:
   description: "Famifarm API specification"
-  version: "1.0.0"
+  version: "2.0.0"
   title: "Famifarm-API"
 security:
 - BearerAuth: []
   
 paths:
-  '/v1/campaigns':
+  "/v1/{facility}/campaigns":
     get:
       summary: List all campaigns
       operationId: listCampaigns
       tags:
-        - campaigns
+        - Campaigns
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       responses:
-        '200':
+        "200":
           description: An array of campaigns
           content:
             application/json:
               schema:
-                type: 'array'
+                type: "array"
                 items:
-                  $ref: '#/components/schemas/Campaign'
+                  $ref: "#/components/schemas/Campaign"
         default:
           description: unexpected error
           content:
@@ -32,35 +39,48 @@ paths:
       summary: Create a campaign
       operationId: createCampaign
       tags:
-        - campaigns
+        - Campaigns
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: A campaign to create
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Campaign'
+              $ref: "#/components/schemas/Campaign"
       responses:
-        '200':
+        "200":
           description: A created campaign
           content:
             application/json:    
               schema:
-                $ref: '#/components/schemas/Campaign'
+                $ref: "#/components/schemas/Campaign"
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
                 
-  '/v1/campaigns/{campaignId}':
+  "/v1/{facility}/campaigns/{campaignId}":
     get:
       summary: Find a campaign
       operationId: findCampaign
       tags:
-       - campaigns
+       - Campaigns
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: campaignId
           in: path
           required: true
@@ -68,24 +88,30 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found campaign
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Campaign'
+                $ref: "#/components/schemas/Campaign"
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
     delete:
       summary: Delete a campaign
       operationId: deleteCampaign
       tags:
-       - campaigns
+       - Campaigns
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: campaignId
           in: path
           required: true
@@ -93,20 +119,26 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: An empty response indicating a successful removal
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
     put:
       summary: Update a campaign
       operationId: updateCampaign
       tags:
-       - campaigns
+       - Campaigns
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: campaignId
           in: path
           required: true
@@ -119,29 +151,36 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Campaign'
+              $ref: "#/components/schemas/Campaign"
       responses:
-        '200':
+        "200":
           description: An updated campaign
           content:
             application/json:    
               schema:
-                $ref: '#/components/schemas/Campaign'
+                $ref: "#/components/schemas/Campaign"
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: "#/components/schemas/ErrorResponse"
       
-  '/v1/printers':
+  "/v1/{facility}/printers":
     get:
       summary: List all connected printers
       operationId: listPrinters
       tags:
-        - printers
+        - Printers
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       responses:
-        '200':
+        "200":
           description: An array of printers
           content:
             application/json:
@@ -155,12 +194,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/printers/{printerId}/print':
+  "/v1/{facility}/printers/{printerId}/print":
     post:
       summary: Print
       operationId: print
       tags:
-        - printers
+        - Printers
       requestBody:
         description: Data to print
         required: true
@@ -169,6 +208,12 @@ paths:
             schema:
               $ref: "#/components/schemas/PrintData"
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: printerId
           in: path
           description: Printer id
@@ -176,7 +221,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Empty response
           content:
             application/json:
@@ -188,13 +233,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"    
-  '/v1/events':
+  "/v1/{facility}/events":
     get:
       summary: List all events
       operationId: listEvents
       tags:
-        - events
+        - Events
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -228,8 +279,16 @@ paths:
           required: false
           schema:
             type: string
+        - name: eventType
+          in: query
+          description: Filter results by event type
+          required: false
+          schema:
+            type: object
+            $ref: "#/components/schemas/EventType"
+
       responses:
-        '200':
+        "200":
           description: A paged array of events
           content:
             application/json:
@@ -246,6 +305,13 @@ paths:
     post:
       summary: Create new event
       operationId: createEvent
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Event to be added
         required: true
@@ -254,9 +320,9 @@ paths:
             schema:
              $ref: "#/components/schemas/Event"
       tags:
-        - events
+        - Events
       responses:
-        '200':
+        "200":
           description: A created event
           content:
             application/json:    
@@ -268,13 +334,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/events/{eventId}':
+  "/v1/{facility}/events/{eventId}":
     get:
       summary: Find an event
       operationId: findEvent
       tags:
-        - events
+        - Events
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: eventId
           in: path
           description: Event id
@@ -283,7 +355,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found event
           content:
             application/json:    
@@ -306,8 +378,14 @@ paths:
             schema:
              $ref: "#/components/schemas/Event"
       tags:
-        - events
+        - Events
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: eventId
           in: path
           description: Event id
@@ -316,7 +394,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated event
           content:
             application/json:    
@@ -332,8 +410,14 @@ paths:
       summary: Deletes an event
       operationId: deleteEvent
       tags:
-        - events
+        - Events
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: eventId
           in: path
           description: Event id
@@ -342,7 +426,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -350,13 +434,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/packings':
+  "/v1/{facility}/packings":
     get:
       summary: List all packings
       operationId: listPackings
       tags:
-        - packings
+        - Packings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -374,6 +464,13 @@ paths:
         - name: productId
           in: query
           description: Filter results by product id
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: campaingId
+          in: query
+          description: Filter results by campaing id
           required: false
           schema:
             type: string
@@ -397,7 +494,7 @@ paths:
           schema:
             type: "string"
       responses:
-        '200':
+        "200":
           description: A paged array of packings
           content:
             application/json:
@@ -414,6 +511,13 @@ paths:
     post:
       summary: Create new packing
       operationId: createPacking
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Packing to be added
         required: true
@@ -422,9 +526,9 @@ paths:
             schema:
              $ref: "#/components/schemas/Packing"
       tags:
-        - packings
+        - Packings
       responses:
-        '200':
+        "200":
           description: A created packing
           content:
             application/json:    
@@ -436,13 +540,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/packings/{packingId}':
+  "/v1/{facility}/packings/{packingId}":
     get:
       summary: Find a packing
       operationId: findPacking
       tags:
-        - packings
+        - Packings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packingId
           in: path
           description: Packing id
@@ -451,7 +561,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found packing
           content:
             application/json:    
@@ -474,8 +584,14 @@ paths:
             schema:
              $ref: "#/components/schemas/Packing"
       tags:
-        - packings
+        - Packings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packingId
           in: path
           description: Packing id
@@ -484,7 +600,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated packing
           content:
             application/json:    
@@ -500,8 +616,14 @@ paths:
       summary: Deletes a packing
       operationId: deletePacking
       tags:
-        - packings
+        - Packings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packingId
           in: path
           description: Packing id
@@ -510,7 +632,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -518,13 +640,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/cutPackings':
+  "/v1/{facility}/cutPackings":
     get:
       summary: List all cut packings
       operationId: listCutPackings
       tags:
         - CutPackings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -559,7 +687,7 @@ paths:
           schema:
             type: "string"
       responses:
-        '200':
+        "200":
           description: A paged array of cut packings
           content:
             application/json:
@@ -576,6 +704,13 @@ paths:
     post:
       summary: Create a new cut packing
       operationId: createCutPacking
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: A cut packing to be added
         required: true
@@ -586,7 +721,7 @@ paths:
       tags:
         - CutPackings
       responses:
-        '200':
+        "200":
           description: A created cut packing
           content:
             application/json:    
@@ -598,13 +733,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/cutPackings/{cutPackingId}':
+  "/v1/{facility}/cutPackings/{cutPackingId}":
     get:
       summary: Find a cut packing
       operationId: findCutPacking
       tags:
         - CutPackings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: cutPackingId
           in: path
           description: The id of a cut packing to find
@@ -613,7 +754,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found cut packing
           content:
             application/json:    
@@ -638,6 +779,12 @@ paths:
       tags:
         - CutPackings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: cutPackingId
           in: path
           description: The id of a cut packing to update
@@ -646,7 +793,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated cut packing
           content:
             application/json:    
@@ -664,6 +811,12 @@ paths:
       tags:
         - CutPackings
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: cutPackingId
           in: path
           description: The id of a cut packing to delete
@@ -672,7 +825,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -681,13 +834,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"                
                               
-  '/v1/wastageReasons':
+  "/v1/{facility}/wastageReasons":
     get:
       summary: List all wastage reasons
       operationId: listWastageReasons
       tags:
-        - wastageReasons
+        - WastageReasons
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -703,7 +862,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of wastage reasons
           content:
             application/json:    
@@ -720,6 +879,13 @@ paths:
     post:
       summary: Create new wastage reason
       operationId: createWastageReason
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Wastage reason to be added
         required: true
@@ -728,9 +894,9 @@ paths:
             schema:
              $ref: "#/components/schemas/WastageReason"
       tags:
-        - wastageReasons
+        - WastageReasons
       responses:
-        '200':
+        "200":
           description: A created wastageReason
           content:
             application/json:    
@@ -742,13 +908,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/wastageReasons/{wastageReasonId}':
+  "/v1/{facility}/wastageReasons/{wastageReasonId}":
     get:
       summary: Find an wastage reason
       operationId: findWastageReason
       tags:
-        - wastageReasons
+        - WastageReasons
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: wastageReasonId
           in: path
           description: Wastage reason id
@@ -757,7 +929,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found wastage reason
           content:
             application/json:    
@@ -780,8 +952,14 @@ paths:
             schema:
              $ref: "#/components/schemas/WastageReason"
       tags:
-        - wastageReasons
+        - WastageReasons
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: wastageReasonId
           in: path
           description: Wastage reason id
@@ -790,7 +968,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated wastage reason
           content:
             application/json:    
@@ -806,8 +984,14 @@ paths:
       summary: Deletes an wastage reason
       operationId: deleteWastageReason
       tags:
-        - wastageReasons
+        - WastageReasons
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: wastageReasonId
           in: path
           description: WastageReasonId
@@ -816,7 +1000,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -825,13 +1009,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  '/v1/packageSizes':
+  "/v1/{facility}/packageSizes":
     get:
       summary: List all package sizes
       operationId: listPackageSizes
       tags:
-        - packageSizes
+        - PackageSizes
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -847,7 +1037,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of package sizes
           content:
             application/json:    
@@ -864,6 +1054,13 @@ paths:
     post:
       summary: Create new package size
       operationId: createPackageSize
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Wastage reason to be added
         required: true
@@ -872,9 +1069,9 @@ paths:
             schema:
              $ref: "#/components/schemas/PackageSize"
       tags:
-        - packageSizes
+        - PackageSizes
       responses:
-        '200':
+        "200":
           description: A created packageSize
           content:
             application/json:    
@@ -886,13 +1083,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/packageSizes/{packageSizeId}':
+  "/v1/{facility}/packageSizes/{packageSizeId}":
     get:
       summary: Find a package size
       operationId: findPackageSize
       tags:
-        - packageSizes
+        - PackageSizes
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packageSizeId
           in: path
           description: Wastage reason id
@@ -901,7 +1104,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found package size
           content:
             application/json:    
@@ -924,8 +1127,14 @@ paths:
             schema:
              $ref: "#/components/schemas/PackageSize"
       tags:
-        - packageSizes
+        - PackageSizes
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packageSizeId
           in: path
           description: Wastage reason id
@@ -934,7 +1143,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated package size
           content:
             application/json:    
@@ -950,8 +1159,14 @@ paths:
       summary: Deletes a package size
       operationId: deletePackageSize
       tags:
-        - packageSizes
+        - PackageSizes
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: packageSizeId
           in: path
           description: PackageSizeId
@@ -960,7 +1175,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -969,13 +1184,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  '/v1/seedBatches':
+  "/v1/{facility}/seedBatches":
     get:
       summary: List all seed batches
       operationId: listSeedBatches
       tags:
-        - seedBatches
+        - SeedBatches
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -997,7 +1218,7 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
+        "200":
           description: A paged array of seed batches
           content:
             application/json:    
@@ -1014,6 +1235,13 @@ paths:
     post:
       summary: Create new seed batch
       operationId: createSeedBatch
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Wastage reason to be added
         required: true
@@ -1022,9 +1250,9 @@ paths:
             schema:
              $ref: "#/components/schemas/SeedBatch"
       tags:
-        - seedBatches
+        - SeedBatches
       responses:
-        '200':
+        "200":
           description: A created seedBatch
           content:
             application/json:    
@@ -1037,13 +1265,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  '/v1/seedBatches/{seedBatchId}':
+  "/v1/{facility}/seedBatches/{seedBatchId}":
     get:
       summary: Find a seed batch
       operationId: findSeedBatch
       tags:
-        - seedBatches
+        - SeedBatches
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedBatchId
           in: path
           description: Wastage reason id
@@ -1052,7 +1286,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found seed batch
           content:
             application/json:    
@@ -1075,8 +1309,14 @@ paths:
             schema:
              $ref: "#/components/schemas/SeedBatch"
       tags:
-        - seedBatches
+        - SeedBatches
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedBatchId
           in: path
           description: Wastage reason id
@@ -1085,7 +1325,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated seed batch
           content:
             application/json:    
@@ -1101,8 +1341,14 @@ paths:
       summary: Deletes a seed batch
       operationId: deleteSeedBatch
       tags:
-        - seedBatches
+        - SeedBatches
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedBatchId
           in: path
           description: SeedBatchId
@@ -1111,7 +1357,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1120,13 +1366,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  '/v1/products':
+  "/v1/{facility}/products":
     get:
       summary: List all products
       operationId: listProducts
       tags:
-        - products
+        - Products
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -1141,6 +1393,12 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: includeInActiveProducts
+          in: query
+          description: "Should inactive products be included. If this parameter is left undefined, it will interpreted as false" 
+          required: false
+          schema:
+            type: boolean
         - name: includeSubcontractorProducts
           in: query
           description: "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false" 
@@ -1148,7 +1406,7 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
+        "200":
           description: A paged array of products
           content:
             application/json:    
@@ -1165,6 +1423,13 @@ paths:
     post:
       summary: Create new product
       operationId: createProduct
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Product to be added
         required: true
@@ -1173,9 +1438,9 @@ paths:
             schema:
              $ref: "#/components/schemas/Product"
       tags:
-        - products
+        - Products
       responses:
-        '200':
+        "200":
           description: A created product
           content:
             application/json:    
@@ -1187,13 +1452,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/products/{productId}':
+  "/v1/{facility}/products/{productId}":
     get:
       summary: Find a product
       operationId: findProduct
       tags:
-        - products
+        - Products
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productId
           in: path
           description: Product id
@@ -1202,7 +1473,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found product
           content:
             application/json:    
@@ -1225,8 +1496,14 @@ paths:
             schema:
              $ref: "#/components/schemas/Product"
       tags:
-        - products
+        - Products
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productId
           in: path
           description: Product id
@@ -1235,7 +1512,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated product
           content:
             application/json:    
@@ -1251,8 +1528,14 @@ paths:
       summary: Deletes a product
       operationId: deleteProduct
       tags:
-        - products
+        - Products
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productId
           in: path
           description: Product id
@@ -1261,7 +1544,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1269,13 +1552,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/pests':
+  "/v1/{facility}/pests":
     get:
       summary: List all pests
       operationId: listPests
       tags:
-        - pests
+        - Pests
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -1291,7 +1580,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of pests
           content:
             application/json:    
@@ -1308,6 +1597,13 @@ paths:
     post:
       summary: Create new pest
       operationId: createPest
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Pest to be added
         required: true
@@ -1316,9 +1612,9 @@ paths:
             schema:
              $ref: "#/components/schemas/Pest"
       tags:
-        - pests
+        - Pests
       responses:
-        '200':
+        "200":
           description: A created pest
           content:
             application/json:    
@@ -1330,13 +1626,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/pests/{pestId}':
+  "/v1/{facility}/pests/{pestId}":
     get:
       summary: Find a pest
       operationId: findPest
       tags:
-        - pests
+        - Pests
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: pestId
           in: path
           description: Pest id
@@ -1345,7 +1647,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found pest
           content:
             application/json:    
@@ -1368,8 +1670,14 @@ paths:
             schema:
              $ref: "#/components/schemas/Pest"
       tags:
-        - pests
+        - Pests
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: pestId
           in: path
           description: Pest id
@@ -1378,7 +1686,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated pest
           content:
             application/json:    
@@ -1394,8 +1702,14 @@ paths:
       summary: Deletes a pest
       operationId: deletePest
       tags:
-        - pests
+        - Pests
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: pestId
           in: path
           description: Pest id
@@ -1404,7 +1718,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1412,13 +1726,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/seeds':
+  "/v1/{facility}/seeds":
     get:
       summary: List all seeds
       operationId: listSeeds
       tags:
-        - seeds
+        - Seeds
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -1434,7 +1754,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of seeds
           content:
             application/json:    
@@ -1451,6 +1771,13 @@ paths:
     post:
       summary: Create new seed
       operationId: createSeed
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Seed to be added
         required: true
@@ -1459,9 +1786,9 @@ paths:
             schema:
              $ref: "#/components/schemas/Seed"
       tags:
-        - seeds
+        - Seeds
       responses:
-        '200':
+        "200":
           description: A created seed
           content:
             application/json:    
@@ -1473,13 +1800,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/seeds/{seedId}':
+  "/v1/{facility}/seeds/{seedId}":
     get:
       summary: Find a seed
       operationId: findSeed
       tags:
-        - seeds
+        - Seeds
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedId
           in: path
           description: Seed id
@@ -1488,7 +1821,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found seed
           content:
             application/json:    
@@ -1511,8 +1844,14 @@ paths:
             schema:
              $ref: "#/components/schemas/Seed"
       tags:
-        - seeds
+        - Seeds
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedId
           in: path
           description: Seed id
@@ -1521,7 +1860,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated seed
           content:
             application/json:    
@@ -1537,8 +1876,14 @@ paths:
       summary: Deletes a seed
       operationId: deleteSeed
       tags:
-        - seeds
+        - Seeds
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: seedId
           in: path
           description: Seed id
@@ -1547,7 +1892,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1556,13 +1901,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  '/v1/productionLines':
+  "/v1/{facility}/productionLines":
     get:
       summary: List all production lines
       operationId: listProductionLines
       tags:
-        - productionLines
+        - ProductionLines
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -1578,7 +1929,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of production lines
           content:
             application/json:    
@@ -1595,6 +1946,13 @@ paths:
     post:
       summary: Create new production line
       operationId: createProductionLine
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Wastage reason to be added
         required: true
@@ -1603,9 +1961,9 @@ paths:
             schema:
              $ref: "#/components/schemas/ProductionLine"
       tags:
-        - productionLines
+        - ProductionLines
       responses:
-        '200':
+        "200":
           description: A created productionLine
           content:
             application/json:    
@@ -1617,13 +1975,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/productionLines/{productionLineId}':
+  "/v1/{facility}/productionLines/{productionLineId}":
     get:
       summary: Find a production line
       operationId: findProductionLine
       tags:
-        - productionLines
+        - ProductionLines
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productionLineId
           in: path
           description: Wastage reason id
@@ -1632,7 +1996,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found production line
           content:
             application/json:    
@@ -1655,8 +2019,14 @@ paths:
             schema:
              $ref: "#/components/schemas/ProductionLine"
       tags:
-        - productionLines
+        - ProductionLines
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productionLineId
           in: path
           description: Wastage reason id
@@ -1665,7 +2035,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated production line
           content:
             application/json:    
@@ -1681,8 +2051,14 @@ paths:
       summary: Deletes a production line
       operationId: deleteProductionLine
       tags:
-        - productionLines
+        - ProductionLines
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: productionLineId
           in: path
           description: ProductionLineId
@@ -1691,7 +2067,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1700,13 +2076,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  '/v1/performedCultivationActions':
+  "/v1/{facility}/performedCultivationActions":
     get:
       summary: List all performed cultivation actions
       operationId: listPerformedCultivationActions
       tags:
-        - performedCultivationActions
+        - PerformedCultivationActions
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: firstResult
           in: query
           description: First index of results to be returned
@@ -1722,7 +2104,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: A paged array of performed cultivation actions
           content:
             application/json:    
@@ -1739,6 +2121,13 @@ paths:
     post:
       summary: Create new performed cultivation action
       operationId: createPerformedCultivationAction
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Wastage reason to be added
         required: true
@@ -1747,9 +2136,9 @@ paths:
             schema:
              $ref: "#/components/schemas/PerformedCultivationAction"
       tags:
-        - performedCultivationActions
+        - PerformedCultivationActions
       responses:
-        '200':
+        "200":
           description: A created performedCultivationAction
           content:
             application/json:    
@@ -1761,13 +2150,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/performedCultivationActions/{performedCultivationActionId}':
+  "/v1/{facility}/performedCultivationActions/{performedCultivationActionId}":
     get:
       summary: Find a performed cultivation action
       operationId: findPerformedCultivationAction
       tags:
-        - performedCultivationActions
+        - PerformedCultivationActions
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: performedCultivationActionId
           in: path
           description: Wastage reason id
@@ -1776,7 +2171,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: A found performed cultivation action
           content:
             application/json:    
@@ -1799,8 +2194,14 @@ paths:
             schema:
              $ref: "#/components/schemas/PerformedCultivationAction"
       tags:
-        - performedCultivationActions
+        - PerformedCultivationActions
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: performedCultivationActionId
           in: path
           description: Wastage reason id
@@ -1809,7 +2210,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        "200":
           description: An updated performed cultivation action
           content:
             application/json:    
@@ -1825,8 +2226,14 @@ paths:
       summary: Deletes a performed cultivation action
       operationId: deletePerformedCultivationAction
       tags:
-        - performedCultivationActions
+        - PerformedCultivationActions
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: performedCultivationActionId
           in: path
           description: PerformedCultivationActionId
@@ -1835,7 +2242,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1843,16 +2250,22 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/drafts':
+  "/v1/{facility}/drafts":
     get:
       summary: List all drafts
       operationId: listDrafts
       tags:
-        - drafts
+        - Drafts
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: userId
           in: query
-          description: User id who's drafts are beign listed
+          description: User id who"s drafts are beign listed
           required: true
           schema:
             type: string
@@ -1864,7 +2277,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: A paged array of drafts
           content:
             application/json:    
@@ -1881,6 +2294,13 @@ paths:
     post:
       summary: Create new draft
       operationId: createDraft
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
       requestBody:
         description: Draft body
         required: true
@@ -1889,9 +2309,9 @@ paths:
             schema:
               $ref: "#/components/schemas/Draft"
       tags:
-        - drafts
+        - Drafts
       responses:
-        '200':
+        "200":
           description: A created draft
           content:
             application/json:    
@@ -1903,13 +2323,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  '/v1/drafts/{draftId}':
+  "/v1/{facility}/drafts/{draftId}":
     delete:
       summary: Deletes a draft
       operationId: deleteDraft
       tags:
-        - drafts
+        - Drafts
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: draftId
           in: path
           description: Draft id
@@ -1918,7 +2344,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '204':
+        "204":
           description: Empty result indication a successful removal
         default:
           description: unexpected error
@@ -1927,13 +2353,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  '/v1/reports/{type}':
+  "/v1/{facility}/reports/{type}":
     get:
       summary: Constructs report
       operationId: getReport
       tags:
-        - reports
+        - Reports
       parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
         - name: type
           in: path
           description: Report type
@@ -1952,14 +2384,217 @@ paths:
           required: false
           schema:
             type: "string"
+        - name: format
+          in: query
+          description: Format of the report
+          required: false
+          schema:
+            type: "string"
       responses:
-        '200':
-          description: Excel report
+        "200":
+          description: report
           content:
             application/vnd.ms-excel:
               schema:
                 type: "string"
                 format: "binary"
+            application/json:
+              schema:
+                type: "string"
+                format: "binary"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/v1/{facility}/storageDiscards":
+    get:
+      summary: List all storage discard events
+      operationId: listStorageDiscards
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: fromTime
+          in: query
+          description: From time of the report
+          required: false
+          schema:
+            type: string
+        - name: toTime
+          in: query
+          description: To time of the report
+          required: false
+          schema:
+            type: string
+        - name: productId
+          in: query
+          description: Id of discarded product
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A paged array of storage discard events
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new storage discard event
+      operationId: createStorageDiscard
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+      requestBody:
+        description: Storage discard body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageDiscard"
+      tags:
+        - StorageDiscards
+      responses:
+        "200":
+          description: A created storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  "/v1/{facility}/storageDiscards/{storageDiscardId}":
+    get:
+      summary: Finds storage discard event
+      operationId: getStorageDiscard
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A foung storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a storage discard event
+      operationId: updateStorageDiscard
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StorageDiscard"
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: An updated storage discard event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDiscard"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a storage discard event
+      operationId: deleteStorageDiscard
+      tags:
+        - StorageDiscards
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: storageDiscardId
+          in: path
+          description: Storage discard id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Empty result indication a successful removal
         default:
           description: unexpected error
           content:
@@ -1974,6 +2609,18 @@ components:
       scheme: bearer
 
   schemas:
+    CampaignProduct:
+      type: object
+      required:
+        - productId
+        - count
+      properties:
+        productId:
+          type: string
+          format: uuid
+        count:
+          type: integer
+
     Campaign:
       type: object
       required:
@@ -1988,21 +2635,12 @@ components:
         products:
           type: array
           items:
-            type: object
-            required:
-              - productId
-              - count
-            properties:
-              productId:
-               type: string
-               format: uuid
-              count:
-                type: integer
+            $ref: "#/components/schemas/CampaignProduct"
         
     LocalizedEntry: 
        type: array
        items:
-         $ref: '#/components/schemas/LocalizedValue'
+         $ref: "#/components/schemas/LocalizedValue"
   
     LocalizedValue: 
       type: object
@@ -2024,7 +2662,7 @@ components:
           type: "string"
           format: "uuid"
         reason:
-          $ref: '#/components/schemas/LocalizedEntry'
+          $ref: "#/components/schemas/LocalizedEntry"
   
     PerformedCultivationAction:
       properties:
@@ -2032,7 +2670,7 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'
+          $ref: "#/components/schemas/LocalizedEntry"
           
     PackageSize:
       type: "object"
@@ -2041,7 +2679,7 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'
+          $ref: "#/components/schemas/LocalizedEntry"
         size:
           type: "integer"
           format: "int32"
@@ -2054,11 +2692,19 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'
-        defaultPackageSizeId:
-          type: "string"
-          format: "uuid"
+          $ref: "#/components/schemas/LocalizedEntry"
+        defaultPackageSizeIds:
+          type: array
+          items:
+            type: "string"
+            format: "uuid"
+        allowedHarvestTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/HarvestEventType"
         isSubcontractorProduct:
+          type: "boolean"
+        active:
           type: "boolean"
 
     Pest:
@@ -2068,7 +2714,7 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'
+          $ref: "#/components/schemas/LocalizedEntry"
 
     Seed:
       type: "object"
@@ -2077,7 +2723,7 @@ components:
           type: "string"
           format: "uuid"
         name:
-          $ref: '#/components/schemas/LocalizedEntry'
+          $ref: "#/components/schemas/LocalizedEntry"
 
     SeedBatch:
       type: "object"
@@ -2115,6 +2761,7 @@ components:
       enum:
         - SMALL
         - LARGE
+        - PAPER
 
     Event:
       type: "object"
@@ -2145,7 +2792,7 @@ components:
         additionalInformation:
           type: "string"
         type:
-          $ref: '#/components/schemas/EventType'
+          $ref: "#/components/schemas/EventType"
         data:
           type: object
     Packing:
@@ -2184,6 +2831,7 @@ components:
       enum:
         - IN_STORE
         - REMOVED
+        - WASTAGE
         
     PackingType:
       type: "string"
@@ -2213,6 +2861,10 @@ components:
           description: "How many workers were doing the planting"
           type: "integer"
           format: "int32"
+        sowingDate:
+          description: "Sowing date"
+          type: "string"
+          format: "date-time"
           
     SowingEventData:
       description: "Entry when a batch has been sowed"
@@ -2231,6 +2883,8 @@ components:
             type: "string"
             format: "uuid"
         potType:
+          readOnly: true
+          description: Will always be PotType.PAPER, kept here for past events
           $ref: "#/components/schemas/PotType"
         amount:
           type: "integer"
@@ -2266,24 +2920,35 @@ components:
           items:
             type: "string"
             format: "uuid"
-            
+    HarvestEventType:
+      type: "string"
+      enum:
+        - BAGGING
+        - CUTTING
+        - BOXING
+  
     HarvestEventData:
       required:
         - amount
+        - sowingDate
       properties:
+        gutterHoleCount:
+          type: "integer"
+          format: "int32"
+          description: "Number of holes in gutter used in planting"
         gutterCount:
           type: "integer"
           format: "int32"
         type:
-          type: "string"
-          enum:
-            - BAGGING
-            - CUTTING
-            - BOXING
+          $ref: "#/components/schemas/HarvestEventType"
         productionLineId:
           description: "Production line id"
           type: "string"
           format: "uuid"
+        sowingDate:
+          description: "Sowing date"
+          type: "string"
+          format: "date-time"
             
     WastageEventData:
       required:
@@ -2303,7 +2968,7 @@ components:
           type: "string"
           format: "uuid"
         phase:
-          $ref: '#/components/schemas/EventType'
+          $ref: "#/components/schemas/EventType"
 
     EventType:
       type: "string"
@@ -2402,10 +3067,35 @@ components:
         storageCondition:
           type: string
 
-        
+    StorageDiscard:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        discardDate:
+          type: string
+          format: date-time
+        packageSizeId:
+          type: string
+          format: uuid
+        discardAmount:
+          type: integer
+          format: int32
+    
+    Facility:
+      type: string
+      enum:
+        - JUVA
+        - JOROINEN
+
     ErrorResponse:
       type: object
-      required: [message]
+      required:
+        - message
       properties:
         message:
           description: The error message
