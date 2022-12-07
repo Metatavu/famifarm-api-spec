@@ -7,7 +7,7 @@ security:
 - BearerAuth: []
   
 paths:
-  "/v1/{facility}/campaigns":
+  "/v1/campaigns":
     get:
       summary: List all campaigns
       operationId: listCampaigns
@@ -68,7 +68,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  "/v1/{facility}/campaigns/{campaignId}":
+  "/v1/campaigns/{campaignId}":
     get:
       summary: Find a campaign
       operationId: findCampaign
@@ -166,7 +166,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
       
-  "/v1/{facility}/printers":
+  "/v1/printers":
     get:
       summary: List all connected printers
       operationId: listPrinters
@@ -194,7 +194,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/printers/{printerId}/print":
+  "/v1/printers/{printerId}/print":
     post:
       summary: Print
       operationId: print
@@ -233,7 +233,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"    
-  "/v1/{facility}/events":
+  "/v1/events":
     get:
       summary: List all events
       operationId: listEvents
@@ -334,7 +334,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/events/{eventId}":
+  "/v1/events/{eventId}":
     get:
       summary: Find an event
       operationId: findEvent
@@ -434,7 +434,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/packings":
+  "/v1/packings":
     get:
       summary: List all packings
       operationId: listPackings
@@ -540,7 +540,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/packings/{packingId}":
+  "/v1/packings/{packingId}":
     get:
       summary: Find a packing
       operationId: findPacking
@@ -640,7 +640,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/cutPackings":
+  "/v1/cutPackings":
     get:
       summary: List all cut packings
       operationId: listCutPackings
@@ -733,7 +733,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/cutPackings/{cutPackingId}":
+  "/v1/cutPackings/{cutPackingId}":
     get:
       summary: Find a cut packing
       operationId: findCutPacking
@@ -834,7 +834,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"                
                               
-  "/v1/{facility}/wastageReasons":
+  "/v1/wastageReasons":
     get:
       summary: List all wastage reasons
       operationId: listWastageReasons
@@ -908,7 +908,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/wastageReasons/{wastageReasonId}":
+  "/v1/wastageReasons/{wastageReasonId}":
     get:
       summary: Find an wastage reason
       operationId: findWastageReason
@@ -1009,7 +1009,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  "/v1/{facility}/packageSizes":
+  "/v1/packageSizes":
     get:
       summary: List all package sizes
       operationId: listPackageSizes
@@ -1083,7 +1083,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/packageSizes/{packageSizeId}":
+  "/v1/packageSizes/{packageSizeId}":
     get:
       summary: Find a package size
       operationId: findPackageSize
@@ -1184,7 +1184,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  "/v1/{facility}/seedBatches":
+  "/v1/seedBatches":
     get:
       summary: List all seed batches
       operationId: listSeedBatches
@@ -1265,7 +1265,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  "/v1/{facility}/seedBatches/{seedBatchId}":
+  "/v1/seedBatches/{seedBatchId}":
     get:
       summary: Find a seed batch
       operationId: findSeedBatch
@@ -1366,7 +1366,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
                 
-  "/v1/{facility}/products":
+  "/v1/products":
     get:
       summary: List all products
       operationId: listProducts
@@ -1452,7 +1452,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/products/{productId}":
+  "/v1/products/{productId}":
     get:
       summary: Find a product
       operationId: findProduct
@@ -1552,7 +1552,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/pests":
+  "/v1/pests":
     get:
       summary: List all pests
       operationId: listPests
@@ -1626,7 +1626,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/pests/{pestId}":
+  "/v1/pests/{pestId}":
     get:
       summary: Find a pest
       operationId: findPest
@@ -1726,7 +1726,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/seeds":
+  "/v1/seeds":
     get:
       summary: List all seeds
       operationId: listSeeds
@@ -1800,7 +1800,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/seeds/{seedId}":
+  "/v1/seeds/{seedId}":
     get:
       summary: Find a seed
       operationId: findSeed
@@ -1901,7 +1901,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  "/v1/{facility}/productionLines":
+  "/v1/productionLines":
     get:
       summary: List all production lines
       operationId: listProductionLines
@@ -1975,7 +1975,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/productionLines/{productionLineId}":
+  "/v1/productionLines/{productionLineId}":
     get:
       summary: Find a production line
       operationId: findProductionLine
@@ -2076,7 +2076,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  "/v1/{facility}/performedCultivationActions":
+  "/v1/performedCultivationActions":
     get:
       summary: List all performed cultivation actions
       operationId: listPerformedCultivationActions
@@ -2150,7 +2150,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/performedCultivationActions/{performedCultivationActionId}":
+  "/v1/performedCultivationActions/{performedCultivationActionId}":
     get:
       summary: Find a performed cultivation action
       operationId: findPerformedCultivationAction
@@ -2250,7 +2250,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/drafts":
+  "/v1/drafts":
     get:
       summary: List all drafts
       operationId: listDrafts
@@ -2323,7 +2323,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/drafts/{draftId}":
+  "/v1/drafts/{draftId}":
     delete:
       summary: Deletes a draft
       operationId: deleteDraft
@@ -2353,7 +2353,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  "/v1/{facility}/reports/{type}":
+  "/v1/reports/{type}":
     get:
       summary: Constructs report
       operationId: getReport
@@ -2408,7 +2408,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/storageDiscards":
+  "/v1/storageDiscards":
     get:
       summary: List all storage discard events
       operationId: listStorageDiscards
@@ -2501,7 +2501,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  "/v1/{facility}/storageDiscards/{storageDiscardId}":
+  "/v1/storageDiscards/{storageDiscardId}":
     get:
       summary: Finds storage discard event
       operationId: getStorageDiscard
