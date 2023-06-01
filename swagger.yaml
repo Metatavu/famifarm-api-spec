@@ -2821,6 +2821,9 @@ components:
         packageSizeId:
           type: "string"
           format: "uuid"
+        removedFromStorage:
+          type: "string"
+          format: "date-time"
         state:
           $ref: "#/components/schemas/PackingState"
         type:
