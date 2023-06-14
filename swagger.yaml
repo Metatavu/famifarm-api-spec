@@ -4,8 +4,8 @@ info:
   version: "2.0.0"
   title: "Famifarm-API"
 security:
-- BearerAuth: []
-  
+  - BearerAuth: []
+
 paths:
   "/v1/{facility}/campaigns":
     get:
@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"          
+                $ref: "#/components/schemas/ErrorResponse"
     post:
       summary: Create a campaign
       operationId: createCampaign
@@ -58,7 +58,7 @@ paths:
         "200":
           description: A created campaign
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Campaign"
         default:
@@ -67,13 +67,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+
   "/v1/{facility}/campaigns/{campaignId}":
     get:
       summary: Find a campaign
       operationId: findCampaign
       tags:
-       - Campaigns
+        - Campaigns
       parameters:
         - name: facility
           required: true
@@ -104,7 +104,7 @@ paths:
       summary: Delete a campaign
       operationId: deleteCampaign
       tags:
-       - Campaigns
+        - Campaigns
       parameters:
         - name: facility
           required: true
@@ -131,7 +131,7 @@ paths:
       summary: Update a campaign
       operationId: updateCampaign
       tags:
-       - Campaigns
+        - Campaigns
       parameters:
         - name: facility
           required: true
@@ -156,7 +156,7 @@ paths:
         "200":
           description: An updated campaign
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Campaign"
         default:
@@ -165,7 +165,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-      
+
   "/v1/{facility}/printers":
     get:
       summary: List all connected printers
@@ -186,7 +186,7 @@ paths:
             application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Printer"
         default:
           description: unexpected error
@@ -232,7 +232,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"    
+                $ref: "#/components/schemas/ErrorResponse"
   "/v1/{facility}/events":
     get:
       summary: List all events
@@ -294,7 +294,7 @@ paths:
             application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Event"
         default:
           description: unexpected error
@@ -318,14 +318,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Event"
+              $ref: "#/components/schemas/Event"
       tags:
         - Events
       responses:
         "200":
           description: A created event
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Event"
         default:
@@ -358,7 +358,7 @@ paths:
         "200":
           description: A found event
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Event"
         default:
@@ -376,7 +376,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Event"
+              $ref: "#/components/schemas/Event"
       tags:
         - Events
       parameters:
@@ -397,7 +397,7 @@ paths:
         "200":
           description: An updated event
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Event"
         default:
@@ -500,7 +500,7 @@ paths:
             application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Packing"
         default:
           description: unexpected error
@@ -524,14 +524,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Packing"
+              $ref: "#/components/schemas/Packing"
       tags:
         - Packings
       responses:
         "200":
           description: A created packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Packing"
         default:
@@ -564,7 +564,7 @@ paths:
         "200":
           description: A found packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Packing"
         default:
@@ -582,7 +582,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Packing"
+              $ref: "#/components/schemas/Packing"
       tags:
         - Packings
       parameters:
@@ -603,7 +603,7 @@ paths:
         "200":
           description: An updated packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Packing"
         default:
@@ -693,7 +693,7 @@ paths:
             application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/CutPacking"
         default:
           description: unexpected error
@@ -717,14 +717,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/CutPacking"
+              $ref: "#/components/schemas/CutPacking"
       tags:
         - CutPackings
       responses:
         "200":
           description: A created cut packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/CutPacking"
         default:
@@ -757,7 +757,7 @@ paths:
         "200":
           description: A found cut packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/CutPacking"
         default:
@@ -775,7 +775,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/CutPacking"
+              $ref: "#/components/schemas/CutPacking"
       tags:
         - CutPackings
       parameters:
@@ -796,7 +796,7 @@ paths:
         "200":
           description: An updated cut packing
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/CutPacking"
         default:
@@ -832,8 +832,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"                
-                              
+                $ref: "#/components/schemas/ErrorResponse"
+
   "/v1/{facility}/wastageReasons":
     get:
       summary: List all wastage reasons
@@ -865,10 +865,10 @@ paths:
         "200":
           description: A paged array of wastage reasons
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/WastageReason"
         default:
           description: unexpected error
@@ -892,14 +892,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/WastageReason"
+              $ref: "#/components/schemas/WastageReason"
       tags:
         - WastageReasons
       responses:
         "200":
           description: A created wastageReason
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/WastageReason"
         default:
@@ -932,7 +932,7 @@ paths:
         "200":
           description: A found wastage reason
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/WastageReason"
         default:
@@ -950,7 +950,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/WastageReason"
+              $ref: "#/components/schemas/WastageReason"
       tags:
         - WastageReasons
       parameters:
@@ -971,7 +971,7 @@ paths:
         "200":
           description: An updated wastage reason
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/WastageReason"
         default:
@@ -1040,10 +1040,10 @@ paths:
         "200":
           description: A paged array of package sizes
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/PackageSize"
         default:
           description: unexpected error
@@ -1067,14 +1067,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/PackageSize"
+              $ref: "#/components/schemas/PackageSize"
       tags:
         - PackageSizes
       responses:
         "200":
           description: A created packageSize
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PackageSize"
         default:
@@ -1107,7 +1107,7 @@ paths:
         "200":
           description: A found package size
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PackageSize"
         default:
@@ -1125,7 +1125,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/PackageSize"
+              $ref: "#/components/schemas/PackageSize"
       tags:
         - PackageSizes
       parameters:
@@ -1146,7 +1146,7 @@ paths:
         "200":
           description: An updated package size
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PackageSize"
         default:
@@ -1183,7 +1183,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+
   "/v1/{facility}/seedBatches":
     get:
       summary: List all seed batches
@@ -1221,10 +1221,10 @@ paths:
         "200":
           description: A paged array of seed batches
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/SeedBatch"
         default:
           description: unexpected error
@@ -1248,14 +1248,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/SeedBatch"
+              $ref: "#/components/schemas/SeedBatch"
       tags:
         - SeedBatches
       responses:
         "200":
           description: A created seedBatch
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/SeedBatch"
         default:
@@ -1264,7 +1264,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+
   "/v1/{facility}/seedBatches/{seedBatchId}":
     get:
       summary: Find a seed batch
@@ -1289,7 +1289,7 @@ paths:
         "200":
           description: A found seed batch
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/SeedBatch"
         default:
@@ -1307,7 +1307,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/SeedBatch"
+              $ref: "#/components/schemas/SeedBatch"
       tags:
         - SeedBatches
       parameters:
@@ -1328,7 +1328,7 @@ paths:
         "200":
           description: An updated seed batch
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/SeedBatch"
         default:
@@ -1365,7 +1365,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+
   "/v1/{facility}/products":
     get:
       summary: List all products
@@ -1395,13 +1395,19 @@ paths:
             format: int32
         - name: includeInActiveProducts
           in: query
-          description: "Should inactive products be included. If this parameter is left undefined, it will interpreted as false" 
+          description: "Should inactive products be included. If this parameter is left undefined, it will interpreted as false"
           required: false
           schema:
             type: boolean
         - name: includeSubcontractorProducts
           in: query
-          description: "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false" 
+          description: "Should subcontractor products be included. If this parameter is left undefined, it will interpreted as false"
+          required: false
+          schema:
+            type: boolean
+        - name: filterByEndProducts
+          in: query
+          description: "Filter products by isEndProducts. If this parameter is left undefined, it will interpreted as false"
           required: false
           schema:
             type: boolean
@@ -1409,10 +1415,10 @@ paths:
         "200":
           description: A paged array of products
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Product"
         default:
           description: unexpected error
@@ -1436,14 +1442,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Product"
+              $ref: "#/components/schemas/Product"
       tags:
         - Products
       responses:
         "200":
           description: A created product
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Product"
         default:
@@ -1476,7 +1482,7 @@ paths:
         "200":
           description: A found product
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Product"
         default:
@@ -1494,7 +1500,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Product"
+              $ref: "#/components/schemas/Product"
       tags:
         - Products
       parameters:
@@ -1515,7 +1521,7 @@ paths:
         "200":
           description: An updated product
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Product"
         default:
@@ -1583,10 +1589,10 @@ paths:
         "200":
           description: A paged array of pests
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Pest"
         default:
           description: unexpected error
@@ -1610,14 +1616,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Pest"
+              $ref: "#/components/schemas/Pest"
       tags:
         - Pests
       responses:
         "200":
           description: A created pest
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Pest"
         default:
@@ -1650,7 +1656,7 @@ paths:
         "200":
           description: A found pest
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Pest"
         default:
@@ -1668,7 +1674,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Pest"
+              $ref: "#/components/schemas/Pest"
       tags:
         - Pests
       parameters:
@@ -1689,7 +1695,7 @@ paths:
         "200":
           description: An updated pest
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Pest"
         default:
@@ -1757,10 +1763,10 @@ paths:
         "200":
           description: A paged array of seeds
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Seed"
         default:
           description: unexpected error
@@ -1784,14 +1790,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Seed"
+              $ref: "#/components/schemas/Seed"
       tags:
         - Seeds
       responses:
         "200":
           description: A created seed
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Seed"
         default:
@@ -1824,7 +1830,7 @@ paths:
         "200":
           description: A found seed
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Seed"
         default:
@@ -1842,7 +1848,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/Seed"
+              $ref: "#/components/schemas/Seed"
       tags:
         - Seeds
       parameters:
@@ -1863,7 +1869,7 @@ paths:
         "200":
           description: An updated seed
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Seed"
         default:
@@ -1932,10 +1938,10 @@ paths:
         "200":
           description: A paged array of production lines
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/ProductionLine"
         default:
           description: unexpected error
@@ -1959,14 +1965,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/ProductionLine"
+              $ref: "#/components/schemas/ProductionLine"
       tags:
         - ProductionLines
       responses:
         "200":
           description: A created productionLine
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/ProductionLine"
         default:
@@ -1999,7 +2005,7 @@ paths:
         "200":
           description: A found production line
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/ProductionLine"
         default:
@@ -2017,7 +2023,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/ProductionLine"
+              $ref: "#/components/schemas/ProductionLine"
       tags:
         - ProductionLines
       parameters:
@@ -2038,7 +2044,7 @@ paths:
         "200":
           description: An updated production line
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/ProductionLine"
         default:
@@ -2107,10 +2113,10 @@ paths:
         "200":
           description: A paged array of performed cultivation actions
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/PerformedCultivationAction"
         default:
           description: unexpected error
@@ -2134,14 +2140,14 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/PerformedCultivationAction"
+              $ref: "#/components/schemas/PerformedCultivationAction"
       tags:
         - PerformedCultivationActions
       responses:
         "200":
           description: A created performedCultivationAction
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PerformedCultivationAction"
         default:
@@ -2174,7 +2180,7 @@ paths:
         "200":
           description: A found performed cultivation action
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PerformedCultivationAction"
         default:
@@ -2192,7 +2198,7 @@ paths:
         content:
           application/json:
             schema:
-             $ref: "#/components/schemas/PerformedCultivationAction"
+              $ref: "#/components/schemas/PerformedCultivationAction"
       tags:
         - PerformedCultivationActions
       parameters:
@@ -2213,7 +2219,7 @@ paths:
         "200":
           description: An updated performed cultivation action
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/PerformedCultivationAction"
         default:
@@ -2280,10 +2286,10 @@ paths:
         "200":
           description: A paged array of drafts
           content:
-            application/json:    
+            application/json:
               schema:
                 type: "array"
-                items: 
+                items:
                   $ref: "#/components/schemas/Draft"
         default:
           description: unexpected error
@@ -2314,7 +2320,7 @@ paths:
         "200":
           description: A created draft
           content:
-            application/json:    
+            application/json:
               schema:
                 $ref: "#/components/schemas/Draft"
         default:
@@ -2636,13 +2642,13 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/CampaignProduct"
-        
-    LocalizedEntry: 
-       type: array
-       items:
-         $ref: "#/components/schemas/LocalizedValue"
-  
-    LocalizedValue: 
+
+    LocalizedEntry:
+      type: array
+      items:
+        $ref: "#/components/schemas/LocalizedValue"
+
+    LocalizedValue:
       type: object
       required:
         - language
@@ -2651,10 +2657,10 @@ components:
         language:
           type: string
           minLength: 2
-          maxLength: 2        
+          maxLength: 2
         value:
           type: string
-          
+
     WastageReason:
       description: "Reason why a product has been thrown away"
       properties:
@@ -2663,7 +2669,7 @@ components:
           format: "uuid"
         reason:
           $ref: "#/components/schemas/LocalizedEntry"
-  
+
     PerformedCultivationAction:
       properties:
         id:
@@ -2671,7 +2677,7 @@ components:
           format: "uuid"
         name:
           $ref: "#/components/schemas/LocalizedEntry"
-          
+
     PackageSize:
       type: "object"
       properties:
@@ -2705,6 +2711,8 @@ components:
         isSubcontractorProduct:
           type: "boolean"
         active:
+          type: "boolean"
+        isEndProduct:
           type: "boolean"
 
     Pest:
@@ -2810,7 +2818,7 @@ components:
           format: "uuid"
         campaignId:
           type: "string"
-          format: "uuid"  
+          format: "uuid"
         time:
           type: "string"
           format: "date-time"
@@ -2825,20 +2833,20 @@ components:
           $ref: "#/components/schemas/PackingState"
         type:
           $ref: "#/components/schemas/PackingType"
-    
+
     PackingState:
       type: "string"
       enum:
         - IN_STORE
         - REMOVED
         - WASTAGE
-        
+
     PackingType:
       type: "string"
       enum:
         - BASIC
         - CAMPAIGN
-        
+
     PlantingEventData:
       properties:
         productionLineId:
@@ -2865,11 +2873,11 @@ components:
           description: "Sowing date"
           type: "string"
           format: "date-time"
-          
+
     SowingEventData:
       description: "Entry when a batch has been sowed"
       type: "object"
-      required: 
+      required:
         - productionLineId
         - trayType
         - amount
@@ -2889,7 +2897,7 @@ components:
         amount:
           type: "integer"
           format: "int32"
-          
+
     TableSpreadEventData:
       description: Event of spreading the young plant trays to nursery tables
       properties:
@@ -2926,7 +2934,7 @@ components:
         - BAGGING
         - CUTTING
         - BOXING
-  
+
     HarvestEventData:
       required:
         - amount
@@ -2949,7 +2957,7 @@ components:
           description: "Sowing date"
           type: "string"
           format: "date-time"
-            
+
     WastageEventData:
       required:
         - amount
@@ -3003,7 +3011,7 @@ components:
           type: "string"
           format: "date-time"
           readOnly: true
-          
+
     Printer:
       type: "object"
       required:
@@ -3014,7 +3022,7 @@ components:
           type: "string"
         name:
           type: "string"
-          
+
     PrintData:
       type: "object"
       required:
