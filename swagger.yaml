@@ -1411,6 +1411,12 @@ paths:
           required: false
           schema:
             type: boolean
+        - name: filterByRawMaterials
+          in: query
+          description: "Filter products by isRawMaterials. If this parameter is left undefined, it will interpreted as false"
+          required: false
+          schema:
+            type: boolean
       responses:
         "200":
           description: A paged array of products
@@ -2713,6 +2719,8 @@ components:
         active:
           type: "boolean"
         isEndProduct:
+          type: "boolean"
+        isRawMaterial:
           type: "boolean"
 
     Pest:
