@@ -2965,6 +2965,10 @@ components:
           description: "Sowing date"
           type: "string"
           format: "date-time"
+        numberOfBaskets:
+          description: "Number of baskets"
+          type: "integer"
+          format: "int32"
 
     WastageEventData:
       required:
