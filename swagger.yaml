@@ -2723,8 +2723,8 @@ components:
         isRawMaterial:
           type: "boolean"
         salesWeight:
-          type: "integer"
-          format: "int32"
+          type: "number"
+          format: "double"
 
     Pest:
       type: "object"
