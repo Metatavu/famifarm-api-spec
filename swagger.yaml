@@ -2722,6 +2722,9 @@ components:
           type: "boolean"
         isRawMaterial:
           type: "boolean"
+        salesWeight:
+          type: "number"
+          format: "double"
 
     Pest:
       type: "object"
