@@ -2968,10 +2968,19 @@ components:
           description: "Sowing date"
           type: "string"
           format: "date-time"
-        numberOfBaskets:
-          description: "Number of baskets"
-          type: "integer"
-          format: "int32"
+        baskets:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/HarvestBasket"
+
+    HarvestBasket:
+      type: object
+      required:
+        - weight
+      properties:
+        weight:
+          type: "number"
+          format: "float"
 
     WastageEventData:
       required:
