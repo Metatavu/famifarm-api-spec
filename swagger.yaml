@@ -2840,6 +2840,14 @@ components:
         packageSizeId:
           type: "string"
           format: "uuid"
+        verificationWeightings:
+          type: array
+          items:
+            $ref: "#/components/schemas/PackingVerificationWeighing"
+        basketsUsed:
+          type: array
+          items:
+            $ref: "#/components/schemas/PackingUsedBasket"
         state:
           $ref: "#/components/schemas/PackingState"
         type:
@@ -2981,6 +2989,33 @@ components:
         weight:
           type: "number"
           format: "float"
+
+    PackingUsedBasket:
+      type: object
+      required:
+        - productId
+        - basketCount
+      properties:
+        productId:
+          type: string
+          format: uuid
+        basketCount:
+          type: integer
+
+    PackingVerificationWeighing:
+      type: object
+      required:
+        - weight
+        - time
+      properties:
+        weight:
+          type: "number"
+          format: "float"
+        time:
+          description: "Time when verification weighing was done"
+          type: "string"
+          format: "date-time"
+
 
     WastageEventData:
       required:
