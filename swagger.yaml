@@ -2852,6 +2852,14 @@ components:
           $ref: "#/components/schemas/PackingState"
         type:
           $ref: "#/components/schemas/PackingType"
+        startTime:
+          type: "string"
+          format: "date-time"
+        endTime:
+          type: "string"
+          format: "date-time"
+        additionalInformation:
+          type: "string"
 
     PackingState:
       type: "string"
