@@ -2990,7 +2990,7 @@ components:
             $ref: "#/components/schemas/HarvestBasket"
         cuttingHeight:
           type: "integer"
-          format: "uuid"
+          format: "int32"
           description: "Cutting height in mm"
 
     HarvestBasket:
