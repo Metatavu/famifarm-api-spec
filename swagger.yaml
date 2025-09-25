@@ -1366,6 +1366,188 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  "/v1/{facility}/packagingFilmBatches":
+    get:
+      summary: List all packaging film batches
+      operationId: listPackagingFilmBatches
+      tags:
+        - PackagingFilmBatches
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: firstResult
+          in: query
+          description: First index of results to be returned
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: maxResults
+          in: query
+          description: How many items to return at one time
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: includePassive
+          in: query
+          description: Include passive packaging film batches
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: A paged array of packaging film batches
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/PackagingFilmBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Create new packaging film batch
+      operationId: createPackagingFilmBatch
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+      requestBody:
+        description: Wastage reason to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackagingFilmBatch"
+      tags:
+        - PackagingFilmBatches
+      responses:
+        "200":
+          description: A created packagingFilmBatch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackagingFilmBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  "/v1/{facility}/packagingFilmBatches/{packagingFilmBatchId}":
+    get:
+      summary: Find a packaging film batch
+      operationId: findPackagingFilmBatch
+      tags:
+        - PackagingFilmBatches
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: packagingFilmBatchId
+          in: path
+          description: packaging film batch id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: A found packaging film batch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackagingFilmBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      summary: Updates a packaging film batch
+      operationId: updatePackagingFilmBatch
+      requestBody:
+        description: Request payload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackagingFilmBatch"
+      tags:
+        - PackagingFilmBatches
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: packagingFilmBatchId
+          in: path
+          description: packaging film batch id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: An updated packaging film batch
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackagingFilmBatch"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Deletes a packaging film batch
+      operationId: deletePackagingFilmBatch
+      tags:
+        - PackagingFilmBatches
+      parameters:
+        - name: facility
+          required: true
+          in: path
+          description: Facility
+          schema:
+            $ref: "#/components/schemas/Facility"
+        - name: packagingFilmBatchId
+          in: path
+          description:  packaging film batch id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Empty result indication a successful removal
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   "/v1/{facility}/products":
     get:
       summary: List all products
@@ -2764,6 +2946,23 @@ components:
           description: "if seed batch is active"
           type: "boolean"
 
+    PackagingFilmBatch:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          description: "Packaging film batch name"
+          type: "string"
+        time:
+          description: "Time when the packaging film batch has arrived"
+          type: "string"
+          format: "date-time"
+        active:
+          description: "if packaging film batch is active"
+          type: "boolean"
+
     ProductionLine:
       properties:
         id:
@@ -2825,6 +3024,9 @@ components:
           type: "string"
           format: "uuid"
         productId:
+          type: "string"
+          format: "uuid"
+        packagingFilmBatchId:
           type: "string"
           format: "uuid"
         campaignId:
